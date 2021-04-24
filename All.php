@@ -358,9 +358,4 @@ if(isset($_SESSION["account"]["login"])){
 </html>
 
 <!-- test git from paggie -->
-<<<<<<< All.php
-test -git 
 
-
-jelly 
-hello
