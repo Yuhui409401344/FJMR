@@ -356,3 +356,6 @@ if(isset($_SESSION["account"]["login"])){
 <script src="../assets/js/app.min.js"></script>
 
 </html>
+
+<!-- test git from paggie -->
+test -git 
