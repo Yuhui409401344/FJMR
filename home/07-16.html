@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>輔仁管理評論</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- MDBootstrap Datatables  -->
+  <link href="css/addons/datatables.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+  <style class="list-search-style"></style>
+</head>
+  <!--Navbar-->
+<header>
+
+  <!--/.Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark  mdb-color darken-2">
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="home.html">輔仁管理評論</a>
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="關於.html ">關於</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a data-toggle="dropdown" class="nav-link w-100 dropdown-toggle" aria-haspopup="true" aria-expanded="false" >瀏覽</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="瀏覽刊物.html">所有刊物</a>
+          <a class="dropdown-item" href="養竹通訊.html">養竹通訊：校友電子報</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="訂閱.html">訂閱</a>
+
+      <li class="nav-item dropdown">
+        <a data-toggle="dropdown" class="nav-link w-100 dropdown-toggle" aria-haspopup="true" aria-expanded="false" >投稿</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="徵稿.html">徵稿說明</a>
+          <a class="dropdown-item" href="稿約格式.html">稿約格式</a>
+          <a class="dropdown-item" href="提交論文.html">提交論文</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" href="產學合作.html">聯繫我們</a>
+      </li>
+    </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="http://www.management.fju.edu.tw/" style="font-size: small;">
+            <i class="fas fa-graduation-cap"></i> 輔大管理學院
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+</header>
+<body>
+  
+  
+  <!-- Start your project here-->  
+ <!--Dropdown primary-->
+<div class="dropdown">
+  <!--Trigger-->
+  
+
+  <!--Menu-->
+  <div class="dropdown-menu dropdown-primary" id="your-custom-id">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <a class="dropdown-item mdb-dropdownLink-1" href="https://mdbootstrap.com/">MDB</a>
+    <a class="dropdown-item mdb-dropdownLink-1" href="https://mdbootstrap.com/docs/react/">MDB react</a>
+    <a class="dropdown-item mdb-dropdownLink-1" href="https://mdbootstrap.com/docs/angular/">MDB angular</a>
+    <a class="dropdown-item mdb-dropdownLink-1" href="https://mdbootstrap.com/docs/vue/">MDB vue</a>
+    <a class="dropdown-item mdb-dropdownLink-1" href="https://brandflow.net/">BrandFlow</a>
+    <a class="dropdown-item mdb-dropdownLink-1" href="https://mdbootstrap.com/education/bootstrap/">MDB
+      Rocks</a>
+  </div>
+</div>
+
+
+<!-- Jumbotron -->
+<div class="jumbotron text-center cyan darken-4" style="padding: 24px;margin-bottom: 0px;color:white;height: 180px;">
+
+    <!-- Title -->
+    <h3 class="card-title h3" style="color:#f5f5f5;">Today's research, tomorrow's innovation.</h3>
+    
+  
+    <!-- Subtitle -->
+    <p class="my-2 h6" style="color: #eeeeee;">Follow this evolving field through our economic and management research papers.</p>
+    <!-- Search form -->
+    <div class="container">
+      <input class="form-control" id="anythingSearch" type="text" placeholder="Type something to search list items">
+    </div>
+        <div style="padding-left: 80%">
+        
+          <!-- Button trigger modal -->
+        <button class="btn btn-sm btn-light waves-effect waves-light" data-toggle="modal" data-target="#exampleModalCenter">
+          Advance Search
+        </button>
+  
+  <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  
+          <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+          <div class="modal-dialog modal-dialog-centered" role="document">
+  
+  
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">進階搜索</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <select class="browser-default custom-select mb-3">
+                  <option selected="">期刊</option>
+                  <option value="1">養竹通訊</option>
+                  <option value="2">輔仁管理評論</option>
+                </select>
+                <input class="form-control mb-3" type="text" placeholder="作者" aria-label="作者">
+                <input class="form-control mb-3" type="text" placeholder="關鍵字" aria-label="關鍵字">
+                <input class="form-control mb-3" type="text" placeholder="摘要" aria-label="摘要">
+                <input class="form-control mb-3" type="text" placeholder="其他" aria-label="其他">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary waves-effect waves-light">搜尋</button>
+              </div>
+              <!-- Search form -->
+            </div>
+          </div>
+        </div>
+        </div>
+</div>
+<!-- Jumbotron -->
+<div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="margin-bottom: 0px; background-color: #cfd8dc; color: grey;">
+          <li class="breadcrumb-item"><a href="home.html" style="color: grey;">輔仁管理評論</a></li>
+          <li class="breadcrumb-item">瀏覽</li>
+          <li class="breadcrumb-item"><a href="瀏覽刊物.html" style="color: grey;">所有刊物</a></li>
+          <li class="breadcrumb-item"></li>
+        </ol>
+      </nav>
+</div>
+<div class="container-fluid" style="background-color: #eceff1;">
+    <div style=" display: flex;
+justify-content: right;
+align-items: center;
+height: 70px;
+border: bottom: 0;">
+    <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;margin-left: 60px;margin-top: 20px;">不同波動期間之期望報酬與風險關係的實證研究?不對稱GARCH-M模型之應用</h3>
+    </div>
+    <div class="container">
+        <div class="row justify-content-start">
+          <div class="col-2">
+            期數：第7卷 / 第2期
+          </div>
+          <div class="col-2">
+            全文下載：<a href="http://www.management.fju.edu.tw/zh-tw/down.php?hFFile=tw_books_caty01331192102.pdf">376.08KB</a>
+          </div>
+          <div class="col-3">
+            發布時間：89 年 09 月 30 日
+          </div>
+        </div>
+      </div>
+    <div class="row">
+        <div class="container mt-0" >
+        <section class="mt-3">
+
+        <!-- Card header -->
+        <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
+        <p class="mr-4 mb-0">作者</p>
+        </div>
+
+        <div class="media my-2 px-1">
+            <div class="media-body" style="font-family:Microsoft JhengHei">
+                <div>
+                  <p class=" mb-0;" style="color: #1c2a48; margin-bottom: 0px;font-weight: 520">葉銀華&nbsp;輔仁大學國際貿易與金融學系</p>
+                </div>
+                <div>
+                  <p class=" mb-0;" style="color: #1c2a48; margin-bottom: 0px;font-weight: 520">蔡麗茹&nbsp;輔仁大學國際貿易與金融學系</p>
+                </div>
+            </div>
+        </div>
+
+        </section>
+        </div>
+        <div class="container">
+        <section class="mt-3">
+
+        <!-- Card header -->
+        <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
+        <p class="mr-4 mb-0">摘要</p>
+        </div>
+
+        <div class="media mt-3 px-1">
+        <div class="media-body" style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+            <p>本文利用台灣股票市場1982年到1995年報酬波動性存在巨大差異的現象，
+                將研究期間分成低度 (1982-1986)、高度 (1987-1990) 與中度 (1991-1995) 波動期間，
+                以分析期望報酬與風險關係隨著時間變動的特性。我們綜合(1)在前一日報酬漲跌不同下，
+                波動性對期望報酬的影響，以及(2)分別利用GJR模型與EGARCH模型，探討新訊息對報酬波動性的不對稱影響，
+                來建立實證模型。實證結果發現(1)在低度波動期間，不管是前一日報酬上漲或下跌，當波動性增加時，
+                則期望報酬也越高。然而在高度波動期間，波動性與期望報酬呈負相關，特別是前一日報酬下跌的階段。
+                爾後在中度波動期間，變成不顯著的正相關。此一實證結果可以包容過去文獻的不一致結論，而且符合相關財務理論所述。
+                (2)在高度、中度與低度波動期間，皆存在新訊息對報酬波動性不對稱的影響效果。特別是高度波動期間，不對稱影響效果最大。</p>
+        </div>
+        </div>
+
+        </section>
+        </div>
+
+        <div class="container">
+            <section class="my-5">
+        
+            <!-- Card header -->
+            <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
+            <p class="mr-4 mb-0">關鍵字</p>
+            </div>
+        
+            <div class="media mt-4 px-1">
+            <div class="media-body blue-text">
+                <p>報酬與風險, GARCH模型, 融資槓桿效果, 波動回饋效果, expected return and risk, GARCH model,financial leverage effect , volatility feedback effect</p>
+            </div>
+            </div>
+        
+            </section>
+            </div>
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <h5 class="text-uppercase">連絡我們</h5>
+          <p style="color: white;">輔仁大學管理學院 邱瑞真秘書</p>
+          <p style="color: white;"><a href="mailto: fjreview@mail.fju.edu.tw">fjreview@mail.fju.edu.tw</a></p>
+          <p><a href="tel:886229052000">TEL: (02) 2905-2000</a></p>
+          <p><a href="fax:0229052186">FAX: (02) 2905-2186</a></p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="text-uppercase">相關連結</h5>
+            <p>
+              <a href="http://alumni.fju.edu.tw/">輔仁大學校友資料庫</a>
+            </p>
+            <p>
+              <a href="http://research.fju.edu.tw/admin/login">研究人才資料庫</a>
+            </p>
+            <p>
+              <a href="http://www.grb.gov.tw/">政府研究資訊系統(GRB)</a>
+            </p>
+            <p>
+              <a href="https://ulist.moe.gov.tw/">大專院校一覽表查詢系統</a>
+            </p>
+          
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-4 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="text-uppercase">學術資料庫</h5>
+            <p>
+              <a href="https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&amp;s=id=%22089SHU05389001%22.&amp;searchmode=basic">博碩士論文行動網</a>
+            </p>
+            <p>
+              <a href="http://new.big5.oversea.cnki.net/index/">中國知網</a>
+            </p>
+            <p>
+              <a href="https://www.oxfordeconomics.com/">Oxford Economics</a>
+            </p>
+            
+          
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="http://www.fju.edu.tw/"> 輔仁大學</a>
+    </div>
+    <!-- Copyright -->
+  
+</footer>
+  <!-- Footer -->
+  <!--/Dropdown primary-->
+    <!-- End your project here-->
+  
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript"></script>
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+  
+  <script>
+  
+  
+  $(document).ready(function () {
+  $('#dtBasicExample').DataTable({
+  "order": [[ 0, "desc" ]]
+  });
+  
+  $('.dataTables_length').addClass('bs-select');
+  });
+  
+  
+  
+  $(document).ready(function(){
+    $("#anythingSearch").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#dtBasicExample tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  
+  </script>
+  
+  </body>
+  
+  </html>
+  
