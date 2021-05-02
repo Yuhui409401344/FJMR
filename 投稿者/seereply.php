@@ -47,17 +47,25 @@ $login=$_SESSION["account"]["login"];
                                     <label style="font-size: 14px;"><?php echo $message ?></label>
                                     </div>
                                                       
+                                    <?php if ($level =='小幅修改' or $level =='大幅修改'){
+                                        ?>
+                                        <div class="mt-2">
+                                            <a href="../審稿者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
+                                            &nbsp;&nbsp;<a href="add.php" class="text-muted  mt-2"><i class="mdi mdi-reply"></i>上傳修正檔</a>
+                                        </div>
+                                    <?php }else{?>
+                                        <div class="mt-2">
+                                            <a href="../審稿者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
+                                        </div>
 
-                                    <div class="mt-2">
-                                        <a href="../審稿者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
-                                        &nbsp;&nbsp;<a href="add.php" class="text-muted  mt-2"><i class="mdi mdi-reply"></i>上傳修正檔</a>
-                                    </div>
+                                    
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <?php
+            }
                 }
             ?>
                 
