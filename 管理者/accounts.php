@@ -232,9 +232,8 @@
                                 <td class="col-4">
                                     <div class="text-center card-box mr-1" width="60" >
                                         <div class="pt-2 pb-2 " width="80">
-                                            <img src="../assets/images/user.png" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-
-                                            <h4 class="mt-3"><a href="extras-profile.html" class="text-dark"><?php echo $name ?></a></h4>
+                                            <img src="../assets/images/user.png" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image"></br>
+                                            <input type="button" style="color:black; font-size: large" name="<?php echo $name ?>" value="<?php echo $name ?>" id="<?php echo $login ?>" class=" btn btn-link mt-1 mb-1 waves-effect waves-light view_data"></input>
                                             <p class="text-muted">@
                                             <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
@@ -270,7 +269,7 @@
                                 </tr>   
                         </table><!-- end row -->
                         
-
+                       
                         <div class="row">
                             <div class="col-12">
                                 <div class="text-right">
@@ -334,5 +333,47 @@
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
 
+       
+
+         <!-- Standard modal content -->
+         <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body" id="user_detail"> 
+                    <!-- -------------- -->
+                    <!-- userDetail.php -->
+                    <!-- -------------- -->
+                    
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <script>
+           $(document).ready(function(){
+               $('.view_data').click(function(){
+                   var login = $(this).attr("id");
+                   console.log(login);
+
+                   $.ajax({
+                       url:"userDetail.php",
+                       method:"POST",
+                       data:{login:login},
+                       success:function(data){
+                            $('#user_detail').html(data);
+                            $('#standard-modal').modal("show");
+                       }
+                   })
+                    $('#standard-modal').modal("show");
+               });
+           });
+        </script>
+
+
+        
+
+
     </body>
 </html>
+
