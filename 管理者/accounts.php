@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(isset($_SESSION["account"]["login"])){
+    $manager=$_SESSION["account"]["login"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -118,11 +125,10 @@
                                                 <tbody>
                                                 <?php 
                                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                foreach ($pdo->query('select * from follow') as $row) {
+                                                foreach ($pdo->query("SELECT login,name,email from follow where manager='$manager' ") as $row) {
                                                     $login=$row['login'];
                                                     $name=$row['name'];
                                                     $email=$row['email'];
-                                                    $status=$row['status'];
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $name ?></td>
@@ -170,23 +176,9 @@
 
                                     <div id="cardCollpase3" class="collapse pt-3 show">
                                         <div class="text-center">
-
-                                            <div class="row mt-2">
-                                                <div class="col-4">
-                                                    <h3 data-plugin="counterup"><?php echo $status1 ?></h3>
-                                                    <p class="text-muted font-13 mb-0 text-truncate">投稿者</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <h3 data-plugin="counterup"><?php echo $status2 ?></h3>
-                                                    <p class="text-muted font-13 mb-0 text-truncate">審稿者</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <h3 data-plugin="counterup"><?php echo $status3 ?></h3>
-                                                    <p class="text-muted font-13 mb-0 text-truncate">管理者</p>
-                                                </div>
-                                            </div> <!-- end row -->
-                                            <!-- <div id="statistics-chart" data-colors="#02c0ce" style="height: 270px;" class="morris-chart mt-3"></div> -->
-
+                                        <div>
+                                            <div id="donutchart" style="width: 449px; height: 300px;"></div>
+                                        </div>
                                         </div>
                                     </div> <!-- end collapse-->
                                 </div> <!-- end card-body-->
@@ -333,6 +325,9 @@
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
 
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+      
        
 
          <!-- Standard modal content -->
@@ -371,9 +366,26 @@
         </script>
 
 
-        
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['投稿者',     <?php echo $status1 ?>],
+          ['審稿者',     <?php echo $status2 ?>],
+          ['管理者',     <?php echo $status3 ?>],
+        ]);
 
+        var options = {
+          pieHole: 0.4,
+        };
 
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
     </body>
 </html>
 
