@@ -19,6 +19,8 @@ if(isset($_SESSION["account"]["login"])){
         <!-- App favicon -->
         <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+        <link href="../assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
 		<!-- App css -->
 		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 		<link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -121,31 +123,39 @@ if(isset($_SESSION["account"]["login"])){
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="aboutme">
-
-                                            <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>
-                                                學經歷</h5>
+                                            <div class="row">
+                                                <h5 class="mb-4 text-uppercase col-6"><i class="mdi mdi-briefcase mr-1"></i>
+                                                    學經歷
+                                                </h5>                        
+                                            </div>
 
                                             <ul class="list-unstyled timeline-sm">
+                                                <?php
+                                                $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                                foreach ($pdo->query("select  school, department, degree, start_year, end_year, login from account_resume where login =  '".$login."'  ORDER by start_year ") as $row) {
+                                                    $school = $row['school'];
+                                                    $department = $row['department'];
+                                                    $degree = $row['degree'];
+                                                    $start_year = $row['start_year'];
+                                                    $end_year = $row['end_year'];
+                                                
+                                                ?>
                                                 <li class="timeline-sm-item">
-                                                    <span class="timeline-sm-date">2023 - 25</span>
-                                                    <h5 class="mt-0 mb-1">蘋果大學 手機定價研究專業</h5>
-                                                    <p>碩士</p>
-
+                                                    <span class="timeline-sm-date"><?php echo $start_year ?> - <?php echo $end_year ?></span>
+                                                    <h5 class="mt-0 mb-1"><?php echo $school ?>  <?php echo $department ?></h5>
+                                                    <p><?php echo $degree ?></p>
+                                                    <div class="text-sm-right col">
+                                                        <a href='deleteprofile.php?login=<?php echo "$login" ?> && school=<?php echo "$school" ?>  && department=<?php echo "$department" ?>  && degree=<?php echo "$degree" ?> ' class="text-sm-right action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                    </div>
                                                 </li>
-                                                <li class="timeline-sm-item">
-                                                    <span class="timeline-sm-date">2019 - 23</span>
-                                                    <h5 class="mt-0 mb-1">輔仁大學 資訊管理系</h5>
-                                                    <p>學士</p>
-                                                    
-                                                </li>
-                                                <li class="timeline-sm-item">
-                                                    <span class="timeline-sm-date">2018 - 19</span>
-                                                    <h5 class="mt-0 mb-1">中山大學 信息管理與信息系統專業</h5>
-                                                    <p>學士 肄業</p>
-                                                    
-                                                </li>
+                                                
+                                                <?php 
+                                                }
+                                                ?>
                                             </ul>
-
+                                            <div class="text-right">
+                                                <button type="button" class="btn  btn-blue waves-effect mb-2" data-toggle="modal" data-target="#addProfile_modal">新增</button>
+                                            </div>
                                         
                                         </div> <!-- end tab-pane -->
                                         <!-- end about me section content -->
@@ -315,8 +325,77 @@ if(isset($_SESSION["account"]["login"])){
         <script src="../assets/js/app.min.js"></script>
 
         <!-- Todo app -->
-        <script src="../assets/js/pages/jquery.todo.js"></script>
+        <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+        <!-- <script>
+           $(document).ready(function(){
+               $('.view_data').click(function(){
+                   var login = $(this).attr("id");
+                   console.log(login);
+
+                   $.ajax({
+                       url:"addProfile.php",
+                       method:"POST",
+                       data:{
+                            login: login,
+                            school: school,
+                            department: department,
+                            degree: degree,
+                           },
+                       success:function(data){
+                            $('#addProfile').html(data);
+                            $('#addProfile_modal').modal("show");
+                       }
+                   })
+                    $('#addProfile_modal').modal("show");
+               });
+           });
+        </script> -->
+
+       
 
     </body>
+
+     <!-- Modal -->
+     <div class="modal fade" id="addProfile_modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h4 class="modal-title" id="myCenterModalLabel">新增學歷</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <form>
+                            <div class="form-group">
+                                <label for="school">學校</label>
+                                <input type="text" class="form-control" id="school" name="school">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">系所</label>
+                                <input type="email" class="form-control" id="department" name="department" >
+                            </div>
+                            <div class="form-group">
+                                <label for="degree">學位</label>
+                                <input type="text" class="form-control" id="degree" name="degree" placeholder="學士\碩士\博士">
+                            </div>
+                            <div class="form-group">
+                                <label for="start_year">起始時間</label>
+                                <input type="text" class="form-control" id="start_year" name="start_year" data-provide="datepicker" data-date-format="MM yyyy" data-date-min-view-mode="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="end_year">結束時間</label>
+                                <input type="text" class="form-control" id="end_year" name="end_year" data-provide="datepicker" data-date-format="MM yyyy" data-date-min-view-mode="1">
+                            </div>
+        
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light m-l-10" onclick="Custombox.close();">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
 
 </html>
