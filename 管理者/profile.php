@@ -365,14 +365,14 @@ if(isset($_SESSION["account"]["login"])){
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body p-4">
-                        <form>
+                        <form action="addProfile.php" method="post">
                             <div class="form-group">
                                 <label for="school">學校</label>
                                 <input type="text" class="form-control" id="school" name="school">
                             </div>
                             <div class="form-group">
                                 <label for="department">系所</label>
-                                <input type="email" class="form-control" id="department" name="department" >
+                                <input type="text" class="form-control" id="department" name="department" >
                             </div>
                             <div class="form-group">
                                 <label for="degree">學位</label>
