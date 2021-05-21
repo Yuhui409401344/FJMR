@@ -74,8 +74,8 @@ $login=$_SESSION["account"]["login"];
                                         $sql1->execute([$id,$title,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$replytime,$row['count_'].$login.$_FILES["file"]["name"]]);
                                         
 
-                                        $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
-                                        $sql3->execute([$id]);
+                                        // $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
+                                        // $sql3->execute([$id]);
                                     }
 
                                     if (empty($level)) {
@@ -113,7 +113,7 @@ $login=$_SESSION["account"]["login"];
                                             <?php
                                                 $filename=$_FILES["file"]["name"];
                                                 $name= explode('.',$filename);
-                                                $newname=$title.'r'.$row["count"].'.'.$name[1];
+                                                $newname=$title.'r'.$row["count_"].'.'.$name[1];
                                                 // $odlname=$_FILES["file"]["tmp_name"];
         
                                                 # 檢查檔案是否上傳成功

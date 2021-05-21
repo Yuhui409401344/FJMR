@@ -76,14 +76,17 @@ $login=$_SESSION["account"]["login"];
                                         $sql2=$pdo->prepare('insert into reply_history (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
                                         $sql2->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$row['count_'].$login.$_FILES["file"]["name"],$comment]);
 
-                                        $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
-                                        $sql3->execute([$login,$title]);
+                                        // $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
+                                        // $sql3->execute([$login,$title]);
                                     }
 
                                     if (empty($level)) {
                                         echo '請輸入評級。';
                                     }else{
-                                    
+                                        $sql4 = $pdo->query("select count(*) as replycount from reply_history where title='".$title."'");
+                                        foreach($sql4 as $a){
+                                            $replycount = $a['replycount'];
+                                        }
                                 ?>
                                 
                                 <label for="product-name" style="font-size: 20px;"><?php echo "回覆成功!";?></label>
@@ -119,7 +122,7 @@ $login=$_SESSION["account"]["login"];
                                             <?php
                                                 $filename=$_FILES["file"]["name"];
                                                 $name= explode('.',$filename);
-                                                $newname=$title.'r'.$row["count"].'.'.$name[1];
+                                                $newname=$title.'r'.$replycount.'.'.$name[1];
                                                 // $odlname=$_FILES["file"]["tmp_name"];
         
                                                 # 檢查檔案是否上傳成功
