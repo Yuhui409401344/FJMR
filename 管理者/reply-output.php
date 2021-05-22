@@ -74,8 +74,8 @@ $login=$_SESSION["account"]["login"];
                                         $sql1->execute([$id,$title,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$replytime,$row['count_'].$login.$_FILES["file"]["name"]]);
                                         
 
-                                        $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
-                                        $sql3->execute([$id]);
+                                        // $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
+                                        // $sql3->execute([$id]);
                                     }
 
                                     if (empty($level)) {
@@ -111,20 +111,24 @@ $login=$_SESSION["account"]["login"];
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span></td>
                                         <td><label style="font-size:18px">
                                             <?php
-                                                
+                                                $filename=$_FILES["file"]["name"];
+                                                $name= explode('.',$filename);
+                                                $newname=$title.'r'.$row["count_"].'.'.$name[1];
+                                                // $odlname=$_FILES["file"]["tmp_name"];
+        
                                                 # 檢查檔案是否上傳成功
                                                 if ($_FILES['file']['error'] === UPLOAD_ERR_OK){
-                                                  echo '檔案名稱: ' . $row['count_'].$_FILES['file']['name'] . '<br/>';
-                                                  echo '檔案類型: ' . $_FILES['file']['type'] . '<br/>';
-                                                  echo '檔案大小: ' . ($_FILES['file']['size'] / 1024) . ' KB<br/>';
-                                                  echo '暫存名稱: ' . $_FILES['file']['tmp_name'] . '<br/>';
+                                                    echo "檔案名稱: " . $newname."<br/>";
+                                                    echo "檔案類型: " . $_FILES["file"]["type"]."<br/>";
+                                                    echo "檔案大小: " . ($_FILES["file"]["size"] / 1024)." Kb<br />";
+                                                    echo "暫存名稱: " . $_FILES["file"]["tmp_name"];
                                                 
                                                   # 檢查檔案是否已經存在
-                                                  if (file_exists('upload/' . $_FILES['file']['name'])){
+                                                  if (file_exists('upload/' . $newname)){
                                                     echo '檔案已存在。<br/>';
                                                   } else {
                                                     # 將檔案移至指定位置
-                                                    move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$row["count_"].$_FILES["file"]["name"]);
+                                                    move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$newname);
                                                   }
                                                 } else {
                                                   echo '錯誤代碼：' . $_FILES['file']['error'] . '<br/>';

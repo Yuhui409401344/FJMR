@@ -99,8 +99,14 @@
                                             }
                                             ?>
                                             <input type="hidden" name="title" value="<?php echo $title?>"></input>
-                                            <h4><b><?php echo $title ?></b></h4>
-
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <h4><b><?php echo $title ?></b></h4>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button type="button" class="btn-shadow form-control" data-toggle="modal" data-target="#exampleModalLong" onclick="showModal()" >修改領域</button>
+                                                </div>
+                                            </div>
                                             <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                             $subject=['人力資源管理','數量方法','資訊管理','會計','財務管理','審計','管理與政策','國際企業','行銷管理','國際貿易','生產與作業管理','統計'];
@@ -225,6 +231,109 @@
 
         </div>
         <!-- END wrapper -->
+<script type="text/javascript">
+    function showModal() {
+        $('#change').modal('show'); 
+    }
+    function closeModal(){
+        $('#change').modal('hide');
+    }    
+</script>
+<div class="modal" tabindex="-1" role="dialog" id="change" >
+    <div class="modal-dialog" role="document" > 
+        <div class="modal-content">
+            <div class="modal-header" >
+                <h5 class="modal-title">修改密碼</h5>
+            </div>
+            <form action="change_subject.php" method="post">
+                <input type=hidden name="title" value="<?php echo $title ?>">
+                <div class="modal-body">
+                <div  style="background-color: whitesmoke; padding: 1px;">
+                    <div style="margin-top: 3px;">
+                        <?php
+                        $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                        $subject=['人力資源管理','數量方法','資訊管理','會計','財務管理','審計','管理與政策','國際企業','行銷管理','國際貿易','生產與作業管理','統計'];
+                        $query=$pdo->query("SELECT f_name from newpaper_field where title = '".$title."'");
+                        $datalist=$query->fetchall();
+                        foreach($datalist as $datadetail){
+                        $arr[]=$datadetail['f_name'];
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div  style="background-color: whitesmoke; padding: 1px;">
+                    <div style="margin-top: 3px;">
+                        <div class="col-6 float-right">
+                            <div class="checkbox mb-2">  
+                                <input type="checkbox" id="f1" name="field[]" value="<?php echo "管理與政策"?>"<?php if(in_array('管理與政策',$arr)) echo 'checked'?>>
+                                <label for="f1"> 管理與政策 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f2" name="field[]" value="<?php echo "國際企業"?>"<?php if(in_array('國際企業',$arr)) echo 'checked'?>>
+                                <label for="f2"> 國際企業 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f3"name="field[]" value="<?php echo "行銷管理"?>"<?php if(in_array('行銷管理',$arr)) echo 'checked'?>>
+                                <label for="f3"> 行銷管理 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f4"  name="field[]" value="<?php echo "國際貿易"?>"<?php if(in_array('國際貿易',$arr)) echo 'checked'?>>
+                                <label for="f4"> 國際貿易 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f5" name="field[]" value="<?php echo "生產與作業管理"?>"<?php if(in_array('生產與作業管理',$arr)) echo 'checked'?>>
+                                <label for="f5"> 生產與作業管理 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f6" name="field[]" value="<?php echo "統計"?>"<?php if(in_array('統計',$arr)) echo 'checked'?>>
+                                <label for="f6"> 統計 </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f7"  name="field[]" value="<?php echo "人力資源管理"?>"<?php if(in_array('人力資源管理',$arr)) echo 'checked'?>>
+                                <label for="f7"> 人力資源管理 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f8" name="field[]" value="<?php echo "數量方法"?>"<?php if(in_array('數量方法',$arr)) echo 'checked'?>>
+                                <label for="f8"> 數量方法 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f9" name="field[]" value="<?php echo "資訊管理"?>"<?php if(in_array('資訊管理',$arr)) echo 'checked'?>>
+                                <label for="f9"> 資訊管理 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f10" name="field[]" value="<?php echo "會計"?>"<?php if(in_array('會計',$arr)) echo 'checked'?>>
+                                <label for="f10"> 會計 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f11" name="field[]" value="<?php echo "財務管理"?>"<?php if(in_array('財務管理',$arr)) echo 'checked'?>>
+                                <label for="f11"> 財務管理 </label>
+                            </div>
+                            <div class="checkbox mb-2">
+                                <input type="checkbox" id="f12" name="field[]" value="<?php echo "審計"?>"<?php if(in_array('審計',$arr)) echo 'checked'?>>
+                                <label for="f12"> 審計 </label>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-shadow" data-dismiss="modal" onclick="closeModal()"
+                    style="font-size:15px;
+                            color:black;
+                            float:right;
+                            background-color:#7B7B7B ;
+                            border:2px #7B7B7B solid;
+                            border-radius:10px;">取消</button>
+                    <button type="submit" class="btn-shadow"
+                    style="font-size:15px;
+                            color:black;
+                            float:right;
+                            border-radius:10px;">確認</button>
+                </div>
+            </form>
+        </div>
+    </div>
         
         
         <!-- Vendor js -->

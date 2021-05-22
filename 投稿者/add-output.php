@@ -74,7 +74,7 @@
                                         $filename=$_FILES["file"]["name"];
                                         $name= explode('.',$filename);
                                         $newname=$title.'r'.$row["count"].'.'.$name[1];
-                                        $odlname=$_FILES["file"]["tmp_name"];
+                                        // $odlname=$_FILES["file"]["tmp_name"];
 
                                         if ($_FILES["file"]["error"] > 0){
                                             echo "Error: " . $_FILES["file"]["error"];

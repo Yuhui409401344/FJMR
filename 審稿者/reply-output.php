@@ -76,14 +76,17 @@ $login=$_SESSION["account"]["login"];
                                         $sql2=$pdo->prepare('insert into reply_history (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
                                         $sql2->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$row['count_'].$login.$_FILES["file"]["name"],$comment]);
 
-                                        $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
-                                        $sql3->execute([$login,$title]);
+                                        // $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
+                                        // $sql3->execute([$login,$title]);
                                     }
 
                                     if (empty($level)) {
                                         echo '請輸入評級。';
                                     }else{
-                                    
+                                        $sql4 = $pdo->query("select count(*) as replycount from reply_history where title='".$title."'");
+                                        foreach($sql4 as $a){
+                                            $replycount = $a['replycount'];
+                                        }
                                 ?>
                                 
                                 <label for="product-name" style="font-size: 20px;"><?php echo "回覆成功!";?></label>
@@ -117,20 +120,24 @@ $login=$_SESSION["account"]["login"];
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span></td>
                                         <td><label style="font-size:18px">
                                             <?php
-                                                
+                                                $filename=$_FILES["file"]["name"];
+                                                $name= explode('.',$filename);
+                                                $newname=$title.'r'.$replycount.'.'.$name[1];
+                                                // $odlname=$_FILES["file"]["tmp_name"];
+        
                                                 # 檢查檔案是否上傳成功
                                                 if ($_FILES['file']['error'] === UPLOAD_ERR_OK){
-                                                  echo '檔案名稱: ' . $row['count_'].$login.$_FILES['file']['name'] . '<br/>';
-                                                  echo '檔案類型: ' . $_FILES['file']['type'] . '<br/>';
-                                                  echo '檔案大小: ' . ($_FILES['file']['size'] / 1024) . ' KB<br/>';
-                                                  echo '暫存名稱: ' . $_FILES['file']['tmp_name'] . '<br/>';
+                                                    echo "檔案名稱: " . $newname."<br/>";
+                                                    echo "檔案類型: " . $_FILES["file"]["type"]."<br/>";
+                                                    echo "檔案大小: " . ($_FILES["file"]["size"] / 1024)." Kb<br />";
+                                                    echo "暫存名稱: " . $_FILES["file"]["tmp_name"];
                                                 
                                                   # 檢查檔案是否已經存在
-                                                  if (file_exists('upload/' . $_FILES['file']['name'])){
+                                                  if (file_exists('upload/' . $newname)){
                                                     echo '檔案已存在。<br/>';
                                                   } else {
                                                     # 將檔案移至指定位置
-                                                    move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$row["count_"].$login.$_FILES["file"]["name"]);
+                                                    move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$newname);
                                                   }
                                                 } else {
                                                   echo '錯誤代碼：' . $_FILES['file']['error'] . '<br/>';

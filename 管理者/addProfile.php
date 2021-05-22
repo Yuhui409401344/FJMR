@@ -1,10 +1,13 @@
 <?php
-                                      
-    $login=$_POST["login"];
+    session_start();
+    if(isset($_SESSION["account"]["login"])){
+        $password=$_SESSION["account"]["password"];
+        $login=$_SESSION["account"]["login"];
+    }
+    
     $school=$_POST["school"];
     $department=$_POST["department"];
     $degree=$_POST["degree"];
-
 
     $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
    
@@ -13,6 +16,6 @@
     if($sql->execute([$login,$school,$department,$degree])){
         echo "<script> {window.alert('加入成功');location.href='profile.php'} </script>";
     }else{
-        echo "加入失敗"
+        echo "加入失敗";
     }
 ?>
