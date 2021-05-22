@@ -78,8 +78,8 @@ $login=$_SESSION["account"]["login"];
                                         $sql1->execute([$id,$title,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$row["count_"],$newname]);
                                         
 
-                                        // $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
-                                        // $sql3->execute([$id]);
+                                        $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
+                                        $sql3->execute([$id]);
                                     }
 
                                     if (empty($level)) {

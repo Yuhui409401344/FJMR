@@ -86,8 +86,8 @@ $login=$_SESSION["account"]["login"];
                                         $sql2=$pdo->prepare('insert into reply_history (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
                                         $sql2->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
 
-                                        // $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
-                                        // $sql3->execute([$login,$title]);
+                                        $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
+                                        $sql3->execute([$login,$title]);
                                     }
 
                                     if (empty($level)) {
