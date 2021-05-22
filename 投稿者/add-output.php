@@ -25,21 +25,24 @@
                                     foreach($result as $row){
                                         $row["count"];
                                     }
+                                    $filename=$_FILES["file"]["name"];
+                                    $name= explode('.',$filename);
+                                    $newname=$title.'r'.$row["count"].'.'.$name[1];
 
                                     $sql2=$pdo->prepare('insert into newpaper (title,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?)');
-                                    $sql2->execute([$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$row["count"].$_FILES["file"]["name"]]);
+                                    $sql2->execute([$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
                                     foreach($field as $v){
                                         $sql3=$pdo ->prepare('INSERT INTO newpaper_field (title, f_name) VALUES (?,?)');
                                         $sql3->execute([$title,$v]);
                                     }
-                                    $id="select id from newpaper where title='".$title."' and uploadname='".$row["count"].$_FILES["file"]["name"]."' ";
+                                    $id="select id from newpaper where title='".$title."' and uploadname='".$newname."' ";
                                     $paper_id=$pdo->query($id);
                                     foreach($paper_id as $pid){
                                         $pid["id"];
                                     }
 
                                     $sql4=$pdo->prepare('insert into newpaper_history (id,title,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?)');
-                                    $sql4->execute([$pid["id"],$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$row["count"].$_FILES["file"]["name"]]);
+                                    $sql4->execute([$pid["id"],$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
                                     
                                     
                                 ?>
@@ -71,9 +74,7 @@
                                             <td><font color=navy><?php echo implode(',',$field) ?></font></td>
                                         </div>
                                     <?php
-                                        $filename=$_FILES["file"]["name"];
-                                        $name= explode('.',$filename);
-                                        $newname=$title.'r'.$row["count"].'.'.$name[1];
+                                        
                                         // $odlname=$_FILES["file"]["tmp_name"];
 
                                         if ($_FILES["file"]["error"] > 0){

@@ -62,6 +62,7 @@ $login=$_SESSION["account"]["login"];
                                         $auth3=$row["auth3"];
                                         $auth4=$row["auth4"];
                                         $auth5=$row["auth5"];
+                                        
 
                                     }
                                     
@@ -70,11 +71,20 @@ $login=$_SESSION["account"]["login"];
 
                                     $result=$pdo->query($replytime);
                                     foreach($result as $row){
+
+                                        $sql4 = $pdo->query("select count(*) as replycount from reply_history where title='".$title."'");
+                                        foreach($sql4 as $a){
+                                            $replycount = $a['replycount'];
+                                        }
+                                        $filename=$_FILES["file"]["name"];
+                                        $name= explode('.',$filename);
+                                        $newname=$title.'r'.$replycount.'.'.$name[1];
+
                                         $sql1=$pdo->prepare('insert into reply (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql1->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$row['count_'].$login.$_FILES["file"]["name"],$comment]);
+                                        $sql1->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
                                         
                                         $sql2=$pdo->prepare('insert into reply_history (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql2->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$row['count_'].$login.$_FILES["file"]["name"],$comment]);
+                                        $sql2->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
 
                                         // $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
                                         // $sql3->execute([$login,$title]);
@@ -83,10 +93,8 @@ $login=$_SESSION["account"]["login"];
                                     if (empty($level)) {
                                         echo '請輸入評級。';
                                     }else{
-                                        $sql4 = $pdo->query("select count(*) as replycount from reply_history where title='".$title."'");
-                                        foreach($sql4 as $a){
-                                            $replycount = $a['replycount'];
-                                        }
+                                        
+                                    
                                 ?>
                                 
                                 <label for="product-name" style="font-size: 20px;"><?php echo "回覆成功!";?></label>
@@ -120,9 +128,7 @@ $login=$_SESSION["account"]["login"];
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span></td>
                                         <td><label style="font-size:18px">
                                             <?php
-                                                $filename=$_FILES["file"]["name"];
-                                                $name= explode('.',$filename);
-                                                $newname=$title.'r'.$replycount.'.'.$name[1];
+                                                
                                                 // $odlname=$_FILES["file"]["tmp_name"];
         
                                                 # 檢查檔案是否上傳成功
