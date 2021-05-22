@@ -62,7 +62,7 @@ $login=$_SESSION["account"]["login"];
                                         $auth3=$row["auth3"];
                                         $auth4=$row["auth4"];
                                         $auth5=$row["auth5"];
-
+                                        
                                     }
                                     
                                     // 回復次數
@@ -70,8 +70,12 @@ $login=$_SESSION["account"]["login"];
 
                                     $result=$pdo->query($replytime);
                                     foreach($result as $row){
+                                        $filename=$_FILES["file"]["name"];
+                                        $name= explode('.',$filename);
+                                        $newname=$title.'r'.$row["count_"].'.'.$name[1];
+
                                         $sql1=$pdo->prepare('insert into totalreply (id,title,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount,filename) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql1->execute([$id,$title,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$replytime,$row['count_'].$login.$_FILES["file"]["name"]]);
+                                        $sql1->execute([$id,$title,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$row["count_"],$newname]);
                                         
 
                                         // $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
@@ -111,9 +115,7 @@ $login=$_SESSION["account"]["login"];
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span></td>
                                         <td><label style="font-size:18px">
                                             <?php
-                                                $filename=$_FILES["file"]["name"];
-                                                $name= explode('.',$filename);
-                                                $newname=$title.'r'.$row["count_"].'.'.$name[1];
+                                                
                                                 // $odlname=$_FILES["file"]["tmp_name"];
         
                                                 # 檢查檔案是否上傳成功
