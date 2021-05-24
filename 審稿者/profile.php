@@ -19,6 +19,13 @@ if(isset($_SESSION["account"]["login"])){
         <!-- App favicon -->
         <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+
+         <!-- Plugins css -->
+         <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+
 		<!-- App css -->
 		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 		<link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -46,21 +53,29 @@ if(isset($_SESSION["account"]["login"])){
                     <div class="container-fluid">
                     <?php
                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                        foreach ($pdo->query("select distinct name,password,email,date,bio from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
+                        foreach ($pdo->query("select distinct name,password,email,date,bio,photo,imgType from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
                             $name = $row['name'];
                             $password = $row['password'];
                             $email = $row['email'];
                             $date = $row['date'];
                             $bio = $row['bio'];
+                            $img = $row['photo'];
+                            $imgType = $row['imgType'];
                         }
 
                     ?>
                         <div class="row mt-3">
                             <div class="col-lg-4 col-xl-4">
                                 <div class="card-box text-center">
-                                    <img src="../assets/images/users/user-paggie.jpg" class="rounded-circle avatar-lg img-thumbnail"
-                                        alt="profile-image">
+                                <?php 
 
+                                if(isset($img)){
+                                    echo '<img src="data:'.$imgType.';base64,' . $img . '"   class="rounded-circle avatar-lg img-thumbnail"  />';
+                                }else{
+                                    echo '<img src="../assets/images/user.png"   class="rounded-circle avatar-lg img-thumbnail"  />'; 
+                                }
+
+                                ?>
                                     <h4 class="mb-0"><?php echo $name ?> </h4>
                                     <p class="text-muted">@ <?php echo $login ?> </p>
 
@@ -118,43 +133,66 @@ if(isset($_SESSION["account"]["login"])){
                                                 基本資料
                                             </a>
                                         </li>
+
+                                        <li class="nav-item">
+                                            <a href="#img" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                個人頭像
+                                            </a>
+                                        </li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="aboutme">
-
-                                            <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>
-                                                學經歷</h5>
+                                            <div class="row">
+                                                <h5 class="mb-4 text-uppercase col-6"><i class="mdi mdi-briefcase mr-1"></i>
+                                                    學經歷
+                                                </h5>                        
+                                            </div>
 
                                             <ul class="list-unstyled timeline-sm">
+                                                <?php
+                                                $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                                foreach ($pdo->query("SELECT school, department, degree, DATE_FORMAT(start_year,'%Y') as start_year, DATE_FORMAT(end_year,'%Y') as end_year, login from account_resume where login =  '".$login."'  ORDER by start_year ") as $row) {
+                                                    $school = $row['school'];
+                                                    $department = $row['department'];
+                                                    $degree = $row['degree'];
+                                                    $start_year = $row['start_year'];
+                                                    $end_year = $row['end_year'];
+                                                
+                                                ?>
                                                 <li class="timeline-sm-item">
-                                                    <span class="timeline-sm-date">2023 - 25</span>
-                                                    <h5 class="mt-0 mb-1">蘋果大學 手機定價研究專業</h5>
-                                                    <p>碩士</p>
-
+                                                    <span class="timeline-sm-date"><?php echo $start_year ?> - <?php echo $end_year ?></span>
+                                                    <h5 class="mt-0 mb-1"><?php echo $school ?>  <?php echo $department ?></h5>
+                                                    <p><?php echo $degree ?></p>
+                                                    <div class="text-sm-right col">
+                                                        <a href='deleteprofile.php?login=<?php echo "$login" ?> && school=<?php echo "$school" ?>  && department=<?php echo "$department" ?>  && degree=<?php echo "$degree" ?> ' class="text-sm-right action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                    </div>
                                                 </li>
-                                                <li class="timeline-sm-item">
-                                                    <span class="timeline-sm-date">2019 - 23</span>
-                                                    <h5 class="mt-0 mb-1">輔仁大學 資訊管理系</h5>
-                                                    <p>學士</p>
-                                                    
-                                                </li>
-                                                <li class="timeline-sm-item">
-                                                    <span class="timeline-sm-date">2018 - 19</span>
-                                                    <h5 class="mt-0 mb-1">中山大學 信息管理與信息系統專業</h5>
-                                                    <p>學士 肄業</p>
-                                                    
-                                                </li>
+                                                
+                                                <?php 
+                                                }
+                                                ?>
                                             </ul>
-
+                                            <div class="text-right">
+                                                <button type="button" class="btn  btn-blue waves-effect mb-2" data-toggle="modal" data-target="#addProfile_modal">新增</button>
+                                            </div>
                                         
                                         </div> <!-- end tab-pane -->
                                         <!-- end about me section content -->
 
                                         
-
+                                        <div class="tab-pane" id="img">
+                                            <form action = "img-output.php" method=Post enctype="multipart/form-data">
+                                                <div class="row mb-2" style="height: 30%">
+                                                    <input type="file" data-plugins="dropify" id="file" name="file" data-default-file="../assets/images/user.png"  />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6"><a href="profile.php"><button type="button" class="form-control btn btn-primary waves-effect waves-light mt-2">取消</button></a></div>
+                                                    <div class="col-6"><button type="submit" class="form-control btn btn-warning waves-effect waves-light mt-2">更新</button></div>
+                                                </div>
+                                            </form>
+                                        </div>
                                         <div class="tab-pane" id="settings">
-                                            <form action="change-profile-output.php" method=Post>
-                                                <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i>個人訊息</h5>
+                                            <form action="change-profile-output.php" method=Post enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -314,9 +352,89 @@ if(isset($_SESSION["account"]["login"])){
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
 
-        <!-- Todo app -->
-        <script src="../assets/js/pages/jquery.todo.js"></script>
+        <script src="../assets/js/pages/inbox.js"></script>
+
+        <!-- picker -->
+        <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
+        <script src="../assets/js/pages/form-pickers.init.js"></script>
+        <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+         <!-- Plugins js -->
+         <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
+        <script src="../assets/libs/dropify/js/dropify.min.js"></script>
+
+        <!-- Init js-->
+        <script src="../assets/js/pages/form-fileuploads.init.js"></script>
+
+        <!-- <script>
+           $(document).ready(function(){
+               $('.view_data').click(function(){
+                   var login = $(this).attr("id");
+                   console.log(login);
+
+                   $.ajax({
+                       url:"addProfile.php",
+                       method:"POST",
+                       data:{
+                            login: login,
+                            school: school,
+                            department: department,
+                            degree: degree,
+                           },
+                       success:function(data){
+                            $('#addProfile').html(data);
+                            $('#addProfile_modal').modal("show");
+                       }
+                   })
+                    $('#addProfile_modal').modal("show");
+               });
+           });
+        </script> -->
+
+       
 
     </body>
+
+     <!-- Modal -->
+     <div class="modal fade" id="addProfile_modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h4 class="modal-title" id="myCenterModalLabel">新增學歷</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <form action="addProfile.php" method="post">
+                            <div class="form-group">
+                                <label for="school">學校</label>
+                                <input type="text" class="form-control" id="school" name="school">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">系所</label>
+                                <input type="text" class="form-control" id="department" name="department" >
+                            </div>
+                            <div class="form-group">
+                                <label for="degree">學位</label>
+                                <input type="text" class="form-control" id="degree" name="degree" placeholder="學士\碩士\博士">
+                            </div>
+                            <div class="form-group">
+                                <label>起始時間</label>
+                                <input type="text" class="form-control"  name="start_year" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                            </div>
+                            <div class="form-group">
+                                <label>結束時間</label>
+                                <input type="text" class="form-control" name="end_year" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                            </div>
+        
+                            <div class="text-right">
+                                <button type="button" class="btn btn-primary waves-effect waves-light m-l-10" onclick=" $('#addProfile_modal').modal('hide')">取消</button>
+                                <button type="submit" class="btn btn-warning waves-effect waves-light">送出</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
 
 </html>

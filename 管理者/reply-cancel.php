@@ -64,15 +64,24 @@
                                             <h4 ><?php echo $title ?> </h4>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="product-name">收件人</label>
+                                            <label for="product-name">收件人（投稿者）</label>
                                             <h4><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4 ?></h4>
 
                                         </div>    
                                         <div class="form-group mb-3">
                                             <label for="product-reference">回覆評級</label><br>
-                                            <div class="radio form-check-inline">&nbsp;&nbsp;&nbsp;
-                                                    <input type="radio" checked id="inlineRadio2" value="退稿" name="level">
-                                                    <label for="inlineRadio2"> 退稿</label>
+                                                <div class="radio form-check-inline">&nbsp;&nbsp;&nbsp;
+                                                    <input type="radio" checked id="inlineRadio1" value="退稿" name="level">
+                                                    <label for="inlineRadio1"> 退稿</label>
+                                                </div>
+                                                <div class="radio form-check-inline">
+                                                    <input type="radio" id="inlineRadio3" value="大幅修改" name="level">
+                                                    <label for="inlineRadio3"> 大幅修改 </label>
+                                                </div>
+                                                <div class="radio form-check-inline">
+                                                    <input type="radio" id="inlineRadio4" value="小幅修改" name="level">
+                                                    <label for="inlineRadio4"> 小幅修改 </label>
+                                                </div>
                                                 </div>
                                         </div>
                                         <div class="form-group mb-3">

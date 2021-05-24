@@ -155,7 +155,7 @@
                                                         <td>
                                                             <a href='../投稿者/upload/<?php echo $uploadname ?>'  target="blank" download="<?php echo $uploadname ?>"  class='action-icon'> <i class='mdi mdi-arrow-collapse-down'></i></a>
                                                             <a href='distri.php?id=<?php echo "$id" ?> ' class='action-icon' ><i class='mdi mdi-email-send-outline'></i></a>
-                                                            <a href='reply-cancel.php?id=<?php echo "$id" ?> ' class='action-icon' ><i class='mdi mdi-delete mr-1'></i></a>
+                                                            <a href='reply-cancel.php?id=<?php echo "$id" ?> ' class='action-icon' ><i class='mdi mdi-reply mr-1'></i></a>
                                                         </td>
                                                         <td><?php 
                                                         $Summary=nl2br($summary);//回車換成換行
