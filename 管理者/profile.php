@@ -19,7 +19,12 @@ if(isset($_SESSION["account"]["login"])){
         <!-- App favicon -->
         <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+
+         <!-- Plugins css -->
+         <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
 
 		<!-- App css -->
 		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
@@ -48,21 +53,29 @@ if(isset($_SESSION["account"]["login"])){
                     <div class="container-fluid">
                     <?php
                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                        foreach ($pdo->query("select distinct name,password,email,date,bio from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
+                        foreach ($pdo->query("select distinct name,password,email,date,bio,photo,imgType from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
                             $name = $row['name'];
                             $password = $row['password'];
                             $email = $row['email'];
                             $date = $row['date'];
                             $bio = $row['bio'];
+                            $img = $row['photo'];
+                            $imgType = $row['imgType'];
                         }
 
                     ?>
                         <div class="row mt-3">
                             <div class="col-lg-4 col-xl-4">
                                 <div class="card-box text-center">
-                                    <img src="../assets/images/users/user-paggie.jpg" class="rounded-circle avatar-lg img-thumbnail"
-                                        alt="profile-image">
+                                <?php 
 
+                                if(isset($img)){
+                                    echo '<img src="data:'.$imgType.';base64,' . $img . '"   class="rounded-circle avatar-lg img-thumbnail"  />';
+                                }else{
+                                    echo '<img src="../assets/images/user.png"   class="rounded-circle avatar-lg img-thumbnail"  />'; 
+                                }
+
+                                ?>
                                     <h4 class="mb-0"><?php echo $name ?> </h4>
                                     <p class="text-muted">@ <?php echo $login ?> </p>
 
@@ -120,6 +133,12 @@ if(isset($_SESSION["account"]["login"])){
                                                 基本資料
                                             </a>
                                         </li>
+
+                                        <li class="nav-item">
+                                            <a href="#img" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                個人頭像
+                                            </a>
+                                        </li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="aboutme">
@@ -132,7 +151,7 @@ if(isset($_SESSION["account"]["login"])){
                                             <ul class="list-unstyled timeline-sm">
                                                 <?php
                                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                foreach ($pdo->query("select  school, department, degree, start_year, end_year, login from account_resume where login =  '".$login."'  ORDER by start_year ") as $row) {
+                                                foreach ($pdo->query("SELECT school, department, degree, DATE_FORMAT(start_year,'%Y') as start_year, DATE_FORMAT(end_year,'%Y') as end_year, login from account_resume where login =  '".$login."'  ORDER by start_year ") as $row) {
                                                     $school = $row['school'];
                                                     $department = $row['department'];
                                                     $degree = $row['degree'];
@@ -161,10 +180,19 @@ if(isset($_SESSION["account"]["login"])){
                                         <!-- end about me section content -->
 
                                         
-
+                                        <div class="tab-pane" id="img">
+                                            <form action = "img-output.php" method=Post enctype="multipart/form-data">
+                                                <div class="row mb-2" style="height: 30%">
+                                                    <input type="file" data-plugins="dropify" id="file" name="file" data-default-file="../assets/images/user.png"  />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6"><a href="profile.php"><button type="button" class="form-control btn btn-primary waves-effect waves-light mt-2">取消</button></a></div>
+                                                    <div class="col-6"><button type="submit" class="form-control btn btn-warning waves-effect waves-light mt-2">更新</button></div>
+                                                </div>
+                                            </form>
+                                        </div>
                                         <div class="tab-pane" id="settings">
-                                            <form action="change-profile-output.php" method=Post>
-                                                <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i>個人訊息</h5>
+                                            <form action="change-profile-output.php" method=Post enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -324,8 +352,19 @@ if(isset($_SESSION["account"]["login"])){
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
 
-        <!-- Todo app -->
+        <script src="../assets/js/pages/inbox.js"></script>
+
+        <!-- picker -->
+        <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
+        <script src="../assets/js/pages/form-pickers.init.js"></script>
         <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+         <!-- Plugins js -->
+         <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
+        <script src="../assets/libs/dropify/js/dropify.min.js"></script>
+
+        <!-- Init js-->
+        <script src="../assets/js/pages/form-fileuploads.init.js"></script>
 
         <!-- <script>
            $(document).ready(function(){
@@ -379,17 +418,17 @@ if(isset($_SESSION["account"]["login"])){
                                 <input type="text" class="form-control" id="degree" name="degree" placeholder="學士\碩士\博士">
                             </div>
                             <div class="form-group">
-                                <label for="start_year">起始時間</label>
-                                <input type="text" class="form-control" id="start_year" name="start_year" data-provide="datepicker" data-date-format="MM yyyy" data-date-min-view-mode="1">
+                                <label>起始時間</label>
+                                <input type="text" class="form-control"  name="start_year" data-provide="datepicker" data-date-format="yyyy-mm-dd">
                             </div>
                             <div class="form-group">
-                                <label for="end_year">結束時間</label>
-                                <input type="text" class="form-control" id="end_year" name="end_year" data-provide="datepicker" data-date-format="MM yyyy" data-date-min-view-mode="1">
+                                <label>結束時間</label>
+                                <input type="text" class="form-control" name="end_year" data-provide="datepicker" data-date-format="yyyy-mm-dd">
                             </div>
         
                             <div class="text-right">
-                                <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light m-l-10" onclick="Custombox.close();">Cancel</button>
+                                <button type="button" class="btn btn-primary waves-effect waves-light m-l-10" onclick=" $('#addProfile_modal').modal('hide')">取消</button>
+                                <button type="submit" class="btn btn-warning waves-effect waves-light">送出</button>
                             </div>
                         </form>
                     </div>

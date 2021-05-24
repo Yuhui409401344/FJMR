@@ -1,4 +1,3 @@
-<?php include "nav.php"?>
 <?php 
 session_start();
 if(isset($_SESSION["account"]["login"])){
@@ -22,7 +21,8 @@ if(isset($_SESSION["account"]["login"])){
                                     $password=$_POST["password"];
                                     $field=$_POST["field"];
                                     $bio=$_POST['bio'];
-
+                                    
+                                   
                                     $pdo1 = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                     $query=$pdo1->query("SELECT status from account where login='".$login."'");
                                     $statuses=$query->fetchall();
@@ -47,9 +47,17 @@ if(isset($_SESSION["account"]["login"])){
                                         $sql3->execute([$login,$v,$s]);
                                         }
                                     }
-                                    echo "<script> {window.alert('修改成功');location.href='profile.php'} </script>";
+
+                                    if ($_FILES["file"]["error"] > 0){
+                                        echo "Error: " . $_FILES["file"]["error"];
+                                    }else{
+                                        echo "<script> {window.alert('修改成功');location.href='profile.php'} </script>";
+                                    }
+                                    
                                 ?>
                             </div>
+                           
+
                             <!-- /Start your project here-->
                         <div>
                     </div>

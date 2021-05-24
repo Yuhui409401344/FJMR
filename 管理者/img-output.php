@@ -16,13 +16,22 @@ if(isset($_SESSION["account"]["login"])){
                             <!-- Start project here-->
                             <div style="height: 100vh">
                                 <?php
-                                    $name=$_POST["name_"];
-                                    $email=$_POST["email"];
-                                    $password=$_POST["password"];
-                                    $field=$_POST["field"];
-                                    $bio=$_POST['bio'];
-                                    
                                    
+                                    //開啟圖片檔
+                                    $file = fopen($_FILES["file"]["tmp_name"], "rb");
+                                    // 讀入圖片檔資料
+                                    $fileContents = fread($file, filesize($_FILES["file"]["tmp_name"])); 
+                                    //關閉圖片檔
+                                    fclose($file);
+                                    //讀取出來的圖片資料必須使用base64_encode()函數加以編碼：圖片檔案資料編碼
+                                    $fileContents = base64_encode($fileContents);
+                                    $imgType = $_FILES["file"]["tmp_name"];
+
+                                    
+                                    
+
+
+
                                     $pdo1 = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                     $query=$pdo1->query("SELECT status from account where login='".$login."'");
                                     $statuses=$query->fetchall();
@@ -32,22 +41,11 @@ if(isset($_SESSION["account"]["login"])){
                                     
                                     
                                     $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-                                    $sql=$pdo ->prepare("update account set name=?, email=?, password=?  where login='".$login."'");
-                                    $sql->execute([$name,$email,$password]);
-
-                                    $sql1=$pdo ->prepare("update account_bio set bio=? where login='".$login."'");
-                                    $sql1->execute([$bio]);
+                                  
+                                    $sql1=$pdo ->prepare("update account_bio set photo=?, imgType=? where login='".$login."'");
+                                    $sql1->execute([$fileContents,$imgType]);
                                  
-                                    $sql2=$pdo ->prepare("delete from account_field where login=? and (status='審稿者' or status='投稿者' or status='管理者')");
-                                    $sql2->execute([$login]);
-
-                                    foreach($field as $v){
-                                        foreach($array as $s){
-                                            $sql3=$pdo ->prepare('INSERT INTO account_field (login, f_name, status) VALUES (?,?,?)');
-                                        $sql3->execute([$login,$v,$s]);
-                                        }
-                                    }
-
+                                  
                                     if ($_FILES["file"]["error"] > 0){
                                         echo "Error: " . $_FILES["file"]["error"];
                                     }else{
