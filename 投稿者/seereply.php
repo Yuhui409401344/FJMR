@@ -51,7 +51,8 @@ $login=$_SESSION["account"]["login"];
                                         ?>
                                         <div class="mt-2">
                                             <a href="../審稿者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
-                                            &nbsp;&nbsp;<a href="add.php" class="text-muted  mt-2"><i class="mdi mdi-reply"></i>上傳修正檔</a>
+                                            &nbsp;&nbsp;
+                                            <a href="reply.php?title=<?php echo $title?>" class="text-muted  mt-2"><i class="mdi mdi-reply"></i>上傳修正檔</a>
                                         </div>
                                     <?php }else{?>
                                         <div class="mt-2">
