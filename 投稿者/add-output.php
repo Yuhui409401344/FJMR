@@ -31,10 +31,7 @@
 
                                     $sql2=$pdo->prepare('insert into newpaper (title,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?)');
                                     $sql2->execute([$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
-                                    foreach($field as $v){
-                                        $sql3=$pdo ->prepare('INSERT INTO newpaper_field (title, f_name) VALUES (?,?)');
-                                        $sql3->execute([$title,$v]);
-                                    }
+                                    
                                     $id="select id from newpaper where title='".$title."' and uploadname='".$newname."' ";
                                     $paper_id=$pdo->query($id);
                                     foreach($paper_id as $pid){
@@ -71,7 +68,17 @@
                                         </div>
                                         <div class="form-group mb-3">
                                             <div class="card-header border-0 font-weight-bold d-flex justify-content-between">領域</div><br>
-                                            <td><font color=navy><?php echo implode(',',$field) ?></font></td>
+                                            <td><font color=navy>
+                                                <?php 
+                                                $sql3 = $pdo->query("select f_name from newpaper_field where title = '".$title."'");
+                                                foreach($sql3 as $first){
+                                                    $field = $first['f_name'];
+                                                    echo $field.' ';
+                                                    
+                                                }
+                                                 ?>
+                                                </font>
+                                            </td>
                                         </div>
                                     <?php
                                         
