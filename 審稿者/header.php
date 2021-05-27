@@ -86,7 +86,6 @@ if(isset($_SESSION["account"]["login"])){
                         
                             if($status=="投稿者"){
                             ?>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../投稿者/format.php?login=<? echo $login?>" style="font-size: small;">
                             <i class="fe-user"></i>
                             投稿者系統
@@ -94,7 +93,6 @@ if(isset($_SESSION["account"]["login"])){
                             <?php
                             }elseif($status=="審稿者"){
                             ?>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../審稿者/dashboard.php?login=<? echo $login?>" style="font-size: small;">
                             <i class="fe-user"></i>
                             審稿者系統
@@ -102,7 +100,6 @@ if(isset($_SESSION["account"]["login"])){
                             <?php
                             }else{
                             ?>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../管理者/maildistribution.php?login=<? echo $login?>" style="font-size: small;">
                             <i class="fe-user"></i>
                             管理者系統
@@ -112,22 +109,25 @@ if(isset($_SESSION["account"]["login"])){
                         }
                         ?>
 
-                            <!-- item-->
-                            <div class="dropdown-divider"></div>
-                            <a href="profile.php" class="dropdown-item notify-item">
-                                <i class="mdi mdi-account-cog-outline"></i>
-                                <span>我的帳號</span>
-                            </a>
+                               <div class="dropdown-divider"></div>
+                                
+                                <a href="profile.php" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-details-outline"></i>
+                                    <span>我的帳號</span>
+                                </a>
 
-                        
+                                
 
-                            <div class="dropdown-divider"></div>
+                                <a href="tour.php" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-alert-circle-outline"></i>
+                                    <span>常見問題</span>
+                                </a>
 
-                            <!-- item-->
-                            <a href="../login/logout-output.php" class="dropdown-item notify-item">
-                                <i class="fe-log-out"></i>
-                                <span>登出</span>
-                            </a>
+                                <!-- item-->
+                                <a href="../login/logout-output.php" class="dropdown-item notify-item">
+                                    <i class="fe-log-out"></i>
+                                    <span>登出</span>
+                                </a>
 
                         </div>
                     </li>

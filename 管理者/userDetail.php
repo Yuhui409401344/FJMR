@@ -19,16 +19,19 @@ if(isset($_POST["login"]))
         array_push($field, $datadetail2["f_name"]);
     }
     
-    foreach ($pdo->query("select distinct name,email,date,bio from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
+    foreach ($pdo->query("select distinct name,email,date,bio,photo,imgType from account left join account_bio on account.login = account_bio.login left join account_img ON account_img.login=account.login where account.login =  '".$login."' ") as $row) {
         $name=$row['name'];
         $email=$row['email'];
         $date=$row['date'];
         $bio=$row['bio'];
+        $photo=$row['photo'];
+        $imgType=$row['imgType'];
 
+        if(isset($photo)){
 
-        $output .= '
+            $output .= '
         <div class="card-box text-center">
-        <img src="../assets/images/user.png" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
+        <img src="data:'.$imgType.';base64,' . $photo . '"   class="rounded-circle avatar-lg img-thumbnail"  />
 
         <h4 class="mb-0" type="text" name="user" id="user">'.$name.'</h4>
         <p class="text-muted" type="text" name="login" id="login">@ '.$login.'</p> 
@@ -54,6 +57,41 @@ if(isset($_POST["login"]))
             <a href="mailto:'.$email.'"><button type="button" class="btn btn-primary btn-sm waves-effect waves-light">傳送訊息</button></a>
         </div>
         ';
+            
+        }else{
+
+            $output .= '
+        <div class="card-box text-center">
+        <img src="../assets/images/user.png"   class="rounded-circle avatar-lg img-thumbnail"  />
+
+        <h4 class="mb-0" type="text" name="user" id="user">'.$name.'</h4>
+        <p class="text-muted" type="text" name="login" id="login">@ '.$login.'</p> 
+        <div class="text-left mt-3">
+        <p class="text-muted mb-2 font-13"><strong>身份 :</strong>
+        <span class="ml-2 " type="text" name="email" id="email">'.implode('  ', $status).'</span>
+        </p>
+        <p class="text-muted mb-2 font-13"><strong>領域 :</strong>
+        <span class="ml-2 " type="text" name="email" id="email">'.implode('  ', $field).'</span>
+        </p>
+        <p class="text-muted mb-2 font-13"><strong>Email :</strong>
+        <span class="ml-2 " type="text" name="email" id="email">'.$email.'</span>
+        </p>
+        <p class="text-muted mb-2 font-13"><strong>開始日期 :</strong>
+        <span class="ml-2 " type="text" name="email" id="email">'.$date.'</span>
+        </p>
+        <p class="text-muted mb-2 font-13"><strong>簡介 :</strong>
+        <span class="ml-2 " type="text" name="email" id="email">'.$bio.'</span>
+        </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">Close</button>
+            <a href="mailto:'.$email.'"><button type="button" class="btn btn-primary btn-sm waves-effect waves-light">傳送訊息</button></a>
+        </div>
+        ';
+            
+        }
+
+        
     }
     $output .= "</table></div>";
     echo $output;

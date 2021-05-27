@@ -23,21 +23,25 @@ if(isset($_SESSION["account"]["login"])){
                                     $bio=$_POST['bio'];
                                     
                                    
-                                    $pdo1 = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                    $query=$pdo1->query("SELECT status from account where login='".$login."'");
+                                    $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                    $query=$pdo ->query("SELECT status from account where login='".$login."'");
                                     $statuses=$query->fetchall();
                                     foreach($statuses as $status){
                                         $array[]=$status['status'];
                                     }
                                     
-                                    
-                                    $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
+                                
+                                    //基本資料
                                     $sql=$pdo ->prepare("update account set name=?, email=?, password=?  where login='".$login."'");
                                     $sql->execute([$name,$email,$password]);
 
-                                    $sql1=$pdo ->prepare("update account_bio set bio=? where login='".$login."'");
-                                    $sql1->execute([$bio]);
+                                    //簡介
+                                    $sql0=$pdo ->prepare("delete from  account_bio where login=?");
+                                    $sql0->execute([$login]);
+                                    $sql1=$pdo ->prepare("INSERT INTO account_bio (login,bio) VALUES(?,?)");
+                                    $sql1->execute([$login,$bio]);
                                  
+                                    //領域
                                     $sql2=$pdo ->prepare("delete from account_field where login=? and (status='審稿者' or status='投稿者' or status='管理者')");
                                     $sql2->execute([$login]);
 
@@ -48,11 +52,9 @@ if(isset($_SESSION["account"]["login"])){
                                         }
                                     }
 
-                                    if ($_FILES["file"]["error"] > 0){
-                                        echo "Error: " . $_FILES["file"]["error"];
-                                    }else{
-                                        echo "<script> {window.alert('修改成功');location.href='profile.php'} </script>";
-                                    }
+                                  
+                                    echo "<script> {window.alert('修改成功');location.href='profile.php'} </script>";
+                                    
                                     
                                 ?>
                             </div>

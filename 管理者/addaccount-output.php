@@ -71,9 +71,11 @@
                                       
                                       if($field != NULL){
                                         foreach($field as $v){
-                                          $sql2=$pdo ->prepare('INSERT INTO account_field (login, f_name,status) VALUES (?,?,?)');
-                                          $sql2->execute([$login,$v,implode(',',$status)]);
+                                          foreach($status as $s){
+                                            $sql2=$pdo ->prepare('INSERT INTO account_field (login, f_name,status) VALUES (?,?,?)');
+                                            $sql2->execute([$login,$v,$s]);
                                           }
+                                        }
                                       }else{
                                         $sql2=$pdo ->prepare('INSERT INTO account_field (login, f_name,status) VALUES (?,?,?)');
                                         $sql2->execute([$login,"",implode(',',$status)]);

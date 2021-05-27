@@ -45,7 +45,7 @@
                                             </span>
                                         </a>
                                     </div>
-                                    <p class="text-muted mb-4 mt-3">還沒註冊過嗎? 立刻創造一個吧~</p>
+                                    <p class="text-muted mb-4 mt-3">還沒註冊過嗎? 立刻創造一個吧~（預設身份為投稿者）</p>
                                 </div>
         <form method="post" action="register-output.php">
             <input type="hidden" name="method">
@@ -72,19 +72,19 @@
                                         <label for="email">email</label>
                                         <input class="form-control" type="email" id="email" required placeholder="請輸入信箱" name="email">
                                     </div>                                   
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="checkbox-signup">
                                             <label class="custom-control-label" for="checkbox-signup">我同意 <a href="javascript: void(0);" class="text-dark">條款和條約</a></label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mb-0 text-center">
                                         <button class="btn btn-success btn-block" type="submit">註冊</button>
                                     </div>
 
                                 </form>
 
-                                <div class="text-center">
+                                <!-- <div class="text-center">
                                     <h5 class="mt-3 text-muted">其他註冊</h5>
                                     <ul class="social-list list-inline mt-3 mb-0">
                                         <li class="list-inline-item">
@@ -100,7 +100,7 @@
                                             <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
 
                             </div> <!-- end card-body -->
                         </div>
