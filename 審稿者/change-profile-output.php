@@ -24,7 +24,7 @@ if(isset($_SESSION["account"]["login"])){
                                     
                                    
                                     $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                    $query=$pdo1->query("SELECT status from account where login='".$login."'");
+                                    $query=$pdo ->query("SELECT status from account where login='".$login."'");
                                     $statuses=$query->fetchall();
                                     foreach($statuses as $status){
                                         $array[]=$status['status'];

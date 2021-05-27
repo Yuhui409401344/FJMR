@@ -259,7 +259,7 @@ if(isset($_SESSION["account"]["login"])){
                 </div> <!-- end col -->
             </div>
             <!-- end row -->   
-            <div class="row mb-6 mt-5" style="min-height:278px">
+            <!-- <div class="row mb-6 mt-5" style="min-height:278px">
                 <div class="col-lg-8">
                     <table class="table table-hover">
                         <div class="title_list ml-3" style="font-size: large;color: darkred;">
@@ -286,7 +286,7 @@ if(isset($_SESSION["account"]["login"])){
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> -->
         </div> <!-- container -->
 
 <?php require "footer.php" ?>

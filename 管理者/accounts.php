@@ -261,7 +261,7 @@ if(isset($_SESSION["account"]["login"])){
                                 </tr>   
                         </table><!-- end row -->
                         
-                       
+<!--                        
                         <div class="row">
                             <div class="col-12">
                                 <div class="text-right">
@@ -286,7 +286,7 @@ if(isset($_SESSION["account"]["login"])){
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- end row -->
                         
                     </div> <!-- container -->
