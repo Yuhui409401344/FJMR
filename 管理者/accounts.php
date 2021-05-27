@@ -173,7 +173,11 @@ if(isset($_SESSION["account"]["login"])){
                                         <a href="javascript: void(0);" data-toggle="remove"><i class="mdi mdi-close"></i></a>
                                     </div>
                                     <h4 class="header-title ">用戶級別數量</h4>
-                                    <div id="donutchart" style="width: 449px; height: 300px;"></div>
+                                    <div id="cardCollpase3" class="collapse pt-3 show">
+                                        <div class="text-center">
+                                           <div id="donutchart" style="width: 449px; height: 300px;"></div>
+                                        </div>
+                                    </div>
                                 </div> <!-- end card-body-->
                             </div> <!-- end card-->
                         </div>
