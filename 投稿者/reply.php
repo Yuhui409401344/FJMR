@@ -4,7 +4,7 @@
       <div class="container-fluid">
           <div class="row mt-3">
             <div class="col-lg-12">
-                <form method="post" action="add-output.php" enctype="multipart/form-data">
+                <form method="post" action="reply-output.php" enctype="multipart/form-data">
                   <div class="card-box">
                   <?php
                   $title = $_GET['title'];
