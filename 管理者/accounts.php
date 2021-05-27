@@ -172,128 +172,101 @@ if(isset($_SESSION["account"]["login"])){
                                         <a data-toggle="collapse" href="#cardCollpase3" role="button" aria-expanded="false" aria-controls="cardCollpase3"><i class="mdi mdi-minus"></i></a>
                                         <a href="javascript: void(0);" data-toggle="remove"><i class="mdi mdi-close"></i></a>
                                     </div>
-                                    <h4 class="header-title mb-0">用戶級別數量</h4>
-
-                                    <div id="cardCollpase3" class="collapse pt-3 show">
-                                        <div class="text-center">
-                                        <div>
-                                            <div id="donutchart" style="width: 449px; height: 300px;"></div>
-                                        </div>
-                                        </div>
-                                    </div> <!-- end collapse-->
+                                    <h4 class="header-title ">用戶級別數量</h4>
+                                    <div id="donutchart" style="width: 449px; height: 300px;"></div>
                                 </div> <!-- end card-body-->
                             </div> <!-- end card-->
                         </div>
                     </div>
-                        <table class="table table-centered table-nowrap table-striped" id="table">
-                                <tr class="row">
-                                
-                                    <!-- 搜尋功能 -->    
-                                    <?php
-                                        if($_GET){
-                                        $searchtxt = $_GET["searchtxt"]; 
-                                        }
-                                    ?>    
 
-                                    <form method="get">
-                                        <div class="container">
-                                            <input class="form-control" name="searchtxt" id="searchtxt" value="<?php if($_GET){echo $searchtxt;} ?>" type="text" placeholder="輸入名字搜尋">
-                                            <br>
-                                        </div>
-                                    </form>
+                  
+                    
+                      
+                    <!-- 搜尋功能 -->    
+                    <?php
+                        if($_GET){
+                        $searchtxt = $_GET["searchtxt"]; 
+                        }
+                    ?>   
+                    <form  method="get">
+                        <div class="container">
+                            <input class="form-control" name="searchtxt" id="searchtxt" value="<?php if($_GET){echo $searchtxt;} ?>" type="text" placeholder="輸入名字搜尋">
+                            <br>
+                        </div>
+                    </form>
 
-                                    <?php
-                                        $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');	  
-                                        if(empty($searchtxt))
-                                            {
-                                                $sql="select * from account group by name"; //預設搜尋的SQL字串
-                                            }
-                                        else
-                                            {
-                                                $sql="select * from account where name like '%". $searchtxt . "%' group by name";
-                                            }
-                                        $result=$pdo->query($sql);
-                                        foreach ($result as $row) {
-                                            $login=$row['login'];
-                                            $name=$row['name'];
-                                            $email=$row['email'];
-                                            $password=$row['password'];
-                                            $status=$row['status'];
-                                    ?>
-                                    
-                                <td class="col-4">
-                                    <div class="text-center card-box mr-1" width="60" >
-                                        <div class="pt-2 pb-2 " width="80">
-                                            <img src="../assets/images/user.png" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image"></br>
-                                            <input type="button" style="color:black; font-size: large" name="<?php echo $name ?>" value="<?php echo $name ?>" id="<?php echo $login ?>" class=" btn btn-link mt-1 mb-1 waves-effect waves-light view_data"></input>
-                                            <p class="text-muted">@
-                                            <?php
-                                            $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                            $query1=$pdo->query("SELECT status from account where login='$login'");
-                                            $datalist1=$query1->fetchall();
-                                            foreach($datalist1 as $datadetail1){
-                                                print_r($datadetail1['status']);
-                                                echo ' ';
-                                            }
-                                            ?>
-                                            </p><span> | </span> <span> <a href="#" class="text-pink"><?php echo $email ?></a> </span>
-                                            <p>專長：
-                                            <?php
-                                            $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                            $query=$pdo->query("SELECT distinct f_name from account_field where login='$login'");
-                                            $datalist=$query->fetchall();
-                                            foreach($datalist as $datadetail){
-                                                print_r($datadetail['f_name']);
-                                                echo ' ';
-                                            }
-                                            ?>
-                                            </p>
-                                            <a href="mailto:<?php echo $email ?>"><button type="button" class="btn btn-primary btn-sm waves-effect waves-light">傳送訊息</button></a>
-                                            <a href='follow.php?login=<?php echo "$login" ?>'><button type="button" class="btn btn-light btn-sm waves-effect" onClick='return confirm("確定追蹤？");'>追蹤</button></a>
-
-                                        </div> <!-- end .padding -->
-                                    </div> <!-- end card-box-->
-                                    </td>
-                                    <?php 
+                    <div class="row">
+                    <?php
+                        $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');	  
+                        if(empty($searchtxt))
+                            {
+                                $sql="select * from account group by name"; //預設搜尋的SQL字串
+                            }
+                        else
+                            {
+                                $sql="select * from account where name like '%". $searchtxt . "%' group by name";
+                            }
+                        $result=$pdo->query($sql);
+                        foreach ($result as $row) {
+                            $login=$row['login'];
+                            $name=$row['name'];
+                            $email=$row['email'];
+                            $password=$row['password'];
+                            $status=$row['status'];
+                        ?>
+                        <div class="col-lg-4">
+                            <div class="text-center card-box">
+                                <div class="pt-2 pb-2">
+                                <?php 
+                                 foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '".$login."' ") as $row) {
+                                    $img = $row['photo'];
+                                    $imgType = $row['imgType'];
+                                 
+                                    if(isset($img)){
+                                        echo '<img src="data:'.$imgType.';base64,' . $img . '"   class="rounded-circle avatar-lg img-thumbnail"  />';
+                                    }else{
+                                        echo '<img src="../assets/images/user.png"   class="rounded-circle avatar-lg img-thumbnail"  />'; 
                                     }
-                                    ?>
-                                 <!-- end col -->
-                                </tr>   
-                        </table><!-- end row -->
-                        
-<!--                        
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="text-right">
-                                    <ul class="pagination pagination-rounded justify-content-end">
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                                <span aria-hidden="true">«</span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                                <span aria-hidden="true">»</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- end row -->
-                        
-                    </div> <!-- container -->
+                                 }
+                                 ?>
+                                    <input type="button" style="color:black; font-size: large" name="<?php echo $name ?>" value="<?php echo $name ?>" id="<?php echo $login ?>" class=" btn btn-link mt-1 mb-1 waves-effect waves-light view_data"></input>
+                                    <p class="text-muted">@
+                                        <?php
+                                        $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                        $query1=$pdo->query("SELECT status from account where login='$login'");
+                                        $datalist1=$query1->fetchall();
+                                        foreach($datalist1 as $datadetail1){
+                                            print_r($datadetail1['status']);
+                                            echo ' ';
+                                        }
+                                        ?>
+                                        </p> <span> | </span> <span> <a href="#" class="text-pink"><?php echo $email ?></a> </span></p>
 
+                                        <p>專長：
+                                        <?php
+                                        $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                        $query=$pdo->query("SELECT distinct f_name from account_field where login='$login'");
+                                        $datalist=$query->fetchall();
+                                        foreach($datalist as $datadetail){
+                                            print_r($datadetail['f_name']);
+                                            echo ' ';
+                                        }
+                                        ?>
+                                        </p>
+
+                                        <a href="mailto:<?php echo $email ?>"><button type="button" class="btn btn-primary btn-sm waves-effect waves-light">傳送訊息</button></a>
+                                        <a href='follow.php?login=<?php echo "$login" ?>'><button type="button" class="btn btn-light btn-sm waves-effect" onClick='return confirm("確定追蹤？");'>追蹤</button></a>
+
+                                    
+
+                                </div> <!-- end .padding -->
+                            </div> <!-- end card-box-->
+                        </div> <!-- end col -->
+                        <?php 
+                        }
+                        ?>
+                    </div>
                 </div> <!-- content -->
-
-
             </div>
 
             <!-- ============================================================== -->
@@ -354,7 +327,8 @@ if(isset($_SESSION["account"]["login"])){
                    $.ajax({
                        url:"userDetail.php",
                        method:"POST",
-                       data:{login:login},
+                       data:{
+                           login:login},
                        success:function(data){
                             $('#user_detail').html(data);
                             $('#standard-modal').modal("show");

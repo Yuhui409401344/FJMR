@@ -274,7 +274,7 @@ if(isset($_SESSION["account"]["login"])){
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title" id="page-title-tour" >FAQ & Tour</h4>
+                                    <h4 class="page-title" id="page-title-tour" >常見問題</h4>
                                 </div>
                             </div>
                         </div>     
