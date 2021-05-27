@@ -18,6 +18,9 @@ if(isset($_SESSION["account"]["login"])){
         <!-- App favicon -->
         <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+        <!-- Tour css -->
+        <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
+
         <!-- Plugins css-->
         <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
@@ -122,6 +125,7 @@ if(isset($_SESSION["account"]["login"])){
                         
                             if($status=="投稿者"){
                             ?>
+                            
                             <a class="dropdown-item" href="../投稿者/format.php?login=<? echo $login?>" style="font-size: small;">
                             <i class="fe-user"></i>
                             投稿者系統
@@ -129,6 +133,7 @@ if(isset($_SESSION["account"]["login"])){
                             <?php
                             }elseif($status=="審稿者"){
                             ?>
+                            
                             <a class="dropdown-item" href="../審稿者/dashboard.php?login=<? echo $login?>" style="font-size: small;">
                             <i class="fe-user"></i>
                             審稿者系統
@@ -136,6 +141,7 @@ if(isset($_SESSION["account"]["login"])){
                             <?php
                             }else{
                             ?>
+                            
                             <a class="dropdown-item" href="../管理者/maildistribution.php?login=<? echo $login?>" style="font-size: small;">
                             <i class="fe-user"></i>
                             管理者系統
@@ -144,7 +150,7 @@ if(isset($_SESSION["account"]["login"])){
                             }
                         }
                         ?>
-                                 <div class="dropdown-divider"></div>
+                               <div class="dropdown-divider"></div>
                                 
                                 <a href="profile.php" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-details-outline"></i>
@@ -167,7 +173,7 @@ if(isset($_SESSION["account"]["login"])){
                             </div>
                         </li>
 
-                        <li class="dropdown notification-list">
+                        <li class="dropdown notification-list" >
                             <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                                 <i class="fe-settings noti-icon"></i>
                             </a>
@@ -211,7 +217,7 @@ if(isset($_SESSION["account"]["login"])){
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
                         <ul id="side-menu">
-                            <li>
+                            <li id="first-tour">
                                 <a href="#sidebarwrite" data-toggle="collapse">
                                     <i data-feather="edit"></i>
                                     <span>投稿</span>
@@ -228,13 +234,13 @@ if(isset($_SESSION["account"]["login"])){
                                     </ul>
                                 </div>
                             </li>
-                            <li>
+                            <li id="second-tour">
                                 <a href="format.php">
                                     <i data-feather="clipboard"></i>
                                     <span> 稿約格式 </span>
                                 </a>
                             </li>
-                            <li>
+                            <li id="third-tour">
                                 <a href="history.php">
                                     <i data-feather="clock"></i>
                                     <span> 歷史稿件 </span>
@@ -253,6 +259,142 @@ if(isset($_SESSION["account"]["login"])){
             </div>
             <!-- Left Sidebar End -->
 
+            
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title" id="page-title-tour" >FAQ & Tour</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div id="accordion" class="mb-3">
+                                    <div class="card mb-1">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="m-0">
+                                                <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
+                                                    <i class="mdi mdi-help-circle mr-1 text-primary"></i> 
+                                                    投稿流程是什麼？
+                                                </a>
+                                            </h5>
+                                        </div>
+                            
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                輔仁管理評論的用戶分為「投稿者」、「審稿者」、「管理者」。<br>
+                                                當投稿者投遞第一份稿件後，管理者會依據稿件領域選擇兩位審稿者，並且訂定回覆期限，將稿件分配給審稿者們。
+                                                審稿者必須在期限內回覆稿件給管理者，管理者接著統整兩位審稿者的意見，統一回覆給投稿者。
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-1">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="m-0">
+                                                <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="false">
+                                                    <i class="mdi mdi-help-circle mr-1 text-primary"></i> 
+                                                    我如何得知稿件目前的狀態？
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                                稿件狀態依序分為「等待主編確認」、「審稿中」、「已接收」、「退稿」，投稿者可以至「歷史稿件」中查看。
+                                                <br><br>
+                                                <ol style="list-style-type:circle;" >
+                                                <li>等待主編確認：表示稿件已送出，待管理者分配稿件給審稿者。</li>
+                                                <li>審稿中：表示審稿者正在審稿中，尚未回覆給管理者；管理者已收到審稿回覆，但尚未統一回覆意見，傳給投稿者。</li>
+                                                <li>已接收：表示管理者已回覆最終意見給投稿者，投稿者可以點擊歷史稿件的標題以查看管理者的回覆意見，或是在「回覆修正檔」中查看。</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-1">
+                                        <div class="card-header" id="headingThree">
+                                            <h5 class="m-0">
+                                                <a class="text-dark" data-toggle="collapse" href="#collapseThree" aria-expanded="false">
+                                                    <i class="mdi mdi-help-circle mr-1 text-primary"></i> 
+                                                    我可以成為審稿者或管理者嗎？
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                            <div class="card-body">
+                                                目前，輔仁管理評論的所有註冊帳號預設都是「投稿者」身份，若要成為審稿者或管理者，您可以聯繫<a href="mailto:fjreview@mail.fju.edu.tw">輔仁大學管理學院的邱瑞真秘書</a>，
+                                                經過管理者的審核後，方可具有審稿者或管理者身份。
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="card mb-1">
+                                        <div class="card-header" id="headingFour">
+                                            <h5 class="m-0">
+                                                <a class="text-dark" data-toggle="collapse" href="#collapseFour" aria-expanded="false">
+                                                    <i class="mdi mdi-help-circle mr-1 text-primary"></i> 
+                                                    稿件級別有幾種？分別代表什麼意義？
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" aria-labelledby="collapseFour" data-parent="#accordion">
+                                            <div class="card-body">
+                                                輔仁管理評論的稿件級別分為「接受」、「大幅修改」、「小幅修改」、「拒絕」、「退稿」。<br><br>
+                                                <ol style="list-style-type:circle;" >
+                                                <li>接受：表示稿件通過審核。</li>
+                                                <li>大幅修改：表示稿件需要修正的地方較多，投稿者需要上傳修正版本。</li>
+                                                <li>小幅修改：表示稿件需要細微的修正，投稿者需要上傳修正版本。</li>
+                                                <li>拒絕：表示稿件經過兩位審稿者的審核以及管理者的最終統一意見，得出的結論是稿件不合格。投稿者需要上傳修正版本。</li>
+                                                <li>退稿：表示稿件可能離題，或領域填寫錯誤，管理者發現此錯誤後直接將稿件退回給投稿者請求修改。投稿者需要上傳新版本。</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end #accordions-->
+                            </div> <!-- end col -->
+
+                           
+                        </div> <!-- end row --> 
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2020 - <script>document.write(new Date().getFullYear())</script> &copy; 輔仁管理評論
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="../home/purpose.php" target="blank">關於</a>
+                                    <a href="maito:fjreview@mail.fju.edu.tw">聯繫我們</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
 
         </div>
         <!-- END wrapper -->
@@ -267,12 +409,14 @@ if(isset($_SESSION["account"]["login"])){
   
            
             <div class="tab-pane active" id="settings-tab" role="tabpanel">
+              
                 <h6 class="font-weight-medium px-3 m-0 py-2 font-13 text-uppercase bg-light">
                     <span class="d-block py-1">主題設定</span>
                 </h6>
 
+
                 <div class="p-3">
-                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">背景顏色</h6>
+                    <h6 class="font-weight-medium font-14 mb-2 pb-1">背景顏色</h6>
                     <div class="custom-control custom-switch mb-1">
                         <input type="radio" class="custom-control-input" name="color-scheme-mode" value="light"
                             id="light-mode-check" checked />
@@ -371,17 +515,47 @@ if(isset($_SESSION["account"]["login"])){
         <!-- Vendor js -->
         <script src="../assets/js/vendor.min.js"></script>
 
-        <!-- Plugins js -->
-        <script src="../assets/libs/quill/quill.min.js"></script>
+         <!-- Tour page js -->
+         <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
 
-        <!-- Init js-->
-        <script src="../assets/js/pages/form-quilljs.init.js"></script>
+        <!-- Tour init js-->
+        <script>
+            $(document).ready(function () {
+    hopscotch.startTour({
+        id: 'my-intro',
+        steps: [
+            {
+                target: 'first-tour',
+                title: '投稿',
+                content: "您可以在此上傳新投稿，或查看級別為「大幅修改」、「小幅修改」、「拒絕」的回覆稿件，並上傳修正版本。",
+                placement: 'right',
+                yOffset: 10,
+            },
+            {
+                target: 'second-tour',
+                title: '稿約格式',
+                content: '包含中文版與英文版格式。',
+                placement: 'right',
+                zindex: 9999,
+            },
+            {
+                target: 'third-tour',
+                title: '歷史稿件',
+                content: '您可以在此查看歷史稿件的詳細資訊，追蹤稿件目前的審核狀態。',
+                placement: 'bottom',
+                zindex: 999,
+            },
+          
+        ],
+        showPrevButton: !0,
+    })
+})
+
+        </script>
 
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
-        
-        <!--Todo app js-->
-        <script scr="../assets/pages/jquery.todo.js"></script>
+     
         
     </body>
 </html>
