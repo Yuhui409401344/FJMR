@@ -53,14 +53,13 @@ if(isset($_SESSION["account"]["login"])){
                     <div class="container-fluid">
                     <?php
                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                        foreach ($pdo->query("select distinct name,password,email,date,bio,photo,imgType from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
+                        foreach ($pdo->query("select distinct name,password,email,date,bio from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
                             $name = $row['name'];
                             $password = $row['password'];
                             $email = $row['email'];
                             $date = $row['date'];
                             $bio = $row['bio'];
-                            $img = $row['photo'];
-                            $imgType = $row['imgType'];
+                           
                         }
 
                     ?>
@@ -68,6 +67,10 @@ if(isset($_SESSION["account"]["login"])){
                             <div class="col-lg-4 col-xl-4">
                                 <div class="card-box text-center">
                                 <?php 
+                                 foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '".$login."' ") as $row) {
+                                    $img = $row['photo'];
+                                    $imgType = $row['imgType'];
+                                 }
 
                                 if(isset($img)){
                                     echo '<img src="data:'.$imgType.';base64,' . $img . '"   class="rounded-circle avatar-lg img-thumbnail"  />';

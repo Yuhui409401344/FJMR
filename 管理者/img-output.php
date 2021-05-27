@@ -27,23 +27,15 @@ if(isset($_SESSION["account"]["login"])){
                                     $fileContents = base64_encode($fileContents);
                                     $imgType = $_FILES["file"]["tmp_name"];
 
-                                    
-                                    
-
-
-
-                                    $pdo1 = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                    $query=$pdo1->query("SELECT status from account where login='".$login."'");
-                                    $statuses=$query->fetchall();
-                                    foreach($statuses as $status){
-                                        $array[]=$status['status'];
-                                    }
+                                   
                                     
                                     
                                     $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                                   
-                                    $sql1=$pdo ->prepare("update account_bio set photo=?, imgType=? where login='".$login."'");
-                                    $sql1->execute([$fileContents,$imgType]);
+                                    $sql0=$pdo ->prepare("delete from  account_img where login=?");
+                                    $sql0->execute([$login]);
+                                    $sql1=$pdo ->prepare("INSERT INTO account_img (login,photo,imgType) VALUES(?,?,?)");
+                                    $sql1->execute([$login,$fileContents,$imgType]);
                                  
                                   
                                     if ($_FILES["file"]["error"] > 0){
