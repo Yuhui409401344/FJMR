@@ -91,7 +91,7 @@
                                                     
                                             ?>
                                             <tr>
-                                                <td><?php echo $title ?></td>
+                                                <td><a href="p2.php?id=<?php echo "$id" ?>"><?php echo $title ?></a></td>
                                                 <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></td>
                                                 <td><?php echo $manager ?></td>
                                                 <td><span class='badge badge-soft-blue'><?php echo $ddl ?></span></td>
