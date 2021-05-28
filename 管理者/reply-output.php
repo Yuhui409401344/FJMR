@@ -66,7 +66,7 @@ $login=$_SESSION["account"]["login"];
                                     }
                                     
                                     // 回復次數
-                                    $replytime="SELECT COUNT(*)+1 AS count_ FROM totalreply WHERE title='".$title."'";
+                                    $replytime="SELECT COUNT(*) AS count_ FROM totalreply WHERE title='".$title."'";
 
                                     $result=$pdo->query($replytime);
                                     foreach($result as $row){
@@ -109,7 +109,7 @@ $login=$_SESSION["account"]["login"];
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">回覆次數</span></td>
-                                        <td><label style="font-size:18px"><?php echo $row['count_'] ?></label></td>
+                                        <td><label style="font-size:18px"><?php echo $row['count_']+1 ?></label></td>
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span></td>

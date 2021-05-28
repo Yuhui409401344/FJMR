@@ -62,11 +62,13 @@
                                             <tr>
                                                 <th data-toggle="true">標題</th>
                                                 <th data-hide="phone">作者</th>
+                                                <th data-hide="phone">寄件人（管理者）</th>
                                                 <th>收件期限</th>
-                                                <th data-hide="phone">日期</th>
+                                                <th data-hide="phone">投稿日期</th>
                                                 <th>動作</th>
                                                 <!-- <th data-hide="phone, tablet">領域</th> -->
                                                 <th data-hide="phone, tablet">摘要</th>
+                                                <th data-hide="phone, tablet">管理者留言</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -84,11 +86,14 @@
                                                     $uploadtime = $row['uploadtime'];
                                                     $summary = $row['summary'];
                                                     $filename = $row['filename'];
+                                                    $comment = $row['comment'];
+                                                    $manager = $row['manager'];
                                                     
                                             ?>
                                             <tr>
-                                                <td><?php echo $title ?></td>
+                                                <td><a href="p2.php?id=<?php echo "$id" ?>"><?php echo $title ?></a></td>
                                                 <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></td>
+                                                <td><?php echo $manager ?></td>
                                                 <td><span class='badge badge-soft-blue'><?php echo $ddl ?></span></td>
                                                 <td><?php echo $uploadtime ?></td>
                                                 <td>
@@ -102,6 +107,7 @@
                                                         echo $Summary;
                                                     ?>
                                                 </td>
+                                                <td><?php echo $comment ?></td>
                                                 
                                                 
                                             </tr>
@@ -111,7 +117,7 @@
                                             ?>
                                             <tfoot>
                                             <tr class="active">
-                                                <td colspan="5">
+                                                <td colspan="6">
                                                     <div class="text-right">
                                                         <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
                                                     </div>

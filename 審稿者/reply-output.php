@@ -47,7 +47,7 @@ $login=$_SESSION["account"]["login"];
                                 <div class="card-box">
                                 <?php
                                     $title=$_GET['title'];
-                                    $recipient=$_POST["recipient"];
+                                    // $recipient=$_POST["recipient"];
                                     $comment=$_POST["comment"];
                                     $level=$_POST["level"];
                                     $uploadtime="";
@@ -62,6 +62,7 @@ $login=$_SESSION["account"]["login"];
                                         $auth3=$row["auth3"];
                                         $auth4=$row["auth4"];
                                         $auth5=$row["auth5"];
+                                        $manager=$row['manager'];
                                         
 
                                     }
@@ -81,10 +82,10 @@ $login=$_SESSION["account"]["login"];
                                         $newname=$title.'r'.$replycount.'.'.$name[1];
 
                                         $sql1=$pdo->prepare('insert into reply (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql1->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
+                                        $sql1->execute([$id,$title,$login,$manager,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
                                         
                                         $sql2=$pdo->prepare('insert into reply_history (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql2->execute([$id,$title,$login,$recipient,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
+                                        $sql2->execute([$id,$title,$login,$manager,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
 
                                         $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
                                         $sql3->execute([$login,$title]);
@@ -106,7 +107,7 @@ $login=$_SESSION["account"]["login"];
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">收件人</span></td>
-                                        <td><label style="font-size:18px"><?php echo $_REQUEST['recipient']?></label></td>
+                                        <td><label style="font-size:18px"><?php echo $manager ?></label></td>
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">回覆建議</span></td>

@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(isset($_SESSION["account"]["login"])){
+    $manager=$_SESSION["account"]["login"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -89,11 +96,11 @@
                                       
                                       $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                                       foreach($pro as $a){
-                                        $sql=$pdo->prepare('INSERT INTO distri (id,title,summary,pro,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql->execute([$id,$title,$summary,$a,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
+                                        $sql=$pdo->prepare('INSERT INTO distri (id,title,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                        $sql->execute([$id,$title,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
 
-                                        $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,summary,pro,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql2->execute([$id,$title,$summary,$a,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
+                                        $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                        $sql2->execute([$id,$title,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
 
                                         }
                                       if (empty($pro)) {
