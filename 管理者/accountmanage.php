@@ -57,7 +57,7 @@
                                         </div>
                 
                                         <div class="table-responsive">
-                                            <table class="table table-centered table-nowrap table-striped" id="tickets-table">
+                                            <table class="table table-centered table-nowrap table-hover" id="tickets-table">
                                                 <thead>
                                                     <tr>
                                                     <th scope="col">帳號</th>
@@ -73,16 +73,29 @@
                                                     <?php
                                                         
                                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                        foreach ($pdo->query('select * from account') as $row) {
+                                                        foreach ($pdo->query("SELECT account.login,account.name,account.password,account.email,account.status, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login") as $row) {
                                                             $login=$row['login'];
+                                                            $name=$row['name'];
+                                                            $password=$row['password'];
+                                                            $email=$row['email'];
                                                             $status=$row['status'];
+                                                            $photo=$row['photo'];
+                                                            $imgType=$row['imgType'];
 
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $login ?></td>
-                                                        <td><?php echo $row['name']?></td>
-                                                        <td><?php echo $row['password']?></td>
-                                                        <td><?php echo $row['email']?></td>
+                                                        <td>
+                                                        <?php 
+                                                        if(isset($photo)){
+                                                                echo '<img src="data:'.$imgType.';base64,' . $photo . '"   class="rounded-circle avatar-xs "  />';
+                                                            }else{
+                                                                echo '<img src="../assets/images/user.png"   class="rounded-circle avatar-xs"  />'; 
+                                                            } ?>
+                                                        <?php echo $login ?>
+                                                        </td>
+                                                        <td><?php echo $name ?></td>
+                                                        <td><?php echo $password ?></td>
+                                                        <td><?php echo $email ?></td>
                                                         <?php if ($status=="審稿者") echo "<td><span class='badge badge-soft-blue badge-pill '>審稿者</span></td>" ;
                                                     elseif($status=="投稿者") echo "<td><span class='badge badge-soft-secondary badge-pill '>投稿者</span></td>" ;
                                                     elseif($status=="管理者") echo "<td><span class='badge badge-soft-danger badge-pill'>管理者</span></td>";
@@ -167,6 +180,6 @@
 
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
-        
+  
     </body>
 </html>

@@ -49,7 +49,7 @@ if(isset($_SESSION["account"]["login"])){
                         foreach ($pdo->query('select count(distinct login) from account') as $row) {
                             $amount=$row[0];
                         }
-                        foreach ($pdo->query('select count(distinct login) from follow') as $row) {
+                        foreach ($pdo->query("select count(distinct login) from follow where manager='".$manager."'") as $row) {
                             $follow=$row[0];
                         }
                         foreach ($pdo->query("select count(login) from account where status='投稿者'") as $row) {
@@ -204,11 +204,11 @@ if(isset($_SESSION["account"]["login"])){
                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');	  
                         if(empty($searchtxt))
                             {
-                                $sql="select * from account group by name"; //預設搜尋的SQL字串
+                                $sql="select account.login,account.name,account.password,account.email,account.status, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login group by account.name"; //預設搜尋的SQL字串
                             }
                         else
                             {
-                                $sql="select * from account where name like '%". $searchtxt . "%' group by name";
+                                $sql="select  account.login,account.name,account.password,account.email,account.status, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login where account.name like '%". $searchtxt . "%' group by account.name";
                             }
                         $result=$pdo->query($sql);
                         foreach ($result as $row) {
@@ -217,21 +217,19 @@ if(isset($_SESSION["account"]["login"])){
                             $email=$row['email'];
                             $password=$row['password'];
                             $status=$row['status'];
+                            $img=$row['photo'];
+                            $imgType=$row['imgType']
                         ?>
                         <div class="col-lg-4">
                             <div class="text-center card-box">
                                 <div class="pt-2 pb-2">
                                 <?php 
-                                 foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '".$login."' ") as $row) {
-                                    $img = $row['photo'];
-                                    $imgType = $row['imgType'];
-                                 
                                     if(isset($img)){
-                                        echo '<img src="data:'.$imgType.';base64,' . $img . '"   class="rounded-circle avatar-lg img-thumbnail"  />';
+                                        echo '<img src="data:'.$imgType.';base64,' . $img . '"   class="rounded-circle avatar-lg "  /><br>';
                                     }else{
-                                        echo '<img src="../assets/images/user.png"   class="rounded-circle avatar-lg img-thumbnail"  />'; 
+                                        echo '<img src="../assets/images/user.png"   class="rounded-circle avatar-lg "  /><br>'; 
                                     }
-                                 }
+                                 
                                  ?>
                                     <input type="button" style="color:black; font-size: large" name="<?php echo $name ?>" value="<?php echo $name ?>" id="<?php echo $login ?>" class=" btn btn-link mt-1 mb-1 waves-effect waves-light view_data"></input>
                                     <p class="text-muted">@
@@ -244,7 +242,7 @@ if(isset($_SESSION["account"]["login"])){
                                             echo ' ';
                                         }
                                         ?>
-                                        </p> <span> | </span> <span> <a href="#" class="text-pink"><?php echo $email ?></a> </span></p>
+                                        </p> <span> | </span> <span> <a href="mailto:<?php echo $email ?>" class="text-pink"><?php echo $email ?></a> </span></p>
 
                                         <p>專長：
                                         <?php
