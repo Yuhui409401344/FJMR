@@ -49,7 +49,7 @@ if(isset($_SESSION["account"]["login"])){
                         foreach ($pdo->query('select count(distinct login) from account') as $row) {
                             $amount=$row[0];
                         }
-                        foreach ($pdo->query('select count(distinct login) from follow') as $row) {
+                        foreach ($pdo->query("select count(distinct login) from follow where manager='".$manager."'") as $row) {
                             $follow=$row[0];
                         }
                         foreach ($pdo->query("select count(login) from account where status='投稿者'") as $row) {
