@@ -227,7 +227,7 @@ if(isset($_SESSION["account"]["login"])){
                             <h4 class="card-title">Enterprise and Society</h4>
                             <p class="card-text">We provide abundant opportunities for collaboration between industry and school, if you are interested in cooperation, please contact us.</p>
                             <ul class="rlist" >
-                                <li><a href="產學合作.php" target="_blank" rel="noopener">Contact Us</a></li>
+                                <li><a href="contact.php"  rel="noopener">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -251,8 +251,8 @@ if(isset($_SESSION["account"]["login"])){
                             <h4 class="card-title">Author</h4>
                             <p class="card-text">Your research will bring changes to the world.</p>
                             <ul class="rlist" >
-                                <li><a href="徵稿.php" target="_blank" rel="noopener">Guideline & Process</a></li>
-                                <li><a href="稿約格式.php" target="_blank" rel="noopener">Format</a></li>
+                                <li><a href="papersubmission.php" rel="noopener">Guideline & Process</a></li>
+                                <li><a href="format.php" rel="noopener">Format</a></li>
                             </ul>
                         </div>
                     </div>

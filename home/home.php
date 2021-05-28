@@ -204,7 +204,7 @@ if(isset($_SESSION["account"]["login"])){
                 <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
                 <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>TODAY'S RESEARCH, TOMORROW'S INNOVATION.</strong></h5>
                 <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s" href="瀏覽刊物.php">瀏覽</a>
-                <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s" href="關於.php">關於</a>
+                <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s" href="purpose.php">關於</a>
                 </div>
                 <!--Grid column-->
             </div>
@@ -229,7 +229,7 @@ if(isset($_SESSION["account"]["login"])){
                             <h4 class="card-title">企業及社會</h4>
                             <p class="card-text">輔仁管理學院擁有豐富的產學研合作機會，如果您有意合作，請聯繫我們。</p>
                             <ul class="rlist" >
-                                <li><a href="產學合作.php" target="_blank" rel="noopener">聯繫我們</a></li>
+                                <li><a href="contact.php" rel="noopener">聯繫我們</a></li>
                             </ul>
                         </div>
                     </div>
@@ -253,8 +253,8 @@ if(isset($_SESSION["account"]["login"])){
                             <h4 class="card-title">作家</h4>
                             <p class="card-text">你的研究將會為世界帶來改變。</p>
                             <ul class="rlist" >
-                                <li><a href="徵稿.php" target="_blank" rel="noopener">徵稿說明</a></li>
-                                <li><a href="稿約格式.php" target="_blank" rel="noopener">稿約格式</a></li>
+                                <li><a href="徵稿.php"  rel="noopener">徵稿說明</a></li>
+                                <li><a href="稿約格式.php" rel="noopener">稿約格式</a></li>
                             </ul>
                         </div>
                     </div>
