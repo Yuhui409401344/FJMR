@@ -55,6 +55,7 @@
                                         $summary=$row['summary'];   
                                         $filename=$row['filename'];
                                         $uploadtime=$row['uploadtime'];
+                                        $manager = $row['manager'];
 
                                     }
                                        
@@ -76,7 +77,7 @@
 
                                         <!-- 收件人（管理者） recipient -->
                                         <div class="form-group mb-3">
-                                            <p class="font-weight-bold text-muted">收件人</p>  
+                                            <!-- <p class="font-weight-bold text-muted">收件人</p>  
                                             <?php
                                                 $conn = mysqli_connect('localhost','root','','fjup');
                                                 if (!$conn) {
@@ -89,7 +90,9 @@
                                                 echo "<option name='recipient' value='" . $row["login"] . "'>" . $row["login"] . "</option>";
                                                 }echo "</select>";
                                                 mysqli_close($conn);
-                                            ?>
+                                            ?> -->
+                                            <label for="product-reference" class=" font-weight-bold text-muted">收件人（管理者）</label><br>
+                                            <b><?php echo $manager ?></b>
                                         </div>
 
                                         <!-- 留言 comment-->

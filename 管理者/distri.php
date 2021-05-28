@@ -85,7 +85,7 @@
                                             <?php 
                                             $id=$_GET['id'];
                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                            foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
+                                            foreach ($pdo->query("select title, auth1,auth2,auth3,auth4,auth5,summary, uploadname,uploadtime from newpaper where id='".$id."'") as $row) {
                                                 $title=$row["title"];
                                                 $auth1=$row['auth1'];
                                                 $auth2=$row['auth2'];

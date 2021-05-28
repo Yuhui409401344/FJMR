@@ -58,15 +58,15 @@
                                      <form method="post" action="reply-output.php?title=<?php echo $title ?>" enctype="multipart/form-data">
                                     <div class="card-box">
                                         <div class="form-group mb-3">
-                                            <label for="title">標題</label><br>
-                                            <h4 ><?php echo $title ?> </h4>
+                                            <label  class=" font-weight-bold text-muted" for="title">標題</label><br>
+                                            <b ><?php echo $title ?> </b>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="product-name">收件人</label>
-                                            <h4><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></h4>
+                                            <label  class=" font-weight-bold text-muted"  for="product-name">收件人（投稿者）</label><br>
+                                            <b><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></b>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="product-name">來自審稿者的回覆建議</label>
+                                            <label   class=" font-weight-bold text-muted" for="product-name">來自審稿者的回覆建議</label>
                                         <?php
                                         foreach ($pdo->query("select * from reply where title='".$title."'") as $row) 
                                                     {
@@ -81,18 +81,19 @@
                                                 elseif ($level=="小幅修改") echo "<span class='badge badge-soft-primary'>小幅修改</span>";
                                                 elseif ($level=="大幅修改") echo "<span class='badge badge-soft-warning'>大幅修改</span>";
                                                 else echo "<span class='badge badge-soft-danger'>拒絕</span>";?>
-                                                &nbsp;&nbsp;
-                                                <?php echo $comment ?></h4>
+                                            </h4>
+                                            <br>
+                                            <p><?php echo $comment ?></p>
                                         <?php }
                                            ?>
                                             </div>
                                         <div class="form-group mb-3">
-                                            <label for="product-reference">回覆建議</label><br>
+                                            <label   class=" font-weight-bold text-muted" for="product-reference">回覆建議</label><br>
                                             <textarea class="form-control" name="comment" rows="5">
                                             </textarea>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="product-reference">回覆評級</label><br>
+                                            <label  class=" font-weight-bold text-muted" for="product-reference">回覆評級</label><br>
                                             <div class="radio form-check-inline">&nbsp;&nbsp;&nbsp;
                                                     <input type="radio" id="inlineRadio2" value="接受" name="level">
                                                     <label for="inlineRadio2"> 接受 </label>
