@@ -5,13 +5,15 @@ $password=$_SESSION["account"]["password"];
 $login=$_SESSION["account"]["login"];
 ?>
 <div class="content-page">
+<div class="content">
+
     <div class="content">
 
         <!-- Start Content-->
         <div class="container-fluid">
             <?php
             $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-            foreach ($pdo->query("select * from totalreply where auth1=(select  distinct name from account where login='".$login."')
+            foreach ($pdo->query("select title, level, filename, replycount, replytime, message from totalreply where auth1=(select  distinct name from account where login='".$login."')
              or auth2=(select distinct name from account where login='".$login."') 
              or auth3=(select distinct name from account where login='".$login."') 
              or auth4=(select distinct name from account where login='".$login."')
@@ -24,7 +26,7 @@ $login=$_SESSION["account"]["login"];
                     $replytime=$row['replytime'];
                     $message=$row['message'];
                 ?>
-                    <div>
+            <div>
                 <div class="row mt-3">
                     <div class="col-12">
                         <div class="card">
@@ -50,13 +52,13 @@ $login=$_SESSION["account"]["login"];
                                     <?php if ($level =='小幅修改' or $level =='大幅修改'){
                                         ?>
                                         <div class="mt-2">
-                                            <a href="../審稿者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
+                                            <a href="../管理者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
                                             &nbsp;&nbsp;
                                             <a href="reply.php?title=<?php echo $title?>" class="text-muted  mt-2"><i class="mdi mdi-reply"></i>上傳修正檔</a>
                                         </div>
                                     <?php }else{?>
                                         <div class="mt-2">
-                                            <a href="../審稿者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
+                                            <a href="../管理者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
                                         </div>
                                     <?php
                                     }
