@@ -66,7 +66,7 @@
                                             <b><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></b>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label   class=" font-weight-bold text-muted" for="product-name">來自審稿者的回覆建議</label>
+                                            <label   class=" font-weight-bold text-muted" for="product-name">審稿者回覆</label>
                                         <?php
                                         foreach ($pdo->query("select * from reply where title='".$title."'") as $row) 
                                                     {
@@ -82,7 +82,6 @@
                                                 elseif ($level=="大幅修改") echo "<span class='badge badge-soft-warning'>大幅修改</span>";
                                                 else echo "<span class='badge badge-soft-danger'>拒絕</span>";?>
                                             </h4>
-                                            <br>
                                             <p><?php echo $comment ?></p>
                                         <?php }
                                            ?>

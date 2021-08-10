@@ -108,7 +108,7 @@ if(isset($_SESSION["account"]["login"])){
                                       }elseif(empty($ddl)){
                                         echo '請輸入繳交截止日期';
                                       }else{
-                                        echo "<script> {window.alert('發送成功');location.href='maildistribution.php'} </script>";
+                                        echo "<script> {window.alert('發送成功');location.href='sent.php'} </script>";
                                         $sql3=$pdo ->prepare('delete newpaper from newpaper  where newpaper.title=?');
                                         $sql3->execute([$title]);
                                       }

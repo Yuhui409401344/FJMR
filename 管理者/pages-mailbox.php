@@ -50,6 +50,9 @@
                     <div class="container-fluid">
                     <?php $title=$_REQUEST["title"] ;
                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                        foreach ($pdo->query('select count(title) from reply') as $row) {
+                            $amount=$row[0];
+                        }
                         foreach ($pdo->query("select * from reply where title='".$title."'") as $row) {
                             $senter=$row['senter'];
                             $recipient=$row['recipient'];
@@ -75,7 +78,7 @@
                                                         justify-content: right;
                                                         border: 0;
                                                         bottom: 0;">
-                                            <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;margin-left: 20px;margin-top: 20px;"><?php echo $title ?></h3>
+                                            <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;margin-left: 10px;margin-top: 20px;"><?php echo $title ?></h3>
                                             </div>
                                             <div class="container">
                                                 <div class="row justify-content-start">
@@ -151,11 +154,17 @@
                             </div> <!-- end col-->
                            
                         </div>
-                        <?php } ?>
-                        <!-- end row-->
-                        <button type="button" class="btn btn-success waves-effect waves-light" style="text-align:center; float:right">
+                        <?php }
+
+                        if($amount>=2){
+                        ?>
+                         <button type="button" class="btn btn-success waves-effect waves-light" style="text-align:center; float:right">
                             <a href='reply.php?title=<?php echo "$title" ?>' style="color: white"><span class="btn-label"><i class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
                         </button>
+                        <?php 
+                            } 
+                        ?>
+                       
                         
                         
                     </div> <!-- container -->

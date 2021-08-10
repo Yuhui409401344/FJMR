@@ -68,12 +68,15 @@
                                                 <th>動作</th>
                                                 <!-- <th data-hide="phone, tablet">領域</th> -->
                                                 <th data-hide="phone, tablet">摘要</th>
-                                                <th data-hide="phone, tablet">管理者留言</th>
+                                                <th data-hide="phone, tablet">留言</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <?php
                                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                                foreach($pdo->query("select count(title) from distri where pro='".$login."'") as $row){
+                                                    $count=$row[0];
+                                                }
                                                 foreach ($pdo->query("select * from distri where pro='".$login."'") as $row) {
                                                     $id = $row['id'];
                                                     $title=$row['title'];
@@ -90,6 +93,7 @@
                                                     $manager = $row['manager'];
                                                     
                                             ?>
+                                           
                                             <tr>
                                                 <td><a href="p2.php?id=<?php echo "$id" ?>"><?php echo $title ?></a></td>
                                                 <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></td>

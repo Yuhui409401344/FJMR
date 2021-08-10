@@ -209,7 +209,7 @@
 
                                                     <div class="media mt-3 px-1">
                                                         <div class="media-body" style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p><a href="upload/<?php echo $managerfile ?>"><?php echo $managerfile ?></a></p>
+                                                            <p><a href="../管理者/upload/<?php echo $managerfile ?>"><?php echo $managerfile ?></a></p>
                                                         </div>
                                                     </div>
                                                 </section>

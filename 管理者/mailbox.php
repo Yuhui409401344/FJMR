@@ -75,7 +75,7 @@ $login=$_SESSION["account"]["login"];
                                                     data-show-columns="true"
                                                     data-sort-name="date"
                                                     data-page-list="[5, 10, 20]"
-                                                    data-page-size="8"
+                                                    data-page-size="6"
                                                     data-pagination="true" data-show-pagination-switch="true" class="table-borderless"
                                                     style="font-weight: 700;">
                                                     
@@ -83,13 +83,13 @@ $login=$_SESSION["account"]["login"];
                                                    <thead class="thead-light">
                                                         
                                                     <tr>
-                                                        <th data-field="id" ellipsis data-sortable="true">標題</th>
-                                                        <th data-field="name" data-sortable="true">審稿者</th>
+                                                        <th data-field="id"  data-sortable="true">標題</th>
                                                         <th data-field="recipient" data-sortable="true">作者</th>
+                                                        <th data-field="name" data-sortable="true">審稿者</th>
                                                         <th data-field="date" data-sortable="true" data-formatter="dateFormatter">回覆時間</th>
                                                         <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">回覆意見</th>
-                                                        <th data-field="times" data-align="center" data-sortable="true" data-formatter="timesFormatter">回覆次數</th>
-                                                        <th data-align="center" >回覆建議</th>
+                                                        <!-- <th data-field="times" data-align="center" data-sortable="true" data-formatter="timesFormatter">回覆次數</th> -->
+                                                        <!-- <th data-align="center" >回覆建議</th> -->
                                                         <th data-field="action" data-align="center" data-sortable="false">動作</th>
                                                         
                                                     </tr>
@@ -98,6 +98,9 @@ $login=$_SESSION["account"]["login"];
                                                     <?php
                                                         
                                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                                        foreach ($pdo->query("select count(title) from reply where recipient='".$login."'") as $row) {
+                                                            $amount=$row[0];
+                                                        }
                                                         foreach ($pdo->query("select * from reply where recipient='".$login."'") as $row) {
                                                             $id=$row['id'];
                                                             $title=$row['title'];
@@ -118,8 +121,8 @@ $login=$_SESSION["account"]["login"];
                                                     ?>
                                                     <tr>
                                                         <td><a href="pages-mailbox.php?title=<?php echo "$title"?>"><?php echo $title ?></a></td>
-                                                        <td><?php echo $senter ?></td>
                                                         <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></td>
+                                                        <td><?php echo $senter ?></td>
                                                         <td><?php echo $time ?></td>
                                                         <td><?php 
                                                         if ($level=='接受') {
@@ -132,14 +135,18 @@ $login=$_SESSION["account"]["login"];
                                                             echo "<span class='badge badge-soft-danger'>拒絕</span>";
                                                         }
                                                          ?></td>
-                                                        <td><?php  echo $replytime ; ?></td>
-                                                        
-                                                       <td><?php echo $comment ?></td>
+
+                                                        <!-- <td><?php  echo $replytime ; ?></td>
+                                                       <td><?php echo $comment ?></td> -->
                                                         
                                                         
                                                         <td>
+                                                        <?php 
+                                                        if($amount >= 2){
+                                                            echo "<a href='reply.php?title=".$title."' class='action-icon' ><i class='mdi mdi-email-send-outline'></i></a>";
+                                                        } 
+                                                        ?>
                                                         <a href='../審稿者/upload/<?php echo $file ?>' target="blank" download="<?php echo $file ?>" class='action-icon'> <i class='mdi mdi-arrow-collapse-down'></i></a>
-                                                        <a href='reply.php?title=<?php echo "$title" ?> ' class='action-icon' ><i class='mdi mdi-email-send-outline'></i></a>
                                                         </td>
 
                                                         
