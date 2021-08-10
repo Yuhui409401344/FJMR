@@ -84,6 +84,7 @@ if(isset($_SESSION["account"]["login"])){
                                       $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                       foreach ($pdo->query("select * from newpaper where title='".$title."'") as $row) {
                                           $id=$row["id"];
+                                          $uploader=$row["uploader"];
                                           $auth1=$row['auth1'];
                                           $auth2=$row['auth2'];
                                           $auth3=$row['auth3'];
@@ -96,12 +97,22 @@ if(isset($_SESSION["account"]["login"])){
                                       
                                       $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                                       foreach($pro as $a){
-                                        $sql=$pdo->prepare('INSERT INTO distri (id,title,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql->execute([$id,$title,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
+                                        $sql=$pdo->prepare('INSERT INTO distri (id,title,uploader,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                        $sql->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
 
-                                        $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql2->execute([$id,$title,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
+                                        $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,uploader,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                        $sql2->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
 
+                                        $sql5 = $pdo->query("select email from account where status='審稿者' and login ='".$pro."'");
+                                        foreach($sql5 as $row){
+
+                                            $to_email = $row['email'];
+                                            $subject = '新分配的稿件:'.$title;
+                                            $message = '請盡速到平台審理已被分配稿件。';
+                                            $headers = 'From: 408402511@gapp.fju.edu.tw';
+
+                                            mail($to_email,$subject,$message,$headers);
+                                        }
                                         }
                                       if (empty($pro)) {
                                         echo '請輸入審稿者';

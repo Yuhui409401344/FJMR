@@ -50,7 +50,8 @@
                                 <tbody>
                                         <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                            foreach ($pdo->query("select * from newpaper_history where ((select DISTINCT name from account where login = '".$login."') in (auth1,auth2,auth3,auth4,auth5)) ") as $row) {
+                                            // $pdo->query("select * from newpaper_history where ((select DISTINCT name from account where login = '".$login."') in (auth1,auth2,auth3,auth4,auth5)) ") as $row
+                                            foreach ($pdo->query("select * from newpaper_history where uploader ='".$login."'") as $row) {
                                                 $id=$row["id"];
                                                 $title=$row['title'];
                                                 $author1=$row['auth1'];

@@ -57,6 +57,7 @@ $login=$_SESSION["account"]["login"];
 
                                     foreach ($pdo->query("select * from reply where title='".$title."'") as $row) {
                                         $id=$row["id"];
+                                        $uploader=$row["uploader"];
                                         $auth1=$row["auth1"];
                                         $auth2=$row["auth2"];
                                         $auth3=$row["auth3"];
@@ -74,9 +75,19 @@ $login=$_SESSION["account"]["login"];
                                         $name= explode('.',$filename);
                                         $newname=$title.'r'.$row["count_"].'.'.$name[1];
 
-                                        $sql1=$pdo->prepare('insert into totalreply (id,title,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount,filename) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql1->execute([$id,$title,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$row["count_"],$newname]);
+                                        $sql1=$pdo->prepare('insert into totalreply (id,title,uploader,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount,filename) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                        $sql1->execute([$id,$title,$uploader,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$row["count_"],$newname]);
                                         
+                                        $sql5 = $pdo->query("select email from account where login='".$uploader."' and status='投稿者'");
+                                        foreach($sql5 as $row){
+
+                                            $to_email = $row['email'];
+                                            $subject = '投稿文章:'.$title;
+                                            $message = '已評閱完畢，請盡速到平台確認結果。';
+                                            $headers = 'From: 408402511@gapp.fju.edu.tw';
+
+                                            mail($to_email,$subject,$message,$headers);
+                                        }
 
                                         $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
                                         $sql3->execute([$id]);
