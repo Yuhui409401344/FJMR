@@ -19,7 +19,7 @@ $login=$_SESSION["account"]["login"];
             //  or auth4=(select distinct name from account where login='".$login."')
             //  or auth5=(select distinct name from account where login='".$login."')
             // ") as $row) {
-                foreach ($pdo->query("select title, level, filename, replycount, replytime, message, have_reply from totalreply where uploader='".$login."'") as $row) {
+                foreach ($pdo->query("select title, level, filename, replycount, replytime, message, have_reply from totalreply where uploader='".$login."' order by replytime DESC") as $row) {
                     $title=$row['title'];
                     $level=$row['level'];
                     $filename=$row['filename'];

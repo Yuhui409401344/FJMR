@@ -19,17 +19,20 @@
                                     
                                 
                                     $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-                                    $sql7=$pdo->query("select level,uploader from totalreply where title= '".$title."' AND replycount=(SELECT MAX(replycount) from totalreply where title='".$title."')");
+                                    $sql7=$pdo->query("select title,level,uploader from totalreply where title= '".$title."' AND replycount=(SELECT MAX(replycount) from totalreply where title='".$title."')");
                                     foreach($sql7 as $s7){
                                         $level = $s7['level'];
                                         $uploader = $s7['uploader'];
+                                        $stitle = $s7['title'];
                                     }
+
                                     if($level == '接受' && $uploader == $login){
                                         echo "<script> {window.alert('稿件標題已接受，請去歷史稿件中查詢結果');location.href='history.php'} </script>";
                                     }else if(($level == '大幅修改' || $level == '小幅修改') && $uploader == $login){
                                         echo "<script> {window.alert('請到回覆修正檔的介面上傳回覆');location.href='seereply.php'} </script>";
-                                    }else if($uploader != $login){
-                                        echo "<script> {window.alert('稿件標題已重複，請更改稿件名稱');location.href='add.php'} </script>";
+                                    }else if($stitle == $title && $uploader != $login){
+                                        echo $stitle;
+                                        // echo "<script> {window.alert('稿件標題已重複，請更改稿件名稱');location.href='add.php'} </script>";
                                     }else{
                                     $sql1="select count(*) as count from newpaper_history where title='".$title."'";
                                     $result=$pdo->query($sql1);

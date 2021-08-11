@@ -25,13 +25,12 @@
                                     foreach($result as $row){
                                         $row["count"];
                                     }
-                                    echo $row["count"];
                                     $filename=$_FILES["file"]["name"];
                                     $name= explode('.',$filename);
                                     $newname=$title.'r'.$row["count"].'.'.$name[1];
 
-                                    $sql2=$pdo->prepare('insert into newpaper (title,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?)');
-                                    $sql2->execute([$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
+                                    $sql2=$pdo->prepare('insert into newpaper (title,uploader,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?)');
+                                    $sql2->execute([$title,$login,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
                                     
                                     $id="select id from newpaper where title='".$title."' and uploadname='".$newname."' ";
                                     $paper_id=$pdo->query($id);
@@ -39,11 +38,12 @@
                                         $pid["id"];
                                     }
 
-                                    $sql4=$pdo->prepare('insert into newpaper_history (id,title,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?)');
-                                    $sql4->execute([$pid["id"],$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
+                                    $sql4=$pdo->prepare('insert into newpaper_history (id,title,uploader,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?,?)');
+                                    $sql4->execute([$pid["id"],$title,$login,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
                                     
+                                    $c = $row['count']-1;
                                     $sql5 = $pdo->prepare("UPDATE totalreply SET have_reply=? WHERE replycount=? and title=?");
-                                    $sql5->execute(['0',$row["count"],$title]);
+                                    $sql5->execute(['0',$c,$title]);
                                     
                                 ?>
                                         <div class="form-group mb-3">

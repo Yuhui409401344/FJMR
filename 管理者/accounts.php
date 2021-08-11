@@ -1,12 +1,11 @@
 <?php 
 session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
-        $status[] = $row['status'];
-    }
-    if(in_array("管理者",$status)){
+$manager=$_SESSION["account"]["login"];
+foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
+    $status[] = $row['status'];
+}
+if(isset($_SESSION["account"]["login"]) && in_array("管理者",$status)){
 
     
 ?>
@@ -370,10 +369,7 @@ if(isset($_SESSION["account"]["login"])){
     </body>
 </html>
 
-<?php 
-    }else{
-        include "pages-404.html";
-    }
+<?php
 }else{
     include "pages-404.html";
 }

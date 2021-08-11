@@ -1,4 +1,4 @@
-<?php include "nav.php"?>
+<?php include "nav.php";?>
 <head>
     <style>
 .footable-row-detail-name {
@@ -202,4 +202,3 @@
 
 <!-- Init js for time picker-->
 <script src="../assets/js/pages/form-pickers.init.js"></script>
-
