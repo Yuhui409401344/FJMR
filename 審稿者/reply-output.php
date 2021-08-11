@@ -57,6 +57,7 @@ $login=$_SESSION["account"]["login"];
 
                                     foreach ($pdo->query("select * from distri where title='".$title."'") as $row) {
                                         $id=$row["id"];
+                                        $uploader=$row["uploader"];
                                         $auth1=$row["auth1"];
                                         $auth2=$row["auth2"];
                                         $auth3=$row["auth3"];
@@ -81,11 +82,22 @@ $login=$_SESSION["account"]["login"];
                                         $name= explode('.',$filename);
                                         $newname=$title.'r'.$replycount.'.'.$name[1];
 
-                                        $sql1=$pdo->prepare('insert into reply (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql1->execute([$id,$title,$login,$manager,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
+                                        $sql1=$pdo->prepare('insert into reply (id,title,uploader,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                        $sql1->execute([$id,$title,$uploader,$login,$manager,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
                                         
-                                        $sql2=$pdo->prepare('insert into reply_history (id,title,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql2->execute([$id,$title,$login,$manager,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
+                                        $sql2=$pdo->prepare('insert into reply_history (id,title,uploader,senter,recipient,auth1,auth2,auth3,auth4,auth5,level,replytime,uploadname,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                        $sql2->execute([$id,$title,$uploader,$login,$manager,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$row['count_'] ,$newname,$comment]);
+
+                                        $sql5 = $pdo->query("select email from account where status='管理者' and login ='".$manager."'");
+                                        foreach($sql5 as $row){
+
+                                            $to_email = $row['email'];
+                                            $subject = '來自審稿者回覆的稿件:'.$title;
+                                            $message = '請盡速到平台審理已被回覆稿件。';
+                                            $headers = 'From: 408402511@gapp.fju.edu.tw';
+
+                                            mail($to_email,$subject,$message,$headers);
+                                        }
 
                                         $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
                                         $sql3->execute([$login,$title]);

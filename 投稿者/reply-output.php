@@ -25,6 +25,7 @@
                                     foreach($result as $row){
                                         $row["count"];
                                     }
+                                    echo $row["count"];
                                     $filename=$_FILES["file"]["name"];
                                     $name= explode('.',$filename);
                                     $newname=$title.'r'.$row["count"].'.'.$name[1];
@@ -41,6 +42,8 @@
                                     $sql4=$pdo->prepare('insert into newpaper_history (id,title,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?)');
                                     $sql4->execute([$pid["id"],$title,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
                                     
+                                    $sql5 = $pdo->prepare("UPDATE totalreply SET have_reply=? WHERE replycount=? and title=?");
+                                    $sql5->execute(['0',$row["count"],$title]);
                                     
                                 ?>
                                         <div class="form-group mb-3">

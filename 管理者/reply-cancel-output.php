@@ -54,6 +54,7 @@ $login=$_SESSION["account"]["login"];
                                     $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                     foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                         $title=$row["title"];
+                                        $uploader=$row["uploader"];
                                         $auth1=$row['auth1'];
                                         $auth2=$row['auth2'];
                                         $auth3=$row['auth3'];
@@ -63,13 +64,23 @@ $login=$_SESSION["account"]["login"];
                                         $replytime="SELECT COUNT(*)+1 AS count_ FROM totalreply WHERE title='".$title."'";
                                         $result=$pdo->query($replytime);
                                         foreach($result as $row){
-                                            $sql=$pdo->prepare('insert into totalreply (id,title,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount) VALUES(?,?,?,?,?,?,?,?,?,?,?)');
-                                            $sql->execute([$id,$title,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$message,$row['count_']]);
+                                            $sql=$pdo->prepare('insert into totalreply (id,title,uploader,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
+                                            $sql->execute([$id,$title,$uploader,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$message,$row['count_']]);
                                             
                                         }
                                     }
                             
-                                    
+                                    $sql5 = $pdo->query("select email from account where login='".$uploader."' and status='投稿者'");
+                                    foreach($sql5 as $row){
+
+                                        $to_email = $row['email'];
+                                        $subject = '投稿文章:'.$title;
+                                        $message = '已評閱完畢，請盡速到平台確認結果。';
+                                        $headers = 'From: 408402511@gapp.fju.edu.tw';
+
+                                        mail($to_email,$subject,$message,$headers);
+                                    }
+
                                     echo "<script> {window.alert('發送成功');'} </script>";
                                     $sql3=$pdo ->prepare('delete from newpaper where id=?');
                                     $sql3->execute([$id]);

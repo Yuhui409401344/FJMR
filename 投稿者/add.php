@@ -10,10 +10,12 @@
                           <label for="product-name" style="font-size: 20px;">標題<span class="text-danger">*</span></label>
                           <input type="text" name="title" class="form-control" placeholder="請輸入標題" required>
                       </div>
-                      <div class="form-group mb-3 mr-4 ml-4">
-                          <label for="product-name" style="font-size: 20px;">作者<span class="text-danger">*</span></label>
+                      <div class="div1 form-group mb-3 mr-4 ml-4">
+                          <label for="product-name" style="font-size: 20px;">作者<span class="text-danger">*</span></label> 
+                          <!-- <input type="button" value="新增作者" onclick="add()"> -->
                           <input type="text" name="auth1" class="form-control" style="weight:5px;" placeholder="請輸入作者1" required>
                           <div class="row mt-1"></div>
+                          
                           <input type="text" name="auth2" class="form-control" placeholder="請輸入作者2">
                           <div class="row mt-1"></div>
                           <input type="text" name="auth3" class="form-control" placeholder="請輸入作者3">
@@ -96,4 +98,11 @@
       </div> <!-- container -->
     </div> <!-- content -->
 </div>
+
+<!-- <script> 新增作者欄位的按鈕
+  var addname = "<input  type='text' name='auth2' class='form-control' placeholder='請輸入作者' class=\'input\' name=\'input\' /> <div class='row mt-1'></div>"
+  function add(){
+    $('.div1').append(addname);
+  }
+</script> -->
  
