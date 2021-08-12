@@ -1,12 +1,10 @@
 <?php 
 session_start();
-$password=$_SESSION["account"]["password"];
-$login=$_SESSION["account"]["login"];
 
 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
 if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
+    $login=$_SESSION["account"]["login"];
+    foreach ($pdo->query("select status from account where login= '".$login."'") as $row) {
     $status[] = $row['status'];
     }
     if(in_array("管理者",$status)){
