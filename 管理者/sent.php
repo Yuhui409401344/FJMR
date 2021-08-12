@@ -97,7 +97,7 @@ if(isset($_SESSION["account"]["login"])){
                                                         <?php
                                                             
                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                            foreach ($pdo->query('select * from distri_history') as $row) {
+                                                            foreach ($pdo->query("select * from distri_history where manager = '".$manager."'") as $row) {
                                                                 $id=$row['id'];
                                                                 $title=$row['title'];
                                                                 $summary=$row['summary'];
@@ -177,7 +177,7 @@ if(isset($_SESSION["account"]["login"])){
                                                         <?php
                                                             
                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                            foreach ($pdo->query('select * from totalreply') as $row) {
+                                                            foreach ($pdo->query("select * from totalreply where senter = '".$manager."'") as $row) {
                                                                 $id=$row['id'];
                                                                 $title=$row['title'];
                                                                 $level=$row['level'];
