@@ -1,4 +1,14 @@
-<?php $id=$_GET["id"] ;
+<?php 
+session_start();
+$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+if(isset($_SESSION["account"]["login"])){
+    $manager=$_SESSION["account"]["login"];
+    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
+    $status[] = $row['status'];
+    }
+    if(in_array("管理者",$status)){
+
+$id=$_GET["id"] ;
 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
 foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
     $title=$row["title"];
@@ -174,3 +184,11 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
         
     </body>
 </html>
+<?php
+    }else{
+        include "pages-404.html";
+    }
+}else{
+    include "pages-404.html";
+}
+?>
