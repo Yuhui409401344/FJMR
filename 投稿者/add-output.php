@@ -31,8 +31,7 @@
                                     }else if(($level == '大幅修改' || $level == '小幅修改') && $uploader == $login){
                                         echo "<script> {window.alert('請到回覆修正檔的介面上傳回覆');location.href='seereply.php'} </script>";
                                     }else if($stitle == $title && $uploader != $login){
-                                        echo $stitle;
-                                        // echo "<script> {window.alert('稿件標題已重複，請更改稿件名稱');location.href='add.php'} </script>";
+                                        echo "<script> {window.alert('稿件標題已重複，請更改稿件名稱');location.href='add.php'} </script>";
                                     }else{
                                     $sql1="select count(*) as count from newpaper_history where title='".$title."'";
                                     $result=$pdo->query($sql1);
