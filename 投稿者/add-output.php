@@ -45,6 +45,12 @@
                         $sql2=$pdo->prepare('insert into newpaper (title,uploader,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?)');
                         $sql2->execute([$title,$login,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
                         
+                        $pid = $pdo->lastInsertId();
+
+                        $sql4=$pdo->prepare('insert into newpaper_history (id,title,uploader,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?,?)');
+                        $sql4->execute([$pid,$title,$login,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
+                        
+
                         $sql6=$pdo->query("select f_name from newpaper_field where title='".$title."'");
                         foreach($sql6 as $f){
                             $f_name[]=$f["f_name"];
@@ -64,17 +70,6 @@
                                 $sql3->execute([$title,$v]);
                             }
                         }
-                        
-                        $id="select id from newpaper where title='".$title."' and uploadname='".$newname."' ";
-                        $paper_id=$pdo->query($id);
-                        foreach($paper_id as $pid){
-                            $pid["id"];
-                        }
-
-                        $sql4=$pdo->prepare('insert into newpaper_history (id,title,uploader,summary,auth1,auth2,auth3,auth4,auth5,uploadname) VALUES(?,?,?,?,?,?,?,?,?,?)');
-                        $sql4->execute([$pid["id"],$title,$login,$summary,$auth1,$auth2,$auth3,$auth4,$auth5,$newname]);
-                        
-                        
                     ?>
                             <div class="form-group mb-3">
                                 <label for="product-name" style="font-size: 20px;"><?php echo "新增成功!";?></label>

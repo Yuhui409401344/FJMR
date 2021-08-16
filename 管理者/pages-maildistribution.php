@@ -78,7 +78,7 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                         <div class="container-fluid">
                                             <div style=" display: flex;
                                                         justify-content: right;
-                                                        border: bottom: 0;">
+                                                        border-bottom: 0;">
                                             <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;margin-left: 20px;margin-top: 20px;"><?php echo $title ?></h3>
                                             </div>
                                             <div class="container">

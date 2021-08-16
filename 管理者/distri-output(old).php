@@ -50,7 +50,7 @@
                                     }elseif(empty($ddl)){
                                       echo '請輸入繳交截止日期';
                                     }else{
-                                      echo "<script> {window.alert('發送成功');location.href='maildistribution.php'} </script>";
+                                      echo "<script> {window.alert('發送成功');location.href='index.php?method=maildistribution'} </script>";
                                       $sql3=$pdo ->prepare('delete newpaper,newpaper_field from newpaper left join newpaper_field on newpaper_field.title=newpaper.title where newpaper.title=?');
                                       $sql3->execute([$title]);
                                     }

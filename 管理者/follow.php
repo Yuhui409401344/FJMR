@@ -21,11 +21,11 @@ foreach($datalist as $datadetail){
 }
 
 if(isset($arr) and in_array($name,$arr)){
-    echo "<script> {window.alert('已追蹤此帳號');location.href='accounts.php'} </script>";
+    echo "<script> {window.alert('已追蹤此帳號');location.href='index.php?method=accounts'} </script>";
 }else{
     $sql=$pdo->prepare('insert into follow (name,manager,login,email) VALUES(?,?,?,?)');
     if($sql->execute([$name,$manager,$login,$email])){
-        echo "<script> {window.alert('追蹤成功');location.href='accounts.php'} </script>";
+        echo "<script> {window.alert('追蹤成功');location.href='index.php?method=accounts'} </script>";
     };
 }
 

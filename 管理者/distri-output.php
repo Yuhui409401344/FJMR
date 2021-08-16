@@ -1,19 +1,6 @@
-<?php 
+<?php
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
-    $status[] = $row['status'];
-    }
-    if(in_array("管理者",$status)){
-?>
-<?php 
-session_start();
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-}
-
+$manager=$_SESSION["account"]["login"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +40,10 @@ if(isset($_SESSION["account"]["login"])){
 
 		<!-- icons -->
         <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        
+    </head>
+
+    <body class="loading">
         <style>
             p{
             max-width: 200px;
@@ -62,9 +53,6 @@ if(isset($_SESSION["account"]["login"])){
             }
 
         </style>
-    </head>
-
-    <body class="loading">
         <!-- Begin page -->
         <div id="wrapper">
             <?php 
@@ -105,7 +93,6 @@ if(isset($_SESSION["account"]["login"])){
 
                                       }
                                       
-                                      $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                                       foreach($pro as $a){
                                         $sql=$pdo->prepare('INSERT INTO distri (id,title,uploader,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
                                         $sql->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
@@ -129,7 +116,7 @@ if(isset($_SESSION["account"]["login"])){
                                       }elseif(empty($ddl)){
                                         echo '請輸入繳交截止日期';
                                       }else{
-                                        echo "<script> {window.alert('發送成功');location.href='sent.php'} </script>";
+                                        echo "<script> {window.alert('發送成功');location.href='index.php?method=sent'} </script>";
                                         $sql3=$pdo ->prepare('delete newpaper from newpaper  where newpaper.title=?');
                                         $sql3->execute([$title]);
                                       }
@@ -192,11 +179,3 @@ if(isset($_SESSION["account"]["login"])){
         
     </body>
 </html>
-<?php
-    }else{
-        include "pages-404.html";
-    }
-}else{
-    include "pages-404.html";
-}
-?>

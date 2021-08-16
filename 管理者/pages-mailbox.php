@@ -1,13 +1,3 @@
-<?php 
-session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
-    $status[] = $row['status'];
-    }
-    if(in_array("管理者",$status)){
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -204,11 +194,3 @@ if(isset($_SESSION["account"]["login"])){
         
     
 </html>
-<?php
-    }else{
-        include "pages-404.html";
-    }
-}else{
-    include "pages-404.html";
-}
-?>

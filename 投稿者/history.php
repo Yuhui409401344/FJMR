@@ -50,6 +50,34 @@
                                 <tbody>
                                         <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                            $query1=$pdo->query("SELECT id from newpaper");
+                                                $datalist1=$query1->fetchall();
+                                                foreach($datalist1 as $datadetail1){
+                                                    $arr1[]=$datadetail1['id'];
+                                                    
+                                                }
+                                                // 審稿中data in distri or reply
+                                                $query2=$pdo->query("SELECT id from reply UNION select id from distri ");
+                                                $datalist2=$query2->fetchall();
+                                                foreach($datalist2 as $datadetail2){
+                                                    $arr2[]=$datadetail2['id'];
+                                                    
+                                                }
+                                                // 已接收data in totalreply and level is 修改、接受、拒絕
+                                                $query3=$pdo->query("SELECT id from totalreply where (level='大幅修改' or level = '小幅修改' or level = '接受' or level = '拒絕')  ");
+                                                $datalist3=$query3->fetchall();
+                                                foreach($datalist3 as $datadetail3){
+                                                    $arr3[]=$datadetail3['id'];
+                                                    
+                                                }
+                                                // 退稿data in totalreply and level is 退稿
+                                                $query4=$pdo->query("SELECT id from totalreply where level='退稿' ");
+                                                $datalist4=$query4->fetchall();
+                                                foreach($datalist4 as $datadetail4){
+                                                    $arr4[]=$datadetail4['id'];
+                                                    
+                                                }
+
                                             // $pdo->query("select * from newpaper_history where ((select DISTINCT name from account where login = '".$login."') in (auth1,auth2,auth3,auth4,auth5)) ") as $row
                                             foreach ($pdo->query("select * from newpaper_history where uploader ='".$login."'") as $row) {
                                                 $id=$row["id"];
@@ -66,41 +94,14 @@
                                         
                                         <tr>
                                             <td>
-                                            <?php $query1=$pdo->query("SELECT title from newpaper");
-                                                $datalist1=$query1->fetchall();
-                                                foreach($datalist1 as $datadetail1){
-                                                    $arr1[]=$datadetail1['title'];
-                                                    
-                                                }
-                                                // 審稿中data in distri or reply
-                                                $query2=$pdo->query("SELECT title from reply UNION select title from distri ");
-                                                $datalist2=$query2->fetchall();
-                                                foreach($datalist2 as $datadetail2){
-                                                    $arr2[]=$datadetail2['title'];
-                                                    
-                                                }
-                                                // 已接收data in totalreply and level is 修改、接受、拒絕
-                                                $query3=$pdo->query("SELECT title from totalreply where (level='大幅修改' or level = '小幅修改' or level = '接受' or level = '拒絕')  ");
-                                                $datalist3=$query3->fetchall();
-                                                foreach($datalist3 as $datadetail3){
-                                                    $arr3[]=$datadetail3['title'];
-                                                    
-                                                }
-                                                // 退稿data in totalreply and level is 退稿
-                                                $query4=$pdo->query("SELECT title from totalreply where level='退稿' ");
-                                                $datalist4=$query4->fetchall();
-                                                foreach($datalist4 as $datadetail4){
-                                                    $arr4[]=$datadetail4['title'];
-                                                    
-                                                }
-
-                                                if (isset($arr1) and in_array($title, $arr1)) {
+                                            <?php 
+                                                if (isset($arr1) and in_array($id, $arr1)) {
                                                     $s ="等待主編確認" ;
-                                                }elseif (isset($arr2) and in_array($title,$arr2)) {
+                                                }elseif (isset($arr2) and in_array($id,$arr2)) {
                                                     $s = "審稿中";
-                                                }elseif(isset($arr3) and in_array($title,$arr3)){
+                                                }elseif(isset($arr3) and in_array($id,$arr3)){
                                                     $s ="已接收";
-                                                }elseif(isset($arr4) and in_array($title,$arr4)){
+                                                }elseif(isset($arr4) and in_array($id,$arr4)){
                                                     $s ="退稿";
                                                 }
                                             ?>
@@ -111,16 +112,13 @@
                                             <!-- 狀態 -->
                                             <td> 
                                             <?php
-                                                if (isset($arr1) and in_array($title, $arr1)) {
-                                                    echo "<span class='badge badge-soft-blue'>等待主編確認</span>" ;
-                                                }elseif (isset($arr2) and in_array($title,$arr2)) {
-                                                    echo  "<span class='badge badge-soft-warning'>審稿中</span>";
-                                                }elseif(isset($arr3) and in_array($title,$arr3)){
-                                                    echo  "<span class='badge badge-soft-success'>已接收</span>";
-                                                }elseif(isset($arr4) and in_array($title,$arr4)){
-                                                    echo "<span class='badge badge-soft-danger'>退稿</span>";
+                                                switch($s)
+                                                {
+                                                    case "等待主編確認":echo "<span class='badge badge-soft-blue'>等待主編確認</span>" ;break;
+                                                    case "審稿中":echo  "<span class='badge badge-soft-warning'>審稿中</span>" ;break;
+                                                    case "已接收":echo  "<span class='badge badge-soft-success'>已接收</span>" ;break;
+                                                    case "退稿":echo "<span class='badge badge-soft-danger'>退稿</span>";
                                                 }
-                                                
                                             ?></td>
 
                                                 <!-- 摘要 -->

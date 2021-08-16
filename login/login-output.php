@@ -20,11 +20,11 @@ foreach ($sql->fetchAll() as $row) {
 
 if (isset($_SESSION['account'])) {
      if($status1 == "投稿者"){
-          header("location:../投稿者/format.php?login=".$row['login'].""); 
+          header("location:../投稿者/format.php"); 
      }elseif($status1 == "審稿者"){
-          header("location:../審稿者/dashboard.php?login=".$row['login']."");
+          header("location:../審稿者/dashboard.php");
      }else{
-          header("location:../管理者/maildistribution.php?login=".$row['login']."");
+          header("location:../管理者/index.php?method=maildistribution");
     }
 }else{
      echo "<script> {window.alert('登入錯誤');location.href='login.php'} </script>";

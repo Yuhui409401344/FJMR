@@ -1,43 +1,4 @@
-<?php 
-session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
-    $status[] = $row['status'];
-    }
-    if(in_array("管理者",$status)){
-?>
-<?php require "header.php" ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
-        <!-- third party css -->
-        <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
-
-		<!-- App css -->
-		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-		<link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
-		<link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-		<link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
-		<!-- icons -->
-		<link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-
-    </head>
-    <body class="loading">
+<body class="loading">
 
 <!-- Begin page -->
 <div id="wrapper">
@@ -129,12 +90,3 @@ if(isset($_SESSION["account"]["login"])){
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
 </body>
-</html>
-<?php
-    }else{
-        include "pages-404.html";
-    }
-}else{
-    include "pages-404.html";
-}
-?>

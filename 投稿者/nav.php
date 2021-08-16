@@ -122,21 +122,21 @@ if(isset($_SESSION["account"]["login"])){
                         
                             if($status=="投稿者"){
                             ?>
-                            <a class="dropdown-item" href="../投稿者/format.php?login=<? echo $login?>" style="font-size: small;">
+                            <a class="dropdown-item" href="../投稿者/format.php" style="font-size: small;">
                             <i class="fe-user"></i>
                             投稿者系統
                             </a>
                             <?php
                             }elseif($status=="審稿者"){
                             ?>
-                            <a class="dropdown-item" href="../審稿者/dashboard.php?login=<? echo $login?>" style="font-size: small;">
+                            <a class="dropdown-item" href="../審稿者/dashboard.php" style="font-size: small;">
                             <i class="fe-user"></i>
                             審稿者系統
                             </a>
                             <?php
                             }else{
                             ?>
-                            <a class="dropdown-item" href="../管理者/maildistribution.php?login=<? echo $login?>" style="font-size: small;">
+                            <a class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
                             <i class="fe-user"></i>
                             管理者系統
                             </a>

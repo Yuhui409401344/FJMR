@@ -1,13 +1,3 @@
-<?php 
-session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
-    $status[] = $row['status'];
-    }
-    if(in_array("管理者",$status)){
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -94,7 +84,7 @@ if(isset($_SESSION["account"]["login"])){
                                       if (empty($_REQUEST['login'])) {
                                       echo '請輸入帳號。';
                                       }else{
-                                        echo "<script> {window.alert('新增成功');location.href='accountmanage.php'} </script>";
+                                        echo "<script> {window.alert('新增成功');location.href='index.php?method=accountmanage'} </script>";
                                     }
                                   ?>
                                   </table>
@@ -134,11 +124,3 @@ if(isset($_SESSION["account"]["login"])){
         
     </body>
 </html>
-<?php
-    }else{
-        include "pages-404.html";
-    }
-}else{
-    include "pages-404.html";
-}
-?>

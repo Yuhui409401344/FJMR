@@ -1,62 +1,11 @@
-<?php 
-session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
-    $status[] = $row['status'];
-    }
-    if(in_array("管理者",$status)){
-?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
-        <!-- Plugins css -->
-        <link href="../assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
-
-        <!-- Plugins css -->
-        <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/clockpicker/bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
-
-  
-
-		<!-- App css -->
-		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-		<link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
-		<link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-		<link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
-		<!-- icons -->
-        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <style>
+    <body class="loading">
+    <style>
 .footable-row-detail-name {
   display: block;
   font-weight: 700;
   padding-right: 0.5em;
   width: 40px; }
         </style>
-
-    </head>
-
-    <body class="loading">
-        
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -250,12 +199,3 @@ if(isset($_SESSION["account"]["login"])){
 
         
     </body>
-</html>
-<?php
-    }else{
-        include "pages-404.html";
-    }
-}else{
-    include "pages-404.html";
-}
-?>

@@ -1,13 +1,3 @@
-<?php 
-session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-if(isset($_SESSION["account"]["login"])){
-    $manager=$_SESSION["account"]["login"];
-    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
-    $status[] = $row['status'];
-    }
-    if(in_array("管理者",$status)){
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -215,8 +205,7 @@ if(isset($_SESSION["account"]["login"])){
                                                 </div>
                                             </div>
                                             <div class="text-right">
-                                                
-                                            <a href="maildistribution.php"><button type="button" class="btn btn-secondary waves-effect waves-light">取消</button></a>
+                                            <a href="index.php?method=maildistribution"><button type="button" class="btn btn-secondary waves-effect waves-light">取消</button></a>
                                             <a href="distri-output.php"><button type="submit" class="btn btn-info waves-effect waves-light" >寄出</button></a>
                                             </div>
                                         </form>
@@ -379,11 +368,3 @@ if(isset($_SESSION["account"]["login"])){
         
     </body>
 </html>
-<?php
-    }else{
-        include "pages-404.html";
-    }
-}else{
-    include "pages-404.html";
-}
-?>

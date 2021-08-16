@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 $password=$_SESSION["account"]["password"];
@@ -99,7 +98,7 @@ $login=$_SESSION["account"]["login"];
                                 <?php
                                 }else{
                                 ?>
-                                <a class="dropdown-item" href="../管理者/maildistribution.php" style="font-size: small;">
+                                <a class="dropdown-item" href="../管理者2/index.php?method=maildistribution" style="font-size: small;">
                                 <i class="fe-user"></i>
                                 管理者系統
                                 </a>
@@ -186,13 +185,13 @@ $login=$_SESSION["account"]["login"];
                                 <div class="collapse" id="sidebarCrm">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="maildistribution.php">分配稿件</a>
+                                            <a href="index.php?method=maildistribution">分配稿件</a>
                                         </li>
                                         <li>
-                                            <a href="mailbox.php">所有信件</a>
+                                            <a href="index.php?method=mailbox">所有信件</a>
                                         </li>
                                         <li>
-                                            <a href="sent.php">寄件備份</a>
+                                            <a href="index.php?method=sent">寄件備份</a>
                                         </li>
                                         <!-- <li>
                                             <a href="trash.php">垃圾桶</a>
@@ -202,14 +201,14 @@ $login=$_SESSION["account"]["login"];
                             </li>
                             
                             <li>
-                                <a href="accountmanage.php">
+                                <a href="index.php?method=accountmanage">
                                     <i class="mdi mdi-account"></i>
                                     <span> 賬號管理 </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="accounts.php">
+                                <a href="index.php?method=accounts">
                                     <i class="mdi mdi-account-box-multiple"></i>
                                     <span> 名片夾 </span>
                                 </a>

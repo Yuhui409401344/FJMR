@@ -52,7 +52,7 @@
                                     'root', '');
                                 $sql=$pdo->prepare("DELETE  from follow  where login=?");
                                 if ($sql->execute([$login])) {
-                                    echo "<script> {window.alert('刪除成功');location.href='accounts.php'} </script>";
+                                    echo "<script> {window.alert('刪除成功');location.href='index.php?method=accounts'} </script>";
                                 } else {
                                     echo '刪除失敗。';
                                 }
