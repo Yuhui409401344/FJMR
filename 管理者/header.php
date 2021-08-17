@@ -68,13 +68,14 @@ $login=$_SESSION["account"]["login"];
 
                             </div>
                         </li>
-
+                        
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <span class="pro-user-name ml-1">
+                                <span>
                                 <?php echo $login ?><i class="mdi mdi-chevron-down"></i> 
                                 </span>
                             </a>
+                            
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <?php 
                             $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
@@ -106,28 +107,20 @@ $login=$_SESSION["account"]["login"];
                                 }
                             }
                             ?>
+                            <div class="dropdown-divider"></div>
 
-                                <div class="dropdown-divider"></div>
-                                
-                                <a href="profile.php" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-account-details-outline"></i>
-                                    <span>我的帳號</span>
-                                </a>
-
-                                
-
-                                <a href="tour.php" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-alert-circle-outline"></i>
-                                    <span>常見問題</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="../login/logout-output.php" class="dropdown-item notify-item">
-                                    <i class="fe-log-out"></i>
-                                    <span>登出</span>
-                                </a>
-
-
+                            <a href="profile.php" class="dropdown-item notify-item">
+                                <i class="mdi mdi-account-details-outline"></i>
+                                <span>我的帳號</span>
+                            </a>
+                            <a href="tour.php" class="dropdown-item notify-item">
+                                <i class="mdi mdi-alert-circle-outline"></i>
+                                <span>常見問題</span>
+                            </a>
+                            <a href="../login/logout-output.php" class="dropdown-item notify-item">
+                                <i class="fe-log-out"></i>
+                                <span>登出</span>
+                            </a>
                             </div>
                         </li>
 
@@ -161,6 +154,13 @@ $login=$_SESSION["account"]["login"];
                             </span>
                         </a>
                     </div>
+                    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                        <li>
+                            <button class="button-menu-mobile waves-effect waves-light">
+                                <i class="fe-menu"></i>
+                            </button>
+                        </li>
+                    </ul>
 
                     <div class="clearfix"></div>
                 </div>

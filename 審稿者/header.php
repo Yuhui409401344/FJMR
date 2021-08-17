@@ -73,7 +73,7 @@ if(isset($_SESSION["account"]["login"])){
 
                     <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <span class="pro-user-name ml-1">
+                            <span>
                              <?php echo $login ?><i class="mdi mdi-chevron-down"></i> 
                             </span>
                         </a>
@@ -142,26 +142,38 @@ if(isset($_SESSION["account"]["login"])){
 
                 <!-- LOGO -->
                 <div class="logo-box">
-                        <a href="../home/home.php" class="logo logo-dark text-center">
-                            <span class="logo-sm">
-                                <img src="../assets/images/logo-fju-sm.png" alt="" height="42">
-                                <!-- <span class="logo-lg-text-light">UBold</span> -->
-                            </span>
-                            <span class="logo-lg">
-                                <img src="../assets/images/logo-fju-reviewer.png" alt="" height="50">
-                                <!-- <span class="logo-lg-text-light">U</span> -->
-                            </span>
-                        </a>
+                    <a href="../home/home.php" class="logo logo-dark text-center">
+                        <span class="logo-sm">
+                            <img src="../assets/images/logo-fju-sm.png" alt="" height="42">
+                            <!-- <span class="logo-lg-text-light">UBold</span> -->
+                        </span>
+                        <span class="logo-lg">
+                            <img src="../assets/images/logo-fju-reviewer.png" alt="" height="50">
+                            <!-- <span class="logo-lg-text-light">U</span> -->
+                        </span>
+                    </a>
 
-                        <a href="../home/home.php" class="logo logo-light text-center">
-                            <span class="logo-sm">
-                                <img src="../assets/images/logo-fju-sm.png" alt="" height="42">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="../assets/images/logo-fju-reviewer.png" alt="" height="50">
-                            </span>
-                        </a>
-                    </div>
+                    <a href="../home/home.php" class="logo logo-light text-center">
+                        <span class="logo-sm">
+                            <img src="../assets/images/logo-fju-sm.png" alt="" height="42">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="../assets/images/logo-fju-reviewer.png" alt="" height="50">
+                        </span>
+                    </a>
+                </div>
+                
+                <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                    <li>
+                        <button class="button-menu-mobile waves-effect waves-light">
+                            <i class="fe-menu"></i>
+                        </button>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
         <!-- end Topbar -->
 
         <!-- ========== Left Sidebar Start ========== -->

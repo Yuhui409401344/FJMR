@@ -106,14 +106,11 @@ if(isset($_SESSION["account"]["login"])){
 
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <span class="pro-user-name ml-1">
+                                <span>
                                 <?php echo $login ?><i class="mdi mdi-chevron-down"></i> 
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-
-
-                                <!-- item-->
                                 <?php 
                         $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                         $sql=$pdo->query("select status from account where login='".$login."'");
@@ -197,6 +194,14 @@ if(isset($_SESSION["account"]["login"])){
                             </span>
                         </a>
                     </div>
+                    
+                    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                        <li>
+                            <button class="button-menu-mobile waves-effect waves-light">
+                                <i class="fe-menu"></i>
+                            </button>
+                        </li>
+                    </ul>
 
                     
                     <div class="clearfix"></div>
