@@ -124,7 +124,7 @@ if(isset($_SESSION["account"]["login"])){
                 </li>
                 </ul>
             
-                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent-4"> -->
                 <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <?php
@@ -183,7 +183,7 @@ if(isset($_SESSION["account"]["login"])){
                         <a class="nav-link waves-effect waves-light" style="font-size: small;"  href="../home/home.php">中文</a>
                     </li>
                 </ul>
-                </div>
+                <!-- </div> -->
             </div>
             </div>
             </nav>

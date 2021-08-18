@@ -155,7 +155,7 @@ if(isset($_SESSION["account"]["login"])){
 </div>
 
 
-<div class="container" style="height: auto; width:250px">
+<div class="container-fluid">
 
     <div class="col-12 mt-1">
           <div class="card-box">

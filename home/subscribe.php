@@ -34,23 +34,25 @@
           </ol>
         </nav>
   </div>
-  <div class="container" style="height: 400px;padding: 0px;margin:36px;">
-      <h2>訂閱方式</h2>
-      <div>
-          <p style="font-size: 16px; padding: 12px; margin-top:24px;">
-          『輔仁管理評論』已停止接受紙版訂閱：
-          為因應網路時代，『輔仁管理評論』已經全面數位化，期望藉此推廣期刊內容並提升能見度。同時為響應節能減碳，
-          本刊已大幅減發紙版印量，並決定從第17卷起不再接受紙版訂閱。本刊所有已刊登之文章皆已彙整於本院網站（http://www.management.fju.edu.tw/），歡迎上網查閱相關資訊。</p>
-          <blockquote class="blockquote mb-0">
-          <p style="font-size: 16px;"> 出版者 ：輔仁大學管理學院<br>
-            編輯者 ：「輔仁管理評論」編輯委員會<br>
-            地　址 ：(24205)新北市新莊區中正路510號<br>
-            電　話 ：(02)2905-3985<br>
-            傳　真 ：(02)2905-2186</p>
-        
-          </blockquote>
-      </div>
-  </div>
+  <div class="content mt-5 mb-5">
+    <div class="container-fluid">
+        <h2 class="mt-3">訂閱方式</h2>
+        <div>
+            <p style="font-size: 16px; padding: 12px; margin-top:24px;">
+            『輔仁管理評論』已停止接受紙版訂閱：
+            為因應網路時代，『輔仁管理評論』已經全面數位化，期望藉此推廣期刊內容並提升能見度。同時為響應節能減碳，
+            本刊已大幅減發紙版印量，並決定從第17卷起不再接受紙版訂閱。本刊所有已刊登之文章皆已彙整於本院網站（http://www.management.fju.edu.tw/），歡迎上網查閱相關資訊。</p>
+            <blockquote class="blockquote mb-0">
+            <p style="font-size: 16px;"> 出版者 ：輔仁大學管理學院<br>
+              編輯者 ：「輔仁管理評論」編輯委員會<br>
+              地　址 ：(24205)新北市新莊區中正路510號<br>
+              電　話 ：(02)2905-3985<br>
+              傳　真 ：(02)2905-2186</p>
+          
+            </blockquote>
+        </div>
+    </div>
+</div>
   <!-- Classic tabs -->
   <?php require "footer.php" ?>
 

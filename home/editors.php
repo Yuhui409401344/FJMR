@@ -39,7 +39,7 @@
 
     <div class="content mt-5 mb-5">
         <!-- Start Content-->
-        <div class="container-fluid" style="padding: 0px;margin:36px;"> 
+        <div class="container-fluid"> 
         
             <div id="ctl00_ContentPlaceHolder1_mypage_left" class="col-md-9">
                 <h2>編輯群</h2>
