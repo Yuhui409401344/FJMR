@@ -1,8 +1,9 @@
-            <body class="loading">
+<?php include "header.php" ?>
+<body class="loading">
 
                 <!-- Begin page -->
                 <div id="wrapper">
-                    <?php include "header.php" ?>
+                    
                     <!-- ============================================================== -->
                     <!-- Start Page Content here -->
                     <!-- ============================================================== -->
@@ -156,13 +157,14 @@
 
                                 <!-- 搜尋功能 -->
                                 <?php
-                                if ($_GET) {
+                                if (isset($_GET["searchtxt"])) {
                                     $searchtxt = $_GET["searchtxt"];
                                 }
                                 ?>
                                 <form action="index.php" method="get">
                                     <div class="container">
-                                        <input class="form-control" name="searchtxt" id="searchtxt" value="<?php if ($_GET) {
+                                        <input type='hidden' name='method' value='accounts'>
+                                        <input class="form-control" name="searchtxt" id="searchtxt" value="<?php if (isset($searchtxt)) {
                                                                                                                 echo $searchtxt;
                                                                                                             } ?>" type="text" placeholder="輸入名字搜尋">
                                         <br>

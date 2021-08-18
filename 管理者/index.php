@@ -36,7 +36,7 @@ if(isset($_SESSION["account"]["login"])){
 
 </head>
 <?php
-        include "header.php";
+        // include "header.php";
 
         $method = $_GET['method'];
 

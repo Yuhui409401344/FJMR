@@ -38,16 +38,16 @@
       </nav>
   </div>
 
-<div class="container-fluid"  style="padding: 0px;margin:36px;">
+<div class="container-fluid">
 <!--Section: Contact v.2-->
-<section class="mb-4">
+<section class="mb-4"  style="padding: 0px;margin:36px;">
 
     <!--Section description-->
     <p class="text-center w-responsive mx-auto mb-5">Fu Jen Management Review collects all the research papers, journals and e-newsletters of Fu Jen Department of Management, with the core objective of promoting social development and providing the latest management research for scholars and society.
         If you are interested in collaborating with us, please write to us and we will arrange for someone to discuss with you.</p>
     <div class="row  justify-content-center">
-      <div class="col-md text-center">
-        <p><iframe allowfullscreen="" frameborder="0" height="450" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1807.5147944904927!2d121.4344381!3d25.0330699!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a7e62da2f981%3A0x85bf93ced826265b!2z5o236YGL6LyU5aSn56uZ!5e0!3m2!1szh-TW!2stw!4v1505187108330" style="border:0" width="600"></iframe></p>
+      <div class="col text-center">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7229.819674830898!2d121.4277671!3d25.0371337!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a7e8647a87c9%3A0xba031574a14d1914!2z56eB56uL6LyU5LuB5aSn5a24!5e0!3m2!1sen!2stw!4v1629278275206!5m2!1sen!2stw" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
           <!--Grid column-->
       <div class="col-md text-center">
