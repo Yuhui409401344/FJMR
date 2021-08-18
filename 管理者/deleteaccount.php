@@ -32,7 +32,7 @@
                                 if($count > 1){
                                     $sql=$pdo->prepare("DELETE account,account_field from account left join account_field on account_field.login=account.login and account_field.status=account.status where account.login=? and account.status=?");
                                     if ($sql->execute([$login,$status])) {
-                                        echo "<script> {window.alert('刪除成功');location.href='accountmanage.php'} </script>";
+                                        echo "<script> {window.alert('刪除成功');location.href='index.php?method=accountmanage'} </script>";
                                     } else {
                                         echo '刪除失敗。';
                                     }
@@ -45,7 +45,7 @@
                                     $sql4=$pdo->prepare("DELETE account_img from account_img where login=?  ");
                                     $sql5=$pdo->prepare("DELETE account_resume from account_resume where login=?  ");
                                     if ($sql1->execute([$login]) and $sql2->execute([$login]) and $sql3->execute([$login]) and $sql4->execute([$login]) and $sql5->execute([$login])) {
-                                        echo "<script> {window.alert('刪除成功');location.href='accountmanage.php'} </script>";
+                                        echo "<script> {window.alert('刪除成功');location.href='index.php?method=accountmanage'} </script>";
                                     } else {
                                         echo '刪除失敗。';
                                     }
