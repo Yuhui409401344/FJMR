@@ -70,7 +70,7 @@
                                                     $sql3->execute([$login,$v,implode(',',$status)]);
                                                     
                                                 }
-                                                echo "<script> {window.alert('修改成功');location.href='accountmanage.php'} </script>";
+                                                echo "<script> {window.alert('修改成功');location.href='index.php?method=accountmanage'} </script>";
                                             ?>
                                         </div>
                                         <!-- /Start your project here-->
