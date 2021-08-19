@@ -143,8 +143,10 @@
                                                 </div>
                                                 <h4 class="header-title ">用戶級別數量</h4>
                                                 <div id="cardCollpase3" class="collapse pt-3 show">
-                                                    <div class="text-center">
-                                                        <div id="donutchart" style="width: 449px; height: 300px;"></div>
+                                                    <div class="card-body text-center">
+                                                        <div id="donutchart" 
+                                                        style="height: 200px; width:280px" 
+                                                        ></div>
                                                     </div>
                                                 </div>
                                             </div> <!-- end card-body-->
@@ -211,7 +213,7 @@
                                                             echo ' ';
                                                         }
                                                         ?>
-                                                    </p> <span> | </span> <span> <a href="mailto:<?php echo $email ?>" class="text-pink"><?php echo $email ?></a> </span></p>
+                                                    </p> <span> 輔仁大學心理系 | </span> <span> <a href="mailto:<?php echo $email ?>" class="text-pink"><?php echo $email ?></a> </span></p>
 
                                                     <p>專長：
                                                         <?php

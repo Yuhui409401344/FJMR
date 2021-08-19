@@ -99,7 +99,7 @@ $login=$_SESSION["account"]["login"];
                                 <?php
                                 }else{
                                 ?>
-                                <a class="dropdown-item" href="../管理者2/index.php?method=maildistribution" style="font-size: small;">
+                                <a class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
                                 <i class="fe-user"></i>
                                 管理者系統
                                 </a>

@@ -18,6 +18,17 @@ if(isset($_POST["login"]))
     foreach($datalist2 as $datadetail2){
         array_push($field, $datadetail2["f_name"]);
     }
+
+    foreach($pdo->query("SELECT tel_1,tel_2 from account_tel where login ='$login'") as $row){
+        $tel_1=$row["tel_1"];
+        $tel_2=$row["tel_2"];
+    }
+
+    if(!isset($tel_1,$tel_2)){
+        $tel_1='';
+        $tel_2='';
+    }
+
     
     foreach ($pdo->query("select distinct name,email,date,bio,photo,imgType from account left join account_bio on account.login = account_bio.login left join account_img ON account_img.login=account.login where account.login =  '".$login."' ") as $row) {
         $name=$row['name'];
@@ -37,19 +48,23 @@ if(isset($_POST["login"]))
         <p class="text-muted" type="text" name="login" id="login">@ '.$login.'</p> 
         <div class="text-left mt-3">
         <p class="text-muted mb-2 font-13"><strong>身份 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.implode('  ', $status).'</span>
+        <span class="ml-2 " type="text">'.implode('  ', $status).'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>領域 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.implode('  ', $field).'</span>
+        <span class="ml-2 " type="text" name="field" id="field">'.implode('  ', $field).'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>Email :</strong>
         <span class="ml-2 " type="text" name="email" id="email">'.$email.'</span>
         </p>
+        <p class="text-muted mb-2 font-13"><strong>連絡電話 :</strong>
+        <span class="ml-2 " type="text" name="tel_1" id="tel_1">'.$tel_1.'</span>
+        <span class="ml-2 " type="text" name="tel_2" id="tel_2">'.$tel_2.'</span>
+        </p>
         <p class="text-muted mb-2 font-13"><strong>開始日期 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.$date.'</span>
+        <span class="ml-2 " type="text" name="date" id="date">'.$date.'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>簡介 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.$bio.'</span>
+        <span class="ml-2 " type="text" name="bio" id="bio">'.$bio.'</span>
         </p>
         </div>
         <div class="modal-footer">
@@ -68,19 +83,23 @@ if(isset($_POST["login"]))
         <p class="text-muted" type="text" name="login" id="login">@ '.$login.'</p> 
         <div class="text-left mt-3">
         <p class="text-muted mb-2 font-13"><strong>身份 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.implode('  ', $status).'</span>
+        <span class="ml-2 " type="text">'.implode('  ', $status).'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>領域 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.implode('  ', $field).'</span>
+        <span class="ml-2 " type="text" name="field" id="field">'.implode('  ', $field).'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>Email :</strong>
         <span class="ml-2 " type="text" name="email" id="email">'.$email.'</span>
         </p>
+        <p class="text-muted mb-2 font-13"><strong>連絡電話 :</strong>
+        <span class="ml-2 " type="text" name="tel_1" id="tel_1">'.$tel_1.'</span>
+        <span class="ml-2 " type="text" name="tel_2" id="tel_2">'.$tel_2.'</span>
+        </p>
         <p class="text-muted mb-2 font-13"><strong>開始日期 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.$date.'</span>
+        <span class="ml-2 " type="text" name="date" id="date">'.$date.'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>簡介 :</strong>
-        <span class="ml-2 " type="text" name="email" id="email">'.$bio.'</span>
+        <span class="ml-2 " type="text" name="bio" id="bio">'.$bio.'</span>
         </p>
         </div>
         <div class="modal-footer">
