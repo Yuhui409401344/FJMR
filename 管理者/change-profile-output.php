@@ -21,6 +21,8 @@ if(isset($_SESSION["account"]["login"])){
                                     $password=$_POST["password"];
                                     $field=$_POST["field"];
                                     $bio=$_POST['bio'];
+                                    $tel=$_POST['tel'];
+                                    $school=$_POST['school'];
                                     
                                    
                                     $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
@@ -30,10 +32,15 @@ if(isset($_SESSION["account"]["login"])){
                                         $array[]=$status['status'];
                                     }
                                     
+                                   
                                 
                                     //基本資料
-                                    $sql=$pdo ->prepare("update account set name=?, email=?, password=?  where login='".$login."'");
-                                    $sql->execute([$name,$email,$password]);
+                                    $sql=$pdo ->prepare("update account set name=?, email=?, password=?, school=?  where login='".$login."'");
+                                    $sql->execute([$name,$email,$password,$school]);
+
+                                    //基本資料
+                                    $sqltel=$pdo ->prepare("update account_tel set tel=?  where login='".$login."'");
+                                    $sqltel->execute([$tel]);
 
                                     //簡介
                                     $sql0=$pdo ->prepare("delete from  account_bio where login=?");
