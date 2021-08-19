@@ -44,7 +44,8 @@
                                     $sql3=$pdo->prepare("DELETE account_bio from account_bio where login=?  ");
                                     $sql4=$pdo->prepare("DELETE account_img from account_img where login=?  ");
                                     $sql5=$pdo->prepare("DELETE account_resume from account_resume where login=?  ");
-                                    if ($sql1->execute([$login]) and $sql2->execute([$login]) and $sql3->execute([$login]) and $sql4->execute([$login]) and $sql5->execute([$login])) {
+                                    $sql6=$pdo->prepare("delete account_tel from account_tel where login=?");
+                                    if ($sql1->execute([$login]) and $sql2->execute([$login]) and $sql3->execute([$login]) and $sql4->execute([$login]) and $sql5->execute([$login]) and $sql6->execute([$login])) {
                                         echo "<script> {window.alert('刪除成功');location.href='index.php?method=accountmanage'} </script>";
                                     } else {
                                         echo '刪除失敗。';

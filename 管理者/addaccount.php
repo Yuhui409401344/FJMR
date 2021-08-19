@@ -22,11 +22,6 @@
                                                     <label for="name">姓名</label>
                                                     <input type="text" class="form-control" name="name" placeholder="請輸入真實姓名">
                                                 </div>
-                                                <!--input -->
-                                                <div class="form-group">
-                                                    <label for="email">email</label>
-                                                    <input type="text" class="form-control" name="email">
-                                                </div>
                                                 <div class="form-group">
                                                     <label for="login">帳號</label>
                                                     <input type="text" class="form-control" name="login">
@@ -34,6 +29,20 @@
                                                 <div class="form-group">
                                                     <label for="password">密碼</label>
                                                     <input type="text" class="form-control" name="password" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">email</label>
+                                                    <input type="text" class="form-control" name="email">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="phone">電話</lable>
+                                                        <input type="text" class="form-control" name="phone">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="school">學校與學系</lable>
+                                                        <input type="text" class="form-control" name="school">
+                                                    </div>
                                                 </div>
                                                 <div class="p-sm-3">
                                                     <div class="checkbox checkbox-blue checkbox-circle form-check-inline">

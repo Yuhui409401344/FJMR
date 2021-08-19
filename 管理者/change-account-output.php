@@ -53,17 +53,21 @@
                                                 $login=$_POST["login"];  
                                                 $status=$_POST["status"];
                                                 $field=$_POST["field"];
-                                                
+                                                $phone=$_POST["phone"];
+                                                $school=$_POST["school"];
                                                 
                                                 $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                                                 $sql=$pdo ->prepare("delete from account where login=? and status=?");
                                                 $sql->execute([$login,implode(',',$status)]);
 
-                                                $sql1=$pdo->prepare("INSERT INTO account (login,name,email,password,status) VALUES (?,?,?,?,?)");
-                                                $sql1->execute([$login,$name,$email,$password, implode(',',$status)]);
+                                                $sql1=$pdo->prepare("INSERT INTO account (login,name,email,password,status,school) VALUES (?,?,?,?,?,?)");
+                                                $sql1->execute([$login,$name,$email,$password, implode(',',$status),$school]);
 
                                                 $sql2=$pdo ->prepare("delete from account_field where login=? and status=?");
                                                 $sql2->execute([$login,implode(',',$status)]);
+
+                                                $sql4=$pdo->prepare("update account_tel set tel=? where login=?");
+                                                $sql4->execute([$phone,$login]);
 
                                                 foreach($field as $v){
                                                     $sql3=$pdo ->prepare('INSERT INTO account_field (login, f_name,status) VALUES (?,?,?)');

@@ -53,7 +53,7 @@
                                         $status=$_GET["status"];  
                                         $link=mysqli_connect("localhost","root","","fjup");
                                         
-                                        $sql="select * from account where login='".$login."' and status='".$status."' ";
+                                        $sql="select account.name,account.login,account.password,account.email,account.school,account.status,account_tel.tel from account,account_tel where account.login=account_tel.login and account.login='".$login."' and account.status='".$status."' ";
                                         $rs=mysqli_query($link,$sql);
                                         if($record=mysqli_fetch_row($rs))
                                         {
@@ -62,6 +62,8 @@
                                             $password=$record[2];
                                             $email=$record[3];
                                             $status=$record[5];
+                                            $school=$record[4];
+                                            $phone=$record[6];
                                         }
                                         mysqli_close($link);
                                     ?>
@@ -80,15 +82,24 @@
                                                     <label for="name">姓名</label>
                                                     <input type="text" class="form-control" name="name" value="<?php echo $name ?>">
                                                 </div>
-                                                <!--input -->
+                                                <div class="form-group">
+                                                    <label for="password">密碼</label>
+                                                    <input type="text" class="form-control" name="password" value="<?php echo $password?>" >
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="email">email</label>
                                                     <input type="text" class="form-control" name="email" value="<?php echo $email ?>">
                                                 </div>
                                                 
-                                                <div class="form-group">
-                                                    <label for="password">密碼</label>
-                                                    <input type="text" class="form-control" name="password" value="<?php echo $password?>" >
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="phone">電話</lable>
+                                                        <input type="text" class="form-control" name="phone" value="<?php echo $phone?>">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="school">學校與學系</lable>
+                                                        <input type="text" class="form-control" name="school" value="<?php echo $school?>">
+                                                    </div>
                                                 </div>
                                                 <div class="p-sm-3">
                                                     <div class="radio radio-info form-check-inline">
@@ -134,7 +145,9 @@
                                                         foreach($datalist as $datadetail){
                                                             $arr[]=$datadetail['f_name'];
                                                         }
-
+                                                        if(!isset($arr)){
+                                                            $arr[]='';
+                                                        }
                                                         ?>
                                                 
                                                     </div>
