@@ -193,7 +193,7 @@
                                 </div> <!-- end Col -->
                             </div><!-- End row -->
                         </div>
-                    </;div> <!-- container -->
+                    </div> <!-- container -->
                 </div> <!-- content -->
 
 
