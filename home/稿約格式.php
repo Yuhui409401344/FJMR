@@ -190,7 +190,7 @@
                                 例1. _________,「動腦323輯」，台北：動腦雜誌，2003年。<br>
                                 例2. _______, H.B. Gregersen & M.E. Mendenhall, "Toward a Theoretical Framework of Repatriation Adjustment", Journal of International Business, 23(4), 1992, pp.737-760.</p>
                     </div>
-</div>
+                  </div>
                 </div>
             </div>
         </div>

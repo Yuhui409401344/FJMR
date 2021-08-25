@@ -22,7 +22,6 @@
                             </div>
                         </div>
                         <!-- end row-->
-                        
                         <div class="row filterable-content">
                            <!-- 已分配的稿件 -->
                             <div class="row col-12 col-xl-12 filter-item all distri">
