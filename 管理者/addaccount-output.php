@@ -62,11 +62,13 @@
                                       $field=$_POST["field"];
                                       $name=$_POST["name"];
                                       $login=$_POST["login"];
+                                      $school=$_POST["school"];
+                                      $phone=$_POST["phone"];
                                       
                                       $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                                       foreach($status as $s){
-                                        $sql=$pdo->prepare('insert into account (name,email,login,password,status) VALUES(?,?,?,?,?)');
-                                        $sql->execute([$name,$_REQUEST['email'],$login,$_REQUEST['password'],$s]);
+                                        $sql=$pdo->prepare('insert into account (name,email,login,password,status,school) VALUES(?,?,?,?,?,?)');
+                                        $sql->execute([$name,$_REQUEST['email'],$login,$_REQUEST['password'],$s,$school]);
                                       }
                                       
                                       if($field != NULL){
@@ -80,6 +82,9 @@
                                         $sql2=$pdo ->prepare('INSERT INTO account_field (login, f_name,status) VALUES (?,?,?)');
                                         $sql2->execute([$login,"",implode(',',$status)]);
                                       }
+
+                                      $sql3=$pdo->prepare('insert into account_tel (login,tel) values (?,?)');
+                                      $sql3->execute([$login,$phone]);
                                       
                                       if (empty($_REQUEST['login'])) {
                                       echo '請輸入帳號。';
