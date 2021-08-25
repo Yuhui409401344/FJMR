@@ -199,6 +199,13 @@ $login=$_SESSION["account"]["login"];
                                     </ul>
                                 </div>
                             </li>
+
+                            <li>
+                                <a href="index.php?method=deadline">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span> 即期稿件 </span>
+                                </a>
+                            </li>
                             
                             <li>
                                 <a href="index.php?method=accountmanage">

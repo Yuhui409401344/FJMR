@@ -45,6 +45,7 @@ if(isset($_SESSION["account"]["login"])){
             case "maildistribution":include "maildistribution.php"; break;
             case "mailbox":include "mailbox.php"; break;
             case "sent":include "sent.php"; break;
+            case "deadline":include "deadline.php";break;
             case "accountmanage": include "accountmanage.php"; break;
             case "addaccount": include "addaccount.php"; break;
             case "accounts": include "accounts.php"; break;

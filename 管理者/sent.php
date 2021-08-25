@@ -77,7 +77,7 @@
                                                         ?>
                                                         <tr>
                                                             
-                                                            <td><a href="p2.php?id=<?php echo $id ?>"><?php echo $title ?></td>
+                                                            <td><a href="p2.php?id=<?php echo $id ?>&&pro=<?php echo $pro?>"><?php echo $title ?></td>
                                                             <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></td>
                                                             <td><?php echo $pro?></td>
                                                             <td><?php echo $ddl ?></td>
