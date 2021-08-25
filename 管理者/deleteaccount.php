@@ -1,33 +1,4 @@
-<?php require "header.php" ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
-        <!-- third party css -->
-        <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
-
-		<!-- App css -->
-		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-		<link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
-		<link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-		<link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
-		<!-- icons -->
-		<link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-
-    </head>
-    <body class="loading">
+<body class="loading">
 
 <!-- Begin page -->
 <div id="wrapper">
@@ -61,7 +32,7 @@
                                 if($count > 1){
                                     $sql=$pdo->prepare("DELETE account,account_field from account left join account_field on account_field.login=account.login and account_field.status=account.status where account.login=? and account.status=?");
                                     if ($sql->execute([$login,$status])) {
-                                        echo "<script> {window.alert('刪除成功');location.href='accountmanage.php'} </script>";
+                                        echo "<script> {window.alert('刪除成功');location.href='index.php?method=accountmanage'} </script>";
                                     } else {
                                         echo '刪除失敗。';
                                     }
@@ -73,8 +44,9 @@
                                     $sql3=$pdo->prepare("DELETE account_bio from account_bio where login=?  ");
                                     $sql4=$pdo->prepare("DELETE account_img from account_img where login=?  ");
                                     $sql5=$pdo->prepare("DELETE account_resume from account_resume where login=?  ");
-                                    if ($sql1->execute([$login]) and $sql2->execute([$login]) and $sql3->execute([$login]) and $sql4->execute([$login]) and $sql5->execute([$login])) {
-                                        echo "<script> {window.alert('刪除成功');location.href='accountmanage.php'} </script>";
+                                    $sql6=$pdo->prepare("delete account_tel from account_tel where login=?");
+                                    if ($sql1->execute([$login]) and $sql2->execute([$login]) and $sql3->execute([$login]) and $sql4->execute([$login]) and $sql5->execute([$login]) and $sql6->execute([$login])) {
+                                        echo "<script> {window.alert('刪除成功');location.href='index.php?method=accountmanage'} </script>";
                                     } else {
                                         echo '刪除失敗。';
                                     }
@@ -119,4 +91,3 @@
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
 </body>
-</html>

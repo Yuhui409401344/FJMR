@@ -1,36 +1,46 @@
 <?php include "nav.php"?>
     <div class="content-page">
         <div class="content">
-
+         
         <!-- Start Content-->
             <div class="container-fluid">
+            <div class="row mt-3">
+                <div class="col-xl-6">
+                    <div class="card-box">
+                        <h4 class="header-title mb-4 ">中文版格式</h4>
 
-                <div class="row mt-3">
-                    <div class="col-xl-6">
-                        <div class="card-box">
-                            <h4 class="header-title mb-4 badge badge-light">中文版格式</h4>
-        
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="nav flex-column nav-pills nav-pills-tab" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                        <a class="nav-link active show mb-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                        段落標明方式</a>
-                                        <a class="nav-link mb-1" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                                        字體</a>
-                                        <a class="nav-link mb-1" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                                        注釋</a>
-                                        <a class="nav-link mb-1" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
-                                        文獻引用</a>
-                                        <a class="nav-link mb-1" id="v-pills-chart-tab" data-toggle="pill" href="#v-pills-chart" role="tab" aria-controls="v-pills-chart" aria-selected="false">
-                                        圖表</a>
-                                    </div>
-                                    </div> <!-- end col-->
-                                        <div class="col-sm-9">
-                                            <div class="tab-content pt-0">
-                                                <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                                    <pre class="panel-body" style='background-color: #FFFFFF'>
-                                                    
- 壹、導論
+                        <ul class="nav nav-tabs nav-bordered">
+                            <li class="nav-item">
+                                <a href="#ch-1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    段落標明方式
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#ch-2" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                    字體
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#ch-3" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    注釋
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#ch-4" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    文獻引用
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#ch-5" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    圖表
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane" id="ch-1">
+<pre class="panel-body" style='background-color: #FFFFFF'>
+                        
+壹、導論
 
 一、研究設計
 
@@ -38,127 +48,138 @@
 
     1. 可信度
 
-（1）
+    （1）
         a………
             （a）………</pre>
-          <p>第一層標題：中黑體17pt，粗體，置中。<br>
-            第二層標題：中黑體16pt，粗體，左右對齊。<br>
-            第三層標題：中黑體13pt，粗體，左右對齊。<br>
-            第四層標題：細明體11pt，粗體，左右對齊。</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                                <p><br> 
-            1.  題目：粗黑體22pt，置中。<br>
-            2.  作者姓名：細明體14pt，粗體，置中。<br>
-            3.  摘要標題：中黑體12pt，靠左；摘要內容：細明體9pt。<br>
-            4. 關鍵字：標楷體9pt。<br>
-            5. 內文：細明體11pt，分段落，左右對齊。<br>
-            6. 行距：最小行高18pt。</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                                <p><br>
-                                                        附註於頁底。如下例：
-                                                        <br>
-                                                        <br>
-                                                        出現超常報酬的期間與出現成交量殘差為正值的期間無關。2 <br>
-                                                        <br>
-                                                        2在Crouch（1970）及（1980）的實證研究發現，資訊不對稱期間的交易量異常大時，成交量殘差與報酬率殘差值將成正值。此現象為Crouch（1970）及Morse（1980）的實證研究所發現。
-                                                        </p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <p><br> 例: 近年來有關這方面的探討逐漸受到重視，尤其在有關組織行為與人事管理研究領域中「組織承諾」
-              （Organization Commitment）是常被學者們提及的重要概念之一（Steers, 1997；Mowday,et.al., 1982；O’Reilly & Chatman, 1986；黃國隆，1986）。</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-chart" role="tabpanel" aria-labelledby="v-pills-chart-tab">
-                                                   <p><br>
-            1. 圖表置正文內。<br>
-            2. 表的名稱置於表上方（表頭），圖的名稱置於圖下方（圖尾），並以國字區分不同之圖、表。（例如：圖一、表二）<br>
-            3. 對圖表內容（如表中之符號）作簡要說明時，請置於圖表下方。<br>
-            4. 中文：置中，內容細明體9號字，標題標楷體11號字</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col-->
-                                    </div> <!-- end row-->
-                                    
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col -->
-                            
-                             <div class="col-xl-6">
-                                <div class="card-box">
-                                    <h4 class="header-title mb-4 badge badge-light">英文版格式</h4>
-        
-                                    <div class="row">
-                                         <div class="col-sm-3">
-                                            <div class="nav flex-column nav-pills nav-pills-tab" id="v-pills-tab2" role="tablist" aria-orientation="vertical">
-                                                <a class="nav-link active show mb-1" id="v-pills-home-tab2" data-toggle="pill" href="#v-pills-home2" role="tab" aria-controls="v-pills-home2"
-                                                    aria-selected="true">
-                                                    段落標明方式</a>
-                                                <a class="nav-link mb-1" id="v-pills-profile-tab2" data-toggle="pill" href="#v-pills-profile2" role="tab" aria-controls="v-pills-profile2"
-                                                    aria-selected="false">
-                                                    字體</a>
-                                                <a class="nav-link mb-1" id="v-pills-messages-tab2" data-toggle="pill" href="#v-pills-messages2" role="tab" aria-controls="v-pills-messages2"
-                                                    aria-selected="false">
-                                                    注釋</a>
-                                                <a class="nav-link mb-1" id="v-pills-settings-tab2" data-toggle="pill" href="#v-pills-settings2" role="tab" aria-controls="v-pills-settings2"
-                                                    aria-selected="false">
-                                                    文獻引用</a>
-                                                 <a class="nav-link mb-1" id="v-pills-chart-tab2" data-toggle="pill" href="#v-pills-chart2" role="tab" aria-controls="v-pills-chart2"
-                                                    aria-selected="false">
-                                                    圖表</a>
-                                            </div>
-                                        </div> <!-- end col -->
-                                        <div class="col-sm-9">
-                                            <div class="tab-content pt-0" id="v-pills-tabContent">
-                                                <div class="tab-pane fade active show" id="v-pills-home2" role="tabpanel" aria-labelledby="v-pills-home-tab2">
-                                                     <pre class="panel-body" style='background-color: #FFFFFF'>
+                                <p>第一層標題：中黑體17pt，粗體，置中。<br>
+                                第二層標題：中黑體16pt，粗體，左右對齊。<br>
+                                第三層標題：中黑體13pt，粗體，左右對齊。<br>
+                                第四層標題：細明體11pt，粗體，左右對齊。</p>
+                            </div>
+                            <div class="tab-pane show active" id="ch-2">
+                                <p>
+                                    <br> 
+                                    1.  題目：粗黑體22pt，置中。<br>
+                                    2.  作者姓名：細明體14pt，粗體，置中。<br>
+                                    3.  摘要標題：中黑體12pt，靠左；摘要內容：細明體9pt。<br>
+                                    4. 關鍵字：標楷體9pt。<br>
+                                    5. 內文：細明體11pt，分段落，左右對齊。<br>
+                                    6. 行距：最小行高18pt。
+                                </p>
+                            </div>
+                            <div class="tab-pane" id="ch-3">
+                                <p>
+                                    <br>
+                                    附註於頁底。如下例：
+                                    <br>
+                                    <br>
+                                    出現超常報酬的期間與出現成交量殘差為正值的期間無關。2 <br>
+                                    <br>
+                                    2在Crouch（1970）及（1980）的實證研究發現，資訊不對稱期間的交易量異常大時，成交量殘差與報酬率殘差值將成正值。此現象為Crouch（1970）及Morse（1980）的實證研究所發現。
+                                </p>
+                            </div>
+                            <div class="tab-pane" id="ch-4">
+                                <p><br> 例: 近年來有關這方面的探討逐漸受到重視，尤其在有關組織行為與人事管理研究領域中「組織承諾」（Organization Commitment）是常被學者們提及的重要概念之一（Steers, 1997；Mowday,et.al., 1982；O’Reilly & Chatman, 1986；黃國隆，1986）。</p>
+                            </div>
+                            <div class="tab-pane" id="ch-5">
+                                <p>
+                                    <br>
+                                    1. 圖表置正文內。<br>
+                                    2. 表的名稱置於表上方（表頭），圖的名稱置於圖下方（圖尾），並以國字區分不同之圖、表。（例如：圖一、表二）<br>
+                                    3. 對圖表內容（如表中之符號）作簡要說明時，請置於圖表下方。<br>
+                                    4. 中文：置中，內容細明體9號字，標題標楷體11號字
+                                </p>
+                            </div>
+                        </div>
+                    </div> <!-- end card-box-->
+                </div><!-- end 中文版格式 -->
+
+                <div class="col-xl-6">
+                    <div class="card-box">
+                        <h4 class="header-title mb-4 ">英文版格式</h4>
+
+                        <ul class="nav nav-tabs nav-bordered">
+                            <li class="nav-item">
+                                <a href="#E-1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    段落標明方式
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#E-2" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                    字體
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#E-3" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    注釋
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#E-4" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    文獻引用
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#E-5" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    圖表
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane" id="E-1">
+<pre class="panel-body" style='background-color: #FFFFFF'>
                                                      
 INTRODUCTION
 
 1.   Research Design
 1.1  Instrument（置左）</pre>
-         
-          <p>第一層標題：Arial字型17pt，粗體，置中。<br>
-             第二層標題：全真中黑體16pt，粗體，左右對齊。</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-profile2" role="tabpanel" aria-labelledby="v-pills-profile-tab2">
-                                                   <p><br> 
-                1.  題目：Arial字型18pt，粗體，置中，每字的第一字母為大寫，其餘小寫，置中。<br>
-                2. 作者姓名：Arial字型13pt，粗體，置中。<br>
-                3. 英文摘要（標題）<br>
-                  （1） 英文摘要：Times New Roman字型11pt，粗體，靠左。<br>
-                  （2 ）摘要內容：Times New Roman字型7pt，粗體，左右對齊。<br>
-                  <br>
-                4. 關鍵字：Arial字型9pt，靠左。<br>
-                5. 內文：Times New Roman字型11pt，分段落，左右對齊。<br>
-                6. 行距：最小行高18pt。.</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-messages2" role="tabpanel" aria-labelledby="v-pills-messages-tab2">
-                                                   <p><br>附註於頁底。如下例：<br>
-          <br>
-          …However, it is easy to see that from the model setting, mathematically,  when both inequalities in (13)hold strictly, it merely means that an investor is not allowed to hold an asset long and short simultaneously.7<br>
-          <br>
-          7 Stulz（1981, pp.927）states that “From first order conditions, it follows that  both inequalities can hold strictly only if the investor does not hold that asset,…</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab2">
-                                                   <p><br>例: Olson（1977）suggested that people are more likely to use price to infer product quality when judging an expensive product.</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-pills-chart2" role="tabpanel" aria-labelledby="v-pills-chart-tab2">
-                                                   <p><br>
-                1. 圖表置正文內。<br>
-                2. 表的名稱置於表上方（表頭），圖的名稱置於圖下方（圖尾），並以國字區分不同之圖、表。（例如：圖一、表二）<br>
-                3. 對圖表內容（如表中之符號）作簡要說明時，請置於圖表下方。<br>
-                4. 英文：置中，內容Arial字型9pt，標題Times New Roman字型11pt。.</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col -->
-                                       
-                                    </div> <!-- end row-->
-        
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col -->
+                                <p>第一層標題：Arial字型17pt，粗體，置中。<br>
+                                第二層標題：全真中黑體16pt，粗體，左右對齊。</p>
+                            </div>
+                            <div class="tab-pane show active" id="E-2">
+                            <p><br> 
+                            1.  題目：Arial字型18pt，粗體，置中，每字的第一字母為大寫，其餘小寫，置中。<br>
+                            2. 作者姓名：Arial字型13pt，粗體，置中。<br>
+                            3. 英文摘要（標題）<br>
+                            （1） 英文摘要：Times New Roman字型11pt，粗體，靠左。<br>
+                            （2 ）摘要內容：Times New Roman字型7pt，粗體，左右對齊。<br>
+                            <br>
+                            4. 關鍵字：Arial字型9pt，靠左。<br>
+                            5. 內文：Times New Roman字型11pt，分段落，左右對齊。<br>
+                            6. 行距：最小行高18pt。.</p>
+                            </div>
+                            <div class="tab-pane" id="E-3">
+                                <p>
+                                    <br>
+                                    附註於頁底。如下例：<br>
+                                    <br>
+                                    …However, it is easy to see that from the model setting, mathematically,  when both inequalities in (13)hold strictly, it merely means that an investor is not allowed to hold an asset long and short simultaneously.7<br>
+                                    <br>
+                                    7 Stulz（1981, pp.927）states that “From first order conditions, it follows that  both inequalities can hold strictly only if the investor does not hold that asset,…
+                                </p>
+                            </div>
+                            <div class="tab-pane" id="E-4">
+                            <p><br>例: Olson（1977）suggested that people are more likely to use price to infer product quality when judging an expensive product.</p>
+                            </div>
+                            <div class="tab-pane" id="E-5">
+                            <p>
+                                <br>
+                                1. 圖表置正文內。<br>
+                                2. 表的名稱置於表上方（表頭），圖的名稱置於圖下方（圖尾），並以國字區分不同之圖、表。（例如：圖一、表二）<br>
+                                3. 對圖表內容（如表中之符號）作簡要說明時，請置於圖表下方。<br>
+                                4. 英文：置中，內容Arial字型9pt，標題Times New Roman字型11pt。.
+                            </p>
+                            </div>
+                        </div>
+                    </div> <!-- end card-box-->
+                </div><!-- end 英文版格式 -->
+
+
+            
+          
                             <div class="col-xl-12">
                                 <div class="card-box">
-                                    <h4 class="header-title mb-4 badge badge-light">參考文獻(中、英文)</h4>
+                                    <h4 class="header-title mb-4">參考文獻(中、英文)</h4>
                                     
                                     <pre style="font-size: 14px">
                                     

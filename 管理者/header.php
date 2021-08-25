@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 $password=$_SESSION["account"]["password"];
@@ -69,13 +68,14 @@ $login=$_SESSION["account"]["login"];
 
                             </div>
                         </li>
-
+                        
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <span class="pro-user-name ml-1">
+                                <span>
                                 <?php echo $login ?><i class="mdi mdi-chevron-down"></i> 
                                 </span>
                             </a>
+                            
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <?php 
                             $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
@@ -99,7 +99,7 @@ $login=$_SESSION["account"]["login"];
                                 <?php
                                 }else{
                                 ?>
-                                <a class="dropdown-item" href="../管理者/maildistribution.php" style="font-size: small;">
+                                <a class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
                                 <i class="fe-user"></i>
                                 管理者系統
                                 </a>
@@ -107,28 +107,20 @@ $login=$_SESSION["account"]["login"];
                                 }
                             }
                             ?>
+                            <div class="dropdown-divider"></div>
 
-                                <div class="dropdown-divider"></div>
-                                
-                                <a href="profile.php" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-account-details-outline"></i>
-                                    <span>我的帳號</span>
-                                </a>
-
-                                
-
-                                <a href="tour.php" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-alert-circle-outline"></i>
-                                    <span>常見問題</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="../login/logout-output.php" class="dropdown-item notify-item">
-                                    <i class="fe-log-out"></i>
-                                    <span>登出</span>
-                                </a>
-
-
+                            <a href="profile.php" class="dropdown-item notify-item">
+                                <i class="mdi mdi-account-details-outline"></i>
+                                <span>我的帳號</span>
+                            </a>
+                            <a href="tour.php" class="dropdown-item notify-item">
+                                <i class="mdi mdi-alert-circle-outline"></i>
+                                <span>常見問題</span>
+                            </a>
+                            <a href="../login/logout-output.php" class="dropdown-item notify-item">
+                                <i class="fe-log-out"></i>
+                                <span>登出</span>
+                            </a>
                             </div>
                         </li>
 
@@ -162,6 +154,13 @@ $login=$_SESSION["account"]["login"];
                             </span>
                         </a>
                     </div>
+                    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                        <li>
+                            <button class="button-menu-mobile waves-effect waves-light">
+                                <i class="fe-menu"></i>
+                            </button>
+                        </li>
+                    </ul>
 
                     <div class="clearfix"></div>
                 </div>
@@ -186,13 +185,13 @@ $login=$_SESSION["account"]["login"];
                                 <div class="collapse" id="sidebarCrm">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="maildistribution.php">分配稿件</a>
+                                            <a href="index.php?method=maildistribution">分配稿件</a>
                                         </li>
                                         <li>
-                                            <a href="mailbox.php">所有信件</a>
+                                            <a href="index.php?method=mailbox">所有信件</a>
                                         </li>
                                         <li>
-                                            <a href="sent.php">寄件備份</a>
+                                            <a href="index.php?method=sent">寄件備份</a>
                                         </li>
                                         <!-- <li>
                                             <a href="trash.php">垃圾桶</a>
@@ -200,16 +199,23 @@ $login=$_SESSION["account"]["login"];
                                     </ul>
                                 </div>
                             </li>
+
+                            <li>
+                                <a href="index.php?method=deadline">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span> 即期稿件 </span>
+                                </a>
+                            </li>
                             
                             <li>
-                                <a href="accountmanage.php">
+                                <a href="index.php?method=accountmanage">
                                     <i class="mdi mdi-account"></i>
                                     <span> 賬號管理 </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="accounts.php">
+                                <a href="index.php?method=accounts">
                                     <i class="mdi mdi-account-box-multiple"></i>
                                     <span> 名片夾 </span>
                                 </a>

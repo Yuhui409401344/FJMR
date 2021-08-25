@@ -19,6 +19,12 @@
 
 		<!-- icons -->
 		<link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+        <style>
+            button:hover {
+  opacity: 0.8;
+}
+        </style>
         
         
 
@@ -91,7 +97,7 @@
                                            
 
                                     <div class="form-group mb-0 text-center">
-                                        <button class="btn btn-primary btn-block" type="submit"> 登入 </button>
+                                        <button class="btn button btn-block" style="color: #ffffff; background-color: #045aaa;" type="submit"> 登入 </button>
                                     </div>
                                         </div>
                                     </div>

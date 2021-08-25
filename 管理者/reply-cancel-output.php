@@ -1,6 +1,13 @@
-
 <?php 
 session_start();
+$pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+if(isset($_SESSION["account"]["login"])){
+    $manager=$_SESSION["account"]["login"];
+    foreach ($pdo->query("select status from account where login= '".$manager."'") as $row) {
+    $status[] = $row['status'];
+    }
+    if(in_array("管理者",$status)){
+
 $password=$_SESSION["account"]["password"];
 $login=$_SESSION["account"]["login"];
 ?>
@@ -67,6 +74,7 @@ $login=$_SESSION["account"]["login"];
                                             $sql=$pdo->prepare('insert into totalreply (id,title,uploader,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
                                             $sql->execute([$id,$title,$uploader,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$message,$row['count_']]);
                                             
+                                            $count_ = $row['count_'];
                                         }
                                     }
                             
@@ -75,10 +83,10 @@ $login=$_SESSION["account"]["login"];
 
                                         $to_email = $row['email'];
                                         $subject = '投稿文章:'.$title;
-                                        $message = '已評閱完畢，請盡速到平台確認結果。';
+                                        $message1 = '已評閱完畢，請盡速到平台確認結果。';
                                         $headers = 'From: 408402511@gapp.fju.edu.tw';
 
-                                        mail($to_email,$subject,$message,$headers);
+                                        mail($to_email,$subject,$message1,$headers);
                                     }
 
                                     echo "<script> {window.alert('發送成功');'} </script>";
@@ -102,7 +110,7 @@ $login=$_SESSION["account"]["login"];
                                                 <td><lebel style="font-size:18px"><?php echo $level ?></lebel></td></tr><br>
                                             <tr>
                                                 <td><font size="5"><span class="badge badge-soft-secondary">回覆次數</span></font></td>
-                                                <td><lebel style="font-size:18px"><?php echo $row['count_'] ?></lebel></td></tr><br>
+                                                <td><lebel style="font-size:18px"><?php echo $count_ ?></lebel></td></tr><br>
 
                                             <tr>
                                             <td><font size="5"><span class="badge badge-soft-secondary">回覆意見</span></font></td>
@@ -345,3 +353,11 @@ $login=$_SESSION["account"]["login"];
         
     </body>
 </html>
+<?php
+    }else{
+        include "pages-404.html";
+    }
+}else{
+    include "pages-404.html";
+}
+?>

@@ -53,13 +53,14 @@ if(isset($_SESSION["account"]["login"])){
                     <div class="container-fluid">
                     <?php
                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                        foreach ($pdo->query("select distinct name,password,email,date,bio from account left join account_bio on account.login = account_bio.login where account.login =  '".$login."' ") as $row) {
+                        foreach ($pdo->query("select distinct name,password,email,school,date,bio,tel from account left join account_bio on account.login = account_bio.login left join account_tel on account_tel.login = account.login where account.login = '".$login."' ") as $row) {
                             $name = $row['name'];
                             $password = $row['password'];
                             $email = $row['email'];
                             $date = $row['date'];
                             $bio = $row['bio'];
-                           
+                            $schoolnow = $row['school'];
+                            $tel = $row['tel'];
                         }
 
                     ?>
@@ -110,6 +111,13 @@ if(isset($_SESSION["account"]["login"])){
                                         </p>
                                         <p class="text-muted mb-2 font-13"><strong>Email :</strong>
                                         <span class="ml-2 "><?php echo $email ?> </span></p>
+
+                                        <p class="text-muted mb-2 font-13"><strong>聯絡電話 :</strong>
+                                        <span class="ml-2 "><?php echo $tel ?> </span></p>
+
+                                        <p class="text-muted mb-2 font-13"><strong>任職學校 :</strong>
+                                        <span class="ml-2 "><?php echo $schoolnow ?> </span></p>
+
 
                                         <strong class="text-muted font-13 ">簡介 :</strong>
                                         <p class="text-muted font-13 mt-1 mb-2">
@@ -227,6 +235,21 @@ if(isset($_SESSION["account"]["login"])){
                                                         </div>
                                                     </div>
                                                 </div> <!-- end row -->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="userpassword">連絡電話</label>
+                                                            <input type="text" class="form-control" id="tel"  name="tel" value="<?php echo $tel ?>">
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="useremail">任職學校</label>
+                                                            <input type="text" class="form-control" id="school" name="school" value="<?php echo $schoolnow ?>">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- end row -->
+
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">

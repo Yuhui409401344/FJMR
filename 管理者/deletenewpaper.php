@@ -52,7 +52,7 @@
                                     'root', '');
                                 $sql=$pdo->prepare("DELETE newpaper,newpaper_field from newpaper left join newpaper_field on newpaper_field.title=newpaper.title where newpaper.title=?");
                                 if ($sql->execute([$title])) {
-                                    echo "<script> {window.alert('刪除成功');location.href='maildistribution.php'} </script>";
+                                    echo "<script> {window.alert('刪除成功');location.href='index.php?method=maildistribution'} </script>";
                                 } else {
                                     echo '刪除失敗。';
                                 }

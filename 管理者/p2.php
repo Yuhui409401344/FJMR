@@ -57,8 +57,9 @@
                         <!-- end page title --> 
                         <?php
                             $id=$_GET["id"];
+                            $pro=$_GET["pro"];
                             $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-                            foreach ($pdo->query("select * from distri_history where id='$id'") as $row) {
+                            foreach ($pdo->query("select * from distri_history where id='$id' and pro='$pro'") as $row) {
                                 $title=$row['title'];
                                 $pro=$row['pro'];
                                 $ddl=$row['ddl'];

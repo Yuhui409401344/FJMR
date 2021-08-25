@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -150,11 +149,15 @@
                                                                 if (!$conn) {
                                                                 die('Could not connect: ' . mysqli_error($con));
                                                                 }
-                                                                $sql="SELECT distinct account.login from account, account_field where account.status='審稿者' and account_field.f_name in (SELECT  f_name from newpaper_field  where title='$title') and account_field.login=account.login" ;
+                                                                if($arr = ""){
+                                                                    $sql="SELECT distinct account.login,login.name from account, account_field where account.status='審稿者' and account_field.f_name in (SELECT  f_name from newpaper_field  where title='$title') and account_field.login=account.login" ;
+                                                                }else{
+                                                                    $sql="SELECT distinct account.login,name from account where account.status='審稿者'";
+                                                                }
                                                                 $result = mysqli_query($conn, $sql);
                                                                 echo "<select  action='distri-output.php' method='post' class='form-control' data-toggle='select2'  name='pro[]' aria-placeholder='請選擇'>";
                                                                 while($row = mysqli_fetch_array($result)) {
-                                                                echo "<option name='pro[]' value='" . $row["login"] . "'>   " . $row["login"] . "  </option>";
+                                                                echo "<option name='pro[]' value='" . $row["login"] . "'>   " .$row["name"]." ".$row["login"] . "  </option>";
                                                                 }echo "</select>";
                                                                 mysqli_close($conn);
                                                             ?>
@@ -173,11 +176,15 @@
                                                                 if (!$conn) {
                                                                 die('Could not connect: ' . mysqli_error($con));
                                                                 }
-                                                                $sql="SELECT distinct account.login from account,account_field where account.status='審稿者' and account_field.f_name in (SELECT  f_name from newpaper_field  where title='$title') and account_field.login=account.login ";
+                                                                if($arr = ""){
+                                                                    $sql="SELECT distinct account.login,account.name from account, account_field where account.status='審稿者' and account_field.f_name in (SELECT  f_name from newpaper_field  where title='$title') and account_field.login=account.login" ;
+                                                                }else{
+                                                                    $sql="SELECT distinct login,name from account where account.status='審稿者'";
+                                                                }
                                                                 $result = mysqli_query($conn, $sql);
                                                                 echo "<select action='distri-output.php' method='post' class='form-control' data-toggle='select2' name='pro[]' aria-placeholder='請選擇'>";
                                                                 while($row = mysqli_fetch_array($result)) {
-                                                                echo "<option name='pro[]' value='" . $row["login"] . "'>" . $row["login"] . "</option>";
+                                                                echo "<option name='pro[]' value='" . $row["login"] . "'>" .$row["name"]." ".$row["login"] . "</option>";
                                                                 }echo "</select>";
                                                                 mysqli_close($conn);
                                                             ?>
@@ -206,8 +213,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-right">
-                                                
-                                            <a href="maildistribution.php"><button type="button" class="btn btn-secondary waves-effect waves-light">取消</button></a>
+                                            <a href="index.php?method=maildistribution"><button type="button" class="btn btn-secondary waves-effect waves-light">取消</button></a>
                                             <a href="distri-output.php"><button type="submit" class="btn btn-info waves-effect waves-light" >寄出</button></a>
                                             </div>
                                         </form>
@@ -256,7 +262,7 @@
                         $query=$pdo->query("SELECT f_name from newpaper_field where title = '".$title."'");
                         $datalist=$query->fetchall();
                         foreach($datalist as $datadetail){
-                        $arr[]=$datadetail['f_name'];
+                        $arry[]=$datadetail['f_name'];
                         }
                         ?>
                     </div>
@@ -265,53 +271,53 @@
                     <div style="margin-top: 3px;">
                         <div class="col-6 float-right">
                             <div class="checkbox mb-2">  
-                                <input type="checkbox" id="f1" name="field[]" value="<?php echo "管理與政策"?>"<?php if(in_array('管理與政策',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f1" name="field[]" value="<?php echo "管理與政策"?>"<?php if(in_array('管理與政策',$arry)) echo 'checked'?>>
                                 <label for="f1"> 管理與政策 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f2" name="field[]" value="<?php echo "國際企業"?>"<?php if(in_array('國際企業',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f2" name="field[]" value="<?php echo "國際企業"?>"<?php if(in_array('國際企業',$arry)) echo 'checked'?>>
                                 <label for="f2"> 國際企業 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f3"name="field[]" value="<?php echo "行銷管理"?>"<?php if(in_array('行銷管理',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f3"name="field[]" value="<?php echo "行銷管理"?>"<?php if(in_array('行銷管理',$arry)) echo 'checked'?>>
                                 <label for="f3"> 行銷管理 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f4"  name="field[]" value="<?php echo "國際貿易"?>"<?php if(in_array('國際貿易',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f4"  name="field[]" value="<?php echo "國際貿易"?>"<?php if(in_array('國際貿易',$arry)) echo 'checked'?>>
                                 <label for="f4"> 國際貿易 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f5" name="field[]" value="<?php echo "生產與作業管理"?>"<?php if(in_array('生產與作業管理',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f5" name="field[]" value="<?php echo "生產與作業管理"?>"<?php if(in_array('生產與作業管理',$arry)) echo 'checked'?>>
                                 <label for="f5"> 生產與作業管理 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f6" name="field[]" value="<?php echo "統計"?>"<?php if(in_array('統計',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f6" name="field[]" value="<?php echo "統計"?>"<?php if(in_array('統計',$arry)) echo 'checked'?>>
                                 <label for="f6"> 統計 </label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f7"  name="field[]" value="<?php echo "人力資源管理"?>"<?php if(in_array('人力資源管理',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f7"  name="field[]" value="<?php echo "人力資源管理"?>"<?php if(in_array('人力資源管理',$arry)) echo 'checked'?>>
                                 <label for="f7"> 人力資源管理 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f8" name="field[]" value="<?php echo "數量方法"?>"<?php if(in_array('數量方法',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f8" name="field[]" value="<?php echo "數量方法"?>"<?php if(in_array('數量方法',$arry)) echo 'checked'?>>
                                 <label for="f8"> 數量方法 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f9" name="field[]" value="<?php echo "資訊管理"?>"<?php if(in_array('資訊管理',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f9" name="field[]" value="<?php echo "資訊管理"?>"<?php if(in_array('資訊管理',$arry)) echo 'checked'?>>
                                 <label for="f9"> 資訊管理 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f10" name="field[]" value="<?php echo "會計"?>"<?php if(in_array('會計',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f10" name="field[]" value="<?php echo "會計"?>"<?php if(in_array('會計',$arry)) echo 'checked'?>>
                                 <label for="f10"> 會計 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f11" name="field[]" value="<?php echo "財務管理"?>"<?php if(in_array('財務管理',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f11" name="field[]" value="<?php echo "財務管理"?>"<?php if(in_array('財務管理',$arry)) echo 'checked'?>>
                                 <label for="f11"> 財務管理 </label>
                             </div>
                             <div class="checkbox mb-2">
-                                <input type="checkbox" id="f12" name="field[]" value="<?php echo "審計"?>"<?php if(in_array('審計',$arr)) echo 'checked'?>>
+                                <input type="checkbox" id="f12" name="field[]" value="<?php echo "審計"?>"<?php if(in_array('審計',$arry)) echo 'checked'?>>
                                 <label for="f12"> 審計 </label>
                             </div>
                         </div> 

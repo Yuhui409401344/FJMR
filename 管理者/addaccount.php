@@ -1,31 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
-        <!-- third party css -->
-        <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
-
-		<!-- App css -->
-		<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-		<link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
-		<link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-		<link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
-		<!-- icons -->
-		<link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-
-    </head>
     <body class="loading">
         <!-- Begin page -->
         <div id="wrapper">
@@ -50,11 +22,6 @@
                                                     <label for="name">姓名</label>
                                                     <input type="text" class="form-control" name="name" placeholder="請輸入真實姓名">
                                                 </div>
-                                                <!--input -->
-                                                <div class="form-group">
-                                                    <label for="email">email</label>
-                                                    <input type="text" class="form-control" name="email">
-                                                </div>
                                                 <div class="form-group">
                                                     <label for="login">帳號</label>
                                                     <input type="text" class="form-control" name="login">
@@ -62,6 +29,20 @@
                                                 <div class="form-group">
                                                     <label for="password">密碼</label>
                                                     <input type="text" class="form-control" name="password" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">email</label>
+                                                    <input type="text" class="form-control" name="email">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="phone">電話</lable>
+                                                        <input type="text" class="form-control" name="phone">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="school">學校與學系</lable>
+                                                        <input type="text" class="form-control" name="school">
+                                                    </div>
                                                 </div>
                                                 <div class="p-sm-3">
                                                     <div class="checkbox checkbox-blue checkbox-circle form-check-inline">

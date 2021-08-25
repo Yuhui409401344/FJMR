@@ -1,30 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
-        <!-- Bootstrap Tables css -->
-        <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
-
-        <!-- App css -->
-        <link href="../assets/css/bootstrap.min.(1).css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-        <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
-        <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-        <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
-        <!-- icons -->
-        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    </head>
-    
-
     <body class="loading">
 
         <!-- Begin page -->
@@ -49,7 +22,6 @@
                             </div>
                         </div>
                         <!-- end row-->
-                        
                         <div class="row filterable-content">
                            <!-- 已分配的稿件 -->
                             <div class="row col-12 col-xl-12 filter-item all distri">
@@ -87,7 +59,7 @@
                                                         <?php
                                                             
                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                            foreach ($pdo->query('select * from distri_history') as $row) {
+                                                            foreach ($pdo->query("select * from distri_history where manager = '".$manager."'") as $row) {
                                                                 $id=$row['id'];
                                                                 $title=$row['title'];
                                                                 $summary=$row['summary'];
@@ -104,7 +76,7 @@
                                                         ?>
                                                         <tr>
                                                             
-                                                            <td><a href="p2.php?id=<?php echo $id ?>"><?php echo $title ?></td>
+                                                            <td><a href="p2.php?id=<?php echo $id ?>&&pro=<?php echo $pro?>"><?php echo $title ?></td>
                                                             <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></td>
                                                             <td><?php echo $pro?></td>
                                                             <td><?php echo $ddl ?></td>
@@ -167,7 +139,7 @@
                                                         <?php
                                                             
                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                            foreach ($pdo->query('select * from totalreply') as $row) {
+                                                            foreach ($pdo->query("select * from totalreply where senter = '".$manager."'") as $row) {
                                                                 $id=$row['id'];
                                                                 $title=$row['title'];
                                                                 $level=$row['level'];
@@ -220,7 +192,7 @@
                                 </div> <!-- end Col -->
                             </div><!-- End row -->
                         </div>
-                    </;div> <!-- container -->
+                    </div> <!-- container -->
                 </div> <!-- content -->
 
 

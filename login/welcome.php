@@ -19,7 +19,7 @@ foreach($sql as $row){
           header("location:../審稿者/dashboard.php?login=".$login."");
 
     }else{
-          header("location:../管理者/maildistribution.php?login=".$login."");
+          header("location:../管理者/index.php?method=maildistribution");
 
     }
     

@@ -124,7 +124,7 @@ if(isset($_SESSION["account"]["login"])){
                 </li>
                 </ul>
             
-                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent-4"> -->
                 <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <?php
@@ -140,19 +140,19 @@ if(isset($_SESSION["account"]["login"])){
                         
                             if($status=="投稿者"){
                             ?>
-                            <a class="dropdown-item" href="../投稿者/format.php?login=<? echo $login?>" style="font-size: small;">
+                            <a class="dropdown-item" href="../投稿者/format.php" style="font-size: small;">
                             Author System
                             </a>
                             <?php
                             }elseif($status=="審稿者"){
                             ?>
-                            <a class="dropdown-item" href="../審稿者/dashboard.php?login=<? echo $login?>" style="font-size: small;">
+                            <a class="dropdown-item" href="../審稿者/dashboard.php" style="font-size: small;">
                             Reviewer System
                             </a>
                             <?php
                             }else{
                             ?>
-                            <a class="dropdown-item" href="../管理者/maildistribution.php?login=<? echo $login?>" style="font-size: small;">
+                            <a class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
                             Manager System
                             </a>
                             <?php
@@ -183,13 +183,13 @@ if(isset($_SESSION["account"]["login"])){
                         <a class="nav-link waves-effect waves-light" style="font-size: small;"  href="../home/home.php">中文</a>
                     </li>
                 </ul>
-                </div>
+                <!-- </div> -->
             </div>
             </div>
             </nav>
         <!-- Navbar -->
         <!-- Full Page Intro -->
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="view" style="background-image: url('../assets/images/homebg.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <!-- Mask & flexbox options-->
         <div class="mask rgba-black-light align-items-center">
             <!-- Content -->
