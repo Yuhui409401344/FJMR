@@ -191,7 +191,7 @@ if(isset($_SESSION["account"]["login"])){
         <!-- Navbar -->
         <!-- Full Page Intro -->
         <!-- <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"> -->
-        <div class="view" style="background-image: url('../assets/images/mountain.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="view" style="background-image: url('https://images.pexels.com/photos/1834399/pexels-photo-1834399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <!-- Mask & flexbox options-->
         <div class="mask rgba-black-light align-items-center">
             <!-- Content -->
