@@ -18,7 +18,7 @@
                             <div class="page-title-left mt-1">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                    <li class="breadcrumb-item active">已超過審稿期限之稿件</li>
+                                    <li class="breadcrumb-item active">已超過審稿期線之稿件</li>
                                 </ol>
                             </div>
                         </div>
