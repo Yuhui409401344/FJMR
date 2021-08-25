@@ -29,9 +29,9 @@
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="margin-bottom: 0px;background-color:#e9ecef">
-        <li class="breadcrumb-item"><a href="home.php" style="color: grey;">輔仁管理評論</a></li>
-          <li class="breadcrumb-item"  style="color:grey" >投稿</li>
-          <li class="breadcrumb-item active">稿約格式</li>
+        <li class="breadcrumb-item"><a href="home.php" style="color: grey;">FGMR</a></li>
+          <li class="breadcrumb-item"  style="color:grey" >Sumbission</li>
+          <li class="breadcrumb-item active">Format</li>
         </ol>
     </nav>
 </div>
