@@ -18,7 +18,7 @@
                             <div class="page-title-left mt-1">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                    <li class="breadcrumb-item active">即將到期之稿件</li>
+                                    <li class="breadcrumb-item active">已超過審稿期線之稿件</li>
                                 </ol>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                             <?php
                                                 
                                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                foreach ($pdo->query("SELECT distri.* from distri where not exists ( select id,reply.senter from reply where reply.id=distri.id AND reply.senter = distri.pro )") as $row) {
+                                                foreach ($pdo->query("SELECT distri.* from distri where not exists ( select id,reply.senter from reply where reply.id=distri.id AND reply.senter = distri.pro ) AND DATEDIFF(distri.ddl,now()) > 0") as $row) {
                                                     $id=$row['id'];
                                                     $title=$row['title'];
                                                     $pro=$row['pro'];
