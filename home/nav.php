@@ -50,12 +50,12 @@ if(isset($_SESSION["account"]["login"])){
                 <li class="nav-item dropdown">
                     <a data-toggle="dropdown" class="nav-link w-100" aria-haspopup="true" aria-expanded="false" >投稿<i class="mdi mdi-chevron-down"></i> </a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="徵稿.php">徵稿說明</a>
-                    <a class="dropdown-item" href="稿約格式.php">稿約格式</a>
+                    <a class="dropdown-item" href="papersubmission.php">徵稿說明</a>
+                    <a class="dropdown-item" href="format.php">稿約格式</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                      <a class="nav-link waves-effect waves-light" href="瀏覽刊物.php">所有刊物</a>
+                      <a class="nav-link waves-effect waves-light" href="All.php">所有刊物</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link waves-effect waves-light" href="contact.php">聯繫我們</a>

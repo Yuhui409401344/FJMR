@@ -28,9 +28,7 @@ if(isset($_SESSION["account"]["login"])){
 
 <!-- icons -->
 <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-
-<!-- icons -->
-<link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/style.css">
   
   <style class="list-search-style"></style>
 </head>

@@ -16,7 +16,7 @@
   <!-- Material Design Bootstrap -->
   <link rel="stylesheet" href="css/mdb.min.css">
   <!-- Your custom styles (optional) -->
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="../home/format.css">
 
 </head>
@@ -38,7 +38,7 @@
     </nav>
 </div>
 
-<div class="container mt-4 mb-4" style="height: height;position: relative;">
+<div class="container mt-4 mb-4" style="height: height;position: relative; text-align: justify">
   <div class="row mt-5 mb-3">
     <div class="tab" role="tabpanel">
         <!-- Nav tabs -->
@@ -95,7 +95,7 @@
               </p>
             </div>
             <div role="tabpanel" class="tab-pane" id="Section1"><br>
-              <ol>
+          
                 1. The reviewers of the manuscripts shall be the editorial board members and scholars in the related research fields.<br></br>
                 2. The editor-in-chief will consult with the editorial board of each field to decide the reviewers according to the nature of the manuscript.<br></br>
                 3. Each reviewer will present on the review form the main idea and structure of the study, the research methodology (including research design, data collection, sampling design, analysis methods, etc.), the literature study and the use of text, and the academic or practical contributions.<br></br>
@@ -106,7 +106,7 @@
                   <li>The original manuscript should be substantially revised and re-reviewed.</li>
                   <li> The original manuscript should not be used (please state your recommendation).</li>
                   </ol>
-              </ol>
+       
             </div>
             <div role="tabpanel" class="tab-pane fade" id="Section2"><br>
               Please send your manuscript to our public email address (please prepare 2 pdf files, one with the author's information and the other without).
