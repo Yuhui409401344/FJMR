@@ -16,7 +16,7 @@
   <!-- Material Design Bootstrap -->
   <!-- <link rel="stylesheet" href="css/mdb.min.css"> -->
   <!-- Your custom styles (optional) -->
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="format.css">
 
 </head>
@@ -38,7 +38,7 @@
 
 
 
-<div class="container mt-5" style="min-height:500px; width: fix-content">
+<div class="container mt-5" style="min-height:500px; width: fix-content; text-align: justify">
     <div class="row  mb-3">
         <div>
             <div class="tab" role="tabpanel">

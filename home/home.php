@@ -111,13 +111,13 @@ if(isset($_SESSION["account"]["login"])){
                 <li class="nav-item dropdown">
                     <a data-toggle="dropdown" class="nav-link w-100 dropdown-toggle" aria-haspopup="true" aria-expanded="false" >投稿</a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="徵稿.php">徵稿說明</a>
-                    <a class="dropdown-item" href="稿約格式.php">稿約格式</a>
+                    <a class="dropdown-item" href="papersubmission.php">徵稿說明</a>
+                    <a class="dropdown-item" href="format.php">稿約格式</a>
                     </div>
                 </li>
 
                 <li class="nav-item">
-                      <a class="nav-link waves-effect waves-light" href="瀏覽刊物.php">所有刊物</a>
+                      <a class="nav-link waves-effect waves-light" href="All.php">所有刊物</a>
                 </li>
                 
                 <li class="nav-item">
@@ -203,7 +203,7 @@ if(isset($_SESSION["account"]["login"])){
                 <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>輔仁管理評論</strong></h1>
                 <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
                 <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>TODAY'S RESEARCH, TOMORROW'S INNOVATION.</strong></h5>
-                <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s" href="瀏覽刊物.php">瀏覽</a>
+                <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s" href="All.php">瀏覽</a>
                 <a class="btn btn-outline-white wow fadeInDown" data-wow-delay="0.4s" href="purpose.php">關於</a>
                 </div>
                 <!--Grid column-->
@@ -241,7 +241,7 @@ if(isset($_SESSION["account"]["login"])){
                             <h4 class="card-title">研究員</h4>
                             <p class="card-text">我們很榮幸可以提供輔仁大學所有商業領域的期刊論文，以支持您在研究上的進步。</p>
                             <ul class="rlist" >
-                                <li><a href="瀏覽刊物.php">所有刊物</a></li>
+                                <li><a href="All.php">所有刊物</a></li>
                             </ul>
                         </div>
                     </div>
@@ -253,8 +253,8 @@ if(isset($_SESSION["account"]["login"])){
                             <h4 class="card-title">作家</h4>
                             <p class="card-text">你的研究將會為世界帶來改變。</p>
                             <ul class="rlist" >
-                                <li><a href="徵稿.php"  rel="noopener">徵稿說明</a></li>
-                                <li><a href="稿約格式.php" rel="noopener">稿約格式</a></li>
+                                <li><a href="papersubmission.php"  rel="noopener">徵稿說明</a></li>
+                                <li><a href="format.php" rel="noopener">稿約格式</a></li>
                             </ul>
                         </div>
                     </div>
