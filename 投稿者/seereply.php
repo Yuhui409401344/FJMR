@@ -19,7 +19,7 @@ $login=$_SESSION["account"]["login"];
             //  or auth4=(select distinct name from account where login='".$login."')
             //  or auth5=(select distinct name from account where login='".$login."')
             // ") as $row) {
-                foreach ($pdo->query("select title, level, filename, replycount, replytime, message, have_reply from totalreply where uploader='".$login."' order by replytime DESC") as $row) {
+                foreach ($pdo->query("select title, level, filename, replycount, replytime, message, have_reply from totalreply where uploader='".$login."' order by replytime and replycount DESC") as $row) {
                     $title=$row['title'];
                     $level=$row['level'];
                     $filename=$row['filename'];
@@ -51,24 +51,22 @@ $login=$_SESSION["account"]["login"];
                                     <label style="font-size: 14px;"><?php echo $message ?></label>
                                     </div>
                                                       
-                                    <?php
-                                    if($have_reply == '1'){ 
-                                    if ($level =='小幅修改' or $level =='大幅修改'){
-                                    ?>
-                                        <div class="mt-2">
-                                            <a href="../管理者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
-                                            &nbsp;&nbsp;
+                                    <div class="mt-2">
+                                        <a href="../管理者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
+                                        &nbsp;&nbsp;
+                                        
+                                        <?php if($have_reply == '1'){ 
+                                        if ($level =='小幅修改' or $level =='大幅修改'){
+                                            ?>
                                             <a href="reply.php?title=<?php echo $title?>" class="text-muted  mt-2"><i class="mdi mdi-reply"></i>上傳修正檔</a>
-                                        </div>
-                                    <?php 
-                                    }}else{
-                                    ?>
-                                        <div class="mt-2">
-                                            <a href="../管理者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
-                                        </div>
-                                    <?php
+                                            
+                                        <?php 
+                                        }
                                     }
                                     ?>
+                                    </div>
+                                        
+                                    
                             </div>
                         </div>
                     </div>

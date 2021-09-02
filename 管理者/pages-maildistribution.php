@@ -62,7 +62,7 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                     <div class="page-title-left mt-1">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"></li>
-                                            <li class="breadcrumb-item"><a href="maildistribution.php">分配稿件</a></li>
+                                            <li class="breadcrumb-item"><a href="index.php?method=maildistribution">分配稿件</a></li>
                                             <li class="breadcrumb-item active">投稿者新稿件</li>
                                         </ol>
                                     </div>

@@ -68,7 +68,7 @@ $login=$_SESSION["account"]["login"];
                                         $auth4=$row['auth4'];
                                         $auth5=$row['auth5'];
 
-                                        $replytime="SELECT COUNT(*)+1 AS count_ FROM totalreply WHERE title='".$title."'";
+                                        $replytime="SELECT COUNT(*) AS count_ FROM totalreply WHERE title='".$title."'";
                                         $result=$pdo->query($replytime);
                                         foreach($result as $row){
                                             $sql=$pdo->prepare('insert into totalreply (id,title,uploader,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
@@ -110,7 +110,7 @@ $login=$_SESSION["account"]["login"];
                                                 <td><lebel style="font-size:18px"><?php echo $level ?></lebel></td></tr><br>
                                             <tr>
                                                 <td><font size="5"><span class="badge badge-soft-secondary">回覆次數</span></font></td>
-                                                <td><lebel style="font-size:18px"><?php echo $count_ ?></lebel></td></tr><br>
+                                                <td><lebel style="font-size:18px"><?php echo $count_+1 ?></lebel></td></tr><br>
 
                                             <tr>
                                             <td><font size="5"><span class="badge badge-soft-secondary">回覆意見</span></font></td>

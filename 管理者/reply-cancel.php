@@ -52,19 +52,12 @@ if(isset($_SESSION["account"]["login"])){
                                 <?php
                                         
                                         $id=$_GET['id'];  
-                                        $link=mysqli_connect("localhost","root","","fjup");
-                                        $sql="select * from newpaper where id='".$id."'";
-                                        $rs=mysqli_query($link,$sql);
-                                        if($record=mysqli_fetch_row($rs))
-                                        {
-                                            $title=$record[1];
-                                            $auth1=$record[2];
-                                            $auth2=$record[3];
-                                            $auth3=$record[4];
-                                            $auth4=$record[5];
-                                            $auth5=$record[6];
+                                        $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
+                                        foreach ($pdo->query("select DISTINCT newpaper.title, newpaper.uploader, account.name from newpaper left join account on newpaper.uploader = account.login where newpaper.id='".$id."'") as $row) {
+                                            $uploader = $row['uploader'];
+                                            $title = $row['title'];
+                                            $name = $row['name'];
                                         }
-                                        mysqli_close($link);
                                 ?>
                                 <div class="card-box">
                                      <form method="post" action="reply-cancel-output.php?id=<?php echo $id ?>" enctype="multipart/form-data">
@@ -75,7 +68,7 @@ if(isset($_SESSION["account"]["login"])){
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="product-name">收件人（投稿者）</label>
-                                            <h4><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4 ?></h4>
+                                            <h4><?php echo $name ?></h4>
 
                                         </div>    
                                         <div class="form-group mb-3">

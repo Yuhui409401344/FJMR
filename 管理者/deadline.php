@@ -72,10 +72,10 @@
                                                     $auth3=$row['auth3'];
                                                     $auth4=$row['auth4'];
                                                     $auth5=$row['auth5'];
-                                                    $level=$row['level'];
-                                                    $file=$row['uploadname'];
-                                                    $replytime=$row['replytime'];
-                                                    $comment=$row['comment'];
+                                                    // $level=$row['level'];
+                                                    // $file=$row['uploadname'];
+                                                    // $replytime=$row['replytime'];
+                                                    // $comment=$row['comment'];
                                                     
                                                     foreach($pdo->query("select account.name,account.email,account_tel.tel from account LEFT JOIN account_tel ON account.login = account_tel.login where account.login = '".$pro."'") as $sql1){
                                                         $email = $sql1['email'];

@@ -173,8 +173,17 @@
                                                             
                                                             <td><?php  echo $replycount+1 ; ?></td>
                                                             <td><?php echo $message ?></td>
+                                                           
+                                                            
                                                             <td>
-                                                            <a href="../管理者/upload/<?php echo $file ?>"  target="blank" download="<?php echo $file ?>" class='action-icon' ><i class='mdi mdi-arrow-collapse-down'></i></a>
+                                                            <?php 
+                                                            if(empty($file)){
+                                                                echo " <a  class='action-icon' ><i class='mdi mdi-cancel'></i></a>";
+                                                            }else{
+                                                                echo " <a href='../管理者/upload/".$file."'  target='blank' download='".$file."' class='action-icon' ><i class='mdi mdi-arrow-collapse-down'></i></a> ";
+                                                            }
+                                                            
+                                                            ?>
                                                             </td>
                                                             
                                                             </tr>

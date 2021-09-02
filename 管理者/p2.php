@@ -47,7 +47,7 @@
                                     <div class="page-title-left mt-1">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"></li>
-                                            <li class="breadcrumb-item"><a href="sent.php">寄件備份</a></li>
+                                            <li class="breadcrumb-item"><a href="index.php?method=sent">寄件備份</a></li>
                                             <li class="breadcrumb-item active">分配審稿</li>
                                         </ol>
                                     </div>
@@ -94,7 +94,7 @@
                                                 <div class="container">
                                                 <div class="row">
                                                     <div class="col-3">
-                                                        回覆檔案：<a href="upload/<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
+                                                        回覆檔案：<a href="../審稿者/upload/<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
                                                             <?php
                                                                 if(isset($_GET['file']))
                                                                 {

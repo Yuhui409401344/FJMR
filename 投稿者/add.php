@@ -52,7 +52,7 @@
                           <label class="custom-control-label" for="f5">生產與作業管理</label>
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                          <input type="checkbox" class="custom-control-input" id="df6" name="field[]" value="統計">
+                          <input type="checkbox" class="custom-control-input" id="f6" name="field[]" value="統計">
                           <label class="custom-control-label" for="f6">統計</label>
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">

@@ -38,7 +38,7 @@
                                     <div class="page-title-left mt-1">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"></li>
-                                            <li class="breadcrumb-item"><a href="mailbox.php">所有信件</a></li>
+                                            <li class="breadcrumb-item"><a href="index.php?method=mailbox">所有信件</a></li>
                                             <li class="breadcrumb-item active">審稿者回覆</li>
                                         </ol>
                                     </div>

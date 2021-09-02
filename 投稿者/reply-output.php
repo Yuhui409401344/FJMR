@@ -8,7 +8,7 @@
                                 <div class="card-box">
                                 <?php
                                     $title=$_POST["title"];
-                                    $field=$_POST["field"];
+                                    // $field=$_POST["field"];
                                     $summary=$_POST["summary"];
                                     $auth1=$_POST["auth1"];
                                     $auth2=$_POST["auth2"];
@@ -16,8 +16,8 @@
                                     $auth4=$_POST["auth4"];
                                     $auth5=$_POST["auth5"];
                                     $uploadtime="";
-                                    
-                                    
+
+                                  
 
                                     $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
                                     $sql1="select count(*) as count from newpaper_history where title='".$title."'";

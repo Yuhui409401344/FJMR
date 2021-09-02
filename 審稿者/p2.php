@@ -94,7 +94,7 @@
                                                 <div class="container">
                                                 <div class="row">
                                                     <div class="col-3">
-                                                        稿件下載：<a href="upload/<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
+                                                        稿件下載：<a href="../投稿者/upload/<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
                                                             <?php
                                                                 if(isset($_GET['file']))
                                                                 {

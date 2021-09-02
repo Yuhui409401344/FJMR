@@ -47,7 +47,7 @@
                                     <div class="page-title-left mt-1">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"></li>
-                                            <li class="breadcrumb-item"><a href="sent.php">寄件備份</a></li>
+                                            <li class="breadcrumb-item"><a href="index.php?method=sent">寄件備份</a></li>
                                             <li class="breadcrumb-item active">回覆意見</li>
                                         </ol>
                                     </div>
@@ -70,7 +70,7 @@
                                 $auth5=$row['auth5'];
                                 $summary=$row["summary"]; //摘要
                                 $uploadtime=$row["uploadtime"]; //投稿時間
-                                $scriptfile=$row['filename']; //原始投稿檔案
+                                $scriptfile=$row['uploadname']; //原始投稿檔案
                                 
                                 //管理者的動作
                                 $senter=$row["level"]; //管理者
@@ -103,18 +103,9 @@
                                             <div style="margin-left: 60px">
                                                 <div class="container">
                                                 <div class="row">
-                                                    <div class="col-2">
-                                                        檔案下載：<a href="upload/<?php echo $scriptfile ?>"><?php echo $title ?></a>
-                                                            <?php
-                                                                if(isset($_GET['file']))
-                                                                {
-                                                                    // $_GET['file'] 即為傳入要下載檔名的引數
-                                                                    header("Content-type:application");
-                                                                    header("Content-Length: " .(string)(filesize($_GET['file'])));
-                                                                    header("Content-Disposition: attachment; filename=".$_GET['file']);
-                                                                    readfile($_GET['file']);
-                                                                }
-                                                            ?>
+                                                    <div class="col-4">
+                                                        檔案下載：
+                                                        <a href="../投稿者/upload/<?php echo $scriptfile ?>"><?php echo $title ?></a>
                                                     </div>
                                                     <div class="col-3">
                                                             <?php
@@ -137,7 +128,7 @@
                                                         echo $replycount;
                                                         echo "次"?></a>
                                                     </div>
-                                                    <div class="col-5">
+                                                    <div class="col-3">
                                                         <a>回覆日期：<?php echo $replytime ?></a>
                                                     </div>
                                                 </div>
