@@ -177,9 +177,9 @@
                                     <?php
                                     $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                     if (empty($searchtxt)) {
-                                        $sql = "select account.login,account.name,account.password,account.email,account.status, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login group by account.name"; //預設搜尋的SQL字串
+                                        $sql = "select account.login,account.name,account.password,account.email,account.status, account.school, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login group by account.name"; //預設搜尋的SQL字串
                                     } else {
-                                        $sql = "select  account.login,account.name,account.password,account.email,account.status, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login where account.name like '%" . $searchtxt . "%' group by account.name";
+                                        $sql = "select  account.login,account.name,account.password,account.email,account.status, account.school, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login where account.name like '%" . $searchtxt . "%' group by account.name";
                                     }
                                     $result = $pdo->query($sql);
                                     foreach ($result as $row) {
@@ -189,7 +189,8 @@
                                         $password = $row['password'];
                                         $status = $row['status'];
                                         $img = $row['photo'];
-                                        $imgType = $row['imgType']
+                                        $imgType = $row['imgType'];
+                                        $school = $row['school'];
                                     ?>
                                         <div class="col-lg-4">
                                             <div class="text-center card-box">
@@ -213,7 +214,7 @@
                                                             echo ' ';
                                                         }
                                                         ?>
-                                                    </p> <span> 輔仁大學心理系 | </span> <span> <a href="mailto:<?php echo $email ?>" class="text-pink"><?php echo $email ?></a> </span></p>
+                                                    </p> <span> <?php echo $school ?> | </span> <span> <a href="mailto:<?php echo $email ?>" class="text-pink"><?php echo $email ?></a> </span></p>
 
                                                     <p>專長：
                                                         <?php
