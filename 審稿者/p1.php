@@ -108,7 +108,7 @@ $login=$_SESSION["account"]["login"];
                                                 <div class="container">
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        檔案下載：<a href="upload/<?php echo $scriptfile ?>"><?php echo $title ?></a>
+                                                        檔案下載：<a href="../投稿者/upload/<?php echo $scriptfile ?>"><?php echo $title ?></a>
                                                             <?php
                                                                 if(isset($_GET['file']))
                                                                 {

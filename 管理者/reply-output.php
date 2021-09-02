@@ -71,6 +71,7 @@ $login=$_SESSION["account"]["login"];
 
                                     $result=$pdo->query($replytime);
                                     foreach($result as $row){
+                                        $RCount=$row['count_'];
                                         $filename=$_FILES["file"]["name"];
                                         $name= explode('.',$filename);
                                         $newname=$title.'r'.$row["count_"].'.'.$name[1];
@@ -120,7 +121,7 @@ $login=$_SESSION["account"]["login"];
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">回覆次數</span></td>
-                                        <td><label style="font-size:18px"><?php echo $row['count_']+1 ?></label></td>
+                                        <td><label style="font-size:18px"><?php echo $RCount+1 ?></label></td>
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span></td>

@@ -88,8 +88,7 @@
                                             </div>
                                         <div class="form-group mb-3">
                                             <label   class=" font-weight-bold text-muted" for="product-reference">回覆建議</label><br>
-                                            <textarea class="form-control" name="comment" rows="5">
-                                            </textarea>
+                                            <textarea class="form-control" name="comment" rows="5"></textarea>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label  class=" font-weight-bold text-muted" for="product-reference">回覆評級</label><br>
