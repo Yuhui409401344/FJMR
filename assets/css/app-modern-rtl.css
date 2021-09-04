@@ -7668,8 +7668,7 @@ div.dataTables_wrapper div.dataTables_filter {
   border-left: 2px solid #f3f7f9;
   border-right: none; }
 
-.ribbon-box {
-  /* Ribbon two */ }
+
   .ribbon-box .ribbon:before {
     right: 0;
     left: auto; }
