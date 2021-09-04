@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Forgot Password | UBold - Responsive Admin Dashboard Template</title>
+        <title>忘記密碼</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -34,13 +34,13 @@
                                 
                                 <div class="text-center w-75 m-auto">
                                     <div class="auth-logo">
-                                        <a href="index.html" class="logo logo-dark text-center">
+                                        <a href="../home/home.php" class="logo logo-dark text-center">
                                             <span class="logo-lg">
                                                 <img src="../assets/images/logo-login.png" alt="" height="62">
                                             </span>
                                         </a>
                     
-                                        <a href="index.html" class="logo logo-light text-center">
+                                        <a href="../home/home.php" class="logo logo-light text-center">
                                             <span class="logo-lg">
                                                 <img src="../assets/images/logo-login.png" alt="" height="62">
                                             </span>
