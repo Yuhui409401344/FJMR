@@ -177,7 +177,7 @@
               <p style="vertical-align: middle">
                 來稿請將檔案寄送到本刊公用電子郵件信箱（請準備2份pdf檔案，其中1份載明作者相關資料，另一份無須載明）。寄送後懇請以電話確認，謝謝配合辦理！<br> <br> 
                 或者您可以利用<a href='../login/login.php'>提交論文</a>的方式向我們繳交！<br> <br> <br> 
-                收件電子郵件信箱：fjreview@mail.fju.edu.tw &nbsp;<a href="mailto: fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br> 
+                收件電子郵件信箱：fjreview@mail.fju.edu.tw &nbsp;<a href="mailto:fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br> 
                 聯絡人：輔仁大學管理學院 邱瑞真秘書<br> 
                 電話：(02) 2905-3985<br> 
                 傳真：(02) 2905-2186
