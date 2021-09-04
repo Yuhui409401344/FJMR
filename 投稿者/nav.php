@@ -261,107 +261,103 @@ if(isset($_SESSION["account"]["login"])){
          <!-- Right Sidebar -->
          <div class="right-bar">
             <div data-simplebar class="h-100">
+                <!-- Tab panes -->
+                <div class="tab-content pt-0">
+                    <div class="tab-pane active" id="settings-tab" role="tabpanel">
+                        <h6 class="font-weight-medium px-3 m-0 py-2 font-13 text-uppercase bg-light">
+                            <span class="d-block py-1">主題設定</span>
+                        </h6>
 
-               
-        <!-- Tab panes -->
-        <div class="tab-content pt-0">
-  
-           
-            <div class="tab-pane active" id="settings-tab" role="tabpanel">
-                <h6 class="font-weight-medium px-3 m-0 py-2 font-13 text-uppercase bg-light">
-                    <span class="d-block py-1">主題設定</span>
-                </h6>
+                        <div class="p-3">
+                            <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">背景顏色</h6>
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="color-scheme-mode" value="light"
+                                    id="light-mode-check" checked />
+                                <label class="custom-control-label" for="light-mode-check">淺色</label>
+                            </div>
 
-                <div class="p-3">
-                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">背景顏色</h6>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="color-scheme-mode" value="light"
-                            id="light-mode-check" checked />
-                        <label class="custom-control-label" for="light-mode-check">淺色</label>
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="color-scheme-mode" value="dark"
+                                    id="dark-mode-check" />
+                                <label class="custom-control-label" for="dark-mode-check">深色</label>
+                            </div>
+
+                            <!-- Width -->
+                            <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄</h6>
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked />
+                                <label class="custom-control-label" for="fluid-check">打開</label>
+                            </div>
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="width" value="boxed" id="boxed-check" />
+                                <label class="custom-control-label" for="boxed-check">收起</label>
+                            </div>
+
+                            <!-- Left Sidebar-->
+                            <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄顏色</h6>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="light" id="light-check" checked />
+                                <label class="custom-control-label" for="light-check">淺色</label>
+                            </div>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="dark" id="dark-check" />
+                                <label class="custom-control-label" for="dark-check">深色</label>
+                            </div>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="brand" id="brand-check" />
+                                <label class="custom-control-label" for="brand-check">天藍色</label>
+                            </div>
+
+                            <div class="custom-control custom-switch mb-3">
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="gradient" id="gradient-check" />
+                                <label class="custom-control-label" for="gradient-check">亮紫色</label>
+                            </div>
+
+                            <!-- size -->
+                            <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄大小</h6>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="leftsidebar-size" value="default"
+                                    id="default-size-check" checked />
+                                <label class="custom-control-label" for="default-size-check">預設</label>
+                            </div>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="leftsidebar-size" value="condensed"
+                                    id="condensed-check" />
+                                <label class="custom-control-label" for="condensed-check">最小化</label>
+                            </div>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="leftsidebar-size" value="compact"
+                                    id="compact-check" />
+                                <label class="custom-control-label" for="compact-check">中等</label>
+                            </div>
+
+                            <!-- Topbar -->
+                            <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">頂欄</h6>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="topbar-color" value="dark" id="darktopbar-check"
+                                    checked />
+                                <label class="custom-control-label" for="darktopbar-check">深色</label>
+                            </div>
+
+                            <div class="custom-control custom-switch mb-1">
+                                <input type="radio" class="custom-control-input" name="topbar-color" value="light" id="lighttopbar-check" />
+                                <label class="custom-control-label" for="lighttopbar-check">淺色</label>
+                            </div>
+
+
+                            <button class="btn btn-primary btn-block mt-4" id="resetBtn">重置為默認</button>
+
+                        </div>
+
                     </div>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="color-scheme-mode" value="dark"
-                            id="dark-mode-check" />
-                        <label class="custom-control-label" for="dark-mode-check">深色</label>
-                    </div>
-
-                    <!-- Width -->
-                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄</h6>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked />
-                        <label class="custom-control-label" for="fluid-check">打開</label>
-                    </div>
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="width" value="boxed" id="boxed-check" />
-                        <label class="custom-control-label" for="boxed-check">收起</label>
-                    </div>
-
-                    <!-- Left Sidebar-->
-                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄顏色</h6>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="light" id="light-check" checked />
-                        <label class="custom-control-label" for="light-check">淺色</label>
-                    </div>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="dark" id="dark-check" />
-                        <label class="custom-control-label" for="dark-check">深色</label>
-                    </div>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="brand" id="brand-check" />
-                        <label class="custom-control-label" for="brand-check">天藍色</label>
-                    </div>
-
-                    <div class="custom-control custom-switch mb-3">
-                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="gradient" id="gradient-check" />
-                        <label class="custom-control-label" for="gradient-check">亮紫色</label>
-                    </div>
-
-                    <!-- size -->
-                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄大小</h6>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="leftsidebar-size" value="default"
-                            id="default-size-check" checked />
-                        <label class="custom-control-label" for="default-size-check">預設</label>
-                    </div>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="leftsidebar-size" value="condensed"
-                            id="condensed-check" />
-                        <label class="custom-control-label" for="condensed-check">最小化</label>
-                    </div>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="leftsidebar-size" value="compact"
-                            id="compact-check" />
-                        <label class="custom-control-label" for="compact-check">中等</label>
-                    </div>
-
-                    <!-- Topbar -->
-                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">頂欄</h6>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="topbar-color" value="dark" id="darktopbar-check"
-                            checked />
-                        <label class="custom-control-label" for="darktopbar-check">深色</label>
-                    </div>
-
-                    <div class="custom-control custom-switch mb-1">
-                        <input type="radio" class="custom-control-input" name="topbar-color" value="light" id="lighttopbar-check" />
-                        <label class="custom-control-label" for="lighttopbar-check">淺色</label>
-                    </div>
-
-
-                    <button class="btn btn-primary btn-block mt-4" id="resetBtn">重置為默認</button>
-
                 </div>
-
-            </div>
-        </div>
              </div>
         </div>
         <!-- /Right-bar -->
