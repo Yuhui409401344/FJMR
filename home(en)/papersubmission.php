@@ -121,7 +121,7 @@
               <br>
               <br>
               Publisher : Department of Management, Fu Jen Catholic University<br>
-              Email: fjreview@mail.fju.edu.tw &nbsp;<a href="mailto: fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
+              Email: fjreview@mail.fju.edu.tw &nbsp;<a href="mailto:fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
               Contact Person: Secretary, Fu Jen Catholic University, College of Management<br>
               TEL: (02) 2905-2000<br>
               FAX : (02)2905-2186

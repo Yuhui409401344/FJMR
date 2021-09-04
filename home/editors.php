@@ -79,7 +79,7 @@
                 Jeng-Fu Liu, Fu Jen Catholic University&nbsp;&nbsp; 劉正夫 天主教輔仁大學<br>
                 
                 <hr>
-                <strong>助理編輯</strong>&nbsp;&nbsp;邱瑞真 <a href="mailto: fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
+                <strong>助理編輯</strong>&nbsp;&nbsp;邱瑞真 <a href="mailto:fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
                 <strong>Editorial Assistant</strong>&nbsp;&nbsp;Jui-Chen Chiu<br>
                 
                 
