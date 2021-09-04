@@ -344,6 +344,8 @@ if(isset($_SESSION["account"]["login"])){
                                                             $summary=$row['summary'];
                                                             $uploadname=$row['uploadname'];
                                                             $uploadtime=$row['uploadtime'];
+
+                                                            $Summary=nl2br($summary);//回車換成換行
                                                     ?>
                                                     
                                                     <tr>
@@ -376,11 +378,7 @@ if(isset($_SESSION["account"]["login"])){
                                                         ?></td>
 
                                                             <!-- 摘要 -->
-                                                            <td><?php 
-                                                            $Summary=nl2br($summary);//回車換成換行
-                                                            echo $Summary; 
-                                                            ?>
-                                                            </td>
+                                                        <td><?php echo $Summary; ?></td>
 
                                                         </tr>
                                                     <?php

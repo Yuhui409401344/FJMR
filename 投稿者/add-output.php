@@ -118,16 +118,50 @@
                                             move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$newname);
                                         }
 
-                                        $sql5 = $pdo->query("select email from account where status='管理者'");
-                                        foreach($sql5 as $row){
+                                        $sql5 = $pdo->query("select name,email from account where status='管理者' ");
+                                        ini_set('SMTP','smtp.tbcnet.net');
 
-                                            $to_email = $row['email'];
+                                        foreach($sql5 as $row){
+                                            $to_email = $row['email']; //管理者信箱
+                                            $name = $row['name']; //管理者姓名
+
                                             $subject = '新上傳的投稿文章:'.$title;
                                             $message = '請盡速到管理平台分配稿件。';
-                                            $headers = 'From: 408402511@gapp.fju.edu.tw';
+                                            $headers = 'From: paggiechen8866@gmail.com';
 
-                                            mail($to_email,$subject,$message,$headers);
+                                            require_once '../PHPMailer/PHPMailerAutoload.php';
+
+                                            $mail = new PHPMailer;
+
+                                            //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+                                            $mail->isSMTP();  
+                                            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                            $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
+                                            $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
+                                            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                                            $mail->Port = 587;                                    // TCP port to connect to
+
+                                            $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+                                            $mail->addAddress($to_email, $name);     // Add a recipient
+                                        
+                                            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                                            $mail->isHTML(true);                                  // Set email format to HTML
+
+                                           
+                                            $mail->Subject = "FJMR has a new submission for you to distribute!";
+                                            $mail->Body    =  file_get_contents('../mail.html', true);
+                                            $mail->AltBody = '親愛的管理者您好，輔仁管理評論目前收到一封新的投稿稿件，請您盡速到輔仁管理評論的管理者平台分配稿件，謝謝您！';
                                         }
+
+                                            if(!$mail->send()) {
+                                                echo 'Message could not be sent.';
+                                                echo 'Mailer Error: ' . $mail->ErrorInfo;
+                                            } else {
+                                                echo 'Message has been sent';
+                                            }
                                     }
                                     ?>
                                 </div> <!-- end card-box -->
