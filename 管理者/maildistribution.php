@@ -1,10 +1,11 @@
     <body class="loading">
-    <style>
-.footable-row-detail-name {
-  display: block;
-  font-weight: 700;
-  padding-right: 0.5em;
-  width: 40px; }
+        <style>
+        .footable-row-detail-name {
+            display: block;
+            font-weight: 700;
+            padding-right: 0.5em;
+            width: 40px;
+        }
         </style>
 
         <!-- Begin page -->
@@ -30,8 +31,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
 
                         <div class="row">
                             <div class="col-12">
@@ -40,7 +41,8 @@
                                         <div class="row">
                                             <div class="col-12 text-sm-center form-inline">
                                                 <div class="form-group mr-2">
-                                                    <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
+                                                    <select id="demo-foo-filter-status"
+                                                        class="custom-select custom-select-sm">
                                                         <option value="">全部</option>
                                                         <option value="管理與政策">管理與政策</option>
                                                         <option value="國際企業">國際企業</option>
@@ -57,27 +59,30 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                                                    <input id="demo-foo-search" type="text" placeholder="Search"
+                                                        class="form-control form-control-sm" autocomplete="on">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="table-responsive">
-                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
+                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
+                                            data-page-size="7">
                                             <thead>
-                                            <tr>
-                                                <th data-toggle="true" ellipsis>標題</th>
-                                                <th ellipsis>作者</th>
-                                                <th data-field="field" data-sortable="true" data-formatter="fieldFormatter" data-hide="phone">領域</th>
-                                                <th>上傳日期</th>
-                                                <th data-align="center">動作</th>
-                                                <th data-hide="phone,tablet">摘要</th>
-                                                
-                                            </tr>
+                                                <tr>
+                                                    <th data-toggle="true" ellipsis>標題</th>
+                                                    <th ellipsis>作者</th>
+                                                    <th data-field="field" data-sortable="true"
+                                                        data-formatter="fieldFormatter" data-hide="phone">領域</th>
+                                                    <th>上傳日期</th>
+                                                    <th data-align="center">動作</th>
+                                                    <th data-hide="phone,tablet">摘要</th>
+
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                                    <?php
+                                                <?php
                                                         
                                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                                         foreach ($pdo->query('select * from newpaper') as $row) {
@@ -92,13 +97,18 @@
                                                             $uploadname=$row['uploadname'];
                                                             $uploadtime=$row['uploadtime'];
 
+                                                            $Summary=nl2br($summary);//回車換成換行
+
                                                     ?>
-                                                    <tr>
-                                                        <td><a href='pages-maildistribution.php?id=<?php echo "$id"?>'><?php echo $title ?></a></td>
-                                                        <td><?php echo $author1, ' ',$author2,' ',$author3,' ',$author4,' ', $author5 ?></td>
-                                                       
-                                                        
-                                                        <td><?php
+                                                <tr>
+                                                    <td><a
+                                                            href='pages-maildistribution.php?id=<?php echo "$id"?>'><?php echo $title ?></a>
+                                                    </td>
+                                                    <td><?php echo $author1, ' ',$author2,' ',$author3,' ',$author4,' ', $author5 ?>
+                                                    </td>
+
+
+                                                    <td><?php
                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                                             $query=$pdo->query("SELECT f_name from newpaper_field where title='$title'");
                                                             $datalist=$query->fetchall();
@@ -107,32 +117,36 @@
                                                                 echo ' ';
                                                             }
                                                             ?>
-                                                               
-                                                        </td>
-                                                        <td><?php echo $row['uploadtime']?></td>
-                                                        <td>
-                                                            <a href='../投稿者/upload/<?php echo $uploadname ?>'  target="blank" download="<?php echo $uploadname ?>"  class='action-icon'> <i class='mdi mdi-arrow-collapse-down'></i></a>
-                                                            <a href='distri.php?id=<?php echo "$id" ?> ' class='action-icon' ><i class='mdi mdi-email-send-outline'></i></a>
-                                                            <a href='reply-cancel.php?id=<?php echo "$id" ?> ' class='action-icon' ><i class='mdi mdi-reply mr-1'></i></a>
-                                                        </td>
-                                                        <td><?php 
-                                                        $Summary=nl2br($summary);//回車換成換行
-                                                        echo $Summary; ?>
-                                                        </td>
-                                                        </tr>
-                                                    <?php
+
+                                                    </td>
+                                                    <td><?php echo $row['uploadtime']?></td>
+                                                    <td>
+                                                        <a href='../投稿者/upload/<?php echo $uploadname ?>' target="blank"
+                                                            download="<?php echo $uploadname ?>" class='action-icon'> <i
+                                                                class='mdi mdi-arrow-collapse-down'></i></a>
+                                                        <a href='distri.php?id=<?php echo "$id" ?> '
+                                                            class='action-icon'><i
+                                                                class='mdi mdi-email-send-outline'></i></a>
+                                                        <a href='reply-cancel.php?id=<?php echo "$id" ?> '
+                                                            class='action-icon'><i class='mdi mdi-reply mr-1'></i></a>
+                                                    </td>
+                                                    <td><?php echo $Summary; ?></td>
+                                                </tr>
+                                                <?php
                                                     }
                                                     ?>
-                                                </tbody>
-                                            
+                                            </tbody>
+
                                             <tfoot>
-                                            <tr class="active">
-                                                <td colspan="5">
-                                                    <div class="text-right">
-                                                        <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                <tr class="active">
+                                                    <td colspan="6">
+                                                        <div class="text-right">
+                                                            <ul
+                                                                class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0">
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             </tfoot>
                                         </table>
                                     </div> <!-- end .table-responsive-->
@@ -156,7 +170,7 @@
         </div>
 
 
-        
+
         <!-- Vendor js -->
         <script src="../assets/js/vendor.min.js"></script>
 
@@ -197,5 +211,5 @@
         <!-- Init js for time picker-->
         <script src="../assets/js/pages/form-pickers.init.js"></script>
 
-        
+
     </body>
