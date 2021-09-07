@@ -100,16 +100,50 @@ $manager=$_SESSION["account"]["login"];
                                         $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,uploader,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
                                         $sql2->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
 
-                                        $sql5 = $pdo->query("select email from account where status='審稿者' and login ='".$pro."'");
+                                        $sql5 = $pdo->query("select name,email from account where status='審稿者' and login ='".$a."'");
                                         foreach($sql5 as $row){
+                                            $to_email = $row['email']; //管理者信箱
+                                            $name = $row['name']; //管理者姓名
 
-                                            $to_email = $row['email'];
-                                            $subject = '新分配的稿件:'.$title;
-                                            $message = '請盡速到平台審理已被分配稿件。';
-                                            $headers = 'From: 408402511@gapp.fju.edu.tw';
+                                            $subject = '新上傳的投稿文章:'.$title;
+                                            $message = '請盡速到管理平台審理稿件。';
+                                            $headers = 'From: paggiechen8866@gmail.com';
 
-                                            mail($to_email,$subject,$message,$headers);
+                                            require_once '../PHPMailer/PHPMailerAutoload.php';
+
+                                            $mail = new PHPMailer;
+                                            $mail->Charset='UTF-8';
+
+                                            //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+                                            $mail->isSMTP();  
+                                            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                            $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
+                                            $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
+                                            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                                            $mail->Port = 587;                                    // TCP port to connect to
+
+                                            $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+                                            $mail->addAddress($to_email, $name);     // Add a recipient
+                                        
+                                            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                                            $mail->isHTML(true);                                  // Set email format to HTML
+
+                                            $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自管理者分配的稿件") . "?=";
+                                            // $mail->Subject = "輔仁管理評論有一封來自審稿者的回覆稿件";
+                                            $mail->Body    =  file_get_contents('../mail.html', true);
+                                            $mail->AltBody = '親愛的審稿者者您好，輔仁管理評論目前收到一封來自管理者分配的稿件，請您盡速到輔仁管理評論的管理者平台審理稿件，謝謝您！';
                                         }
+
+                                            if(!$mail->send()) {
+                                                echo 'Message could not be sent.';
+                                                echo 'Mailer Error: ' . $mail->ErrorInfo;
+                                            } else {
+                                                'Message has been sent';
+                                            }
+
                                         }
                                       if (empty($pro)) {
                                         echo '請輸入審稿者';

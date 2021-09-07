@@ -119,7 +119,6 @@
                                         }
 
                                         $sql5 = $pdo->query("select name,email from account where status='管理者' ");
-                                        ini_set('SMTP','smtp.tbcnet.net');
 
                                         foreach($sql5 as $row){
                                             $to_email = $row['email']; //管理者信箱
