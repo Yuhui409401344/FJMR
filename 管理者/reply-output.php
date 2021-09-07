@@ -81,14 +81,46 @@ $login=$_SESSION["account"]["login"];
                                         
                                         $sql5 = $pdo->query("select email from account where login='".$uploader."' and status='投稿者'");
                                         foreach($sql5 as $row){
-
-                                            $to_email = $row['email'];
-                                            $subject = '投稿文章:'.$title;
-                                            $message = '已評閱完畢，請盡速到平台確認結果。';
-                                            $headers = 'From: 408402511@gapp.fju.edu.tw';
-
-                                            mail($to_email,$subject,$message,$headers);
+                                            $to_email = $row['email']; //投稿者信箱
+                                            $name = $row['name']; //投稿者姓名
+    
+                                            $subject = '新上傳的投稿文章:'.$title;
+                                            $message = '稿件以評閱完畢，請盡速到平台確認結果。';
+                                            $headers = 'From: paggiechen8866@gmail.com';
+    
+                                            require_once '../PHPMailer/PHPMailerAutoload.php';
+    
+                                            $mail = new PHPMailer;
+                                            $mail->Charset='UTF-8';
+    
+                                            //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+    
+                                            $mail->isSMTP();  
+                                            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                            $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
+                                            $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
+                                            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                                            $mail->Port = 587;                                    // TCP port to connect to
+    
+                                            $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+                                            $mail->addAddress($to_email, $name);     // Add a recipient
+                                        
+                                            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                                            $mail->isHTML(true);                                  // Set email format to HTML
+    
+                                            $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封已評閱完畢的稿件，請盡速查閱。") . "?=";
+                                            $mail->Body    =  file_get_contents('../mail.html', true);
+                                            $mail->AltBody = '親愛的投稿者您好，輔仁管理評論目前收到一封已評閱完畢的稿件，請您盡速到輔仁管理評論確認結果，謝謝您！';
                                         }
+    
+                                            if(!$mail->send()) {
+                                                echo 'Message could not be sent.';
+                                                echo 'Mailer Error: ' . $mail->ErrorInfo;
+                                            } else {
+                                                echo 'Message has been sent';
+                                            }
 
                                         $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
                                         $sql3->execute([$id]);
