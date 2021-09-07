@@ -151,10 +151,9 @@ if(isset($_SESSION["account"]["login"])){
     </nav>
 </div>
 
-
 <div class="container-fluid">
-    <div class="col-12 mt-1" style="position:relative;width:100%;height:0;padding-bottom:50%">
-        <iframe src="http://www.management.fju.edu.tw/zh-tw/research/journal.php" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
+    <div class="col-12 mt-1" style="position:relative;width:100%;height:300px;padding-bottom:50%">
+        <iframe src="http://www.management.fju.edu.tw/zh-tw/research/journal.php" style="position:absolute;top:0;left:0;width:100%;height:100%" onload=""></iframe>
     </div>
 </div>
 

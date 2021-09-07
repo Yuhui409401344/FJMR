@@ -85,14 +85,47 @@ $login=$_SESSION["account"]["login"];
 
                                         $sql5 = $pdo->query("select email from account where status='管理者' and login ='".$manager."'");
                                         foreach($sql5 as $row){
+                                            $to_email = $row['email']; //管理者信箱
+                                            $name = $row['name']; //管理者姓名
 
-                                            $to_email = $row['email'];
-                                            $subject = '來自審稿者回覆的稿件:'.$title;
-                                            $message = '請盡速到平台審理已被回覆稿件。';
-                                            $headers = 'From: 408402511@gapp.fju.edu.tw';
+                                            $subject = '新上傳的投稿文章:'.$title;
+                                            $message = '請盡速到管理平台回覆稿件。';
+                                            $headers = 'From: paggiechen8866@gmail.com';
 
-                                            mail($to_email,$subject,$message,$headers);
+                                            require_once '../PHPMailer/PHPMailerAutoload.php';
+
+                                            $mail = new PHPMailer;
+                                            $mail->Charset='UTF-8';
+
+                                            //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+                                            $mail->isSMTP();  
+                                            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                            $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
+                                            $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
+                                            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                                            $mail->Port = 587;                                    // TCP port to connect to
+
+                                            $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+                                            $mail->addAddress($to_email, $name);     // Add a recipient
+                                        
+                                            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                                            $mail->isHTML(true);                                  // Set email format to HTML
+
+                                            $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自審稿者的回覆稿件") . "?=";
+                                            // $mail->Subject = "輔仁管理評論有一封來自審稿者的回覆稿件";
+                                            $mail->Body    =  file_get_contents('../mail.html', true);
+                                            $mail->AltBody = '親愛的管理者者您好，輔仁管理評論目前收到一封來自審稿者的回覆稿件，請您盡速到輔仁管理評論的管理者平台回覆稿件，謝謝您！';
                                         }
+
+                                            if(!$mail->send()) {
+                                                echo 'Message could not be sent.';
+                                                echo 'Mailer Error: ' . $mail->ErrorInfo;
+                                            } else {
+                                                echo 'Message has been sent';
+                                            }
 
                                         $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
                                         $sql3->execute([$login,$title]);
@@ -141,10 +174,10 @@ $login=$_SESSION["account"]["login"];
         
                                                 # 檢查檔案是否上傳成功
                                                 if ($_FILES['file']['error'] === UPLOAD_ERR_OK){
-                                                    echo "檔案名稱: " . $newname."<br/>";
-                                                    echo "檔案類型: " . $_FILES["file"]["type"]."<br/>";
-                                                    echo "檔案大小: " . ($_FILES["file"]["size"] / 1024)." Kb<br />";
-                                                    echo "暫存名稱: " . $_FILES["file"]["tmp_name"];
+                                                    echo $newname;
+                                                    "檔案類型: " . $_FILES["file"]["type"]."<br/>";
+                                                    "檔案大小: " . ($_FILES["file"]["size"] / 1024)." Kb<br />";
+                                                    "暫存名稱: " . $_FILES["file"]["tmp_name"];
                                                 
                                                   # 檢查檔案是否已經存在
                                                   if (file_exists('upload/' . $newname)){
