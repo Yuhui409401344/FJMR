@@ -383,8 +383,9 @@ if(isset($_SESSION["account"]["login"])){
                                                             }
                                                         ?>
 
-                                                    <a
-                                                        href="historyContent.php?id=<?php echo "$id"?> && s=<?php echo "$s" ?>"><?php echo $title ?></a>
+                                                    <a class="title"
+                                                        href="historyContent.php?id=<?php echo "$id"?> && s=<?php echo "$s" ?>"
+                                                        style="color: #005282"><?php echo $title ?></a>
                                                 </td>
                                                 <td><?php echo $author1, ' ',$author2,' ',$author3,' ',$author4,' ',$author5?>
                                                 </td>
@@ -402,7 +403,9 @@ if(isset($_SESSION["account"]["login"])){
                                                         ?></td>
 
                                                 <!-- 摘要 -->
-                                                <td><?php echo $Summary; ?></td>
+                                                <td>
+                                                    <p class="summary"><?php echo $Summary; ?></p>
+                                                </td>
 
                                             </tr>
                                             <?php
@@ -565,19 +568,6 @@ if(isset($_SESSION["account"]["login"])){
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>
 
-    <script src="../assets/libs/selectize/js/standalone/selectize.min.js"></script>
-    <script src="../assets/libs/mohithg-switchery/switchery.min.js"></script>
-    <script src="../assets/libs/multiselect/js/jquery.multi-select.js"></script>
-    <script src="../assets/libs/select2/js/select2.min.js"></script>
-    <script src="../assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
-    <script src="../assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
-    <script src="../assets/libs/bootstrap-select/js/bootstrap-select.min.js"></script>
-    <script src="../assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-    <script src="../assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-
-    <!-- Init js for modal select bar-->
-    <script src="../assets/js/pages/form-advanced.init.js"></script>
-
     <!-- Footable js -->
     <script src="../assets/libs/footable/footable.all.min.js"></script>
 
@@ -587,14 +577,29 @@ if(isset($_SESSION["account"]["login"])){
     <!-- Inbox init -->
     <script src="../assets/js/pages/inbox.js"></script>
 
-    <!-- Plugins js-->
-    <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
-    <script src="../assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-    <script src="../assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
-    <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script>
+    $(function() {
+        var len = 7;
+        $(".title").each(function(i) {
+            if ($(this).text().length > len) {
+                $(this).attr("title", $(this).text());
+                var text = $(this).text().substring(0, len - 1) + "...";
+                $(this).text(text);
+            }
+        });
+    });
+    $(function() {
+        var len = 50;
+        $(".summary").each(function(i) {
+            if ($(this).text().length > len) {
+                $(this).attr("title", $(this).text());
+                var text = $(this).text().substring(0, len - 1) + "...";
+                $(this).text(text);
+            }
+        });
+    });
+    </script>
 
-    <!-- Init js for time picker-->
-    <script src="../assets/js/pages/form-pickers.init.js"></script>
 
 
 </body>

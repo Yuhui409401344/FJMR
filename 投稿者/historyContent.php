@@ -256,14 +256,13 @@
                                                         download="<?php echo $scriptfile ?>"><?php echo $scriptfile?></a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="container">
                                             <div class="row justify-content-start">
                                                 <div class="col-12">
                                                     上傳時間：<?php echo $uploadtime ?>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="container mt-0">
                                                 <section class="mt-3">
