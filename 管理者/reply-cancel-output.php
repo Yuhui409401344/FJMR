@@ -14,47 +14,48 @@ $login=$_SESSION["account"]["login"];
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>審稿者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-        <!-- Plugins css-->
-        <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
-        
-	    <!-- App css -->
-	    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-	    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+<head>
+    <meta charset="utf-8" />
+    <title>審稿者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-	    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-	    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <!-- Plugins css-->
+    <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-	    <!-- icons -->
-	    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    </head>
+    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
-    <body class="loading">
-        <div id="wrapper">
-                <?php include "header.php" ?>
+    <!-- icons -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-            <div class="content-page">
-                <div class="content">
+</head>
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <br>
-                                <div class="card-box">
-                                    <?php
+<body class="loading">
+    <div id="wrapper">
+        <?php include "header.php" ?>
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <br>
+                            <div class="card-box">
+                                <?php
                                     $id=$_GET["id"];
                                     $level=$_POST["level"];
                                     $message=$_POST["message"];
@@ -82,10 +83,6 @@ $login=$_SESSION["account"]["login"];
                                     foreach($sql5 as $row){
                                         $to_email = $row['email']; //投稿者信箱
                                         $name = $row['name']; //投稿者姓名
-
-                                        $subject = '新上傳的投稿文章:'.$title;
-                                        $message = '稿件以評閱完畢，請盡速到平台確認結果。';
-                                        $headers = 'From: paggiechen8866@gmail.com';
 
                                         require_once '../PHPMailer/PHPMailerAutoload.php';
 
@@ -126,38 +123,64 @@ $login=$_SESSION["account"]["login"];
                                     $sql3=$pdo ->prepare('delete from newpaper where id=?');
                                     $sql3->execute([$id]);
                                 ?>
-                                      
-                                    <label for="product-name" style="font-size: 20px;"><?php echo "回覆成功!";?></label>
-                                            
-                                       <table border="0">
-                                            <tr>
-                                                <td>
-                                                    <font size="5"><span class="badge badge-soft-secondary">標題</span></font></td>
-                                                <td><lebel style="font-size:18px"><?php echo $title?></lebel></td></tr><br>
-                                            <tr>
-                                                <td><font size="5"><span class="badge badge-soft-secondary">收件人</span></font></td>
-                                                
-                                                <td><lebel style="font-size:18px"><?php echo $auth1?></lebel></td></tr>
-                                            <tr>
-                                                <td><font size="5"><span class="badge badge-soft-secondary">回覆評級</span>&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
-                                                <td><lebel style="font-size:18px"><?php echo $level ?></lebel></td></tr><br>
-                                            <tr>
-                                                <td><font size="5"><span class="badge badge-soft-secondary">回覆次數</span></font></td>
-                                                <td><lebel style="font-size:18px"><?php echo $count_+1 ?></lebel></td></tr><br>
 
-                                            <tr>
-                                            <td><font size="5"><span class="badge badge-soft-secondary">回覆意見</span></font></td>
-                                            <td><lebel style="font-size:18px"><?php echo $message ?></lebel></td></tr><br>
-                                            
-                                        </table>
-                                        
-                                    
-                            
+                                <label for="product-name" style="font-size: 20px;"><?php echo "回覆成功!";?></label>
+
+                                <table border="0">
+                                    <tr>
+                                        <td>
+                                            <font size="5"><span class="badge badge-soft-secondary">標題</span></font>
+                                        </td>
+                                        <td>
+                                            <lebel style="font-size:18px"><?php echo $title?></lebel>
+                                        </td>
+                                    </tr><br>
+                                    <tr>
+                                        <td>
+                                            <font size="5"><span class="badge badge-soft-secondary">收件人</span></font>
+                                        </td>
+
+                                        <td>
+                                            <lebel style="font-size:18px"><?php echo $auth1?></lebel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <font size="5"><span
+                                                    class="badge badge-soft-secondary">回覆評級</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </font>
+                                        </td>
+                                        <td>
+                                            <lebel style="font-size:18px"><?php echo $level ?></lebel>
+                                        </td>
+                                    </tr><br>
+                                    <tr>
+                                        <td>
+                                            <font size="5"><span class="badge badge-soft-secondary">回覆次數</span></font>
+                                        </td>
+                                        <td>
+                                            <lebel style="font-size:18px"><?php echo $count_+1 ?></lebel>
+                                        </td>
+                                    </tr><br>
+
+                                    <tr>
+                                        <td>
+                                            <font size="5"><span class="badge badge-soft-secondary">回覆意見</span></font>
+                                        </td>
+                                        <td>
+                                            <lebel style="font-size:18px"><?php echo $message ?></lebel>
+                                        </td>
+                                    </tr><br>
+
+                                </table>
+
+
+
                             </div><!-- end col-->
                         </div>
                         <!-- end row -->
 
-    
+
 
                         <!-- file preview template -->
                         <div class="d-none" id="uploadPreviewTemplate">
@@ -168,7 +191,8 @@ $login=$_SESSION["account"]["login"];
                                             <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
                                         </div>
                                         <div class="col pl-0">
-                                            <a href="javascript:void(0);" class="text-muted font-weight-bold" data-dz-name></a>
+                                            <a href="javascript:void(0);" class="text-muted font-weight-bold"
+                                                data-dz-name></a>
                                             <p class="mb-0" data-dz-size></p>
                                         </div>
                                         <div class="col-auto">
@@ -182,7 +206,7 @@ $login=$_SESSION["account"]["login"];
                             </div>
                         </div>
 
-                        
+
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -197,7 +221,7 @@ $login=$_SESSION["account"]["login"];
         </div>
         <!-- END wrapper -->
 
-               <!-- Right Sidebar -->
+        <!-- Right Sidebar -->
         <div class="right-bar">
             <div data-simplebar class="h-100">
 
@@ -223,31 +247,121 @@ $login=$_SESSION["account"]["login"];
                         </h6>
                         <div class="card">
                             <div class="card-body">
-                                
+
                                 <div class="todoapp">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 id="todo-message"><span id="todo-remaining">4</span> of <span id="todo-total">8</span> remaining</h5>
+                                            <h5 id="todo-message"><span id="todo-remaining">4</span> of <span
+                                                    id="todo-total">8</span> remaining</h5>
                                         </div>
                                         <div class="col-auto">
                                             <a href="" class="float-right btn btn-light btn-sm" id="btn-archive">更新</a>
                                         </div>
                                     </div>
 
-                                    <div style="max-height: 310px;" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;"><div class="simplebar-content" style="padding: 0px;">
-                                        <ul class="list-group list-group-flush todo-list" id="todo-list"><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="8"><label class="custom-control-label" for="8">準備課室會議</label></div></li><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="7" checked=""><label class="custom-control-label" for="7"><s>回覆李雯教授</s></label></div></li><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="6"><label class="custom-control-label" for="6">創建新賬號給李敏同學</label></div></li><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="5"><label class="custom-control-label" for="5">回覆系秘</label></div></li><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="4" checked=""><label class="custom-control-label" for="4"><s>回覆研究計劃</s></label></div></li><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="3" checked=""><label class="custom-control-label" for="3"><s>開題準備</s></label></div></li><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="2" checked=""><label class="custom-control-label" for="2"><s>創建新賬號給林姚教授</s></label></div></li><li class="list-group-item border-0 pl-0"><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="1"><label class="custom-control-label" for="1">刪除陳立同學帳號</label></div></li></ul>
-                                    </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 360px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 266px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div></div>
+                                    <div style="max-height: 310px;" data-simplebar="init">
+                                        <div class="simplebar-wrapper" style="margin: 0px;">
+                                            <div class="simplebar-height-auto-observer-wrapper">
+                                                <div class="simplebar-height-auto-observer"></div>
+                                            </div>
+                                            <div class="simplebar-mask">
+                                                <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                                    <div class="simplebar-content-wrapper"
+                                                        style="height: auto; overflow: hidden scroll;">
+                                                        <div class="simplebar-content" style="padding: 0px;">
+                                                            <ul class="list-group list-group-flush todo-list"
+                                                                id="todo-list">
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="8"><label class="custom-control-label"
+                                                                            for="8">準備課室會議</label></div>
+                                                                </li>
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="7" checked=""><label
+                                                                            class="custom-control-label"
+                                                                            for="7"><s>回覆李雯教授</s></label></div>
+                                                                </li>
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="6"><label class="custom-control-label"
+                                                                            for="6">創建新賬號給李敏同學</label></div>
+                                                                </li>
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="5"><label class="custom-control-label"
+                                                                            for="5">回覆系秘</label></div>
+                                                                </li>
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="4" checked=""><label
+                                                                            class="custom-control-label"
+                                                                            for="4"><s>回覆研究計劃</s></label></div>
+                                                                </li>
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="3" checked=""><label
+                                                                            class="custom-control-label"
+                                                                            for="3"><s>開題準備</s></label></div>
+                                                                </li>
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="2" checked=""><label
+                                                                            class="custom-control-label"
+                                                                            for="2"><s>創建新賬號給林姚教授</s></label></div>
+                                                                </li>
+                                                                <li class="list-group-item border-0 pl-0">
+                                                                    <div class="custom-control custom-checkbox"><input
+                                                                            type="checkbox"
+                                                                            class="custom-control-input todo-done"
+                                                                            id="1"><label class="custom-control-label"
+                                                                            for="1">刪除陳立同學帳號</label></div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="simplebar-placeholder" style="width: auto; height: 360px;">
+                                            </div>
+                                        </div>
+                                        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                                            <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+                                        </div>
+                                        <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                                            <div class="simplebar-scrollbar"
+                                                style="height: 266px; transform: translate3d(0px, 0px, 0px); display: block;">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <form name="todo-form" id="todo-form" class="needs-validation mt-3" novalidate="">
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" id="todo-input-text" name="todo-input-text" class="form-control" placeholder="新增待辦" required="">
+                                                <input type="text" id="todo-input-text" name="todo-input-text"
+                                                    class="form-control" placeholder="新增待辦" required="">
                                                 <div class="invalid-feedback">
                                                     Please enter your task name
                                                 </div>
                                             </div>
                                             <div class="col-auto">
-                                                <button class="btn-primary btn-md btn-block btn waves-effect waves-light" type="submit" id="todo-btn-submit">新增</button>
+                                                <button
+                                                    class="btn-primary btn-md btn-block btn waves-effect waves-light"
+                                                    type="submit" id="todo-btn-submit">新增</button>
                                             </div>
                                         </div>
                                     </form>
@@ -257,7 +371,7 @@ $login=$_SESSION["account"]["login"];
                         </div>
                     </div>
 
-                
+
                     <div class="tab-pane active" id="settings-tab" role="tabpanel">
                         <h6 class="font-weight-medium px-3 m-0 py-2 font-13 text-uppercase bg-light">
                             <span class="d-block py-1">主題設定</span>
@@ -280,11 +394,13 @@ $login=$_SESSION["account"]["login"];
                             <!-- Width -->
                             <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄</h6>
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked />
+                                <input type="radio" class="custom-control-input" name="width" value="fluid"
+                                    id="fluid-check" checked />
                                 <label class="custom-control-label" for="fluid-check">打開</label>
                             </div>
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="width" value="boxed" id="boxed-check" />
+                                <input type="radio" class="custom-control-input" name="width" value="boxed"
+                                    id="boxed-check" />
                                 <label class="custom-control-label" for="boxed-check">收起</label>
                             </div>
 
@@ -292,22 +408,26 @@ $login=$_SESSION["account"]["login"];
                             <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">側邊欄顏色</h6>
 
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="light" id="light-check" checked />
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="light"
+                                    id="light-check" checked />
                                 <label class="custom-control-label" for="light-check">淺色</label>
                             </div>
 
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="dark" id="dark-check" />
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="dark"
+                                    id="dark-check" />
                                 <label class="custom-control-label" for="dark-check">深色</label>
                             </div>
 
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="brand" id="brand-check" />
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="brand"
+                                    id="brand-check" />
                                 <label class="custom-control-label" for="brand-check">天藍色</label>
                             </div>
 
                             <div class="custom-control custom-switch mb-3">
-                                <input type="radio" class="custom-control-input" name="leftsidebar-color" value="gradient" id="gradient-check" />
+                                <input type="radio" class="custom-control-input" name="leftsidebar-color"
+                                    value="gradient" id="gradient-check" />
                                 <label class="custom-control-label" for="gradient-check">亮紫色</label>
                             </div>
 
@@ -321,8 +441,8 @@ $login=$_SESSION["account"]["login"];
                             </div>
 
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="leftsidebar-size" value="condensed"
-                                    id="condensed-check" />
+                                <input type="radio" class="custom-control-input" name="leftsidebar-size"
+                                    value="condensed" id="condensed-check" />
                                 <label class="custom-control-label" for="condensed-check">最小化</small></label>
                             </div>
 
@@ -336,13 +456,14 @@ $login=$_SESSION["account"]["login"];
                             <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">頂欄</h6>
 
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="topbar-color" value="dark" id="darktopbar-check"
-                                    checked />
+                                <input type="radio" class="custom-control-input" name="topbar-color" value="dark"
+                                    id="darktopbar-check" checked />
                                 <label class="custom-control-label" for="darktopbar-check">深色</label>
                             </div>
 
                             <div class="custom-control custom-switch mb-1">
-                                <input type="radio" class="custom-control-input" name="topbar-color" value="light" id="lighttopbar-check" />
+                                <input type="radio" class="custom-control-input" name="topbar-color" value="light"
+                                    id="lighttopbar-check" />
                                 <label class="custom-control-label" for="lighttopbar-check">淺色</label>
                             </div>
 
@@ -383,8 +504,9 @@ $login=$_SESSION["account"]["login"];
 
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
-        
-    </body>
+
+</body>
+
 </html>
 <?php
     }else{

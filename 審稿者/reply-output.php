@@ -88,10 +88,6 @@ $login=$_SESSION["account"]["login"];
                                             $to_email = $row['email']; //管理者信箱
                                             $name = $row['name']; //管理者姓名
 
-                                            $subject = '新上傳的投稿文章:'.$title;
-                                            $message = '請盡速到管理平台回覆稿件。';
-                                            $headers = 'From: paggiechen8866@gmail.com';
-
                                             require_once '../PHPMailer/PHPMailerAutoload.php';
 
                                             $mail = new PHPMailer;

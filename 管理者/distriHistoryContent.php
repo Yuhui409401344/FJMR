@@ -82,14 +82,18 @@
                             <div class="card-box">
                                 <div class="row">
                                     <div class="container-fluid">
-                                        <div class="col-12">
-                                            <h3
-                                                style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                <?php echo $title ?>
-                                            </h3>
-                                        </div>
+
                                         <div class="container">
                                             <div class="row justify-content-start">
+                                                <div class="col-12">
+                                                    <h3
+                                                        style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
+                                                        <?php echo $title ?>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-start">
+
                                                 <div class="col-8">
                                                     全文下載：<a href='../投稿者/upload/<?php echo $uploadname?>' target="blank"
                                                         download="<?php echo $uploadname ?>"><?php echo $uploadname?></a>

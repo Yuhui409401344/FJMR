@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 $password=$_SESSION["account"]["password"];
@@ -7,45 +6,46 @@ $login=$_SESSION["account"]["login"];
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-        <!-- Plugins css-->
-        <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
-        
-	    <!-- App css -->
-	    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-	    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+<head>
+    <meta charset="utf-8" />
+    <title>管理者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-	    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-	    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <!-- Plugins css-->
+    <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-	    <!-- icons -->
-	    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    </head>
+    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+
+    <!-- icons -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+</head>
 
 
-    <body class="loading">
-        <div id="wrapper">
-                <?php include "header.php" ?>
+<body class="loading">
+    <div id="wrapper">
+        <?php include "header.php" ?>
 
-            <div class="content-page">
-                <div class="content">
+        <div class="content-page">
+            <div class="content">
 
                 <div class="container-fluid">
-                        <div class="row mt-3">
-                            <div class="col-lg-12">
-                                <div class="card-box">
+                    <div class="row mt-3">
+                        <div class="col-lg-12">
+                            <div class="card-box">
                                 <?php
                                     $title=$_GET['title'];
                                     $comment=$_POST["comment"];
@@ -83,10 +83,6 @@ $login=$_SESSION["account"]["login"];
                                         foreach($sql5 as $row){
                                             $to_email = $row['email']; //投稿者信箱
                                             $name = $row['name']; //投稿者姓名
-    
-                                            $subject = '新上傳的投稿文章:'.$title;
-                                            $message = '稿件以評閱完畢，請盡速到平台確認結果。';
-                                            $headers = 'From: paggiechen8866@gmail.com';
     
                                             require_once '../PHPMailer/PHPMailerAutoload.php';
     
@@ -131,34 +127,39 @@ $login=$_SESSION["account"]["login"];
                                     }else{
                                     
                                 ?>
-                                
+
                                 <label for="product-name" style="font-size: 20px;"><?php echo "回覆成功!";?></label>
 
                                 <table>
                                     <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">標題</span></td>
+                                        <td><span class="badge badge-soft-secondary" style="font-size:large">標題</span>
+                                        </td>
                                         <td><label style="font-size:18px"><?php echo $_REQUEST['title']?></label></td>
                                     </tr><br>
                                     <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆建議</span></td>
+                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆建議</span>
+                                        </td>
                                         <td><label style="font-size:18px"><?php 
                                         $comment=nl2br($comment);//回車換成換行
                                         echo $comment; ?></label></td>
 
                                     </tr><br>
                                     <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆評級</span></td>
+                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆評級</span>
+                                        </td>
                                         <td><label style="font-size:18px">
-                                        <?php echo $_REQUEST['level']; ?></label></td>
+                                                <?php echo $_REQUEST['level']; ?></label></td>
                                     </tr><br>
                                     <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆次數</span></td>
+                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆次數</span>
+                                        </td>
                                         <td><label style="font-size:18px"><?php echo $RCount+1 ?></label></td>
                                     </tr><br>
                                     <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span></td>
+                                        <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span>
+                                        </td>
                                         <td><label style="font-size:18px">
-                                            <?php
+                                                <?php
                                                 
                                                 // $odlname=$_FILES["file"]["tmp_name"];
         
@@ -180,7 +181,7 @@ $login=$_SESSION["account"]["login"];
                                                   echo '錯誤代碼：' . $_FILES['file']['error'] . '<br/>';
                                                 }
                                                 
-                                             ?> 
+                                             ?>
                                             </label>
                                         </td>
                                     </tr>
@@ -188,43 +189,44 @@ $login=$_SESSION["account"]["login"];
                                 <?php 
                                     }
                                 ?>
-                                </div> <!-- end card-box -->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->                
-                    </div> <!-- container -->
+                            </div> <!-- end card-box -->
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div> <!-- container -->
 
-                </div> <!-- content -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
+            </div> <!-- content -->
 
         </div>
-        <!-- END wrapper -->
 
-       
-        <!-- App js -->
-        <script src="../assets/js/vendor.min.js"></script>
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
 
-        <!-- Summernote js -->
-        <script src="../assets/libs/summernote/summernote-bs4.min.js"></script>
-        <!-- Select2 js-->
-        <script src="../assets/libs/select2/js/select2.min.js"></script>
-        <!-- Dropzone file uploads-->
-        <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
 
-        <!-- Init js-->
-        <script src="../assets/js/pages/form-fileuploads.init.js"></script>
+    </div>
+    <!-- END wrapper -->
 
-        <!-- Init js -->
-        <script src="../assets/js/pages/add-product.init.js"></script>
 
-        <!-- App js -->
-        <script src="../assets/js/app.min.js"></script>
-        
-    </body>
+    <!-- App js -->
+    <script src="../assets/js/vendor.min.js"></script>
+
+    <!-- Summernote js -->
+    <script src="../assets/libs/summernote/summernote-bs4.min.js"></script>
+    <!-- Select2 js-->
+    <script src="../assets/libs/select2/js/select2.min.js"></script>
+    <!-- Dropzone file uploads-->
+    <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
+
+    <!-- Init js-->
+    <script src="../assets/js/pages/form-fileuploads.init.js"></script>
+
+    <!-- Init js -->
+    <script src="../assets/js/pages/add-product.init.js"></script>
+
+    <!-- App js -->
+    <script src="../assets/js/app.min.js"></script>
+
+</body>
+
 </html>
