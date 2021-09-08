@@ -9,11 +9,6 @@ if (is_array($email)) {
         foreach ($sql as $row) {
             $to_email = $row['email'];
             $name = $row['name'];
-
-            $subject = '新上傳的投稿文章:' . $title;
-            $message = '稿件回覆日期即將到期請盡速到管理平台審理稿件。';
-            $headers = 'From: paggiechen8866@gmail.com';
-
             require_once '../PHPMailer/PHPMailerAutoload.php';
 
             $mail = new PHPMailer;
@@ -49,10 +44,6 @@ $sql = $pdo->query("select DISTINCT name,email from account where email = '" . $
 foreach ($sql as $row) {
     $to_email = $row['email'];
     $name = $row['name'];
-
-    $subject = '新上傳的投稿文章:' . $title;
-    $message = '稿件回覆日期即將到期請盡速到管理平台審理稿件。';
-    $headers = 'From: paggiechen8866@gmail.com';
 
     require_once '../PHPMailer/PHPMailerAutoload.php';
 
