@@ -32,14 +32,14 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <form action="closeddl_mail.php" method="POST" id="closeddl">
-                                                <input type="submit" id="row" class="btn btn-primary btn-sm"
+                                                <input type="submit" id="row" class="btn btn-danger btn-sm"
                                                     value="寄送信件">
                                                 <table id="demo-custom-toolbar" data-toolbar="#row" data-toggle="table"
                                                     data-toolbar="#toolbar" data-search="true" data-show-refresh="true"
                                                     data-show-columns="true" data-sort-name="date"
                                                     data-page-list="[5, 10, 20]" data-page-size="6"
                                                     data-pagination="true" data-show-pagination-switch="true"
-                                                    class="table-borderless" style="font-weight: 700;">
+                                                    class="table-borderless">
                                                     <thead class="thead-light">
                                                         <tr>
                                                             <th data-field data-align="center"></th>
@@ -83,8 +83,8 @@
                                                         <tr>
                                                             <td><input type="checkbox" value="<?php echo $email?>"
                                                                     name="email[]"></td>
-                                                            <td><a
-                                                                    href="p2.php?id=<?php echo $id?>&&pro=<?php echo $pro?>"><?php echo $title ?></a>
+                                                            <td><a href="distriHistoryContent.php?id=<?php echo $id?>&&pro=<?php echo $pro?>"
+                                                                    style="color: #6C757D"><?php echo $title ?></a>
                                                             </td>
                                                             <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
                                                             </td>
@@ -92,9 +92,10 @@
                                                             <td><?php echo $ddl ?></td>
                                                             <td><?php echo $deadline ?></td>
                                                             <td><?php echo $tel ?></td>
-                                                            <td><a href="closeddl_mail.php?email=<?php echo $email?>"><i
-                                                                        data-feather="mail"
-                                                                        class="icon-dual-danger"></i></a></td>
+                                                            <td><a href="closeddl_mail.php?email=<?php echo $email?>"
+                                                                    class='action-icon'><i
+                                                                        class="mdi mdi-email-send-outline"
+                                                                        style="color:#d96060"></i></a></td>
                                                         </tr>
                                                         <?php
                                             }
@@ -116,15 +117,14 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <form action="overddl_mail.php" method="POST" id="overddl">
-                                                <input type="submit" id="demo-row" class="btn btn-primary btn-sm"
+                                                <input type="submit" id="demo-row" class="btn btn-danger btn-sm"
                                                     value="寄送信件">
                                                 <table id="demo-custom-toolbar" data-toolbar="#demo-row"
                                                     data-toggle="table" data-toolbar="#toolbar" data-search="true"
                                                     data-show-refresh="true" data-show-columns="true"
                                                     data-sort-name="date" data-page-list="[5, 10, 20]"
                                                     data-page-size="6" data-pagination="true"
-                                                    data-show-pagination-switch="true" class="table-borderless"
-                                                    style="font-weight: 700;">
+                                                    data-show-pagination-switch="true" class="table-borderless">
 
 
                                                     <thead class="thead-light">
@@ -172,8 +172,8 @@
                                                         <tr>
                                                             <td><input type="checkbox" value="<?php echo $mail?>"
                                                                     name="mail[]"></td>
-                                                            <td><a
-                                                                    href="p2.php?id=<?php echo $id?>&&pro=<?php echo $pro?>"><?php echo $title ?></a>
+                                                            <td><a href="distriHistoryContent.php?id=<?php echo $id?>&&pro=<?php echo $pro?>"
+                                                                    style="color: #6C757D"><?php echo $title ?></a>
                                                             </td>
                                                             <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
                                                             </td>
@@ -181,9 +181,9 @@
                                                             <td><?php echo $ddl ?></td>
                                                             <td><?php echo abs($deadline) ?></td>
                                                             <td><?php echo $tel ?></td>
-                                                            <td><a href="overddl_mail.php?mail=<?php echo $mail?>"><i
-                                                                        data-feather="mail"
-                                                                        class="icon-dual-danger"></i></a></td>
+                                                            <td><a href="overddl_mail.php?mail=<?php echo $mail?>"
+                                                                    class='action-icon'><i
+                                                                        class="mdi mdi-email-send-outline"></i></a></td>
                                                         </tr>
                                                         <?php
                                             }
