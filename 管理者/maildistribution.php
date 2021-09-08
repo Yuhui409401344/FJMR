@@ -67,8 +67,16 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
-                                            data-page-size="7">
+                                        <table id="demo-foo-filtering" class="table table-bordered toggle-circle  mb-0"
+                                            data-page-size="10">
+                                            <colgroup>
+                                                <col span="1" style="width: 18%;">
+                                                <col span="1" style="width: 15%;">
+                                                <col span="1" style="width: 15%;">
+                                                <col span="1" style="width: 15%;">
+                                                <col span="1" style="width: 20%;">
+                                                <col span="1" style="width: 12%;">
+                                            </colgroup>
                                             <thead>
                                                 <tr>
                                                     <th data-toggle="true" ellipsis>標題</th>
@@ -76,8 +84,8 @@
                                                     <th data-field="field" data-sortable="true"
                                                         data-formatter="fieldFormatter" data-hide="phone">領域</th>
                                                     <th>上傳日期</th>
-                                                    <th data-align="center">動作</th>
                                                     <th data-hide="phone,tablet">摘要</th>
+                                                    <th data-align="center">動作</th>
 
                                                 </tr>
                                             </thead>
@@ -101,8 +109,9 @@
 
                                                     ?>
                                                 <tr>
-                                                    <td><a
-                                                            href='pages-maildistribution.php?id=<?php echo "$id"?>'><?php echo $title ?></a>
+                                                    <td><a class="title"
+                                                            href='pages-maildistribution.php?id=<?php echo "$id"?>'
+                                                            style="color: #005282"><?php echo $title ?></a>
                                                     </td>
                                                     <td><?php echo $author1, ' ',$author2,' ',$author3,' ',$author4,' ', $author5 ?>
                                                     </td>
@@ -119,7 +128,10 @@
                                                             ?>
 
                                                     </td>
-                                                    <td><?php echo $row['uploadtime']?></td>
+                                                    <td><?php echo $uploadtime ?></td>
+                                                    <td>
+                                                        <p class='summary'><?php echo $Summary ?></p>
+                                                    </td>
                                                     <td>
                                                         <a href='../投稿者/upload/<?php echo $uploadname ?>' target="blank"
                                                             download="<?php echo $uploadname ?>" class='action-icon'> <i
@@ -130,7 +142,7 @@
                                                         <a href='reply-cancel.php?id=<?php echo "$id" ?> '
                                                             class='action-icon'><i class='mdi mdi-reply mr-1'></i></a>
                                                     </td>
-                                                    <td><?php echo $Summary; ?></td>
+
                                                 </tr>
                                                 <?php
                                                     }
@@ -168,27 +180,7 @@
 
 
         </div>
-
-
-
-        <!-- Vendor js -->
         <script src="../assets/js/vendor.min.js"></script>
-
-        <script src="../assets/libs/selectize/js/standalone/selectize.min.js"></script>
-        <script src="../assets/libs/mohithg-switchery/switchery.min.js"></script>
-        <script src="../assets/libs/multiselect/js/jquery.multi-select.js"></script>
-        <script src="../assets/libs/select2/js/select2.min.js"></script>
-        <script src="../assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
-        <script src="../assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
-        <script src="../assets/libs/bootstrap-select/js/bootstrap-select.min.js"></script>
-        <script src="../assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-        <script src="../assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-
-        <!-- Init js for modal select bar-->
-        <script src="../assets/js/pages/form-advanced.init.js"></script>
-
-        <!-- Todo app -->
-        <script src="../assets/js/pages/jquery.todo.js"></script>
 
         <!-- Footable js -->
         <script src="../assets/libs/footable/footable.all.min.js"></script>
@@ -199,17 +191,26 @@
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
 
-        <!-- Inbox init -->
-        <script src="../assets/js/pages/inbox.js"></script>
-
-        <!-- Plugins js-->
-        <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
-        <script src="../assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-        <script src="../assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
-        <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-        <!-- Init js for time picker-->
-        <script src="../assets/js/pages/form-pickers.init.js"></script>
-
-
+        <script>
+        $(function() {
+            var len = 8;
+            $(".title").each(function(i) {
+                if ($(this).text().length > len) {
+                    $(this).attr("title", $(this).text());
+                    var text = $(this).text().substring(0, len - 1) + "...";
+                    $(this).text(text);
+                }
+            });
+        });
+        $(function() {
+            var len = 50;
+            $(".summary").each(function(i) {
+                if ($(this).text().length > len) {
+                    $(this).attr("title", $(this).text());
+                    var text = $(this).text().substring(0, len - 1) + "...";
+                    $(this).text(text);
+                }
+            });
+        });
+        </script>
     </body>

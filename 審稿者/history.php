@@ -114,8 +114,8 @@ if(isset($_SESSION["account"]["login"])){
 
                                     ?>
                                             <tr>
-                                                <td><a class="title"
-                                                        href="p1.php?id=<?php echo "$id" ?>"><?php echo $title ?></a>
+                                                <td><a class="title" href="historyContent.php?id=<?php echo "$id" ?>"
+                                                        style="color: #005282"><?php echo $title ?></a>
                                                 </td>
                                                 <td><?php echo $author1, ' ',$author2,' ',$author3,' ',$author4,' ',$author5 ?>
                                                 </td>

@@ -68,13 +68,14 @@
                                                 }
                                             ?>
 
-                                        <div style=" display: flex;justify-content: left;border-bottom: 0;">
-                                            <h3
-                                                style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                <?php echo $title ?>
-                                            </h3>
-                                        </div>
+
                                         <div class="container">
+                                            <div class="col-12">
+                                                <h3
+                                                    style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
+                                                    <?php echo $title ?>
+                                                </h3>
+                                            </div>
                                             <div class="row justify-content-start">
                                                 <div>
                                                     全文下載：<a href='upload/<?php echo $scriptfile?>' target="blank"
@@ -239,15 +240,18 @@
                                                 }
                                             ?>
 
-                                        <div style=" display: flex;justify-content: left;border-bottom: 0;">
-                                            <h3
-                                                style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                <?php echo $title ?>
-                                            </h3>
-                                        </div>
+
                                         <div class="container">
                                             <div class="row justify-content-start">
-                                                <div>
+                                                <div class="col-12">
+                                                    <h3
+                                                        style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
+                                                        <?php echo $title ?>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-start">
+                                                <div class="col-12">
                                                     全文下載：<a href='upload/<?php echo $scriptfile?>' target="blank"
                                                         download="<?php echo $scriptfile ?>"><?php echo $scriptfile?></a>
                                                 </div>
@@ -255,7 +259,7 @@
                                         </div>
                                         <div class="container">
                                             <div class="row justify-content-start">
-                                                <div>
+                                                <div class="col-12">
                                                     上傳時間：<?php echo $uploadtime ?>
                                                 </div>
                                             </div>

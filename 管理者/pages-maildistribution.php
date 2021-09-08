@@ -20,6 +20,8 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
     $summary=$row['summary'];
     $uploadname=$row['uploadname'];
     $uploadtime=$row['uploadtime'];
+
+    $Summary=nl2br($summary);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,29 +80,23 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                             <div class="card-box">
                                 <div class="row">
                                     <div class="container-fluid">
-                                        <div style=" display: flex;
-                                                        justify-content: left;
-                                                        border-bottom: 0;">
-                                            <h3
-                                                style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                <?php echo $title ?></h3>
-                                        </div>
                                         <div class="container">
                                             <div class="row justify-content-start">
-                                                <div>
-                                                    全文下載：<a href='../投稿者/upload/<?php echo $uploadname ?>'
-                                                        target="blank"
-                                                        download="<?php echo $uploadname ?>"><?php echo $title ?></a>
+                                                <div class="col-12">
+                                                    <h3
+                                                        style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
+                                                        <?php echo $title ?>
+                                                    </h3>
                                                 </div>
+                                                <div class="col-12">
+                                                    全文下載：<a href='../投稿者/upload/<?php echo $scriptfile?>' target="blank"
+                                                        download="<?php echo $scriptfile ?>"><?php echo $title ?></a>
+                                                </div>
+                                                <div class="col-12">投稿時間：<?php echo $uploadtime ;?></div>
+
                                             </div>
                                         </div>
-                                        <div class="container">
-                                            <div class="row justify-content-start">
-                                                <div>
-                                                    發布時間：<?php echo $uploadtime ;?>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="row">
                                             <div class="container mt-0">
                                                 <section class="mt-3">
@@ -137,7 +133,7 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                                     <div class="media mt-3 px-1">
                                                         <div class="media-body"
                                                             style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p><?php echo $summary ?></p>
+                                                            <p><?php echo $Summary ?></p>
                                                         </div>
                                                     </div>
 
@@ -163,7 +159,7 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                     </div>
                                 </div>
                             </div> <!-- end card-->
-                            <button type="button" class="btn btn-success waves-effect waves-light"
+                            <button type="button" class="btn btn-blue waves-effect waves-light"
                                 style="text-align:center; float:right">
                                 <a href='distri.php?id=<?php echo "$id" ?>' style="color: white"><span
                                         class="btn-label"><i

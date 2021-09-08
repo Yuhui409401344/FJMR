@@ -110,8 +110,8 @@
                                             ?>
 
                                             <tr>
-                                                <td><a class="title"
-                                                        href="paperContent.php?id=<?php echo "$id" ?>"><?php echo $title ?></a>
+                                                <td><a class="title" href="paperContent.php?id=<?php echo "$id" ?>"
+                                                        style="color: #005282"><?php echo $title ?></a>
                                                 </td>
                                                 <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
                                                 </td>

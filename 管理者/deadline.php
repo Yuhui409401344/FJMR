@@ -1,3 +1,5 @@
+<link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
 <body class="loading">
     <!-- Begin page -->
     <div id="wrapper">
