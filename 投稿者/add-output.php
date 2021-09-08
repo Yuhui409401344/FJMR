@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body class="loading">
 
-        <!-- Begin page -->
-        <div id="wrapper">
-            <?php include "nav.php" ?>
-            <div class="content-page">
-                <div class="content">
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        <div class="row mt-3">
-                            <div class="col-lg-12">
-                                <div class="card-box">
+<body class="loading">
+
+    <!-- Begin page -->
+    <div id="wrapper">
+        <?php include "nav.php" ?>
+        <div class="content-page">
+            <div class="content">
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <div class="row mt-3">
+                        <div class="col-lg-12">
+                            <div class="card-box">
                                 <?php
                                     $title=$_POST["title"];
                                     $field=$_POST["field"];
@@ -77,34 +78,41 @@
                                         }
                                     }
                                 ?>
-                                        <div class="form-group mb-3">
-                                            <label for="product-name" style="font-size: 20px;"><?php echo "新增成功!";?></label>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <div class="card-header border-0 font-weight-bold d-flex justify-content-between">標題</div><br>
-                                            <td><?php echo $_REQUEST['title']?></td>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <div class="card-header border-0 font-weight-bold d-flex justify-content-between">作者</div><br>
-                                            <div style="font-family:Microsoft JhengHei;color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                            <td>
-                                                <?php echo $_REQUEST['auth1']?>
-                                                <?php echo $_REQUEST['auth2']?>
-                                                <?php echo $_REQUEST['auth3']?>
-                                                <?php echo $_REQUEST['auth4']?>
-                                                <?php echo $_REQUEST['auth5']?>
-                                            </td>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <div class="card-header border-0 font-weight-bold d-flex justify-content-between">摘要</div><br>
-                                            <td><?php $Summary=nl2br($summary); echo $Summary; ?></td>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <div class="card-header border-0 font-weight-bold d-flex justify-content-between">領域</div><br>
-                                            <td><font color=navy><?php echo implode(',',$field) ?></font></td>
-                                        </div>
-                                    <?php
+                                <div class="form-group mb-3">
+                                    <label for="product-name" style="font-size: 20px;"><?php echo "新增成功!";?></label>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">標題
+                                    </div><br>
+                                    <td><?php echo $_REQUEST['title']?></td>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">作者
+                                    </div><br>
+                                    <div
+                                        style="font-family:Microsoft JhengHei;color: #1c2a48; margin-bottom: 0px;font-weight: 520">
+                                        <td>
+                                            <?php echo $_REQUEST['auth1']?>
+                                            <?php echo $_REQUEST['auth2']?>
+                                            <?php echo $_REQUEST['auth3']?>
+                                            <?php echo $_REQUEST['auth4']?>
+                                            <?php echo $_REQUEST['auth5']?>
+                                        </td>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">摘要
+                                    </div><br>
+                                    <td><?php $Summary=nl2br($summary); echo $Summary; ?></td>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">領域
+                                    </div><br>
+                                    <td>
+                                        <font color=navy><?php echo implode(',',$field) ?></font>
+                                    </td>
+                                </div>
+                                <?php
                                         
                                         // $odlname=$_FILES["file"]["tmp_name"];
 
@@ -159,17 +167,18 @@
                                                 echo 'Message could not be sent.';
                                                 echo 'Mailer Error: ' . $mail->ErrorInfo;
                                             } else {
-                                                echo 'Message has been sent';
+                                                echo 'Message has been sent'; 
                                             }
                                     }
                                     ?>
-                                </div> <!-- end card-box -->
-                            </div> <!-- end col -->
-                        </div><!-- end row -->                
-                    </div> <!-- container -->
-                </div> <!-- content -->
-            </div>  
+                            </div> <!-- end card-box -->
+                        </div> <!-- end col -->
+                    </div><!-- end row -->
+                </div> <!-- container -->
+            </div> <!-- content -->
         </div>
-        <!-- END wrapper -->
-  </body>
+    </div>
+    <!-- END wrapper -->
+</body>
+
 </html>
