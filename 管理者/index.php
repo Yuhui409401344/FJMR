@@ -10,6 +10,7 @@ if(isset($_SESSION["account"]["login"])){
     }
     if(in_array("管理者",$status)){
 ?>
+
 <head>
     <meta charset="utf-8" />
     <title>管理者</title>
@@ -21,9 +22,9 @@ if(isset($_SESSION["account"]["login"])){
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Bootstrap Tables css -->
-    <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" /> -->
     <!-- App css -->
     <link href="../assets/css/bootstrap.min.(1).css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -58,4 +59,5 @@ if(isset($_SESSION["account"]["login"])){
     include "pages-404.html";
 }
 ?>
+
 </html>
