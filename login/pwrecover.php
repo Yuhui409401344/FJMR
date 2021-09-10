@@ -47,7 +47,8 @@
                                         </span>
                                     </a>
                                 </div>
-                                <p class="text-muted mb-4 mt-3">別擔心,我們會發送訊息到您的郵箱中，幫助您重設密碼</p>
+                                <p class="text-muted mb-4 mt-3">別擔心,我們會將您的帳號與姓名通知管理者，當您送出後請耐心等候管理者的Email回覆，並遵照指示再次進行登入。
+                                </p>
                             </div>
 
                             <form action="pwrecover-output.php" method="post">
@@ -55,11 +56,11 @@
                                 <div class="form-group mb-3">
                                     <label for="login">帳號</label>
                                     <input class="form-control" type="text" id="login" name="login" required=""
-                                        placeholder="請輸入帳號">
+                                        placeholder="請輸入您的登入帳號">
                                 </div>
 
                                 <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-blue btn-block" type="submit"> 重設密碼 </button>
+                                    <button class="btn btn-blue btn-block" type="submit"> 送出 </button>
                                 </div>
 
                             </form>

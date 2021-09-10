@@ -182,7 +182,7 @@
                                                             <td><?php echo abs($deadline) ?></td>
                                                             <td><?php echo $tel ?></td>
                                                             <td><a href="overddl_mail.php?mail=<?php echo $mail?>"
-                                                                    class='action-icon'><i
+                                                                    class='action-icon'><i style="color:#d96060"
                                                                         class="mdi mdi-email-send-outline"></i></a></td>
                                                         </tr>
                                                         <?php
