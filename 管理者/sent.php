@@ -156,7 +156,7 @@
                                                                 $replytime=$row['replytime'];
                                                         ?>
                                                     <tr>
-                                                        <td><a href="p1.php?id=<?php echo $id ?>"
+                                                        <td><a href="historyContent.php?id=<?php echo $id ?>"
                                                                 style="color:#005282"><?php echo $title ?></a>
                                                         </td>
                                                         <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>

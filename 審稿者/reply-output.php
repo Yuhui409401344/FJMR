@@ -120,7 +120,7 @@ $login=$_SESSION["account"]["login"];
                                                 echo 'Message could not be sent.';
                                                 echo 'Mailer Error: ' . $mail->ErrorInfo;
                                             } else {
-                                                echo 'Message has been sent';
+                                                echo '';
                                             }
 
                                         $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");

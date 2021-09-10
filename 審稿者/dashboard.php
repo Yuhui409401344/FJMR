@@ -63,12 +63,12 @@
                                     <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
                                         data-page-size="10">
                                         <colgroup>
-                                            <col span="1" style="width: 10%;">
-                                            <col span="1" style="width: 10%;">
-                                            <col span="1" style="width: 10%;">
-                                            <col span="1" style="width: 10%;">
-                                            <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 20%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 10%;">
+                                            <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 20%;">
                                             <col span="1" style="width: 10%;">
                                         </colgroup>
@@ -117,7 +117,8 @@
                                                 </td>
                                                 <td><?php echo $manager ?></td>
                                                 <td><span class='badge badge-soft-blue'><?php echo $ddl ?></span></td>
-                                                <td><?php echo $uploadtime ?></td>
+                                                <td><span class='badge badge-light'><?php echo $uploadtime ?></span>
+                                                </td>
                                                 <td>
                                                     <p class="summary"><?php echo $Summary ?></p>
                                                 </td>
@@ -126,7 +127,7 @@
                                                     <a href="reply.php?id=<?php echo $id ?>" class="action-icon"> <i
                                                             class="mdi mdi-email-send-outline"></i></a>
                                                     <a href='../投稿者/upload/<?php echo $filename?>' target="blank"
-                                                        download="<?php echo $filename ?>" class='action-icon'> <i
+                                                        download="<?php echo $title ?>" class='action-icon'> <i
                                                             class='mdi mdi-arrow-collapse-down'></i></a>
                                                 </td>
 

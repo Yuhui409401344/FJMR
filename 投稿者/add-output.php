@@ -79,7 +79,7 @@
                                     }
                                 ?>
                                 <div class="form-group mb-3">
-                                    <label for="product-name" style="font-size: 20px;"><?php echo "新增成功!";?></label>
+                                    <label for="product-name" style="font-size: 20px;"><?php echo "投稿成功!";?></label>
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="card-header border-0 font-weight-bold d-flex justify-content-between">標題
@@ -163,7 +163,7 @@
                                                 echo 'Message could not be sent.';
                                                 echo 'Mailer Error: ' . $mail->ErrorInfo;
                                             } else {
-                                                echo 'Message has been sent'; 
+                                                echo ''; 
                                             }
                                     }
                                     ?>

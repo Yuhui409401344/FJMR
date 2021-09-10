@@ -79,7 +79,7 @@ $login=$_SESSION["account"]["login"];
                                         $sql1=$pdo->prepare('insert into totalreply (id,title,uploader,senter,auth1,auth2,auth3,auth4,auth5,level,message,replycount,filename) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)');
                                         $sql1->execute([$id,$title,$uploader,$login,$auth1,$auth2,$auth3,$auth4,$auth5,$level,$comment,$row["count_"],$newname]);
                                         
-                                        $sql5 = $pdo->query("select email from account where login='".$uploader."' and status='投稿者'");
+                                        $sql5 = $pdo->query("select name,email from account where login='".$uploader."' and status='投稿者'");
                                         foreach($sql5 as $row){
                                             $to_email = $row['email']; //投稿者信箱
                                             $name = $row['name']; //投稿者姓名
@@ -115,7 +115,7 @@ $login=$_SESSION["account"]["login"];
                                                 echo 'Message could not be sent.';
                                                 echo 'Mailer Error: ' . $mail->ErrorInfo;
                                             } else {
-                                                echo 'Message has been sent';
+                                                echo '';
                                             }
 
                                         $sql3=$pdo ->prepare("DELETE from reply where reply.id=?");
