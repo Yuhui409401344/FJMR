@@ -131,7 +131,7 @@
                                                             <div>
                                                                 <p class=" mb-0;"
                                                                     style="color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                                                    <?php echo $author1,' ', $author2, ' ', $author3, ' ', $author4, ' ', $author5 ?>
+                                                                    <?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
                                                                 </p>
 
                                                             </div>
