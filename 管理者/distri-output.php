@@ -144,9 +144,9 @@ $manager=$_SESSION["account"]["login"];
 
                                         }
                                       if (empty($pro)) {
-                                        echo '請輸入審稿者';
+                                        echo '<script> {window.alert("請輸入審稿者");history.back()} </script>';
                                       }elseif(empty($ddl)){
-                                        echo '請輸入繳交截止日期';
+                                        echo '<script> {window.alert("請輸入審稿者繳交截止日期");history.back()} </script>';
                                       }else{
                                         echo "<script> {window.alert('發送成功');location.href='index.php?method=sent'} </script>";
                                         $sql3=$pdo ->prepare('delete newpaper from newpaper  where newpaper.title=?');
