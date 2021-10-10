@@ -51,7 +51,7 @@
                                                         justify-content: right;
                                                         align-items: center;
                                                         height: 70px;
-                                                        border: bottom: 0;">
+                                                        border-bottom: 0;">
                                             <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;margin-left: 60px;margin-top: 20px;">國際交換生選擇學校之關鍵因素-使用層級分析法</h3>
                                             </div>
                                             <div class="container">
@@ -184,7 +184,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="fileinput">上傳回覆檔案<span class="text-danger">*</span></label>
-                                <input type="file" id="fileinput" class="form-control-file">
+                                <input type="file" id="fileinput" accept=".pdf,.doc,.docx" class="form-control-file">
                             </div>
                         </div>
                     </div>

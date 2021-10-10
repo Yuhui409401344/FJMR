@@ -124,6 +124,7 @@
                                             "檔案大小: " . ($_FILES["file"]["size"] / 1024)." Kb<br />";
                                             "暫存名稱: " . $_FILES["file"]["tmp_name"];
                                             move_uploaded_file($_FILES["file"]["tmp_name"],"upload/".$newname);
+                                            move_uploaded_file($_FILES["file_x"]["tmp_name"],"upload_x/".$newname);
                                         }
 
                                         $sql5 = $pdo->query("select name,email from account where status='管理者' ");

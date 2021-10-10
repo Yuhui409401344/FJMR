@@ -125,9 +125,9 @@
                                                 <td><?php echo $comment ?></td>
                                                 <td>
                                                     <a href="reply.php?id=<?php echo $id ?>" class="action-icon"> <i
-                                                            class="mdi mdi-email-send-outline"></i></a>
-                                                    <a href='../投稿者/upload/<?php echo $filename?>' target="blank"
-                                                        download="<?php echo $title ?>" class='action-icon'> <i
+                                                            class="mdi mdi-email-send-outline" title="回覆審稿"></i></a>
+                                                    <a href='../投稿者/upload_x/<?php echo $filename?>' target="blank"
+                                                        download="<?php echo $title ?>" class='action-icon' title="下載檔案"> <i
                                                             class='mdi mdi-arrow-collapse-down'></i></a>
                                                 </td>
 

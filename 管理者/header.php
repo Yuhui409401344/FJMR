@@ -188,7 +188,7 @@ $login=$_SESSION["account"]["login"];
                                             <a href="index.php?method=maildistribution">分配稿件</a>
                                         </li>
                                         <li>
-                                            <a href="index.php?method=mailbox">所有信件</a>
+                                            <a href="index.php?method=mailbox">審稿回覆</a>
                                         </li>
                                         <li>
                                             <a href="index.php?method=sent">寄件備份</a>
@@ -220,13 +220,6 @@ $login=$_SESSION["account"]["login"];
                                     <span> 名片夾 </span>
                                 </a>
                             </li>
-
-                            <!-- <li>
-                                <a href="chat.php">
-                                    <i class="mdi mdi-chat"></i>
-                                    <span> 聊天室 </span>
-                                </a>
-                            </li> -->
                     </div>
                     <!-- End Sidebar -->
 

@@ -134,13 +134,13 @@
                                                     </td>
                                                     <td>
                                                         <a href='../投稿者/upload/<?php echo $uploadname ?>' target="blank"
-                                                            download="<?php echo $uploadname ?>" class='action-icon'> <i
+                                                            download="<?php echo $uploadname ?>" class='action-icon' title="下載檔案"> <i
                                                                 class='mdi mdi-arrow-collapse-down'></i></a>
                                                         <a href='distri.php?id=<?php echo "$id" ?> '
                                                             class='action-icon'><i
-                                                                class='mdi mdi-email-send-outline'></i></a>
+                                                                class='mdi mdi-email-send-outline' title="分配文章"></i></a>
                                                         <a href='reply-cancel.php?id=<?php echo "$id" ?> '
-                                                            class='action-icon'><i class='mdi mdi-reply mr-1'></i></a>
+                                                            class='action-icon'><i class='mdi mdi-reply mr-1' title="直接回覆文章"></i></a>
                                                     </td>
 
                                                 </tr>

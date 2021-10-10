@@ -203,7 +203,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="fileinput">上傳回覆檔案<span class="text-danger">*</span></label>
-                                <input type="file" id="fileinput" class="form-control-file">
+                                <input type="file" accept=".pdf,.doc,.docx" id="fileinput" class="form-control-file">
                             </div>
                         </div>
                     </div>

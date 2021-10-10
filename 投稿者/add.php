@@ -19,9 +19,8 @@
                                 <div class="div1 form-group mb-3 mr-4 ml-4">
                                     <label for="product-name" style="font-size: 20px;">作者<span class="text-danger">*</span></label> 
                                     <!-- <input type="button" value="新增作者" onclick="add()"> -->
-                                    <input type="text" name="auth1" class="form-control" style="weight:5px;" placeholder="請輸入作者1" required>
+                                    <input type="text" name="auth1" class="form-control" placeholder="請輸入作者1" required>
                                     <div class="row mt-1"></div>
-                                    
                                     <input type="text" name="auth2" class="form-control" placeholder="請輸入作者2">
                                     <div class="row mt-1"></div>
                                     <input type="text" name="auth3" class="form-control" placeholder="請輸入作者3">
@@ -87,7 +86,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 mr-4 ml-4">
-                                    <input type=file name="file" accept=".pdf,.doc" id="file">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="mb-2"  style="font-size: 20px;">匿名檔案<span class="text-danger">*</span></label>
+                                            <br/>
+                                            <input  type=file name="file_x" accept=".pdf,.doc,.docx" id="file" require>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="mb-2"  style="font-size: 20px;">非匿名檔案<span class="text-danger">*</span></label>
+                                            <br/>
+                                            <input type=file name="file" accept=".pdf,.doc,.docx" id="file" require>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
