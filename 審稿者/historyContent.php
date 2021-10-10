@@ -108,7 +108,7 @@ $login=$_SESSION["account"]["login"];
                                                     </h3>
                                                 </div>
                                                 <div class="col-12">
-                                                    全文下載：<a href='../投稿者/upload/<?php echo $scriptfile?>' target="blank"
+                                                    全文下載：<a href='../投稿者/upload_x/<?php echo $scriptfile?>' target="blank"
                                                         download="<?php echo $scriptfile ?>"><?php echo $title ?></a>
                                                 </div>
 

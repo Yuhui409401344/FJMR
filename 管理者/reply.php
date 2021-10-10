@@ -110,7 +110,7 @@
                                                 </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input name="file" type="file">
+                                            <input name="file" type="file" accept=".pdf,.doc,.docx">
                                         </div>
                                     </div>
                                         <div class="fallback">

@@ -139,10 +139,10 @@ if(isset($_SESSION["account"]["login"])){
                                                 </td>
                                                 <td>
                                                     <a href='../審稿者/upload/<?php echo $uploadname ?>' target="blank"
-                                                        download="<?php echo $uploadname ?>" class='action-icon'> <i
+                                                        download="<?php echo $uploadname ?>" class='action-icon' title="檔案下載"> <i
                                                             class='mdi mdi-arrow-collapse-down'></i></a>
                                                     <a href='delete_reply_history.php?title=<?php echo "$title" ?> '
-                                                        class='action-icon' onClick='return confirm("確定刪除?");'><i
+                                                        class='action-icon' onClick='return confirm("確定刪除?");' title="刪除"><i
                                                             class='mdi mdi-delete mr-1'></i></a>
                                                 </td>
                                             </tr>

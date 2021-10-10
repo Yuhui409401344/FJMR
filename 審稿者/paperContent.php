@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="row justify-content-start">
                                                 <div class="col-8">
-                                                    全文下載：<a href='../投稿者/upload/<?php echo $uploadname?>' target="blank"
+                                                    全文下載：<a href='../投稿者/upload_x/<?php echo $uploadname?>' target="blank"
                                                         download="<?php echo $title ?>"><?php echo $title ?></a>
                                                 </div>
                                                 <div class="col-4" style="display:inline-block">

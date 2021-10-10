@@ -77,11 +77,21 @@
                                                 </h3>
                                             </div>
                                             <div class="row justify-content-start">
-                                                <div>
-                                                    全文下載：<a href='upload/<?php echo $scriptfile?>' target="blank"
-                                                        download="<?php echo $scriptfile ?>"><?php echo $scriptfile?></a>
+                                                <div class="col-4">
+                                                    匿名檔案下載：
+                                                        <a href='upload_x/<?php echo $scriptfile?>' target="blank"
+                                                        download="<?php echo $scriptfile ?>">
+                                                            <?php echo $scriptfile?>
+                                                        </a>
                                                 </div>
-                                                <div>
+                                                <div class="col-4">
+                                                    非匿名檔案下載:
+                                                        <a href='upload/<?php echo $scriptfile?>' target="blank"
+                                                        download="<?php echo $scriptfile ?>">
+                                                            <?php echo $scriptfile?>
+                                                        </a>
+                                                </div>
+                                                <div class="col-4">
                                                     管理者回覆：<a href='../管理者/upload/<?php echo $managerfile?>'
                                                         target="blank"
                                                         download="<?php echo $managerfile ?>"><?php echo $managerfile ?></a>

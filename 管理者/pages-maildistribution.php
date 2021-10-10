@@ -88,8 +88,12 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                                         <?php echo $title ?>
                                                     </h3>
                                                 </div>
-                                                <div class="col-12">
-                                                    全文下載：<a href='../投稿者/upload/<?php echo $uploadname?>' target="blank"
+                                                <div class="col-6">
+                                                    匿名檔案下載：<a href='../投稿者/upload_x/<?php echo $uploadname?>' target="blank"
+                                                        download="<?php echo $uploadname ?>"><?php echo $title ?></a>
+                                                </div>
+                                                <div class="col-6">
+                                                    非匿名檔案下載:<a href='../投稿者/upload/<?php echo $uploadname?>' target="blank"
                                                         download="<?php echo $uploadname ?>"><?php echo $title ?></a>
                                                 </div>
                                                 <div class="col-12">投稿時間：<?php echo $uploadtime ;?></div>

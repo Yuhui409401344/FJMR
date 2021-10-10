@@ -124,7 +124,7 @@
 
                                         <!-- 檔案 file -->
                                         <div class="form-group mb-3">
-                                            <input type=file name="file" accept=".pdf,.doc" id="file" enctype="multipart/form-data">
+                                            <input type=file name="file" accept=".pdf,.doc,.docx" id="file" enctype="multipart/form-data">
                                         </div>
                                         
                                         <!-- 送出 -->
