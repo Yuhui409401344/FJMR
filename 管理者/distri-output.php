@@ -81,76 +81,105 @@ $manager=$_SESSION["account"]["login"];
                                       $pro=$_POST["pro"];
                                       $ddl=$_POST["ddl"];
                                       $comment=$_POST["comment"];
-                                      $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                      foreach ($pdo->query("select * from newpaper where title='".$title."'") as $row) {
-                                          $id=$row["id"];
-                                          $uploader=$row["uploader"];
-                                          $auth1=$row['auth1'];
-                                          $auth2=$row['auth2'];
-                                          $auth3=$row['auth3'];
-                                          $auth4=$row['auth4'];
-                                          $auth5=$row['auth5'];
-                                          $summary=$row['summary'];
-                                          $uploadname=$row['uploadname'];
-
-                                      }
-                                      
-                                      foreach($pro as $a){
-                                        $sql=$pdo->prepare('INSERT INTO distri (id,title,uploader,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
-
-                                        $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,uploader,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-                                        $sql2->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
-
-                                        $sql5 = $pdo->query("select name,email from account where status='審稿者' and login ='".$a."'");
-                                        foreach($sql5 as $row){
-                                            $to_email = $row['email']; //管理者信箱
-                                            $name = $row['name']; //管理者姓名
-
-                                            require_once '../PHPMailer/PHPMailerAutoload.php';
-
-                                            $mail = new PHPMailer;
-                                            $mail->Charset='UTF-8';
-
-                                            //$mail->SMTPDebug = 3;                               // Enable verbose debug output
-
-                                            $mail->isSMTP();  
-                                            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                                            $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                                            $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
-                                            $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
-                                            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-                                            $mail->Port = 587;                                    // TCP port to connect to
-
-                                            $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
-                                            $mail->addAddress($to_email, $name);     // Add a recipient
-                                        
-                                            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-                                            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-                                            $mail->isHTML(true);                                  // Set email format to HTML
-
-                                            $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自管理者分配的稿件") . "?=";
-                                            // $mail->Subject = "輔仁管理評論有一封來自審稿者的回覆稿件";
-                                            $mail->Body    =  file_get_contents('../mail.html', true);
-                                            $mail->AltBody = '親愛的審稿者者您好，輔仁管理評論目前收到一封來自管理者分配的稿件，請您盡速到輔仁管理評論的管理者平台審理稿件，謝謝您！';
-                                        }
-
-                                            if(!$mail->send()) {
-                                                echo 'Message could not be sent.';
-                                                echo 'Mailer Error: ' . $mail->ErrorInfo;
-                                            } else {
-                                                'Message has been sent';
-                                            }
-
-                                        }
+                                     
                                       if (empty($pro)) {
-                                        echo '請輸入審稿者';
+                                        echo '<script> {window.alert("請輸入審稿者");history.back()} </script>';
                                       }elseif(empty($ddl)){
-                                        echo '請輸入繳交截止日期';
+                                        echo '<script> {window.alert("請輸入審稿者繳交截止日期");history.back()} </script>';
                                       }else{
-                                        echo "<script> {window.alert('發送成功');location.href='index.php?method=sent'} </script>";
+
+                                        $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                                        foreach ($pdo->query("select * from newpaper where title='".$title."'") as $row) {
+                                            $id=$row["id"];
+                                            $uploader=$row["uploader"];
+                                            $auth1=$row['auth1'];
+                                            $auth2=$row['auth2'];
+                                            $auth3=$row['auth3'];
+                                            $auth4=$row['auth4'];
+                                            $auth5=$row['auth5'];
+                                            $summary=$row['summary'];
+                                            $uploadname=$row['uploadname'];
+  
+                                        }
+                                        
+                                        foreach($pro as $a){
+                                          $sql=$pdo->prepare('INSERT INTO distri (id,title,uploader,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                          $sql->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
+  
+                                          $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,uploader,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                          $sql2->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
+  
+                                          $sql5 = $pdo->query("select name,email from account where status='審稿者' and login ='".$a."'");
+                                          foreach($sql5 as $row){
+                                              $to_email = $row['email']; //管理者信箱
+                                              $name = $row['name']; //管理者姓名
+  
+                                              require_once '../PHPMailer/PHPMailerAutoload.php';
+  
+                                              $mail = new PHPMailer;
+                                              $mail->Charset='UTF-8';
+  
+                                              //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+  
+                                              $mail->isSMTP();  
+                                              $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                                              $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                              $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
+                                              $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
+                                              $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                                              $mail->Port = 587;                                    // TCP port to connect to
+  
+                                              $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+                                              $mail->addAddress($to_email, $name);     // Add a recipient
+                                          
+                                              // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                                              // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                                              $mail->isHTML(true);                                  // Set email format to HTML
+  
+                                              $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自管理者分配的稿件") . "?=";
+                                              // $mail->Subject = "輔仁管理評論有一封來自審稿者的回覆稿件";
+                                              $mail->Body    =  file_get_contents('../mail.html', true);
+                                              $mail->AltBody = '親愛的審稿者者您好，輔仁管理評論目前收到一封來自管理者分配的稿件，請您盡速到輔仁管理評論的管理者平台審理稿件，謝謝您！';
+                                          }
+  
+                                              if(!$mail->send()) {
+                                                  echo 'Message could not be sent.';
+                                                  echo 'Mailer Error: ' . $mail->ErrorInfo;
+                                              } else {
+                                                  'Message has been sent';
+                                              }
+  
+                                          }
                                         $sql3=$pdo ->prepare('delete newpaper from newpaper  where newpaper.title=?');
                                         $sql3->execute([$title]);
+                                    ?>
+
+
+                                <div class="form-group mb-3">
+                                    <label for="product-name" style="font-size: 20px;"><?php echo "配稿成功!";?></label>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">標題
+                                    </div><br>
+                                    <td><?php echo $title ?></td>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">作者
+                                    </div><br>
+                                    <div
+                                        style="font-family:Microsoft JhengHei;color: #1c2a48; margin-bottom: 0px;font-weight: 520">
+                                        <td>
+                                            <?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
+                                        </td>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
+                                        配稿留言
+                                    </div><br>
+                                    <td><?php $Comment=nl2br($comment); echo $Comment; ?></td>
+                                </div>
+                                <?php 
                                       }
                                     ?>
                             </div>

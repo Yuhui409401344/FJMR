@@ -11,6 +11,15 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+
+
+    <!-- Plugins css -->
+    <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
+        type="text/css" />
+
+
+
     <!-- Plugins css -->
     <link href="../assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
@@ -19,16 +28,6 @@
     <link href="../assets/libs/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet"
         type="text/css" />
-
-    <!-- Plugins css -->
-    <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="../assets/libs/clockpicker/bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
-        type="text/css" />
-
-
 
     <!-- App css -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
@@ -143,81 +142,39 @@
                                             echo $uploadtime;
                                             ?>
 
-                                        <div class="row mt-3">
-                                            <div class="col-md-6">
-                                                <!-- assignee -->
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        <p class="mb-1 font-weight-bold text-muted">審稿者01</p>
-                                                        <?php
-                                                                $conn = mysqli_connect('localhost','root','','fjup');
-                                                                if (!$conn) {
-                                                                die('Could not connect: ' . mysqli_error($con));
-                                                                }
-                                                                if($arr = ""){
-                                                                    $sql="SELECT distinct account.login,login.name from account, account_field where account.status='審稿者' and account_field.f_name in (SELECT  f_name from newpaper_field  where title='$title') and account_field.login=account.login" ;
-                                                                }else{
-                                                                    $sql="SELECT distinct account.login,name from account where account.status='審稿者'";
-                                                                }
-                                                                $result = mysqli_query($conn, $sql);
-                                                                echo "<select  action='distri-output.php' method='post' class='form-control' data-toggle='select2'  name='pro[]' aria-placeholder='請選擇'>";
-                                                                while($row = mysqli_fetch_array($result)) {
-                                                                echo "<option name='pro[]' value='" . $row["login"] . "'>   " .$row["name"]." ".$row["login"] . "  </option>";
-                                                                }echo "</select>";
-                                                                mysqli_close($conn);
-                                                            ?>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
 
-                                            <div class="col-md-6">
-                                                <!-- assignee -->
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        <p class="mb-1 font-weight-bold text-muted">審稿者02</p>
-                                                        <?php 
-                                                                $conn = mysqli_connect('localhost','root','','fjup');
-                                                                if (!$conn) {
-                                                                die('Could not connect: ' . mysqli_error($con));
-                                                                }
-                                                                if($arr = ""){
-                                                                    $sql="SELECT distinct account.login,account.name from account, account_field where account.status='審稿者' and account_field.f_name in (SELECT  f_name from newpaper_field  where title='$title') and account_field.login=account.login" ;
-                                                                }else{
-                                                                    $sql="SELECT distinct login,name from account where account.status='審稿者'";
-                                                                }
-                                                                $result = mysqli_query($conn, $sql);
-                                                                echo "<select action='distri-output.php' method='post' class='form-control' data-toggle='select2' name='pro[]' aria-placeholder='請選擇'>";
-                                                                while($row = mysqli_fetch_array($result)) {
-                                                                echo "<option name='pro[]' value='" . $row["login"] . "'>" .$row["name"]." ".$row["login"] . "</option>";
-                                                                }echo "</select>";
-                                                                mysqli_close($conn);
-                                                            ?>
-
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                                <!-- end assignee -->
-                                            </div> <!-- end col -->
-                                        </div> <!-- end row -->
                                         <div class="row mt-3">
-                                            <div class="form-group col-md-10">
-                                                <!-- start due date -->
-                                                <div class="col-md-6">
-                                                    <label class="text-muted">回覆期限</label>
-                                                    <input type="text" id="humanfd-datepicker" name="ddl"
-                                                        class="form-control"
-                                                        placeholder="<?php $date=date("M,d,Y"); echo $date; ?>">
-                                                </div>
-                                                <!-- end due date -->
+                                            <div class="form-group col-md-6">
+                                                <label class="text-muted">審稿者</label> <br />
+                                                <select id="selectize-maximum" action='distri-output.php' method='post'
+                                                    name='pro[]' aria-placeholder='請選擇'>
+
+                                                    <?php  
+                                                        $editors=$pdo->query("SELECT  login,name from account  where account.status = '審稿者' ");
+                                                        foreach($editors as $row){
+                                                            $login = $row['login'];
+                                                            $name = $row['name'];
+
+                                                            echo "<option name='pro1' value='" . $row["login"] . "'>" .$row["name"]." ".$row["login"] . "</option>";
+                                                        }
+                                                        ?>
+                                                </select>
                                             </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-muted">回覆期限</label>
+                                                <input type="text" id="humanfd-datepicker" name="ddl"
+                                                    class="form-control"
+                                                    placeholder="<?php $date=date("M,d,Y"); echo $date; ?>">
+                                            </div>
+
                                         </div>
+
+
                                         <div class="row mt-3">
                                             <div class="form-group col-md-12">
-                                                <div class="col-md">
-                                                    <label class="text-muted">留言</label>
-                                                    <textarea class="form-control" name="comment" rows="3"
-                                                        style="height:160px"></textarea>
-                                                </div>
+                                                <label class="text-muted">留言</label>
+                                                <textarea class="form-control" name="comment" rows="3"
+                                                    style="height:160px"></textarea>
                                             </div>
                                         </div>
                                         <div class="text-right">
@@ -359,33 +316,18 @@
         <!-- Vendor js -->
         <script src="../assets/js/vendor.min.js"></script>
 
-        <script src="../assets/libs/selectize/js/standalone/selectize.min.js"></script>
-        <script src="../assets/libs/mohithg-switchery/switchery.min.js"></script>
-        <script src="../assets/libs/multiselect/js/jquery.multi-select.js"></script>
-        <script src="../assets/libs/select2/js/select2.min.js"></script>
-        <script src="../assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
-        <script src="../assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
-        <script src="../assets/libs/bootstrap-select/js/bootstrap-select.min.js"></script>
-        <script src="../assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-        <script src="../assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
 
-        <!-- Init js -->
-        <script src="../assets/js/pages/foo-tables.init.js"></script>
+        <script src="../assets/libs/selectize/js/standalone/selectize.min.js"></script>
+        <script src="../assets/libs/select2/js/select2.min.js"></script>
+        <script src="../assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+        <script src="../assets/js/pages/form-advanced.init.js"></script>
+
+        <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
+        <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="../assets/js/pages/form-pickers.init.js"></script>
 
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
-
-        <!-- Inbox init -->
-        <script src="../assets/js/pages/inbox.js"></script>
-
-        <!-- Plugins js-->
-        <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
-        <script src="../assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-        <script src="../assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
-        <script src="../assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-        <!-- Init js for time picker-->
-        <script src="../assets/js/pages/form-pickers.init.js"></script>
 
 
 </body>
