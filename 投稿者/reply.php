@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-group mb-3 mr-4 ml-4">
                                   <label for="product-summary"  style="font-size: 20px;">摘要<span class="text-danger">*</span></label>
-                                  <textarea class="form-control" name="summary" rows="10" style="height:160px" value="<?php echo $summary?>" required></textarea>
+                                  <textarea class="form-control" name="summary" rows="10" style="height:160px" value="<?php echo $summary?>" required><?php echo $summary?></textarea>
                                 </div>
                                 <div class="form-group mb-3 mr-4 ml-4">
                                   <label class="mb-2"  style="font-size: 20px;">領域<span class="text-danger">*</span></label>
