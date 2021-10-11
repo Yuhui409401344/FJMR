@@ -210,23 +210,6 @@
 
                                                 </section>
                                             </div>
-
-
-                                            <!-- <div class="container">
-                                                    <section class="my-5">
-
-                                                        <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">關鍵字</p>
-                                                        </div>
-
-                                                        <div class="media mt-4 px-1">
-                                                            <div class="media-body">
-                                                                <a href="">關鍵因素，國際交換生，層級分析法</a>
-                                                            </div>
-                                                        </div>
-
-                                                    </section>
-                                                </div> -->
                                         </div>
 
                                         <?php 
@@ -261,14 +244,24 @@
                                                 </div>
                                             </div>
                                             <div class="row justify-content-start">
-                                                <div class="col-12">
-                                                    全文下載：<a href='upload/<?php echo $scriptfile?>' target="blank"
-                                                        download="<?php echo $scriptfile ?>"><?php echo $scriptfile?></a>
+                                                <div class="col-4">
+                                                    匿名檔案下載：
+                                                        <a href='upload_x/<?php echo $scriptfile?>' target="blank"
+                                                        download="<?php echo $scriptfile ?>">
+                                                            <?php echo $scriptfile?>
+                                                        </a>
                                                 </div>
-                                            </div>
-                                            <div class="row justify-content-start">
-                                                <div class="col-12">
-                                                    上傳時間：<?php echo $uploadtime ?>
+                                                <div class="col-4">
+                                                    非匿名檔案下載:
+                                                        <a href='upload/<?php echo $scriptfile?>' target="blank"
+                                                        download="<?php echo $scriptfile ?>">
+                                                            <?php echo $scriptfile?>
+                                                        </a>
+                                                </div>
+                                                <div class="col-4">
+                                                    管理者回覆：<a href='../管理者/upload/<?php echo $managerfile?>'
+                                                        target="blank"
+                                                        download="<?php echo $managerfile ?>"><?php echo $managerfile ?></a>
                                                 </div>
                                             </div>
                                         </div>
