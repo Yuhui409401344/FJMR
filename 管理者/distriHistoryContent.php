@@ -133,13 +133,13 @@
 
                                                                 </div>
                                                                 <div class="col pl-0">
-                                                                    <a href='../投稿者/upload/<?php echo $uploadname?>'
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname?>'
                                                                         target="blank"
                                                                         download="<?php echo $uploadname ?>"><?php echo $uploadname?></a>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <!-- Button -->
-                                                                    <a href='../投稿者/upload/<?php echo $uploadname?>'
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname?>'
                                                                         target="blank"
                                                                         download="<?php echo $uploadname ?>">
                                                                         <i class="dripicons-download"></i>
