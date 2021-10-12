@@ -9,11 +9,15 @@
         <div class="content-page">
             <div class="content">
                 <!-- Start Content-->
-                <div class="container-fluid">
-                    <div class="row mt-3">
-                        <div class="col-lg-12">
-                            <div class="card-box">
-                                <?php
+                <div class=" mt-3 alert alert-success alert-dismissible bg-success text-white border-0 fade show"
+                    role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    投稿成功，請靜候回覆！
+                </div>
+                <div class="mt-3 container-fluid">
+                    <?php
                                     $title=$_POST["title"];
                                     $field=$_POST["field"];
                                     $summary=$_POST["summary"];
@@ -78,41 +82,43 @@
                                         }
                                     }
                                 ?>
-                                <div class="form-group mb-3">
-                                    <label for="product-name" style="font-size: 20px;"><?php echo "投稿成功!";?></label>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">標題
-                                    </div><br>
-                                    <td><?php echo $_REQUEST['title']?></td>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">作者
-                                    </div><br>
-                                    <div
-                                        style="font-family:Microsoft JhengHei;color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                        <td>
-                                            <?php echo $_REQUEST['auth1']?>
-                                            <?php echo $_REQUEST['auth2']?>
-                                            <?php echo $_REQUEST['auth3']?>
-                                            <?php echo $_REQUEST['auth4']?>
-                                            <?php echo $_REQUEST['auth5']?>
-                                        </td>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div>
+                                            <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;">
+                                                <?php echo $title ?>
+                                            </h3>
+                                            <h4 class="m-0 font-14">
+                                                作者：<?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
+                                            </h4>
+
+                                            <hr />
+
+
+
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                摘要：<?php $Summary=nl2br($summary); echo $Summary; ?></p>
+
+                                            <h4 class="m-0 font-14">
+                                                領域：<p class='badge badge-soft-secondary mr-1'>
+                                                    <?php echo implode(',',$field) ?></p>
+
+                                            </h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">摘要
-                                    </div><br>
-                                    <td><?php $Summary=nl2br($summary); echo $Summary; ?></td>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">領域
-                                    </div><br>
-                                    <td>
-                                        <font color=navy><?php echo implode(',',$field) ?></font>
-                                    </td>
-                                </div>
-                                <?php
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+
+                    </div>
+
+
+                    <?php
                                         
                                         // $odlname=$_FILES["file"]["tmp_name"];
 
@@ -153,7 +159,7 @@
                                             $mail->isHTML(true);                                  // Set email format to HTML
 
                                            
-                                            $mail->Subject = "FJMR has a new submission for you to distribute!";
+                                            $mail->Subject = "輔仁管理評論有新的投稿稿件，請您分配給審稿者！";
                                             $mail->Body    =  file_get_contents('../mail.html', true);
                                             $mail->AltBody = '親愛的管理者您好，輔仁管理評論目前收到一封新的投稿稿件，請您盡速到輔仁管理評論的管理者平台分配稿件，謝謝您！';
                                         }
@@ -166,10 +172,7 @@
                                             }
                                     }
                                     ?>
-                            </div> <!-- end card-box -->
-                        </div> <!-- end col -->
-                    </div><!-- end row -->
-                </div> <!-- container -->
+                </div> <!-- end card-box -->
             </div> <!-- content -->
         </div>
     </div>

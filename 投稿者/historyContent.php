@@ -79,17 +79,17 @@
                                             <div class="row justify-content-start">
                                                 <div class="col-4">
                                                     匿名檔案下載：
-                                                        <a href='upload_x/<?php echo $scriptfile?>' target="blank"
+                                                    <a href='upload_x/<?php echo $scriptfile?>' target="blank"
                                                         download="<?php echo $scriptfile ?>">
-                                                            <?php echo $scriptfile?>
-                                                        </a>
+                                                        <?php echo $scriptfile?>
+                                                    </a>
                                                 </div>
                                                 <div class="col-4">
                                                     非匿名檔案下載:
-                                                        <a href='upload/<?php echo $scriptfile?>' target="blank"
+                                                    <a href='upload/<?php echo $scriptfile?>' target="blank"
                                                         download="<?php echo $scriptfile ?>">
-                                                            <?php echo $scriptfile?>
-                                                        </a>
+                                                        <?php echo $scriptfile?>
+                                                    </a>
                                                 </div>
                                                 <div class="col-4">
                                                     管理者回覆：<a href='../管理者/upload/<?php echo $managerfile?>'
@@ -249,102 +249,75 @@
                                                     
                                                 }
                                             ?>
-
-
-                                        <div class="container">
-                                            <div class="row justify-content-start">
-                                                <div class="col-12">
-                                                    <h3
-                                                        style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                        <?php echo $title ?>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-start">
-                                                <div class="col-12">
-                                                    全文下載：<a href='upload/<?php echo $scriptfile?>' target="blank"
-                                                        download="<?php echo $scriptfile ?>"><?php echo $scriptfile?></a>
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-start">
-                                                <div class="col-12">
-                                                    上傳時間：<?php echo $uploadtime ?>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="row">
-                                            <div class="container mt-0">
-                                                <section class="mt-3">
+                                            <div class="col-12">
+                                                <div class="container-fluid">
+                                                    <div>
 
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">作者</p>
-                                                    </div>
+                                                        <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;">
+                                                            <?php echo $title ?>
+                                                        </h3>
+                                                        <small
+                                                            class="float-right">上傳日期：<?php echo $uploadtime ?></small>
+                                                        <h4 class="m-0 font-14">
+                                                            作者：<?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
+                                                        </h4>
 
-                                                    <div class="media my-2 px-1">
-                                                        <div class="media-body" style="font-family:Microsoft JhengHei">
-                                                            <div>
-                                                                <p class=" mb-0;"
-                                                                    style="color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                                                    <?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
-                                                                </p>
+                                                        <hr />
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                </section>
-                                            </div>
-                                            <div class="container">
-                                                <section class="mt-3">
 
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">領域</p>
-                                                    </div>
-
-                                                    <div class="media mt-3 px-1">
-                                                        <div class="media-body"
+                                                        <p
                                                             style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p> <?php
+                                                            摘要：<?php echo $Summary; ?>
+                                                        </p>
+
+                                                        <h4 class="m-0 font-14">
+                                                            領域：<p class='badge badge-soft-secondary mr-1'>
+                                                                <?php
                                                                 foreach ($pdo->query("select f_name from newpaper_field where title = '".$title."'") as $row) 
                                                                 {
                                                                     echo $field = $row["f_name"];
                                                                     echo " ";
                                                                 }
                                                             ?></p>
-                                                        </div>
-                                                    </div>
 
-                                                </section>
+                                                        </h4>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="container">
-                                                <section class="mt-3">
-
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">摘要</p>
-                                                    </div>
-
-                                                    <div class="media mt-3 px-1">
-                                                        <div class="media-body"
-                                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p> <?php echo $Summary; ?></p>
-                                                        </div>
-                                                    </div>
-
-                                                </section>
-                                            </div>
-
-
                                         </div>
-                                        <?php } ?>
-                                    </div> <!-- container-fluid -->
-                                </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="card mb-1 shadow-none border">
+                                                    <div class="p-2">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+
+                                                                <i class="mdi mdi-attachment"></i>
+
+                                                            </div>
+                                                            <div class="col pl-0">
+                                                                <a href='upload/<?php echo $scriptfile?>' target="blank"
+                                                                    download="<?php echo $scriptfile ?>"><?php echo $scriptfile?></a>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <!-- Button -->
+                                                                <a href='upload/<?php echo $scriptfile?>' target="blank"
+                                                                    download="<?php echo $scriptfile ?>">
+                                                                    <i class="dripicons-download"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col -->
+                                        </div>
+                                    </div>
+
+
+                                    <?php } ?>
+                                </div> <!-- container-fluid -->
                             </div>
                         </div> <!-- end col-->
                     </div><!-- end row-->
