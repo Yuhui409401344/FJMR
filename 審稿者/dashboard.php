@@ -68,14 +68,12 @@
                                             <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 10%;">
-                                            <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 20%;">
                                             <col span="1" style="width: 10%;">
                                         </colgroup>
                                         <thead>
                                             <tr>
                                                 <th data-toggle="true">標題</th>
-                                                <th data-hide="phone">作者</th>
                                                 <th data-hide="phone">配稿人</th>
                                                 <th>收件期限</th>
                                                 <th data-hide="phone">投稿日期</th>
@@ -90,14 +88,10 @@
                                                 foreach($pdo->query("select count(title) from distri where pro='".$login."'") as $row){
                                                     $count=$row[0];
                                                 }
-                                                foreach ($pdo->query("select * from distri where pro='".$login."'") as $row) {
+                                                foreach ($pdo->query("select id, title, ddl, uploadtime, summary, filename, comment, manager from distri where pro='".$login."'") as $row) {
                                                     $id = $row['id'];
                                                     $title=$row['title'];
-                                                    $auth1=$row['auth1'];
-                                                    $auth2=$row['auth2'];
-                                                    $auth3=$row['auth3'];
-                                                    $auth4=$row['auth4'];
-                                                    $auth5=$row['auth5'];
+                                                   
                                                     $ddl=$row['ddl'];
                                                     $uploadtime = $row['uploadtime'];
                                                     $summary = $row['summary'];
@@ -113,7 +107,6 @@
                                                 <td><a class="title" href="paperContent.php?id=<?php echo "$id" ?>"
                                                         style="color: #005282"><?php echo $title ?></a>
                                                 </td>
-                                                <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
                                                 </td>
                                                 <td><?php echo $manager ?></td>
                                                 <td><span class='badge badge-soft-blue'><?php echo $ddl ?></span></td>
@@ -127,8 +120,8 @@
                                                     <a href="reply.php?id=<?php echo $id ?>" class="action-icon"> <i
                                                             class="mdi mdi-email-send-outline" title="回覆審稿"></i></a>
                                                     <a href='../投稿者/upload_x/<?php echo $filename?>' target="blank"
-                                                        download="<?php echo $title ?>" class='action-icon' title="下載檔案"> <i
-                                                            class='mdi mdi-arrow-collapse-down'></i></a>
+                                                        download="<?php echo $title ?>" class='action-icon'
+                                                        title="下載檔案"> <i class='mdi mdi-arrow-collapse-down'></i></a>
                                                 </td>
 
                                             </tr>
@@ -138,7 +131,7 @@
                                             ?>
                                         <tfoot>
                                             <tr class="active">
-                                                <td colspan="8">
+                                                <td colspan="7">
                                                     <div class="text-right">
                                                         <ul
                                                             class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0">

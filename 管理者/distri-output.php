@@ -138,8 +138,8 @@ $manager=$_SESSION["account"]["login"];
   
                                               $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自管理者分配的稿件") . "?=";
                                               // $mail->Subject = "輔仁管理評論有一封來自審稿者的回覆稿件";
-                                              $mail->Body    =  file_get_contents('../mail.html', true);
-                                              $mail->AltBody = '親愛的審稿者者您好，輔仁管理評論目前收到一封來自管理者分配的稿件，請您盡速到輔仁管理評論的管理者平台審理稿件，謝謝您！';
+                                              $mail->Body    =  file_get_contents('mail.html', true);
+                                              $mail->AltBody = '親愛的審稿者您好，您的輔仁管理評論帳號中有一封最新的待審稿稿件，還望您儘速到平台上審稿，給予投稿者意見！謝謝您！';
                                           }
   
                                               if(!$mail->send()) {

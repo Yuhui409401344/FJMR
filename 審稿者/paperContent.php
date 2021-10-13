@@ -59,18 +59,13 @@
                     <?php
                             $id=$_GET["id"];
                             $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-                            foreach ($pdo->query("select * from distri where id='$id'") as $row) {
+                            foreach ($pdo->query("select title, pro, manager, ddl, filename, summary, comment from distri where id='$id'") as $row) {
                                 $title=$row['title'];
                                 $pro=$row['pro'];
                                 $manager=$row['manager'];
                                 $ddl=$row['ddl'];
                                 $uploadname=$row['filename'];
                                 $summary=$row['summary'];
-                                $auth1=$row['auth1'];
-                                $auth2=$row['auth2'];
-                                $auth3=$row['auth3'];
-                                $auth4=$row['auth4'];
-                                $auth5=$row['auth5'];
                                 $comment=$row['comment'];
 
                                 $Summary=nl2br($summary);
@@ -94,7 +89,8 @@
                                             </div>
                                             <div class="row justify-content-start">
                                                 <div class="col-8">
-                                                    全文下載：<a href='../投稿者/upload_x/<?php echo $uploadname?>' target="blank"
+                                                    全文下載：<a href='../投稿者/upload_x/<?php echo $uploadname?>'
+                                                        target="blank"
                                                         download="<?php echo $title ?>"><?php echo $title ?></a>
                                                 </div>
                                                 <div class="col-4" style="display:inline-block">
@@ -112,29 +108,6 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="container mt-0">
-                                                <section class="mt-3">
-
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-5 mb-0">作者</p>
-                                                    </div>
-
-                                                    <div class="media my-2 px-1">
-                                                        <div class="media-body" style="font-family:Microsoft JhengHei">
-                                                            <div>
-                                                                <p class=" mb-0;"
-                                                                    style="color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                                                    <?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
-                                                                </p>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </section>
-                                            </div>
                                             <div class="container">
                                                 <section class="mt-3">
 

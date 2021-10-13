@@ -64,15 +64,10 @@ $login=$_SESSION["account"]["login"];
                     <?php
                             $id=$_GET["id"];
                             $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-                            foreach ($pdo->query("select n.id,n.title,n.auth1,n.auth2,n.auth3,n.auth4,n.auth5,n.summary,n.uploadtime as stime, n.uploadname as scriptfile, r.senter, r.recipient,r.level, r.time, r.comment, r.uploadname, r.replytime from newpaper_history n
+                            foreach ($pdo->query("select n.id,n.title,n.summary,n.uploadtime as stime, n.uploadname as scriptfile, r.senter, r.recipient,r.level, r.time, r.comment, r.uploadname, r.replytime from newpaper_history n
                             left JOIN reply_history r on n.id = r.id where r.id='".$id."' and r.senter ='".$login."'") as $row) {
                                 $id=$row['id'];
                                 $title=$row['title'];
-                                $auth1=$row['auth1'];
-                                $auth2=$row['auth2'];
-                                $auth3=$row['auth3'];
-                                $auth4=$row['auth4'];
-                                $auth5=$row['auth5'];
                                 $summary=$row['summary'];
 
                                 $Summary=nl2br($summary);
@@ -108,7 +103,8 @@ $login=$_SESSION["account"]["login"];
                                                     </h3>
                                                 </div>
                                                 <div class="col-12">
-                                                    全文下載：<a href='../投稿者/upload_x/<?php echo $scriptfile?>' target="blank"
+                                                    全文下載：<a href='../投稿者/upload_x/<?php echo $scriptfile?>'
+                                                        target="blank"
                                                         download="<?php echo $scriptfile ?>"><?php echo $title ?></a>
                                                 </div>
 
@@ -144,29 +140,6 @@ $login=$_SESSION["account"]["login"];
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="container mt-0">
-                                                <section class="mt-3">
-
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-5 mb-0">作者</p>
-                                                    </div>
-
-                                                    <div class="media my-2 px-1">
-                                                        <div class="media-body" style="font-family:Microsoft JhengHei">
-                                                            <div>
-                                                                <p class=" mb-0;"
-                                                                    style="color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                                                    <?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
-                                                                </p>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </section>
-                                            </div>
                                             <div class="container">
                                                 <section class="mt-3">
 

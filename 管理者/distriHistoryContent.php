@@ -96,8 +96,11 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="row">
+
                                     <div class="container-fluid">
+
                                         <div>
+
                                             <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;">
                                                 <?php echo $title ?>
                                             </h3>
@@ -198,7 +201,7 @@
 
                                             <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                留言：<?php echo $comment ?></p>
+                                                您的配稿留言：<?php echo $comment ?></p>
                                         </div>
                                         <!-- end .mt-4 -->
 
