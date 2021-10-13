@@ -120,11 +120,11 @@
                                                                 $amount=$row['count']; //回覆稿件的數量。同篇稿件要集齊兩篇回覆才能讓管理者統一回覆。
                                                             }
                                                             if($amount >= 2){
-                                                                echo "<a href='reply.php?title=".$title."' class='action-icon' ><i class='mdi mdi-email-send-outline'></i></a>";
+                                                                echo "<a href='reply.php?title=".$title."' class='action-icon' title='回覆審稿' ><i class='mdi mdi-email-send-outline'></i></a>";
                                                             } 
                                                         ?>
                                                             <a href='../審稿者/upload/<?php echo $file ?>' target="blank"
-                                                                download="<?php echo $file ?>" class='action-icon'> <i
+                                                                download="<?php echo $file ?>" class='action-icon' title="檔案下載"> <i
                                                                     class='mdi mdi-arrow-collapse-down'></i></a>
                                                         </td>
 
