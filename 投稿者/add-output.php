@@ -136,31 +136,28 @@
                                         $sql5 = $pdo->query("select name,email from account where status='管理者' ");
 
                                         foreach($sql5 as $row){
-                                            $to_email = $row['email']; //管理者信箱
-                                            $name = $row['name']; //管理者姓名
+                                            $to_email = $row['email'];     //管理者信箱
+                                            $name = $row['name'];         //管理者姓名
 
                                             require_once '../PHPMailer/PHPMailerAutoload.php';
 
                                             $mail = new PHPMailer;
 
                                             $mail->isSMTP();  
-                                            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                                            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                                            $mail->Host = 'smtp.gmail.com';  
+                                            $mail->SMTPAuth = true;                               
                                             $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
                                             $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
-                                            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-                                            $mail->Port = 587;                                    // TCP port to connect to
+                                            $mail->SMTPSecure = 'tls';                           
+                                            $mail->Port = 587;                                  
 
                                             $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
-                                            $mail->addAddress($to_email, $name);     // Add a recipient
-                                        
-                                            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-                                            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-                                            $mail->isHTML(true);                                  // Set email format to HTML
+                                            $mail->addAddress($to_email, $name);    
+                                            $mail->isHTML(true);                                 
 
                                            
                                             $mail->Subject = "輔仁管理評論有新的投稿稿件，請您分配給審稿者！";
-                                            $mail->Body    =  file_get_contents('../mail.html', true);
+                                            $mail->Body    =  file_get_contents('mail.php', true);
                                             $mail->AltBody = '親愛的管理者您好，輔仁管理評論目前收到一封新的投稿稿件，請您盡速到輔仁管理評論的管理者平台分配稿件，謝謝您！';
                                         }
 

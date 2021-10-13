@@ -68,7 +68,6 @@ if(isset($_SESSION["account"]["login"])){
                                         <colgroup>
                                             <col span="1" style="width: 15%;">
                                             <col span="1" style="width: 10%;">
-                                            <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 15%;">
                                             <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 10%;">
@@ -78,8 +77,7 @@ if(isset($_SESSION["account"]["login"])){
                                         <thead>
                                             <tr>
                                                 <th data-toggle="true" ellipsis>標題</th>
-                                                <th data-hide="phone">作者</th>
-                                                <th ellipsis data-hide="phone,tablet">
+                                                <th ellipsis data-hide="phone">
                                                     收件人</th>
                                                 <th ellipsis>回覆評級</th>
                                                 <th data-field="field" data-sortable="true"
@@ -95,15 +93,10 @@ if(isset($_SESSION["account"]["login"])){
                                             <?php
                                         
                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                        foreach ($pdo->query("select * from reply_history where senter = '".$login."'") as $row) {
+                                        foreach ($pdo->query("select id, title, recipient, level, time, replytime, comment, uploadname from reply_history where senter = '".$login."'") as $row) {
                                             $id=$row['id'];
                                             $title=$row['title'];
                                             $recipient=$row['recipient']; #收件人（管理者）
-                                            $author1=$row['auth1'];
-                                            $author2=$row['auth2'];
-                                            $author3=$row['auth3'];
-                                            $author4=$row['auth4'];
-                                            $author5=$row['auth5'];
                                             $level=$row['level'];
                                             $time=$row['time'];  #上傳日期
                                             $replytime=$row['replytime'];  #回覆次數
@@ -117,7 +110,6 @@ if(isset($_SESSION["account"]["login"])){
                                                 <td><a class="title" href="historyContent.php?id=<?php echo "$id" ?>"
                                                         style="color: #005282"><?php echo $title ?></a>
                                                 </td>
-                                                <td><?php echo $author1, ' ',$author2,' ',$author3,' ',$author4,' ',$author5 ?>
                                                 </td>
                                                 <td><?php echo $recipient ?></td>
                                                 <td><?php 
@@ -139,11 +131,11 @@ if(isset($_SESSION["account"]["login"])){
                                                 </td>
                                                 <td>
                                                     <a href='../審稿者/upload/<?php echo $uploadname ?>' target="blank"
-                                                        download="<?php echo $uploadname ?>" class='action-icon' title="檔案下載"> <i
-                                                            class='mdi mdi-arrow-collapse-down'></i></a>
+                                                        download="<?php echo $uploadname ?>" class='action-icon'
+                                                        title="檔案下載"> <i class='mdi mdi-arrow-collapse-down'></i></a>
                                                     <a href='delete_reply_history.php?title=<?php echo "$title" ?> '
-                                                        class='action-icon' onClick='return confirm("確定刪除?");' title="刪除"><i
-                                                            class='mdi mdi-delete mr-1'></i></a>
+                                                        class='action-icon' onClick='return confirm("確定刪除?");'
+                                                        title="刪除"><i class='mdi mdi-delete mr-1'></i></a>
                                                 </td>
                                             </tr>
                                             <?php
