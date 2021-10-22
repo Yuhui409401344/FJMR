@@ -1,5 +1,7 @@
 <?php 
 
+$slogan="Today's research, tomorrow's innovation. ";
+
 foreach($pro as $a){
   $reviewer = $a;
 };
@@ -126,10 +128,9 @@ $emailContent =
                         <tr>
                           <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:50px 10px 15px 30px;font-family:arial,helvetica,sans-serif;" align="left">
                             
-                      <h1 class="v-text-align" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: "Open Sans",sans-serif; font-size: 36px;">
-                        <strong>輔仁管理評論</strong>
-                      </h1>
-
+                          <div class="v-text-align" style="color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word;">
+                          <p style="font-size: 36px; line-height: 140%;">輔仁管理評論</p>
+                        </div>
                           </td>
                         </tr>
                       </tbody>
@@ -141,7 +142,7 @@ $emailContent =
                           <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 20px 60px 30px;font-family:arial,helvetica,sans-serif;" align="left">
                             
                       <div class="v-text-align" style="color: #ffffff; line-height: 210%; text-align: left; word-wrap: break-word;">
-                        <p style="font-size: 14px; line-height: 210%;"><span style="font-size: 18px; line-height: 37.8px;">Today"s research, tomorrow"s innovation.</span></p>
+                        <p style="font-size: 14px; line-height: 210%;"><span style="font-size: 18px; line-height: 37.8px;">'.$slogan.'</span></p>
                       </div>
 
                           </td>
@@ -177,8 +178,8 @@ $emailContent =
                               
                               <input type="radio" name="accept" value="0">No</input>
                               <input type="radio" name="accept" value="1">Yes</input>
-                              <input type="hidden" name="id" value="'.$id.'"></input>
-                              <input type="hidden" name="reviewer" value="'.$reviewer.'"></input>
+                              <input type="hidden" name="id" value='.$id.'></input>
+                              <input type="hidden" name="reviewer" value='.$reviewer.'></input>
 
                               <input type="submit" value="提交"></input>
                                 
