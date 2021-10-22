@@ -157,7 +157,7 @@
 
                                            
                                             $mail->Subject = "輔仁管理評論有新的投稿稿件，請您分配給審稿者！";
-                                            $mail->Body    =  file_get_contents('mail.php', true);
+                                            $mail->Body    =  require 'mail.php';
                                             $mail->AltBody = '親愛的管理者您好，輔仁管理評論目前收到一封新的投稿稿件，請您盡速到輔仁管理評論的管理者平台分配稿件，謝謝您！';
                                         }
 

@@ -234,37 +234,7 @@
                                             ?>
 
 
-                                        <div class="container">
-                                            <div class="row justify-content-start">
-                                                <div class="col-12">
-                                                    <h3
-                                                        style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                        <?php echo $title ?>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-start">
-                                                <div class="col-4">
-                                                    匿名檔案下載：
-                                                        <a href='upload_x/<?php echo $scriptfile?>' target="blank"
-                                                        download="<?php echo $scriptfile ?>">
-                                                            <?php echo $scriptfile?>
-                                                        </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    非匿名檔案下載:
-                                                        <a href='upload/<?php echo $scriptfile?>' target="blank"
-                                                        download="<?php echo $scriptfile ?>">
-                                                            <?php echo $scriptfile?>
-                                                        </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    管理者回覆：<a href='../管理者/upload/<?php echo $managerfile?>'
-                                                        target="blank"
-                                                        download="<?php echo $managerfile ?>"><?php echo $managerfile ?></a>
-                                                </div>
-                                            </div>
-                                        </div>
+
 
                                         <div class="row">
                                             <div class="col-12">
@@ -304,6 +274,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- 非匿名檔案 -->
                                         <div class="row">
                                             <div class="col-xl-4">
                                                 <div class="card mb-1 shadow-none border">
@@ -315,6 +286,7 @@
 
                                                             </div>
                                                             <div class="col pl-0">
+                                                                非匿名檔案：
                                                                 <a href='upload/<?php echo $scriptfile?>' target="blank"
                                                                     download="<?php echo $scriptfile ?>"><?php echo $scriptfile?></a>
                                                             </div>
@@ -322,6 +294,36 @@
                                                                 <!-- Button -->
                                                                 <a href='upload/<?php echo $scriptfile?>' target="blank"
                                                                     download="<?php echo $scriptfile ?>">
+                                                                    <i class="dripicons-download"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col -->
+                                        </div>
+                                        <!-- 匿名檔案 -->
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="card mb-1 shadow-none border">
+                                                    <div class="p-2">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+
+                                                                <i class="mdi mdi-attachment"></i>
+
+                                                            </div>
+                                                            <div class="col pl-0">
+                                                                匿名檔案：
+                                                                <a href='upload_x/<?php echo $scriptfile?>'
+                                                                    target="blank" download="<?php echo $scriptfile ?>">
+                                                                    <?php echo $scriptfile?>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <!-- Button -->
+                                                                <a href='upload_x/<?php echo $scriptfile?>'
+                                                                    target="blank" download="<?php echo $scriptfile ?>">
                                                                     <i class="dripicons-download"></i>
                                                                 </a>
                                                             </div>

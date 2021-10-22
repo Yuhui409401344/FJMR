@@ -74,131 +74,132 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                         </div>
                     </div>
                     <!-- end page title -->
-
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
+
                                 <div class="row">
                                     <div class="container-fluid">
-                                        <div class="container">
-                                            <div class="row justify-content-start">
-                                                <div class="col-12">
-                                                    <h3
-                                                        style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                        <?php echo $title ?>
-                                                    </h3>
-                                                </div>
-                                                <div class="col-6">
-                                                    匿名檔案下載：<a href='../投稿者/upload_x/<?php echo $uploadname?>' target="blank"
-                                                        download="<?php echo $uploadname ?>"><?php echo $title ?></a>
-                                                </div>
-                                                <div class="col-6">
-                                                    非匿名檔案下載:<a href='../投稿者/upload/<?php echo $uploadname?>' target="blank"
-                                                        download="<?php echo $uploadname ?>"><?php echo $title ?></a>
-                                                </div>
-                                                <div class="col-12">投稿時間：<?php echo $uploadtime ;?></div>
+                                        <div>
 
-                                            </div>
-                                        </div>
+                                            <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;">
+                                                <?php echo $title ?>
+                                            </h3>
+                                            <small class="float-right">上傳日期：<?php echo $uploadtime ?></small>
+                                            <h4 class="m-0 font-14">
+                                                作者：<?php echo $author1,' ', $author2, ' ', $author3, ' ', $author4, ' ', $author5 ?>
+                                            </h4>
 
-                                        <div class="row">
-                                            <div class="container mt-0">
-                                                <section class="mt-3">
+                                            <hr />
 
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">作者</p>
-                                                    </div>
 
-                                                    <div class="media my-2 px-1">
-                                                        <div class="media-body" style="font-family:Microsoft JhengHei">
-                                                            <div>
-                                                                <p class=" mb-0;"
-                                                                    style="color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                                                    <?php echo $author1,' ', $author2, ' ', $author3, ' ', $author4, ' ', $author5 ?>
-                                                                </p>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                摘要：<?php echo $Summary; ?>
+                                            </p>
 
-                                                </section>
-                                            </div>
-                                            <div class="container">
-                                                <section class="mt-3">
+                                            <h4 class="m-0 font-14">
+                                                領域：<p class='badge badge-soft-secondary mr-1'>
+                                                    <?php
+                                                                foreach ($pdo->query("select f_name from newpaper_field where title = '".$title."'") as $row) 
+                                                                {
+                                                                    echo $field = $row["f_name"];
+                                                                    echo " ";
+                                                                }
+                                                            ?></p>
 
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">摘要</p>
-                                                    </div>
-
-                                                    <div class="media mt-3 px-1">
-                                                        <div class="media-body"
-                                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p><?php echo $Summary ?></p>
-                                                        </div>
-                                                    </div>
-
-                                                </section>
-                                            </div>
-
-                                            <!-- <div class="container">
-                                                    <section class="my-5">
-
-                                                        <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">關鍵字</p>
-                                                        </div>
-
-                                                        <div class="media mt-4 px-1">
-                                                            <div class="media-body">
-                                                                <a href="">關鍵因素，國際交換生，層級分析法</a>
-                                                            </div>
-                                                        </div>
-
-                                                    </section>
-                                                </div> -->
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
-                            </div> <!-- end card-->
-                            <button type="button" class="btn btn-blue waves-effect waves-light"
-                                style="text-align:center; float:right">
-                                <a href='distri.php?id=<?php echo "$id" ?>' style="color: white"><span
-                                        class="btn-label"><i
-                                            class="fas mdi mdi-email-send-outline fa-lg"></i></span>分配稿件</a>
-                            </button>
-                        </div> <!-- end col-->
+                                <!-- 非匿名檔案 -->
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="card mb-1 shadow-none border">
+                                            <div class="p-2">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
 
-                    </div>
-                    <!-- end row-->
+                                                        <i class="mdi mdi-attachment"></i>
 
+                                                    </div>
+                                                    <div class="col pl-0">
+                                                        非匿名檔案：
+                                                        <a href='../投稿者/upload/<?php echo $uploadname?>' target="blank"
+                                                            download="<?php echo $uploadname ?>"><?php echo $title ?></a>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <!-- Button -->
+                                                        <a href='../投稿者/upload/<?php echo $uploadname?>' target="blank"
+                                                            download="<?php echo $uploadname ?>">
+                                                            <i class="dripicons-download"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col -->
+                                </div>
+                                <!-- 匿名檔案 -->
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="card mb-1 shadow-none border">
+                                            <div class="p-2">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
 
-                </div> <!-- container -->
+                                                        <i class="mdi mdi-attachment"></i>
 
-            </div> <!-- content -->
-        </div>
+                                                    </div>
+                                                    <div class="col pl-0">
+                                                        匿名檔案：
+                                                        <a href='../投稿者/upload_x/<?php echo $uploadname?>'
+                                                            target="blank"
+                                                            download="<?php echo $uploadname ?>"><?php echo $title ?></a>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <!-- Button -->
+                                                        <a href='../投稿者/upload_x/<?php echo $uploadname?>'
+                                                            target="blank" download="<?php echo $uploadname ?>">
+                                                            <i class="dripicons-download"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col -->
+                                    <button type="button" class="btn btn-blue waves-effect waves-light"
+                                        style="text-align:center; float:right">
+                                        <a href='distri.php?id=<?php echo "$id" ?>' style="color: white"><span
+                                                class="btn-label"><i
+                                                    class="fas mdi mdi-email-send-outline fa-lg"></i></span>分配稿件</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- container -->
+                    </div> <!-- content -->
+                </div>
 
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
-        <?php } ?>
+                <!-- ============================================================== -->
+                <!-- End Page content -->
+                <!-- ============================================================== -->
+                <?php } ?>
 
-    </div>
-    <!-- END wrapper -->
+            </div>
+            <!-- END wrapper -->
 
-    <!-- Todo app -->
-    <script src="../assets/js/pages/jquery.todo.js"></script>
+            <!-- Todo app -->
+            <script src="../assets/js/pages/jquery.todo.js"></script>
 
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+            <!-- Right bar overlay-->
+            <div class="rightbar-overlay"></div>
 
-    <!-- Vendor js -->
-    <script src="../assets/js/vendor.min.js"></script>
+            <!-- Vendor js -->
+            <script src="../assets/js/vendor.min.js"></script>
 
-    <!-- App js -->
-    <script src="../assets/js/app.min.js"></script>
+            <!-- App js -->
+            <script src="../assets/js/app.min.js"></script>
 
 </body>
 
