@@ -77,7 +77,7 @@
                             $Summary=nl2br($summary);
                             
                         }
-                        foreach($pdo->query("select name, email, school from account where login='$pro'") as $row){
+                        foreach($pdo->query("select name, email, school from account where login='".$pro."'") as $row){
                             $name = $row['name'];
                             $email = $row['email'];
                             $school = $row['school'];

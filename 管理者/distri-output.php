@@ -44,13 +44,9 @@ $manager=$_SESSION["account"]["login"];
             <div class="content">
                 <!-- Start Content-->
                 <div class="container-fluid">
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <!-- Start project here-->
 
-                            <div style="height: 100vh">
 
-                                <?php
+                    <?php
                                       
                                       $title=$_POST["title"];
                                       $pro=$_POST["pro"];
@@ -64,24 +60,25 @@ $manager=$_SESSION["account"]["login"];
                                       }else{
 
                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                        foreach ($pdo->query("select * from newpaper where title='".$title."'") as $row) {
-                                            $id=$row["id"];
-                                            $uploader=$row["uploader"];
-                                            $auth1=$row['auth1'];
-                                            $auth2=$row['auth2'];
-                                            $auth3=$row['auth3'];
-                                            $auth4=$row['auth4'];
-                                            $auth5=$row['auth5'];
-                                            $summary=$row['summary'];
-                                            $uploadname=$row['uploadname'];
-  
-                                        }
+                                       
                                         
                                         foreach($pro as $a){
-                                          $sql=$pdo->prepare('INSERT INTO distri (id,title,uploader,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                            foreach ($pdo->query("select * from newpaper where title='".$title."'") as $row) {
+                                                $id=$row["id"];
+                                                $uploader=$row["uploader"];
+                                                $auth1=$row['auth1'];
+                                                $auth2=$row['auth2'];
+                                                $auth3=$row['auth3'];
+                                                $auth4=$row['auth4'];
+                                                $auth5=$row['auth5'];
+                                                $summary=$row['summary'];
+                                                $uploadname=$row['uploadname'];
+      
+                                            }
+                                          $sql=$pdo->prepare("INSERT INTO distri (id,title,uploader,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                                           $sql->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
   
-                                          $sql2=$pdo->prepare('INSERT INTO distri_history (id,title,uploader,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                                          $sql2=$pdo->prepare("INSERT INTO distri_history (id,title,uploader,summary,pro,manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                                           $sql2->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
   
                                           $sql5 = $pdo->query("select name,email from account where status='審稿者' and login ='".$a."'");
@@ -128,41 +125,78 @@ $manager=$_SESSION["account"]["login"];
                                         $sql3=$pdo ->prepare('delete newpaper from newpaper  where newpaper.title=?');
                                         $sql3->execute([$title]);
                                     ?>
-
-
-                                <div class="form-group mb-3">
-                                    <label for="product-name" style="font-size: 20px;"><?php echo "配稿成功!";?></label>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">標題
-                                    </div><br>
-                                    <td><?php echo $title ?></td>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">作者
-                                    </div><br>
-                                    <div
-                                        style="font-family:Microsoft JhengHei;color: #1c2a48; margin-bottom: 0px;font-weight: 520">
-                                        <td>
-                                            <?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
-                                        </td>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div>
+                                            <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;">
+                                                <?php echo $title ?>
+                                            </h3>
+                                            <h4 class="m-0 font-14">
+                                                作者：<?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
+                                            </h4>
+                                            </hr>
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                摘要：<?php echo $summary ?></p>
+                                            <h4 class="m-0 font-14">
+                                                <?php
+                                                            foreach ($pdo->query("select f_name from newpaper_field where title = '".$title."'") as $row) 
+                                                            {
+                                                                echo  "<p class='badge badge-soft-secondary mr-1'>".$row['f_name']."</p>";
+                                                            }
+                                                        ?>
+                                            </h4>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                        配稿留言
-                                    </div><br>
-                                    <td><?php $Comment=nl2br($comment); echo $Comment; ?></td>
-                                </div>
-                                <?php 
+                            </div>
+                        </div><!-- end col-->
+                    </div><!-- end row-->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div>
+                                            <div class="media mb-3 mt-1">
+
+
+                                                <div class="media-body">
+                                                    <h6 class="m-0 font-14">審稿者：<?php echo implode(" ",$pro) ?>
+                                                    </h6>
+
+                                                </div>
+                                            </div>
+
+                                            <p>審稿期限： <?php echo $ddl ?></p>
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                您的配稿留言：<?php $Comment=nl2br($comment); echo  $Comment ?></p>
+                                        </div>
+                                        <!-- end .mt-4 -->
+
+
+
+
+
+                                    </div>
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+
+                    </div> <!-- container -->
+
+                    <?php 
                                       }
                                     ?>
-                            </div>
-                            <!-- /Start your project here-->
+                </div>
+                <!-- /Start your project here-->
 
-                        </div> <!-- end col -->
-                    </div> <!-- end row -->
-                </div> <!-- container -->
+
             </div> <!-- content -->
         </div> <!-- content page -->
 
