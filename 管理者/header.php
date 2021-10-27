@@ -168,14 +168,10 @@ $login=$_SESSION["account"]["login"];
             <!-- end Topbar -->
             <!-- ========== Left Sidebar Start ========== -->
             <div class="left-side-menu">
-
                 <div class="h-100" data-simplebar>
-
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
-
                         <ul id="side-menu">
-
                             <li>
                                 <a href="#sidebarCrm" data-toggle="collapse">
                                     <i class="mdi mdi-email"></i>
@@ -193,9 +189,6 @@ $login=$_SESSION["account"]["login"];
                                         <li>
                                             <a href="index.php?method=sent">寄件備份</a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="trash.php">垃圾桶</a>
-                                        </li> -->
                                     </ul>
                                 </div>
                             </li>

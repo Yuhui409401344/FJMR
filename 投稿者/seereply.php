@@ -302,12 +302,12 @@ if(isset($_SESSION["account"]["login"])){
                                                 <div class="mt-2">
                                                     <a href="../管理者/upload/<?php echo $filename ?>"  target="blank" download="<?php echo $filename ?>"  class="text-muted  mt-2"><i class="mdi mdi-download"></i>下載回覆檔</a>
                                                     &nbsp;&nbsp;
-                                                    
                                                     <?php if($have_reply == '1'){ 
                                                     if ($level =='小幅修改' or $level =='大幅修改'){
                                                         ?>
                                                         <a href="reply.php?title=<?php echo $title?>" class="text-muted  mt-2"><i class="mdi mdi-reply"></i>上傳修正檔</a>
-                                                        
+                                                        &nbsp;&nbsp;
+                                                        <a href="作者回覆意見書.doc" class="text-muted  mt-2"><i class="mdi mdi-file"></i>作者回覆範例</a>
                                                     <?php 
                                                     }
                                                 }

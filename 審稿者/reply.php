@@ -121,7 +121,10 @@
                                                     <label for="inlineRadio5"> 拒絕 </label>
                                                 </div>
                                         </div>
-
+                                        <div class="form-group mb-3">
+                                            <label class=" font-weight-bold text-muted">回覆範例 :</label>&nbsp;&nbsp;
+                                            <a href="初審意見書.rtf"><i class="mdi mdi-download"></i>回覆範例檔下載</a>
+                                        </div>
                                         <!-- 檔案 file -->
                                         <div class="form-group mb-3">
                                             <input type=file name="file" accept=".pdf,.doc,.docx" id="file" enctype="multipart/form-data">
