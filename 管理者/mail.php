@@ -1,6 +1,6 @@
 <?php 
 
-$slogan="Today's research, tomorrow's innovation. ";
+$slogan="Today's research, tomorrow's innovation.";
 
 foreach($pro as $a){
   $reviewer = $a;
@@ -100,6 +100,10 @@ $emailContent =
           text-decoration: none !important;
         }
 
+        .yesnoBtn {
+          font-size: 22px; line-height: 36px; width:80px; font-family: Cabin, sans-serif; border:0; color: #FFFFFF;
+        }
+
     </style>
 
   <link href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
@@ -172,21 +176,17 @@ $emailContent =
                       </tbody>
                     </table>
                     
-                    
-                      <form method="post" action="">
-                            <div class="v-text-align" align="left" stye="display:flex">
-                              
-                              <input type="radio" name="accept" value="0">No</input>
-                              <input type="radio" name="accept" value="1">Yes</input>
-                              <input type="hidden" name="id" value='.$id.'></input>
-                              <input type="hidden" name="reviewer" value='.$reviewer.'></input>
+                    <form method="post" action="" style="font-family:arial,helvetica,sans-serif; background-color: #eceff1;padding:30px 10px 60px;">
+                      <div class="replyBtn" style="text-align:center">
+                        <input type="submit" value="No"  name="accept"  id="btn_no" class="yesnoBtn" style="background-color:#808080;">
+                                              
+                        <input type="submit" value="Yes" name="accept" id="btn_yes" class="yesnoBtn" style="background-color: #d36c09;"> 
 
-                              <input type="submit" value="提交"></input>
-                                
-                            </div>
-                      </form>
+                        <input type="hidden" name="id" value='.$id.'></input>
+                        <input type="hidden" name="reviewer" value='.$reviewer.'></input>
+                      </div>
+                    </form>
 
-                          
                   </div>
                 </div>
               </div>
