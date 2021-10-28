@@ -63,7 +63,7 @@ $manager=$_SESSION["account"]["login"];
                                        
                                         
                                         foreach($pro as $a){
-                                            foreach ($pdo->query("select * from newpaper where title='".$title."'") as $row) {
+                                            foreach ($pdo->query("select id,uploader,auth1,auth2,auth3,auth4,auth5,summary,uploadname from newpaper where title='".$title."'") as $row) {
                                                 $id=$row["id"];
                                                 $uploader=$row["uploader"];
                                                 $auth1=$row['auth1'];
@@ -75,6 +75,7 @@ $manager=$_SESSION["account"]["login"];
                                                 $uploadname=$row['uploadname'];
       
                                             }
+                                            
                                           $sql=$pdo->prepare("INSERT INTO distri (id,title,uploader,summary,pro, manager,ddl,auth1,auth2,auth3,auth4,filename,auth5,comment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                                           $sql->execute([$id,$title,$uploader,$summary,$a,$manager,$ddl,$auth1,$auth2,$auth3,$auth4,$uploadname,$auth5,$comment]);
   
@@ -125,7 +126,7 @@ $manager=$_SESSION["account"]["login"];
                                         $sql3=$pdo ->prepare('delete newpaper from newpaper  where newpaper.title=?');
                                         $sql3->execute([$title]);
                                     ?>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="row">
@@ -137,7 +138,7 @@ $manager=$_SESSION["account"]["login"];
                                             <h4 class="m-0 font-14">
                                                 作者：<?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
                                             </h4>
-                                            </hr>
+                                            <hr />
                                             <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 摘要：<?php echo $summary ?></p>
@@ -161,48 +162,69 @@ $manager=$_SESSION["account"]["login"];
                                 <div class="row">
                                     <div class="container-fluid">
                                         <div>
-                                            <div class="media mb-3 mt-1">
 
+                                            <?php 
+                                                foreach($pro as $a){
+                                                    foreach($pdo->query("select name, email from account where login='".$a."'") as $row){
+                                                        $name = $row['name']; //審稿者名字
+                                                        $email = $row['email']; //審稿者email
+                                                    }
+                            
+                                                    foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '".$a."' ") as $row) {
+                                                       $img = $row['photo'];  //審稿者圖片
+                                                       $imgType = $row['imgType']; 
+                                                    }
+                                                
+                                                    if(isset($img)){
+                                                        echo '<div class="media mb-3 mt-1"><img src="data:'.$imgType.';base64,' . $img . '"   height="32" class="d-flex mr-2 rounded-circle"  />';
+                                                    }else{
+                                                        echo '<div class="media mb-3 mt-1"><img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />'; 
+                                                    }
+                             
+                                                    ?>
 
-                                                <div class="media-body">
-                                                    <h6 class="m-0 font-14">審稿者：<?php echo implode(" ",$pro) ?>
-                                                    </h6>
-
-                                                </div>
+                                            <div class="media-body">
+                                                <h6 class="m-0 font-14"><?php echo $name ?>
+                                                </h6>
+                                                <small class="text-muted"><?php echo $email ?></small>
                                             </div>
-
-                                            <p>審稿期限： <?php echo $ddl ?></p>
-                                            <p
-                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                您的配稿留言：<?php $Comment=nl2br($comment); echo  $Comment ?></p>
                                         </div>
-                                        <!-- end .mt-4 -->
+                                        <?php 
+                                                }
+                                                ?>
 
-
-
-
-
+                                        <p>審稿期限： <?php echo $ddl ?></p>
+                                        <p
+                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            您的配稿留言：<?php $Comment=nl2br($comment); echo  $Comment ?></p>
                                     </div>
-                                </div> <!-- end card-->
-                            </div> <!-- end col-->
-                        </div>
-                        <!-- end row-->
+                                    <!-- end .mt-4 -->
 
-                    </div> <!-- container -->
 
-                    <?php 
+
+
+
+                                </div>
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+                    </div>
+                    <!-- end row-->
+
+                </div> <!-- container -->
+
+                <?php 
                                       }
                                     ?>
-                </div>
-                <!-- /Start your project here-->
+            </div>
+            <!-- /Start your project here-->
 
 
-            </div> <!-- content -->
-        </div> <!-- content page -->
+        </div> <!-- content -->
+    </div> <!-- content page -->
 
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
     </div>
     <!-- END wrapper -->
 
