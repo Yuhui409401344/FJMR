@@ -112,7 +112,7 @@ $login=$_SESSION["account"]["login"];
 
                                             $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自審稿者的回覆稿件") . "?=";
                                             // $mail->Subject = "輔仁管理評論有一封來自審稿者的回覆稿件";
-                                            $mail->Body    =  file_get_contents('../mail.html', true);
+                                            $mail->Body    =  file_get_contents('mail.html', true);
                                             $mail->AltBody = '親愛的管理者者您好，輔仁管理評論目前收到一封來自審稿者的回覆稿件，請您盡速到輔仁管理評論的管理者平台回覆稿件，謝謝您！';
                                         }
 
@@ -134,53 +134,83 @@ $login=$_SESSION["account"]["login"];
                                     
                                 ?>
 
-                                <label for="product-name" style="font-size: 20px;"><?php echo "回覆成功!";?></label>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="card-box">
+                                            <div class="row">
+                                                <div class="container-fluid">
+                                                    <div>
+                                                        <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;">
+                                                            <?php echo $title ?>
+                                                        </h3>
+                                                        <h4 class="m-0 font-14">
+                                                            作者：<?php echo $auth1,' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
+                                                        </h4>
+                                                        <hr />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end col-->
+                                </div><!-- end row-->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card-box">
+                                            <div class="row">
+                                                <div class="container-fluid">
+                                                    <div>
+                                                        <div class="media mb-3 mt-1">
 
-                                <table>
-                                    <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">標題</span>
-                                        </td>
-                                        <td><label style="font-size:18px"><?php echo $_REQUEST['title']?></label></td>
-                                    </tr><br>
-                                    <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">收件人</span>
-                                        </td>
-                                        <td><label style="font-size:18px"><?php echo $manager ?></label></td>
-                                    </tr><br>
-                                    <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆建議</span>
-                                        </td>
-                                        <td><label style="font-size:18px"><?php 
-                                        $comment=nl2br($comment);//回車換成換行
-                                        echo $comment; ?></label></td>
+                                                            <div class="media-body">
+                                                                <h6 class="m-0 font-14"><?php echo $login ?>
+                                                                </h6>
 
-                                    </tr><br>
-                                    <tr>
-                                        <td><span class="badge badge-soft-secondary"
-                                                style="font-size:large">回覆評級</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td><label style="font-size:18px">
-                                                <?php echo $_REQUEST['level']; ?></label></td>
-                                    </tr><br>
-                                    <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">回覆次數</span>
-                                        </td>
-                                        <td><label style="font-size:18px"><?php echo $replytime ?></label></td>
-                                    </tr><br>
-                                    <tr>
-                                        <td><span class="badge badge-soft-secondary" style="font-size:large">檔案名稱</span>
-                                        </td>
-                                        <td><label style="font-size:18px">
-                                                <?php
+                                                            </div>
+                                                        </div>
+                                                        <p>回覆評級： <?php echo $_REQUEST['level']; ?></p>
+                                                        <p>回覆次數：<?php echo $replytime ?></p>
+
+                                                        <p
+                                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                            留言：<?php $Comment=nl2br($comment); echo  $Comment ?></p>
+                                                    </div>
+                                                    <!-- end .mt-4 -->
+
+
+
+
+
+                                                </div>
+                                            </div> <!-- end card-->
+                                        </div> <!-- end col-->
+                                    </div>
+                                    <!-- end row-->
+
+
+
+                                    <table>
+                                        <tr>
+
+                                            <td><span class="badge badge-soft-secondary"
+                                                    style="font-size:large">收件人</span>
+                                            </td>
+                                            <td><label style="font-size:18px"><?php echo $manager ?></label></td>
+                                        </tr><br>
+
+
+
+                                        <tr>
+                                            <td><span class="badge badge-soft-secondary"
+                                                    style="font-size:large">檔案名稱</span>
+                                            </td>
+                                            <td><label style="font-size:18px">
+                                                    <?php
                                                 
                                                 // $odlname=$_FILES["file"]["tmp_name"];
         
                                                 # 檢查檔案是否上傳成功
                                                 if ($_FILES['file']['error'] === UPLOAD_ERR_OK){
-                                                    echo $newname;
-                                                    "檔案類型: " . $_FILES["file"]["type"]."<br/>";
-                                                    "檔案大小: " . ($_FILES["file"]["size"] / 1024)." Kb<br />";
-                                                    "暫存名稱: " . $_FILES["file"]["tmp_name"];
-                                                
+                                                  
                                                   # 檢查檔案是否已經存在
                                                   if (file_exists('upload/' . $newname)){
                                                     echo '檔案已存在。<br/>';
@@ -193,50 +223,50 @@ $login=$_SESSION["account"]["login"];
                                                 }
                                                 
                                              ?>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <?php 
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <?php 
                                     }
                                 ?>
-                            </div> <!-- end card-box -->
-                        </div> <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div> <!-- container -->
+                                </div> <!-- end card-box -->
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </div> <!-- container -->
 
-            </div> <!-- content -->
+                </div> <!-- content -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
 
         </div>
-
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
+        <!-- END wrapper -->
 
 
-    </div>
-    <!-- END wrapper -->
+        <!-- App js -->
+        <script src="../assets/js/vendor.min.js"></script>
 
+        <!-- Summernote js -->
+        <script src="../assets/libs/summernote/summernote-bs4.min.js"></script>
+        <!-- Select2 js-->
+        <script src="../assets/libs/select2/js/select2.min.js"></script>
+        <!-- Dropzone file uploads-->
+        <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
 
-    <!-- App js -->
-    <script src="../assets/js/vendor.min.js"></script>
+        <!-- Init js-->
+        <script src="../assets/js/pages/form-fileuploads.init.js"></script>
 
-    <!-- Summernote js -->
-    <script src="../assets/libs/summernote/summernote-bs4.min.js"></script>
-    <!-- Select2 js-->
-    <script src="../assets/libs/select2/js/select2.min.js"></script>
-    <!-- Dropzone file uploads-->
-    <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
+        <!-- Init js -->
+        <script src="../assets/js/pages/add-product.init.js"></script>
 
-    <!-- Init js-->
-    <script src="../assets/js/pages/form-fileuploads.init.js"></script>
-
-    <!-- Init js -->
-    <script src="../assets/js/pages/add-product.init.js"></script>
-
-    <!-- App js -->
-    <script src="../assets/js/app.min.js"></script>
+        <!-- App js -->
+        <script src="../assets/js/app.min.js"></script>
 
 </body>
 
