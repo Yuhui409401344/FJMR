@@ -6,7 +6,7 @@ $reviewer = $_GET['reviewer'];
 
 
 $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-foreach($pdo->query("select accept,id,title,uploader,auth1,auth2,auth3,auth4,auth5,summary,filename from distri where id='".$id."' and pro='".$reviewer."'") as $row){
+foreach($pdo->query("select accept,id,title,uploader,auth1,auth2,auth3,auth4,auth5,summary,filename from distri_history where id='".$id."' and pro='".$reviewer."'") as $row){
     $YesNoNull = $row['accept'];
     $id=$row['id'];
     $title=$row['title'];
@@ -43,7 +43,8 @@ foreach($pdo->query("select accept,id,title,uploader,auth1,auth2,auth3,auth4,aut
                 // 回頭新增一份到newpaper
                 $sql3=$pdo ->prepare("INSERT INTO newpaper (id,title,uploader,auth1,auth2,auth3,auth4,auth5,summary,uploadtime,uploadname) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
                 $sql3->execute([$id,$title,$uploader,$auth1,$auth2,$auth3,$auth4,$auth5,$summary,$uploadtime,$filename]);
- 
+                
+                echo "<script> {window.alert('回覆成功，謝謝您的回覆！');location='http://fjmr.fju.edu.tw'} </script>";
                 break;
 
 
@@ -52,27 +53,10 @@ foreach($pdo->query("select accept,id,title,uploader,auth1,auth2,auth3,auth4,aut
                 $sql4->execute([$accept,$reviewer,$id]);
 
                 $sql5=$pdo->prepare("update distri_history set accept=? where pro=? and id=? ");
-                $sql5->execute([$accept,$reviewer,$id]);      
+                $sql5->execute([$accept,$reviewer,$id]);     
+                echo "<script> {window.alert('回覆成功，謝謝您的回覆！');location='http://fjmr.fju.edu.tw'} </script>"; 
                 break;
         };
-        // 如果資料庫確認有更新，要提示回覆成功；反之要提示回覆失敗
-        if(isset($sql1,$sql2,$sql3)){
-            if($sql1->execute([$accept,$reviewer,$id]) && $sql2->execute([$reviewer,$id]) && $sql3->execute([$id,$title,$uploader,$auth1,$auth2,$auth3,$auth4,$auth5,$summary,$uploadtime,$filename])){
-                echo "<script> {window.alert('回覆成功，謝謝您的回覆！');location='http://fjmr.fju.edu.tw'} </script>";
-            }else{
-                echo "<script> {window.alert('回覆失敗，煩請email聯繫我們以回報問題！');location='http://fjmr.fju.edu.tw'} </script>";
-            };
-        }else{
-            if($sql4->execute([$accept,$reviewer,$id]) && $sql5->execute([$accept,$reviewer,$id])){
-                echo "<script> {window.alert('回覆成功，謝謝您的回覆！');location='http://fjmr.fju.edu.tw'} </script>";
-            }else{
-                echo "<script> {window.alert('回覆失敗，煩請email聯繫我們以回報問題！');location='http://fjmr.fju.edu.tw'} </script>";
-            };
-        };
-        
-
-        
-        
     }else{ //已經回覆過yes or no，畫面跳轉到平台登入畫面
         echo "<script> {window.alert('您已經回覆過是否同意審稿，若您忘記還請上輔仁管理評論確認狀態！');location='http://fjmr.fju.edu.tw/login/login.php'} </script>";
     };
