@@ -53,7 +53,7 @@ $login=$_SESSION["account"]["login"];
                                 <div class="page-title-left mt-1">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"></li>
-                                        <li class="breadcrumb-item"><a href="history.php">寄件備份</a></li>
+                                        <li class="breadcrumb-item"><a href="history.php">回覆歷史</a></li>
                                         <li class="breadcrumb-item active">回覆意見</li>
                                     </ol>
                                 </div>

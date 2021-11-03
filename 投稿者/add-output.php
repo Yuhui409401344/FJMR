@@ -101,7 +101,7 @@
 
                                             <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                摘要：<?php $Summary=nl2br($summary); echo $Summary; ?></p>
+                                                摘要：<?php  echo $summary; ?></p>
 
                                             <h4 class="m-0 font-14">
                                                 領域：<p class='badge badge-soft-secondary mr-1'>

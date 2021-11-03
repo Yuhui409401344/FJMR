@@ -14,13 +14,23 @@
             <div class="content">
                 <!-- Start Content-->
                 <div class="container-fluid">
+
                     <div class="row mt-3">
-                        <div class="col-12">
-                            <div class="text-center filter-menu">
-                                <a href="javascript: void(0);" class="filter-menu-item active" data-rel="all">All</a>
-                                <a href="javascript: void(0);" class="filter-menu-item" data-rel="distri">配稿歷史</a>
-                                <a href="javascript: void(0);" class="filter-menu-item" data-rel="reply">回覆歷史</a>
+
+                        <div class="page-title-box col-xs-12 col-sm-6 col-md-8">
+                            <div class="page-title-left mt-1">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
+                                    <li class="breadcrumb-item">收件夾</li>
+                                    <li class="breadcrumb-item active">寄件備份</li>
+                                </ol>
+
                             </div>
+                        </div>
+                        <div class="text-center filter-menu col-xs-6 col-md-4">
+                            <a href="javascript: void(0);" class="filter-menu-item active" data-rel="all">All</a>
+                            <a href="javascript: void(0);" class="filter-menu-item" data-rel="distri">配稿歷史</a>
+                            <a href="javascript: void(0);" class="filter-menu-item" data-rel="reply">回覆歷史</a>
                         </div>
                     </div>
                     <!-- end row-->
@@ -46,6 +56,7 @@
                                                         <th ellipsis data-sortable="true">標題</th>
                                                         <th ellipsis>作者</th>
                                                         <th data-sortable="true">審稿者</th>
+                                                        <th data-sortable="true">審稿意願</th>
                                                         <th data-sortable="true">審稿期限</th>
                                                         <th>回覆留言</th>
                                                         <th data-sortable="true">上傳日期</th>
@@ -57,7 +68,7 @@
                                                     <?php
                                                             
                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                            foreach ($pdo->query("select * from distri_history where manager = '".$manager."'") as $row) {
+                                                            foreach ($pdo->query("select id,title,summary,pro,ddl,auth1,auth2,auth3,auth4,auth5,filename,uploadtime,comment,accept from distri_history where manager = '".$manager."'") as $row) {
                                                                 $id=$row['id'];
                                                                 $title=$row['title'];
                                                                 $summary=$row['summary'];
@@ -71,15 +82,31 @@
                                                                 $filename=$row['filename'];
                                                                 $uploadtime=$row['uploadtime'];
                                                                 $comment=$row['comment'];
+                                                                $accept=$row['accept'];
                                                         ?>
                                                     <tr>
 
                                                         <td><a href="distriHistoryContent.php?id=<?php echo $id ?>&&pro=<?php echo $pro?>"
                                                                 style="color:#005282"><?php echo $title ?>
+
                                                         </td>
                                                         <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
                                                         </td>
-                                                        <td><?php echo $pro?></td>
+                                                        <td><?php  
+                                                        foreach ($pdo->query("select distinct name from account where login='".$pro."'") as $row) {
+                                                            $proName=$row['name'];
+                                                        }
+                                                            echo $proName ?></td>
+                                                        <td><?php 
+                                                                if($accept=='0'){  //審稿者拒絕該稿件
+                                                                    echo "<span class='badge badge-outline-danger badge-pill'>拒絕審稿</span>";
+                                                                }elseif($accept == null){
+                                                                    echo "<span class='badge badge-outline-secondary badge-pill'>尚未回覆</span>";
+                                                                }else{
+                                                                    echo "<span class='badge badge-outline-blue badge-pill'>接受審稿</span>";
+                                                                }
+                                                                 
+                                                                ?></td>
                                                         <td><?php echo $ddl ?></td>
                                                         <td><?php echo $comment ?></td>
                                                         <td><?php echo $uploadtime ?></td>

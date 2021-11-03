@@ -41,6 +41,7 @@
 
                 <!-- Start Content-->
                 <div class="container-fluid">
+
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
@@ -126,7 +127,7 @@
                                             </h4>
 
                                             <div class="row">
-                                                <div class="col-xl-4">
+                                                <div class="col-12">
                                                     <div class="card mb-1 shadow-none border">
                                                         <div class="p-2">
                                                             <div class="row align-items-center">
@@ -161,7 +162,8 @@
                         </div>
                         <!-- end row-->
 
-                    </div> <!-- container -->
+                    </div>
+
 
                     <div class="row">
                         <div class="col-12">
@@ -181,7 +183,7 @@
 
                                                 <div class="media-body">
                                                     <small class="float-right">配稿日期：<?php echo $uploadtime ?></small>
-                                                    <h6 class="m-0 font-14"><?php echo $name ?>
+                                                    <h6 class="m-0 font-14"><?php echo $name ?>（審稿者）
                                                     </h6>
                                                     <small class="text-muted"><?php echo $email ?></small>
 
@@ -204,20 +206,12 @@
                                                 您的配稿留言：<?php echo $comment ?></p>
                                         </div>
                                         <!-- end .mt-4 -->
-
-
-
-
-
                                     </div>
                                 </div> <!-- end card-->
                             </div> <!-- end col-->
                         </div>
-                        <!-- end row-->
-
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
+                    </div>
+                </div>
             </div>
 
             <!-- ============================================================== -->

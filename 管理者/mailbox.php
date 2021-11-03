@@ -21,7 +21,8 @@
                                 <div class="page-title-left mt-1">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                        <li class="breadcrumb-item active">審稿者回覆</li>
+                                        <li class="breadcrumb-item">收件夾</li>
+                                        <li class="breadcrumb-item active">審稿回覆</li>
                                     </ol>
                                 </div>
                             </div>
@@ -93,7 +94,7 @@
 
                                                 ?>
                                                     <tr>
-                                                        <td><a href="pages-mailbox.php?title=<?php echo "$title"?>"
+                                                        <td><a href="pages-mailbox.php?title=<?php echo "$title"?>&id=<?php echo "$id" ?>"
                                                                 style="color: #005282"><?php echo $title ?></a>
                                                         </td>
                                                         <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>
@@ -124,7 +125,8 @@
                                                             } 
                                                         ?>
                                                             <a href='../審稿者/upload/<?php echo $file ?>' target="blank"
-                                                                download="<?php echo $file ?>" class='action-icon' title="檔案下載"> <i
+                                                                download="<?php echo $file ?>" class='action-icon'
+                                                                title="檔案下載"> <i
                                                                     class='mdi mdi-arrow-collapse-down'></i></a>
                                                         </td>
 
