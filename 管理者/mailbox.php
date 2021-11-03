@@ -94,7 +94,7 @@
 
                                                 ?>
                                                     <tr>
-                                                        <td><a href="pages-mailbox.php?title=<?php echo "$title"?>"
+                                                        <td><a href="pages-mailbox.php?title=<?php echo "$title"?>&id=<?php echo "$id" ?>"
                                                                 style="color: #005282"><?php echo $title ?></a>
                                                         </td>
                                                         <td><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?>

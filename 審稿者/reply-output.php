@@ -196,7 +196,7 @@ $login=$_SESSION["account"]["login"];
                                                     </div>
                                                     <div class="col-auto">
                                                         <!-- Button -->
-                                                        <a href='upload_x/<?php echo $paper ?>' target="blank"
+                                                        <a href='../投稿者/upload_x/<?php echo $paper ?>' target="blank"
                                                             download="<?php echo $title  ?>">
                                                             <i class="dripicons-download"></i>
                                                         </a>

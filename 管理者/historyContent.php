@@ -165,8 +165,107 @@
                         </div>
                         <!-- end row-->
 
-                    </div> <!-- container -->
+                    </div>
 
+                    <?php 
+                        foreach ($pdo->query("select r.senter, r.recipient,r.level, r.time, r.comment, r.uploadname, r.replytime from
+                      reply_history r where r.id='".$id."' and r.title='".$title."'") as $row) {
+                            $reviewer_senter=$row['senter'];
+                            $reviewer_recipient=$row['recipient'];
+                            $reviewer_level=$row['level'];
+                            $reviewer_time=$row['time'];
+                            $reviewer_replytime=$row['replytime'];
+                            $reviewer_uploadname=$row['uploadname'];
+                            $reviewer_comment=$row['comment'];
+                        
+
+
+                            foreach ($pdo->query("select distinct name,email from account where login='".$reviewer_senter."'") as $row) {
+                                $reviewerName=$row['name'];
+                                $reviewerEmail=$row['email'];
+                            }
+
+                            foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '".$reviewer_senter."' ") as $row) {
+                                $reviewerImg = $row['photo'];
+                                $reviewerImgType = $row['imgType'];
+                            }
+                    ?>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <!-- 審稿者自己的回覆評級、次數、建議-->
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div>
+                                            <div class="media mb-3 mt-1">
+                                                <?php 
+                                                        if(isset($reviewerImg)){
+                                                            echo '<img src="data:'.$reviewerImgType.';base64,' . $reviewerImg . '"   height="32" class="d-flex mr-2 rounded-circle"  />';
+                                                        }else{
+                                                            echo '<img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />'; 
+                                                        };
+                                                        ?>
+
+                                                <div class="media-body">
+                                                    <small class="float-right">回覆日期：<?php echo $reviewer_time ?></small>
+                                                    <h6 class="m-0 font-14"><?php echo $reviewerName ?>
+                                                    </h6>
+                                                    <small class="text-muted"><?php echo $reviewerEmail ?></small>
+                                                </div>
+                                            </div>
+
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                回覆評級： <?php echo $reviewer_level ?></p>
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                回覆次數：<?php echo $reviewer_replytime ?></p>
+
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                留言：<?php echo  $reviewer_comment ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 審稿者自己的回覆檔案 -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card mb-1 shadow-none border">
+                                            <div class="p-2">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <i class="mdi mdi-attachment"></i>
+                                                    </div>
+
+                                                    <div class="col pl-0">
+                                                        稿件檔案：
+                                                        <a href='../審稿者/upload/<?php echo $reviewer_uploadname ?>'
+                                                            target="blank"
+                                                            download="<?php echo $reviewer_uploadname ?>"><?php echo $reviewer_uploadname ?></a>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <!-- Button -->
+                                                        <a href='../審稿者/upload/<?php echo $reviewer_uploadname ?>'
+                                                            target="blank"
+                                                            download="<?php echo $reviewer_uploadname ?>">
+                                                            <i class="dripicons-download"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end card-->
+                        </div><!-- end col-->
+                    </div>
+
+                    <?php 
+                        } 
+                    ?>
+                    <hr style="border:0.8px dashed #000" />
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
