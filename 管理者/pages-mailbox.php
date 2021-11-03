@@ -209,7 +209,7 @@
                                                     </div>
 
                                                     <div class="col pl-0">
-                                                        稿件檔案：
+                                                        回覆檔案：
                                                         <a href='../審稿者/upload/<?php echo $uploadname ?>' target="blank"
                                                             download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
                                                     </div>

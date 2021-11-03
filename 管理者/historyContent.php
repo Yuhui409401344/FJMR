@@ -240,7 +240,7 @@
                                                     </div>
 
                                                     <div class="col pl-0">
-                                                        稿件檔案：
+                                                        回覆檔案：
                                                         <a href='../審稿者/upload/<?php echo $reviewer_uploadname ?>'
                                                             target="blank"
                                                             download="<?php echo $reviewer_uploadname ?>"><?php echo $reviewer_uploadname ?></a>
