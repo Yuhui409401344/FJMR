@@ -169,6 +169,8 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                             </div>
                                         </div>
                                     </div> <!-- end col -->
+                                </div>
+                                <div class="row mt-3" style="display:flex; flex-wrap:wrap; justify-content: flex-end">
                                     <button type="button" class="btn btn-blue waves-effect waves-light"
                                         style="text-align:center; float:right">
                                         <a href='distri.php?id=<?php echo "$id" ?>' style="color: white"><span

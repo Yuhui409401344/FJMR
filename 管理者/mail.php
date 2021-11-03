@@ -153,8 +153,9 @@ $emailContent =
                           <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:50px 44px 15px;font-family:arial,helvetica,sans-serif;" align="left">
                             
                      
-                      <p style="font-family: "Open Sans",sans-serif; ">親愛的審稿者'.$a.'您好：輔仁管理評論現有一封分配給您的稿件《'.$title.'》，待您審查，還請您決定是否接收！</p></br>
-                      <p style="font-family: "Open Sans",sans-serif; ">摘要：'.$summary.'</p>
+                      <p style="font-family: "Open Sans",sans-serif; ">親愛的審稿者'.$a.'您好：</br>
+                      輔仁管理評論現有一封分配給您的稿件《'.$title.'》，待您審查，還請您決定是否接收！</p></br></br></br>
+                      <p style="font-family: "Open Sans",sans-serif; text-align:justify;">摘要：'.$summary.'</p>
 
                           </td>
                         </tr>

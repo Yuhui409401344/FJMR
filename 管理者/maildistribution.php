@@ -26,7 +26,8 @@
                                     <div class="page-title-left mt-1">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                            <li class="breadcrumb-item active">分配投稿者的新稿件</li>
+                                            <li class="breadcrumb-item">收件夾</li>
+                                            <li class="breadcrumb-item active">分配稿件</li>
                                         </ol>
                                     </div>
                                 </div>
@@ -134,13 +135,15 @@
                                                     </td>
                                                     <td>
                                                         <a href='../投稿者/upload/<?php echo $uploadname ?>' target="blank"
-                                                            download="<?php echo $uploadname ?>" class='action-icon' title="下載檔案"> <i
+                                                            download="<?php echo $uploadname ?>" class='action-icon'
+                                                            title="下載檔案"> <i
                                                                 class='mdi mdi-arrow-collapse-down'></i></a>
                                                         <a href='distri.php?id=<?php echo "$id" ?> '
-                                                            class='action-icon'><i
-                                                                class='mdi mdi-email-send-outline' title="分配文章"></i></a>
+                                                            class='action-icon'><i class='mdi mdi-email-send-outline'
+                                                                title="分配文章"></i></a>
                                                         <a href='reply-cancel.php?id=<?php echo "$id" ?> '
-                                                            class='action-icon'><i class='mdi mdi-reply mr-1' title="直接回覆文章"></i></a>
+                                                            class='action-icon'><i class='mdi mdi-reply mr-1'
+                                                                title="直接回覆文章"></i></a>
                                                     </td>
 
                                                 </tr>
