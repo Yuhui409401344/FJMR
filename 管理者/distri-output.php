@@ -111,7 +111,7 @@ $manager=$_SESSION["account"]["login"];
   
                                               $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自管理者分配的稿件") . "?=";
                                               // $mail->Subject = "輔仁管理評論有一封來自審稿者的回覆稿件";
-                                              $mail->Body    =  require 'mail.php';
+                                              $mail->Body    =  require "mail-reviewer.php";
                                               $mail->AltBody = '親愛的審稿者您好，您的輔仁管理評論帳號中有一封最新的待審稿稿件，還望您儘速到平台上審稿，給予投稿者意見！謝謝您！';
                                           }
   

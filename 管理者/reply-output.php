@@ -14,22 +14,18 @@ $login=$_SESSION["account"]["login"];
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-    <!-- Plugins css-->
     <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- App css -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
     <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
-    <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -55,7 +51,7 @@ $login=$_SESSION["account"]["login"];
                                     
                                     $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
 
-                                    foreach ($pdo->query("select * from reply where title='".$title."'") as $row) {
+                                    foreach ($pdo->query("select id,uploader,auth1,auth2,auth3,auth4,auth5 from reply where title='".$title."'") as $row) {
                                         $id=$row["id"];
                                         $uploader=$row["uploader"];
                                         $auth1=$row["auth1"];
@@ -106,9 +102,9 @@ $login=$_SESSION["account"]["login"];
                                             // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
                                             $mail->isHTML(true);                                  // Set email format to HTML
     
-                                            $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封已評閱完畢的稿件，請盡速查閱。") . "?=";
-                                            $mail->Body    =  file_get_contents('../審稿者/mail.html', true);
-                                            $mail->AltBody = '親愛的投稿者您好，輔仁管理評論目前收到一封已評閱完畢的稿件，請您盡速到輔仁管理評論確認結果，謝謝您！';
+                                            $mail->Subject = "=?utf-8?B?" . base64_encode("您在輔仁管理評論的投稿《".$title."》已收到回覆") . "?=";
+                                            $mail->Body    =  require "mail-author.php";
+                                            $mail->AltBody = '親愛的投稿者您好，您在輔仁管理評論的投稿《'.$title.'》已收到回覆，請您到輔仁管理評論確認結果，謝謝您！';
                                         }
     
                                             if(!$mail->send()) {
@@ -134,21 +130,19 @@ $login=$_SESSION["account"]["login"];
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">標題</span>
                                         </td>
-                                        <td><label style="font-size:18px"><?php echo $_REQUEST['title']?></label></td>
+                                        <td><label style="font-size:18px"><?php echo $title ?></label></td>
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">回覆建議</span>
                                         </td>
-                                        <td><label style="font-size:18px"><?php 
-                                        $comment=nl2br($comment);//回車換成換行
-                                        echo $comment; ?></label></td>
+                                        <td><label style="font-size:18px"><?php echo $comment; ?></label></td>
 
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">回覆評級</span>
                                         </td>
                                         <td><label style="font-size:18px">
-                                                <?php echo $_REQUEST['level']; ?></label></td>
+                                                <?php echo $level ?></label></td>
                                     </tr><br>
                                     <tr>
                                         <td><span class="badge badge-soft-secondary" style="font-size:large">回覆次數</span>
@@ -161,7 +155,6 @@ $login=$_SESSION["account"]["login"];
                                         <td><label style="font-size:18px">
                                                 <?php
                                                 
-                                                // $odlname=$_FILES["file"]["tmp_name"];
         
                                                 # 檢查檔案是否上傳成功
                                                 if ($_FILES['file']['error'] === UPLOAD_ERR_OK){

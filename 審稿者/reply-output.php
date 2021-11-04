@@ -106,7 +106,7 @@ $login=$_SESSION["account"]["login"];
                         $mail->addAddress($managerEmail, $managerName);               // Add a recipient
                         $mail->isHTML(true);                                  // Set email format to HTML
                         $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自審稿者的回覆稿件") . "?=";
-                        $mail->Body    =  file_get_contents('mail.html', true);
+                        $mail->Body    =  require "mail.php";
                         $mail->AltBody = '親愛的管理者者您好，輔仁管理評論目前收到一封來自審稿者的回覆稿件，請您盡速到輔仁管理評論的管理者平台回覆稿件，謝謝您！';
                         
                         if(!$mail->send()) {
