@@ -12,9 +12,8 @@ if(isset($_SESSION["account"]["login"])){
         <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="icon" href="img/logo-FJMR.ico" type="image/x-icon">
   <title>輔仁管理評論</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Google Fonts Roboto -->
@@ -65,6 +64,15 @@ if(isset($_SESSION["account"]["login"])){
     .navbar:not(.top-nav-collapse) {
         background: #78909c !important;
     }
+    .dropdown-menu{
+        background-color: #78909c;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+    }
+    .navbar:not(.top-nav-collapse) .dropdown-menu{
+        background-color: #78909c;
+    }
     }
 
     h1 {
@@ -79,6 +87,12 @@ if(isset($_SESSION["account"]["login"])){
     border-top: 3px solid #fff;
     width: 80px;
     }
+
+    .navbar .dropdown-menu{
+        background-color:#78909c;
+        border-top: 0px;
+    }
+
 </style>
 </head>
 <body>
