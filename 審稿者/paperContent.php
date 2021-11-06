@@ -57,132 +57,141 @@
                     </div>
                     <!-- end page title -->
                     <?php
-                            $id=$_GET["id"];
-                            $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
-                            foreach ($pdo->query("select title, pro, manager, ddl, filename, summary, comment from distri where id='$id'") as $row) {
-                                $title=$row['title'];
-                                $pro=$row['pro'];
-                                $manager=$row['manager'];
-                                $ddl=$row['ddl'];
-                                $uploadname=$row['filename'];
-                                $summary=$row['summary'];
-                                $comment=$row['comment'];
+                    $id = $_GET["id"];
+                    $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
+                    foreach ($pdo->query("select title, pro, manager, ddl, filename, summary, comment,uploadtime from distri where id='$id'") as $row) {
+                        $title = $row['title'];
+                        $pro = $row['pro'];
+                        $manager = $row['manager'];
+                        $ddl = $row['ddl'];
+                        $uploadname = $row['filename'];
+                        $summary = $row['summary'];
+                        $comment = $row['comment'];
+                        $Summary = nl2br($summary);
+                        $uploadtime = $row['uploadtime'];
+                    }
 
-                                $Summary=nl2br($summary);
-                                
-                            }
-                        ?>
+                    foreach ($pdo->query("select name, email, school from account where login='" . $pro . "'") as $row) {
+                        $name = $row['name'];
+                        $email = $row['email'];
+                        $school = $row['school'];
+                    }
+
+
+                    foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '" . $pro . "' ") as $row) {
+                        $img = $row['photo'];
+                        $imgType = $row['imgType'];
+                    }
+                    ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="row">
                                     <div class="container-fluid">
+                                        <div>
+                                            <h3 style="font-weight: bolder;font-family:Microsoft JhengHei;">
+                                                <?php echo $title ?>
+                                            </h3>
+                                            <hr />
+                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                摘要：<?php echo $summary ?></p>
 
-                                        <div class="container">
-                                            <div class="row justify-content-start">
+                                            <h4 class="m-0 font-14">
+                                                領域： <?php
+                                                    foreach ($pdo->query("select f_name from newpaper_field where title = '" . $title . "'") as $row) {
+                                                        echo  "<p class='badge badge-soft-secondary mr-1'>" . $row['f_name'] . "</p>";
+                                                    }
+                                                    ?>
+                                            </h4>
+
+                                            <div class="row">
                                                 <div class="col-12">
-                                                    <h3
-                                                        style="font-weight: bolder;font-family:Microsoft JhengHei;margin-top: 20px;">
-                                                        <?php echo $title ?>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-start">
-                                                <div class="col-8">
-                                                    全文下載：<a href='../投稿者/upload_x/<?php echo $uploadname?>'
-                                                        target="blank"
-                                                        download="<?php echo $title ?>"><?php echo $title ?></a>
-                                                </div>
-                                                <div class="col-4" style="display:inline-block">
-                                                    審稿期限：
-                                                    <?php 
-                                                        $today = date('Y-m-d') ;
-                                                        if(strtotime($today) > strtotime($ddl)){
-                                                            echo $ddl, '&nbsp', "<span class='badge badge-danger'>Late</span>"; //稿件超時了
-                                                        }else{
-                                                            echo $ddl; //稿件未超時
-                                                        }
-                                                        ?>
+                                                    <div class="card mb-1 shadow-none border">
+                                                        <div class="p-2">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-auto">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="container">
-                                                <section class="mt-3">
+                                                                    <i class="mdi mdi-attachment"></i>
 
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">稿件領域</p>
-                                                    </div>
-
-                                                    <div class="media mt-3 px-1">
-                                                        <div class="media-body"
-                                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p> <?php
-                                                                foreach ($pdo->query("select f_name from newpaper_field where title = '".$title."'") as $row) 
-                                                                {
-                                                                    echo $field = $row["f_name"];
-                                                                    echo " ";
-                                                                }
-                                                            ?></p>
+                                                                </div>
+                                                                <div class="col pl-0">
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
+                                                                </div>
+                                                                <div class="col-auto">
+                                                                    <!-- Button -->
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>">
+                                                                        <i class="dripicons-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-
-                                                </section>
+                                                </div> <!-- end col -->
                                             </div>
-                                            <div class="container">
-                                                <section class="mt-3">
-
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">摘要</p>
-                                                    </div>
-
-                                                    <div class="media mt-3 px-1">
-                                                        <div class="media-body"
-                                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p> <?php echo $Summary ?></p>
-                                                        </div>
-                                                    </div>
-
-                                                </section>
-                                            </div>
-                                            <div class="container">
-                                                <section class="mt-3">
-
-                                                    <!-- Card header -->
-                                                    <div
-                                                        class="card-header border-0 font-weight-bold d-flex justify-content-between">
-                                                        <p class="mr-4 mb-0">管理者留言</p>
-                                                    </div>
-
-                                                    <div class="media mt-3 px-1">
-                                                        <div class="media-body"
-                                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                            <p> <?php echo $comment ?></p>
-                                                        </div>
-                                                    </div>
-
-                                                </section>
-                                            </div>
+                                            <!-- end row-->
                                         </div>
                                     </div>
-                                </div>
-                            </div> <!-- end card-->
-                            <button type="button" class="btn btn-blue waves-effect waves-light"
-                                style="text-align:center; float:right">
-                                <a href='reply.php?id=<?php echo "$id" ?>' style="color: white"><span
-                                        class="btn-label"><i
-                                            class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
-                            </button>
-                        </div> <!-- end col-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+
                     </div>
-                    <!-- end row-->
-                </div> <!-- container -->
-            </div> <!-- content -->
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div>
+                                            <div class="media mb-3 mt-1">
+                                                <?php
+                                                if (isset($img)) {
+                                                    echo '<img src="data:' . $imgType . ';base64,' . $img . '"   height="32" class="d-flex mr-2 rounded-circle"  />';
+                                                } else {
+                                                    echo '<img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />';
+                                                }
+                                                ?>
+                                                <div class="media-body">
+                                                    <small class="float-right">投稿日期：<?php echo $uploadtime ?></small>
+                                                    <h6 class="m-0 font-14"><?php echo $name ?>（審稿者）
+                                                    </h6>
+                                                    <small class="text-muted"><?php echo $email ?></small>
+
+                                                </div>
+                                            </div>
+
+                                            <p>審稿期限：
+                                                <?php
+                                                $today = date('Y-m-d');
+                                                if (strtotime($today) > strtotime($ddl)) {
+                                                    echo "<span class='badge badge-danger'>$ddl</span>"; //稿件超時了
+                                                } else {
+                                                    echo "<span class='badge badge-info'>$ddl</span>"; //稿件未超時
+                                                }
+                                                ?></p>
+
+
+                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                配稿留言：<?php echo $comment ?>
+                                            </p>
+                                        </div>
+                                        <!-- end .mt-4 -->
+                                    </div>
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-blue waves-effect waves-light" style="text-align:center; float:right">
+                        <a href='reply.php?id=<?php echo "$id" ?>' style="color: white"><span class="btn-label"><i class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Page content -->

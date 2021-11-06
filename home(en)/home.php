@@ -65,6 +65,15 @@ if(isset($_SESSION["account"]["login"])){
     .navbar:not(.top-nav-collapse) {
         background: #78909c !important;
     }
+    .dropdown-menu{
+        background-color: #78909c;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+    }
+    .navbar:not(.top-nav-collapse) .dropdown-menu{
+        background-color: #78909c;
+    }
     }
 
     h1 {
@@ -78,6 +87,11 @@ if(isset($_SESSION["account"]["login"])){
     .hr-light {
     border-top: 3px solid #fff;
     width: 80px;
+    }
+
+    .navbar .dropdown-menu{
+        background-color:#78909c;
+        border-top: 0px;
     }
 </style>
 </head>
