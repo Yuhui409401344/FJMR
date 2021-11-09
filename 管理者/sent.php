@@ -191,17 +191,15 @@
                                                         <td><?php  echo $replycount+1 ; ?></td>
 
                                                         <td><?php 
-                                                            if ($level=='接受') {
-                                                                echo "<span class='badge badge-soft-blue'>接受</span>" ;
-                                                            }elseif ($level=='大幅修改') {
-                                                                echo  "<span class='badge badge-soft-warning'>大幅修改</span>";
-                                                            }elseif($level=='小幅修改'){
-                                                                echo  "<span class='badge badge-soft-success'>小幅修改</span>";
-                                                            }elseif($level=='拒絕'){
-                                                                echo "<span class='badge badge-soft-pink'>拒絕</span>";
-                                                            }elseif($level=='退稿'){
-                                                                echo "<span class='badge badge-soft-danger'>退稿</span>";
-                                                            } ?></td>
+                                                           switch($level)
+                                                           {
+                                                               case "接受":echo "<span class='badge badge-soft-blue'>接受</span>" ;break;
+                                                               case "小幅修改":echo  "<span class='badge badge-soft-warning'>小幅修改</span>" ;break;
+                                                               case "大幅修改":echo  "<span class='badge badge-soft-success'>大幅修改</span>" ;break;
+                                                               case "拒絕":echo "<span class='badge badge-soft-pink'>拒絕</span>";break;
+                                                               case "退稿":echo "<span class='badge badge-soft-danger'>退稿</span>"; break;
+                                                           }
+                                                             ?></td>
 
 
                                                         <td><?php echo $message ?></td>

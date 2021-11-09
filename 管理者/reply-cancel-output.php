@@ -107,7 +107,7 @@ $login=$_SESSION["account"]["login"];
                                         $mail->isHTML(true);                                  // Set email format to HTML
 
                                         $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封已評閱完畢的稿件，請盡速查閱。") . "?=";
-                                        $mail->Body    =  file_get_contents('../mail.html', true);
+                                        $mail->Body    =  require "mail-author.php";
                                         $mail->AltBody = '親愛的投稿者您好，輔仁管理評論目前收到一封已評閱完畢的稿件，請您盡速到輔仁管理評論確認結果，謝謝您！';
                                     }
 

@@ -9,13 +9,7 @@
         <div class="content-page">
             <div class="content">
                 <!-- Start Content-->
-                <div class=" mt-3 alert alert-success alert-dismissible bg-success text-white border-0 fade show"
-                    role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    投稿成功，請靜候回覆！
-                </div>
+
                 <div class="mt-3 container-fluid">
                     <?php
                                     $title=$_POST["title"];
