@@ -179,6 +179,7 @@
                                                         }else{
                                                             echo '<img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />'; 
                                                         };
+                                                        unset($img);
                                                         ?>
 
                                                 <div class="media-body">
