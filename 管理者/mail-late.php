@@ -1,4 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php 
+
+$slogan="Today's research, tomorrow's innovation. ";
+
+$emailContent = 
+'<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
@@ -73,7 +78,7 @@
           line-height: inherit;
         }
 
-        a[x-apple-data-detectors='true'] {
+        a[x-apple-data-detectors="true"] {
           color: inherit !important;
           text-decoration: none !important;
         }
@@ -95,7 +100,7 @@
           <div class="u-row-container" style="padding: 0px;">
             <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 550px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
               <div style="border-collapse: collapse;display: table;width: 100%;background-repeat: no-repeat;background-position: center top;background: linear-gradient(to right, #283048, #859398);">
-                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:550px;"><tr style="background-image: url('images/image-3.jpeg');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
+                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:550px;"><tr style="background-image: url("images/image-3.jpeg");background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
                 
                 <!--[if (mso)|(IE)]><td align="center" width="550" style="width: 550px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
                 <div class="u-col u-col-100" style="max-width: 320px;min-width: 550px;display: table-cell;vertical-align: top;">
@@ -107,9 +112,9 @@
                         <tr>
                           <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:50px 10px 15px 30px;font-family:arial,helvetica,sans-serif;" align="left">
                             
-                      <h1 class="v-text-align" style="margin: 0px; color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: 'Open Sans',sans-serif; font-size: 36px;">
-                        <strong>輔仁管理評論</strong>
-                      </h1>
+                      <div class="v-text-align" style="color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word;">
+                        <p style="font-size: 36px; line-height: 140%;">輔仁管理評論</p>
+                      </div>
 
                           </td>
                         </tr>
@@ -122,7 +127,7 @@
                           <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 20px 60px 30px;font-family:arial,helvetica,sans-serif;" align="left">
                             
                       <div class="v-text-align" style="color: #ffffff; line-height: 210%; text-align: left; word-wrap: break-word;">
-                        <p style="font-size: 14px; line-height: 210%;"><span style="font-size: 18px; line-height: 37.8px;">Today's research, tomorrow's innovation.</span></p>
+                        <p style="font-size: 14px; line-height: 210%;"><span style="font-size: 18px; line-height: 37.8px;">'.$slogan.'</span></p>
                       </div>
 
                           </td>
@@ -143,15 +148,12 @@
                       <tbody>
                         <tr>
                           <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:50px 44px 15px;font-family:arial,helvetica,sans-serif;" align="left">
-                            
-                      <h1 class="v-text-align" style="margin: 0px; color: #00113f; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: 'Open Sans',sans-serif; font-size: 28px;">
-                        您有新稿件等待查收
-                      </h1>
-
+                            <p style="font-family: "Open Sans",sans-serif; ">親愛的審稿者者您好，輔仁管理評論中，您有一篇尚未回覆的稿件即將到審稿期限，請盡速審稿。</p>
                           </td>
                         </tr>
                       </tbody>
                     </table>
+                    
                     <table style="font-family:arial,helvetica,sans-serif; background-color: #eceff1;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
                       <tbody>
                         <tr>
@@ -169,6 +171,8 @@
                         </tr>
                       </tbody>
                     </table>
+
+                          
                   </div>
                 </div>
               </div>
@@ -182,3 +186,10 @@
 
 
 </html>
+
+';
+
+return $emailContent;
+
+
+?>

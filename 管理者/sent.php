@@ -1,4 +1,13 @@
 <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+<style>
+.row {
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+</style>
 
 <body class="loading">
 
@@ -15,7 +24,7 @@
                 <!-- Start Content-->
                 <div class="container-fluid">
 
-                    <div class="row mt-3">
+                    <div class="row mt-3" style="flex-direction: row">
 
                         <div class="page-title-box col-xs-12 col-sm-6 col-md-8">
                             <div class="page-title-left mt-1">
@@ -34,7 +43,7 @@
                         </div>
                     </div>
                     <!-- end row-->
-                    <div class="row filterable-content">
+                    <div class="row filterable-content" style="flex-direction: column;">
                         <!-- 已分配的稿件 -->
                         <div class="row col-12 col-xl-12 filter-item all distri">
 
@@ -191,17 +200,15 @@
                                                         <td><?php  echo $replycount+1 ; ?></td>
 
                                                         <td><?php 
-                                                            if ($level=='接受') {
-                                                                echo "<span class='badge badge-soft-blue'>接受</span>" ;
-                                                            }elseif ($level=='大幅修改') {
-                                                                echo  "<span class='badge badge-soft-warning'>大幅修改</span>";
-                                                            }elseif($level=='小幅修改'){
-                                                                echo  "<span class='badge badge-soft-success'>小幅修改</span>";
-                                                            }elseif($level=='拒絕'){
-                                                                echo "<span class='badge badge-soft-pink'>拒絕</span>";
-                                                            }elseif($level=='退稿'){
-                                                                echo "<span class='badge badge-soft-danger'>退稿</span>";
-                                                            } ?></td>
+                                                           switch($level)
+                                                           {
+                                                               case "接受":echo "<span class='badge badge-soft-blue'>接受</span>" ;break;
+                                                               case "小幅修改":echo  "<span class='badge badge-soft-warning'>小幅修改</span>" ;break;
+                                                               case "大幅修改":echo  "<span class='badge badge-soft-success'>大幅修改</span>" ;break;
+                                                               case "拒絕":echo "<span class='badge badge-soft-pink'>拒絕</span>";break;
+                                                               case "退稿":echo "<span class='badge badge-soft-danger'>退稿</span>"; break;
+                                                           }
+                                                             ?></td>
 
 
                                                         <td><?php echo $message ?></td>

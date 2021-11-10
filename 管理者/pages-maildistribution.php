@@ -115,7 +115,7 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                 </div>
                                 <!-- 非匿名檔案 -->
                                 <div class="row">
-                                    <div class="col-xl-4">
+                                    <div class="col-12">
                                         <div class="card mb-1 shadow-none border">
                                             <div class="p-2">
                                                 <div class="row align-items-center">
@@ -143,7 +143,7 @@ foreach ($pdo->query("select * from newpaper where id='".$id."'") as $row) {
                                 </div>
                                 <!-- 匿名檔案 -->
                                 <div class="row">
-                                    <div class="col-xl-4">
+                                    <div class="col-12">
                                         <div class="card mb-1 shadow-none border">
                                             <div class="p-2">
                                                 <div class="row align-items-center">

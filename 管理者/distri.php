@@ -104,11 +104,10 @@
                                             <div class="col-9">
                                                 <h4><b><?php echo $title ?></b></h4>
                                             </div>
-                                            <div class="col-3">
-                                                <button type="button" class="btn-shadow form-control"
-                                                    data-toggle="modal" data-target="#exampleModalLong"
-                                                    onclick="showModal()">修改文章領域</button>
-                                            </div>
+
+                                            <button type="button" class="btn-shadow col-3 form-control"
+                                                data-toggle="modal" data-target="#exampleModalLong"
+                                                style="height:fit-content" onclick="showModal()">修改文章領域</button>
                                         </div>
                                         <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');

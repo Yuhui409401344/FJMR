@@ -74,8 +74,6 @@
                             $auth5=$row['auth5'];
                             $comment=$row['comment'];
                             $uploadtime=$row['uploadtime'];
-
-                            $Summary=nl2br($summary);
                             
                         }
                         foreach($pdo->query("select name, email, school from account where login='".$pro."'") as $row){
@@ -97,7 +95,6 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="row">
-
                                     <div class="container-fluid">
 
                                         <div>

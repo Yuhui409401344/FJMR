@@ -91,6 +91,28 @@ $login=$_SESSION["account"]["login"];
                             $managerEmail = $row['email'];
                         };
 
+                        
+                        // 5. 從資料庫distri中刪除該審稿人的工作
+                        $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
+                        $sql3->execute([$login,$title]);
+
+                        // 6. 將distri_history中的accept欄位設為1, 表示接受審稿
+                        $sql4=$pdo->prepare("update distri_history set accept=? where pro=? and id=? ");
+                        $sql4->execute(["1",$login,$id]);
+
+                        
+                        // 6-1. 審稿者的名字和郵箱
+                        foreach($pdo->query("select name,email from account where login='".$login."'") as $row){
+                            $yourName = $row['name'];
+                            $yourEmail = $row['email'];
+                        }
+
+                        // 6-2. 審稿者的頭像
+                        foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '".$login."' ") as $row) {
+                            $yourImg = $row['photo'];
+                            $yourImgType = $row['imgType'];
+                            }
+                        
                         // 4-2. 發送信件
                         require_once '../PHPMailer/PHPMailerAutoload.php';
                         $mail = new PHPMailer;
@@ -116,27 +138,6 @@ $login=$_SESSION["account"]["login"];
                             echo '';
                         };
 
-                        // 5. 從資料庫distri中刪除該審稿人的工作
-                        $sql3=$pdo ->prepare("DELETE from distri where distri.pro=? and distri.title=?");
-                        $sql3->execute([$login,$title]);
-
-                        // 6. 將distri_history中的accept欄位設為1, 表示接受審稿
-                        $sql4=$pdo->prepare("update distri_history set accept=? where pro=? and id=? ");
-                        $sql4->execute(["1",$login,$id]);
-
-                        
-                        // 6-1. 審稿者的名字和郵箱
-                        foreach($pdo->query("select name,email from account where login='".$login."'") as $row){
-                            $yourName = $row['name'];
-                            $yourEmail = $row['email'];
-                        }
-
-                        // 6-2. 審稿者的頭像
-                        foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '".$login."' ") as $row) {
-                            $yourImg = $row['photo'];
-                            $yourImgType = $row['imgType'];
-                            }
-                        
                         if (empty($level)) {
                             echo '請輸入評級。';
                         }else{
@@ -161,7 +162,7 @@ $login=$_SESSION["account"]["login"];
                                             <hr />
                                             <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                摘要：<?php $Summary=nl2br($summary); echo $Summary; ?>
+                                                摘要：<?php echo $summary; ?>
                                             </p>
                                             <h4 class="m-0 font-14">
                                                 領域：<p class='badge badge-soft-secondary mr-1'>

@@ -1,5 +1,15 @@
 <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
 
+<style>
+.row {
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+</style>
+
 <body class="loading">
     <!-- Begin page -->
     <div id="wrapper">
@@ -12,19 +22,25 @@
         <div class="content-page">
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <div class="text-center filter-menu">
-                                <a href="javascript: void(0);" class="filter-menu-item active" data-rel="all">All</a>
-                                <a href="javascript: void(0);" class="filter-menu-item"
-                                    data-rel="closeddl">即將到期未收到回覆的稿件</a>
-                                <a href="javascript: void(0);" class="filter-menu-item"
-                                    data-rel="overddl">已超過回覆期限的稿件</a>
+                    <div class="row mt-3" style="flex-direction: row;">
+                        <div class="page-title-box col-xs-6 col-sm-6">
+                            <div class="page-title-left mt-1">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
+                                    <li class="breadcrumb-item">即期稿件</li>
+                                </ol>
+
                             </div>
+                        </div>
+
+                        <div class="text-center filter-menu col-xs-8 col-md-6">
+                            <a href="javascript: void(0);" class="filter-menu-item active" data-rel="all">All</a>
+                            <a href="javascript: void(0);" class="filter-menu-item" data-rel="closeddl">即將到期未收到回覆的稿件</a>
+                            <a href="javascript: void(0);" class="filter-menu-item" data-rel="overddl">已超過回覆期限的稿件</a>
                         </div>
                     </div>
                     <!-- end row-->
-                    <div class="row filterable-content">
+                    <div class="row filterable-content" style="flex-direction: column;">
                         <!-- 即將到期但未收到回覆的稿件 -->
                         <div class="row col-12 col-xl-12 filter-item all closeddl">
                             <div class="col-12">
