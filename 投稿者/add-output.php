@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php include "nav.php"; ?>
 
 <body class="loading">
-    <?php include "nav.php"; ?>
-
     <!-- Begin page -->
     <div id="wrapper">
 

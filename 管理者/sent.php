@@ -1,4 +1,13 @@
 <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+<style>
+.row {
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+</style>
 
 <body class="loading">
 
@@ -15,7 +24,7 @@
                 <!-- Start Content-->
                 <div class="container-fluid">
 
-                    <div class="row mt-3">
+                    <div class="row mt-3" style="flex-direction: row">
 
                         <div class="page-title-box col-xs-12 col-sm-6 col-md-8">
                             <div class="page-title-left mt-1">
@@ -34,7 +43,7 @@
                         </div>
                     </div>
                     <!-- end row-->
-                    <div class="row filterable-content">
+                    <div class="row filterable-content" style="flex-direction: column;">
                         <!-- 已分配的稿件 -->
                         <div class="row col-12 col-xl-12 filter-item all distri">
 

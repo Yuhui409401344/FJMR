@@ -2,6 +2,7 @@
 session_start();
 $manager=$_SESSION["account"]["login"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,11 +19,6 @@ $manager=$_SESSION["account"]["login"];
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/spinkit.min.css">
-
-</head>
-
-<body class="loading">
-    <?php include "header.php"; ?>
     <style>
     p {
         max-width: 200px;
@@ -31,6 +27,11 @@ $manager=$_SESSION["account"]["login"];
         white-space: nowrap;
     }
     </style>
+</head>
+
+<body class="loading">
+    <?php include "header.php"; ?>
+
     <!-- Begin page -->
     <div id="wrapper">
 
