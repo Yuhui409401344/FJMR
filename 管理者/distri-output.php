@@ -9,7 +9,6 @@ $manager=$_SESSION["account"]["login"];
     <meta charset="utf-8" />
     <title>管理者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -18,10 +17,12 @@ $manager=$_SESSION["account"]["login"];
     <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/spinkit.min.css">
 
 </head>
 
 <body class="loading">
+    <?php include "header.php"; ?>
     <style>
     p {
         max-width: 200px;
@@ -32,13 +33,6 @@ $manager=$_SESSION["account"]["login"];
     </style>
     <!-- Begin page -->
     <div id="wrapper">
-        <?php 
-            
-            include "header.php" ?>
-
-        <!-- ============================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ============================================================== -->
 
         <div class="content-page">
             <div class="content">
@@ -219,14 +213,9 @@ $manager=$_SESSION["account"]["login"];
             <!-- /Start your project here-->
 
 
-        </div> <!-- content -->
-    </div> <!-- content page -->
-
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
+        </div>
     </div>
-    <!-- END wrapper -->
+
 
     <!-- Vendor js -->
     <script src="../assets/js/vendor.min.js"></script>
@@ -236,6 +225,17 @@ $manager=$_SESSION["account"]["login"];
 
     <!-- Inbox init -->
     <script src="../assets/js/pages/inbox.js"></script>
+    <script>
+    document.onreadystatechange = loadingChange; //当页面加载状态改变的时候执行这个方法.  
+    function loadingChange() {
+
+        if (document.readyState == "complete") {
+            //結束動畫
+            var loadingMask = document.getElementById('load'); //获取动画预加载动画的div
+            loadingMask.parentNode.removeChild(loadingMask);
+        };
+    };
+    </script>
 
 </body>
 
