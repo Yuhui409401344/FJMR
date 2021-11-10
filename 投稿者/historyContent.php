@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body class="loading">
+<?php include "nav.php" ?>
 
+<body class="loading">
     <!-- Begin page -->
     <div id="wrapper">
-        <?php include "nav.php" ?>
-
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->

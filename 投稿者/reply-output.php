@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php include "nav.php" ?>
+
 <body class="loading">
 
     <!-- Begin page -->
     <div id="wrapper">
-        <?php include "nav.php" ?>
+
 
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
@@ -18,12 +20,13 @@
                     <div class="row mt-3">
                         <div class="col-lg-12">
                             <div class="card-box">
-                            <div class=" mt-3 alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                回覆成功，請靜候回覆！
-                            </div>
+                                <div class=" mt-3 alert alert-success alert-dismissible bg-success text-white border-0 fade show"
+                                    role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    回覆成功，請靜候回覆！
+                                </div>
                                 <?php
                                 $title = $_POST["title"];
                                 // $field=$_POST["field"];
