@@ -16,15 +16,20 @@ $login = $_SESSION["account"]["login"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+    <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
+
     <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <!-- <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" /> -->
 
-    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <!-- <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" /> -->
 
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
@@ -165,7 +170,8 @@ $login = $_SESSION["account"]["login"];
                                             作者：<?php echo $auth1, ' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
                                         </h4>
                                         <hr />
-                                        <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                        <p
+                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                             摘要：<?php $Summary = nl2br($summary);
                                                 echo $Summary; ?>
                                         </p>
@@ -194,13 +200,15 @@ $login = $_SESSION["account"]["login"];
                                                 </div>
                                                 <div class="col pl-0">
                                                     稿件檔案：
-                                                    <a href='../投稿者/upload_x/<?php echo $paper ?>' target="blank" download="<?php echo $title ?>">
+                                                    <a href='../投稿者/upload_x/<?php echo $paper ?>' target="blank"
+                                                        download="<?php echo $title ?>">
                                                         <?php echo  $title ?>
                                                     </a>
                                                 </div>
                                                 <div class="col-auto">
                                                     <!-- Button -->
-                                                    <a href='../投稿者/upload_x/<?php echo $paper ?>' target="blank" download="<?php echo $title  ?>">
+                                                    <a href='../投稿者/upload_x/<?php echo $paper ?>' target="blank"
+                                                        download="<?php echo $title  ?>">
                                                         <i class="dripicons-download"></i>
                                                     </a>
                                                 </div>
@@ -247,7 +255,8 @@ $login = $_SESSION["account"]["login"];
                                             </div>
                                         </div>
 
-                                        <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                        <p
+                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                             回覆評級： <?php 
                                                         if ($level=='接受') {
                                                             echo "<span class='badge badge-soft-blue'>接受</span>" ;
@@ -259,10 +268,12 @@ $login = $_SESSION["account"]["login"];
                                                             echo "<span class='badge badge-soft-danger'>拒絕</span>";
                                                         }
                                                         ?></p>
-                                        <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                        <p
+                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                             回覆次數：<?php echo $RCount+1 ?></p>
 
-                                        <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                        <p
+                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                             留言：<?php echo  $comment ?></p>
                                     </div>
                                 </div>
@@ -278,7 +289,8 @@ $login = $_SESSION["account"]["login"];
                                                 </div>
                                                 <div class="col pl-0">
                                                     稿件檔案：
-                                                    <a href='upload/<?php echo $newname ?>' target="blank" download="<?php echo $newname ?>">
+                                                    <a href='upload/<?php echo $newname ?>' target="blank"
+                                                        download="<?php echo $newname ?>">
                                                         <?php echo  $newname ?>
                                                     </a>
                                                 </div>

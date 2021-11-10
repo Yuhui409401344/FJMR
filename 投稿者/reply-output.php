@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php include "nav.php" ?>
+
 <body class="loading">
 
     <!-- Begin page -->
     <div id="wrapper">
-        <?php include "nav.php" ?>
+
 
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
@@ -115,7 +117,8 @@
                                                 作者：<?php echo $auth1, ' ', $auth2, ' ', $auth3, ' ', $auth4, ' ', $auth5 ?>
                                             </h4>
                                             <hr />
-                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 摘要：<?php echo $summary; ?></p>
 
                                             <h4 class="m-0 font-14">
