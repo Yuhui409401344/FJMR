@@ -210,6 +210,7 @@
                                                         }else{
                                                             echo '<img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />'; 
                                                         };
+                                                        unset($reviewerImg);
                                                         ?>
 
                                                 <div class="media-body">
@@ -233,7 +234,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- 審稿者自己的回覆檔案 -->
                                 <div class="row">
                                     <div class="col-12">
@@ -320,7 +320,9 @@
                                             <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 留言：<?php echo $managerreply ?></p>
-
+                                            <?php
+                                            if(isset($managerfile)){
+                                            ?>
                                             <div class="row">
                                                 <div class="col-xl-4">
                                                     <div class="card mb-1 shadow-none border">
@@ -346,6 +348,9 @@
                                                     </div>
                                                 </div> <!-- end col -->
                                             </div>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
                                         <!-- end .mt-4 -->
 

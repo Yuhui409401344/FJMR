@@ -189,6 +189,7 @@ $manager=$_SESSION["account"]["login"];
                                             </div>
                                         </div>
                                         <?php 
+                                        unset($img);
                                                 }
                                                 ?>
 
