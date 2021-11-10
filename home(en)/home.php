@@ -93,6 +93,13 @@ if(isset($_SESSION["account"]["login"])){
         background-color:#78909c;
         border-top: 0px;
     }
+    #change{
+        color:#fff
+    }
+
+    #change:hover{
+        color:black;
+    }
 </style>
 </head>
 <body>
@@ -117,17 +124,17 @@ if(isset($_SESSION["account"]["login"])){
                         <span >About</span>
                     </a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="purpose.php">Aim and Scope</a>
-                      <a class="dropdown-item" href="editors.php">Editorial Board</a>
-                      <a class="dropdown-item" href="subscribe.php">Subscribe</a>
+                      <a id="change" class="dropdown-item" href="purpose.php">Aim and Scope</a>
+                      <a id="change" class="dropdown-item" href="editors.php">Editorial Board</a>
+                      <a id="change" class="dropdown-item" href="subscribe.php">Subscribe</a>
                     </div>
                 </li>
             
                 <li class="nav-item dropdown">
                     <a data-toggle="dropdown" class="nav-link w-100 dropdown-toggle" aria-haspopup="true" aria-expanded="false" >Submission</a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="papersubmission.php">Guideline & Process</a>
-                    <a class="dropdown-item" href="format.php">Format</a>
+                    <a id="change" class="dropdown-item" href="papersubmission.php">Guideline & Process</a>
+                    <a id="change" class="dropdown-item" href="format.php">Format</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -154,26 +161,26 @@ if(isset($_SESSION["account"]["login"])){
                         
                             if($status=="投稿者"){
                             ?>
-                            <a class="dropdown-item" href="../投稿者/format.php" style="font-size: small;">
+                            <a id="change" class="dropdown-item" href="../投稿者/format.php" style="font-size: small;">
                             Author System
                             </a>
                             <?php
                             }elseif($status=="審稿者"){
                             ?>
-                            <a class="dropdown-item" href="../審稿者/dashboard.php" style="font-size: small;">
+                            <a id="change" class="dropdown-item" href="../審稿者/dashboard.php" style="font-size: small;">
                             Reviewer System
                             </a>
                             <?php
                             }else{
                             ?>
-                            <a class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
+                            <a id="change" class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
                             Manager System
                             </a>
                             <?php
                             }
                         }
                         ?>
-                        <a href="../login/logout-output.php" class="dropdown-item notify-item" style="font-size: small;">
+                        <a id="change" href="../login/logout-output.php" class="dropdown-item notify-item" style="font-size: small;">
                             <span>Log Out</span>
                         </a>
                         </div>
