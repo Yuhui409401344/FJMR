@@ -174,7 +174,7 @@ $manager=$_SESSION["account"]["login"];
                                                        $imgType = $row['imgType']; 
                                                     }
                                                 
-                                                    if(isset($img)){
+                                                    if($img != ''){
                                                         echo '<div class="media mb-3 mt-1"><img src="data:'.$imgType.';base64,' . $img . '"   height="32" class="d-flex mr-2 rounded-circle"  />';
                                                     }else{
                                                         echo '<div class="media mb-3 mt-1"><img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />'; 
@@ -195,7 +195,7 @@ $manager=$_SESSION["account"]["login"];
                                         <p>審稿期限： <?php echo $ddl ?></p>
                                         <p
                                             style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                            您的配稿留言：<?php $Comment=nl2br($comment); echo  $Comment ?></p>
+                                            您的配稿留言：<?php echo  $comment ?></p>
                                     </div>
                                     <!-- end .mt-4 -->
 
