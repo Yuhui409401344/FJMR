@@ -15,6 +15,10 @@ $login = $_SESSION["account"]["login"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+    <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
 
     <!-- Bootstrap Tables css -->
     <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
@@ -109,7 +113,8 @@ $login = $_SESSION["account"]["login"];
                                                 <?php echo $title ?>
                                             </h3>
                                             <hr />
-                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 摘要：<?php echo $summary ?>
                                             </p>
                                             <h4 class="m-0 font-14">
@@ -131,11 +136,15 @@ $login = $_SESSION["account"]["login"];
 
                                                                 </div>
                                                                 <div class="col pl-0">
-                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>'
+                                                                        target="blank"
+                                                                        download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <!-- Button -->
-                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>">
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>'
+                                                                        target="blank"
+                                                                        download="<?php echo $uploadname ?>">
                                                                         <i class="dripicons-download"></i>
                                                                     </a>
                                                                 </div>
@@ -196,11 +205,13 @@ $login = $_SESSION["account"]["login"];
                                                 ?>
                                             </p>
 
-                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 回覆次數:<?php echo $replytime ?>
                                             </p>
 
-                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 您的審稿留言：<?php echo $comment ?>
                                             </p>
 
@@ -215,11 +226,15 @@ $login = $_SESSION["account"]["login"];
 
                                                                 </div>
                                                                 <div class="col pl-0">
-                                                                    <a href='upload/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
+                                                                    <a href='upload/<?php echo $uploadname ?>'
+                                                                        target="blank"
+                                                                        download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <!-- Button -->
-                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>">
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>'
+                                                                        target="blank"
+                                                                        download="<?php echo $uploadname ?>">
                                                                         <i class="dripicons-download"></i>
                                                                     </a>
                                                                 </div>

@@ -11,6 +11,11 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+    <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
+
     <!-- Bootstrap Tables css -->
     <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
 
@@ -93,7 +98,8 @@
                                                 <?php echo $title ?>
                                             </h3>
                                             <hr />
-                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 摘要：<?php echo $summary ?></p>
 
                                             <h4 class="m-0 font-14">
@@ -115,11 +121,15 @@
 
                                                                 </div>
                                                                 <div class="col pl-0">
-                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>'
+                                                                        target="blank"
+                                                                        download="<?php echo $uploadname ?>"><?php echo $uploadname ?></a>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <!-- Button -->
-                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>' target="blank" download="<?php echo $uploadname ?>">
+                                                                    <a href='../投稿者/upload_x/<?php echo $uploadname ?>'
+                                                                        target="blank"
+                                                                        download="<?php echo $uploadname ?>">
                                                                         <i class="dripicons-download"></i>
                                                                     </a>
                                                                 </div>
@@ -173,7 +183,8 @@
                                                 ?></p>
 
 
-                                            <p style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            <p
+                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 配稿留言：<?php echo $comment ?>
                                             </p>
                                         </div>
@@ -183,8 +194,10 @@
                             </div> <!-- end col-->
                         </div>
                     </div>
-                    <button type="button" class="btn btn-blue waves-effect waves-light" style="text-align:center; float:right">
-                        <a href='reply.php?id=<?php echo "$id" ?>' style="color: white"><span class="btn-label"><i class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
+                    <button type="button" class="btn btn-blue waves-effect waves-light"
+                        style="text-align:center; float:right">
+                        <a href='reply.php?id=<?php echo "$id" ?>' style="color: white"><span class="btn-label"><i
+                                    class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
                     </button>
                 </div>
             </div>
