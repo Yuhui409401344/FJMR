@@ -7,20 +7,26 @@ if (isset($_SESSION["account"]["login"])) {
 
 ?>
 <style type="text/css">
-    .navbar .dropdown-menu {
-        background-color: #2e3951;
-        border-top: 0px;
-    }
-    #change{
-        color: #fff;;
-    }
-    #change:hover{
-        color:black
-    }
+.navbar .dropdown-menu {
+    background-color: #2e3951;
+    border-top: 0px;
+}
+
+#change {
+    color: #fff;
+    ;
+}
+
+#change:hover {
+    color: black
+}
 </style>
 
 <head>
-    <link rel="icon" href="img/logo-FJMR.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="icon" href="img/logo.ico" type="image/x-icon">
     <!-- App favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
@@ -42,7 +48,8 @@ if (isset($_SESSION["account"]["login"])) {
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">輔仁管理評論</a>
             <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Collapsible content -->
@@ -61,7 +68,8 @@ if (isset($_SESSION["account"]["login"])) {
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a data-toggle="dropdown" class="nav-link w-100" aria-haspopup="true" aria-expanded="false">投稿<i class="mdi mdi-chevron-down"></i> </a>
+                        <a data-toggle="dropdown" class="nav-link w-100" aria-haspopup="true" aria-expanded="false">投稿<i
+                                class="mdi mdi-chevron-down"></i> </a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <a id="change" class="dropdown-item" href="papersubmission.php">徵稿說明</a>
                             <a id="change" class="dropdown-item" href="format.php">稿約格式</a>
@@ -81,9 +89,11 @@ if (isset($_SESSION["account"]["login"])) {
                         <?php
                         if (isset($_SESSION["account"]["login"]) && $login != "") {
                         ?>
-                            <a data-toggle="dropdown" class="nav-link " aria-haspopup="true" aria-expanded="false" style="font-size:14px;"><i class="fas fa-user-alt"></i><?php echo $login ?><i class="mdi mdi-chevron-down"></i> </a>
-                            <div class="dropdown-menu dropdown-primary">
-                                <?php
+                        <a data-toggle="dropdown" class="nav-link " aria-haspopup="true" aria-expanded="false"
+                            style="font-size:14px;"><i class="fas fa-user-alt"></i><?php echo $login ?><i
+                                class="mdi mdi-chevron-down"></i> </a>
+                        <div class="dropdown-menu dropdown-primary">
+                            <?php
                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                 $sql = $pdo->query("select status from account where login='" . $login . "'");
                                 foreach ($sql as $row) {
@@ -91,47 +101,51 @@ if (isset($_SESSION["account"]["login"])) {
 
                                     if ($status == "投稿者") {
                                 ?>
-                                        <a id="change" class="dropdown-item" href="../投稿者/format.php" style="font-size:14px;">
-                                            投稿者系統
-                                        </a>
-                                    <?php
+                            <a id="change" class="dropdown-item" href="../投稿者/format.php" style="font-size:14px;">
+                                投稿者系統
+                            </a>
+                            <?php
                                     } elseif ($status == "審稿者") {
                                     ?>
-                                        <a id="change" class="dropdown-item" href="../審稿者/dashboard.php" style="font-size:14px;">
-                                            審稿者系統
-                                        </a>
-                                    <?php
+                            <a id="change" class="dropdown-item" href="../審稿者/dashboard.php" style="font-size:14px;">
+                                審稿者系統
+                            </a>
+                            <?php
                                     } else {
                                     ?>
-                                        <a id="change" class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size:14px;">
-                                            管理者系統
-                                        </a>
-                                <?php
+                            <a id="change" class="dropdown-item" href="../管理者/index.php?method=maildistribution"
+                                style="font-size:14px;">
+                                管理者系統
+                            </a>
+                            <?php
                                     }
                                 }
                                 ?>
-                                <a id="change" href="../login/logout-output.php" class="dropdown-item notify-item" style="font-size:14px;">
-                                    <span>登出</span>
-                                </a>
-                            </div>
+                            <a id="change" href="../login/logout-output.php" class="dropdown-item notify-item"
+                                style="font-size:14px;">
+                                <span>登出</span>
+                            </a>
+                        </div>
                         <?php
 
                         } else {
                         ?>
-                            <a class="nav-link" href="../login/login.php" style="font-size:14px;">
-                                <i class="fas fa-sign-in-alt"></i> 登入
-                            </a>
+                        <a class="nav-link" href="../login/login.php" style="font-size:14px;">
+                            <i class="fas fa-sign-in-alt"></i> 登入
+                        </a>
                         <?php
                         }
                         ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://www.management.fju.edu.tw/" target="blank" style="font-size: 14px;">
+                        <a class="nav-link" href="http://www.management.fju.edu.tw/" target="blank"
+                            style="font-size: 14px;">
                             <i class="fas fa-graduation-cap"></i> 輔大管理學院
                         </a>
                     </li>
                     </li>
-                    <a class="nav-link waves-effect waves-light" style="font-size: small;" href="../home(en)/home.php">English</a>
+                    <a class="nav-link waves-effect waves-light" style="font-size: small;"
+                        href="../home(en)/home.php">English</a>
                     </li>
                 </ul>
             </div>
