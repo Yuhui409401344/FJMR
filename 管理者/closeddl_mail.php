@@ -41,6 +41,7 @@ foreach ($email as $email) {
         'Message has been sent';
         echo "<script> {window.alert('發送成功');location.href='index.php?method=deadline'} </script>";
     }
+}
  
 ?>
 
