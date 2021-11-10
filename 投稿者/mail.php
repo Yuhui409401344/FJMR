@@ -150,7 +150,7 @@ $emailContent =
                           <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:50px 44px 15px;font-family:arial,helvetica,sans-serif;" align="left">
                             
                      
-                      <p style="font-family: "Open Sans",sans-serif; ">親愛的管理者您好：輔仁管理評論現有一封新的投稿稿件，請您儘速上平台分配！</p>
+                      <p style="font-family: "Open Sans",sans-serif; ">'.$content.'</p>
 
                           </td>
                         </tr>
