@@ -174,7 +174,7 @@ $manager=$_SESSION["account"]["login"];
                                                        $imgType = $row['imgType']; 
                                                     }
                                                 
-                                                    if($img != ''){
+                                                    if(isset($img)){
                                                         echo '<div class="media mb-3 mt-1"><img src="data:'.$imgType.';base64,' . $img . '"   height="32" class="d-flex mr-2 rounded-circle"  />';
                                                     }else{
                                                         echo '<div class="media mb-3 mt-1"><img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />'; 

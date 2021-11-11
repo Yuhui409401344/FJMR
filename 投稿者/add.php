@@ -109,14 +109,14 @@
                                     </div>
                                     <div class="form-group mb-3 mr-4 ml-4">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6">
                                                 <label class="mb-2" style="font-size: 20px;">匿名檔案<span
                                                         class="text-danger">*</span></label>
                                                 <br />
                                                 <input type=file name="file_x" accept=".pdf,.doc,.docx" id="file"
                                                     require>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mt-2 mt-md-0">
                                                 <label class="mb-2" style="font-size: 20px;">非匿名檔案<span
                                                         class="text-danger">*</span></label>
                                                 <br />
