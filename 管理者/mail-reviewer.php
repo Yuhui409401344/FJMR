@@ -170,7 +170,7 @@ $emailContent =
                           <div class="v-text-align" align="center">
                             <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:arial,helvetica,sans-serif;"><tr><td class="v-text-align" style="font-family:arial,helvetica,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://fjmr.fju.edu.tw/login/login.php" style="height:52px; v-text-anchor:middle; width:318px;" arcsize="4%" stroke="f" fillcolor="#d36c09"><w:anchorlock/><center style="color:#FFFFFF;font-family:arial,helvetica,sans-serif;"><![endif]-->
                              
-<a href="192.168.1.103/webhw/管理者/accept.php?accept=0&id='.$id.'&reviewer='.$a.'"
+<a href="http://fjmr.fju.edu.tw/管理者/accept.php?accept=0&id='.$id.'&reviewer='.$a.'"
     style="box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #808080; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; width:80%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
     <span style="display:block;padding:15px 40px;line-height:120%;"><span
             style="font-size: 18px; line-height: 21.6px; font-family: Cabin, sans-serif;">No</span></span>
@@ -181,7 +181,7 @@ $emailContent =
 <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:30px 10px 60px;font-family:arial,helvetica,sans-serif;" align="left">
                           
                           <div class="v-text-align" align="center">
-                              <a href="192.168.1.103/webhw/管理者/accept.php?accept=1&id='.$id.'&reviewer='.$a.'" style="box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration:
+                              <a href="http://fjmr.fju.edu.tw/管理者/accept.php?accept=1&id='.$id.'&reviewer='.$a.'" style="box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration:
 none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #d36c09; border-radius: 2px;
 -webkit-border-radius: 2px; -moz-border-radius: 2px; width:80%; max-width:100%; overflow-wrap: break-word; word-break:
 break-word; word-wrap:break-word; mso-border-alt: none;">
