@@ -25,11 +25,11 @@ $login = $_SESSION["account"]["login"];
     <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" /> -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    <!-- <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" /> -->
+    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
@@ -154,7 +154,7 @@ $login = $_SESSION["account"]["login"];
                 }
 
                 ?>
-                <div class="row mt-3">
+                <div class="row">
                     <div class="col-12">
                         <div class="card-box">
                             <!-- 稿件基本資料 -->
@@ -241,8 +241,8 @@ $login = $_SESSION["account"]["login"];
                                     <div>
                                         <div class="media mb-3 mt-1">
                                             <?php
-                                            if (isset($yourImg)) {
-                                                echo '<img src="data:' . $imgType . ';base64,' . $Img . '"   height="32" class="d-flex mr-2 rounded-circle"  />';
+                                            if (isset($img)) {
+                                                echo '<img src="data:' . $imgType . ';base64,' . $img . '"   height="32" class="d-flex mr-2 rounded-circle"  />';
                                             } else {
                                                 echo '<img src="../assets/images/user.png"   height="32" class="d-flex mr-2 rounded-circle"  />';
                                             };

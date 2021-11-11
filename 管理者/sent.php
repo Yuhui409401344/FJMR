@@ -125,7 +125,7 @@
                                                         <td><?php echo $comment ?></td>
                                                         <td><?php echo $uploadtime ?></td>
                                                         <td>
-                                                            <a href='../投稿者/upload/<?php echo $filename ?>'
+                                                            <a href='../投稿者/upload_x/<?php echo $filename ?>'
                                                                 target="blank" download="<?php echo $filename ?>"
                                                                 class='action-icon'> <i
                                                                     class='mdi mdi-arrow-collapse-down'></i></a>

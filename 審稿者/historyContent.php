@@ -182,7 +182,7 @@ $login = $_SESSION["account"]["login"];
 
                                                 <div class="media-body">
                                                     <small class="float-right">回覆日期：<?php echo $time ?></small>
-                                                    <h6 class="m-0 font-14"><?php echo $name ?>（審稿者）
+                                                    <h6 class="m-0 font-14"><?php echo $name ?>（您）
                                                     </h6>
                                                     <small class="text-muted"><?php echo $email ?></small>
 
@@ -191,23 +191,20 @@ $login = $_SESSION["account"]["login"];
 
                                             <p>回覆評級：
                                                 <?php
-                                                if ($level == '接受') {
-                                                    echo "<span class='badge badge-soft-blue' >接受</span>";
-                                                } elseif ($level == '大幅修改') {
-                                                    echo  "<span class='badge badge-soft-warning'>大幅修改</span>";
-                                                } elseif ($level == '小幅修改') {
-                                                    echo  "<span class='badge badge-soft-success'>小幅修改</span>";
-                                                } elseif ($level == '拒絕') {
-                                                    echo "<span class='badge badge-soft-pink'>拒絕</span>";
-                                                } elseif ($level == '退稿') {
-                                                    echo "<span class='badge badge-soft-danger'>退稿</span>";
+                                                switch($level)
+                                                {
+                                                    case "接受":echo "<span class='badge badge-soft-blue'>接受</span>" ;break;
+                                                    case "小幅修改":echo  "<span class='badge badge-soft-warning'>小幅修改</span>" ;break;
+                                                    case "大幅修改":echo  "<span class='badge badge-soft-success'>大幅修改</span>" ;break;
+                                                    case "拒絕":echo "<span class='badge badge-soft-pink'>拒絕</span>";break;
+                                                    case "退稿":echo "<span class='badge badge-soft-danger'>退稿</span>"; break;
                                                 }
                                                 ?>
                                             </p>
 
                                             <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                回覆次數:<?php echo $replytime ?>
+                                                回覆次數：<?php echo $replytime ?>
                                             </p>
 
                                             <p

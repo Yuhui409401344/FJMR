@@ -54,6 +54,7 @@
                                 <div class="page-title-left mt-1">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"></li>
+                                        <li class="breadcrumb-item">收件夾</li>
                                         <li class="breadcrumb-item"><a href="index.php?method=sent">寄件備份</a></li>
                                         <li class="breadcrumb-item active">分配審稿</li>
                                     </ol>

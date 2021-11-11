@@ -76,14 +76,14 @@
                         $uploadtime = $row['uploadtime'];
                     }
 
-                    foreach ($pdo->query("select name, email, school from account where login='" . $pro . "'") as $row) {
+                    foreach ($pdo->query("select name, email, school from account where login='" . $manager . "'") as $row) {
                         $name = $row['name'];
                         $email = $row['email'];
                         $school = $row['school'];
                     }
 
 
-                    foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '" . $pro . "' ") as $row) {
+                    foreach ($pdo->query("select photo, imgType from account_img where account_img.login =  '" . $manager . "' ") as $row) {
                         $img = $row['photo'];
                         $imgType = $row['imgType'];
                     }
@@ -165,7 +165,7 @@
                                                 ?>
                                                 <div class="media-body">
                                                     <small class="float-right">投稿日期：<?php echo $uploadtime ?></small>
-                                                    <h6 class="m-0 font-14"><?php echo $name ?>（審稿者）
+                                                    <h6 class="m-0 font-14"><?php echo $name ?>（管理者）
                                                     </h6>
                                                     <small class="text-muted"><?php echo $email ?></small>
 

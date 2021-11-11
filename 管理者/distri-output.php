@@ -196,7 +196,7 @@ $manager=$_SESSION["account"]["login"];
                                         <p>審稿期限： <?php echo $ddl ?></p>
                                         <p
                                             style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                            您的配稿留言：<?php $Comment=nl2br($comment); echo  $Comment ?></p>
+                                            您的配稿留言：<?php echo  $comment ?></p>
                                     </div>
                                     <!-- end .mt-4 -->
 

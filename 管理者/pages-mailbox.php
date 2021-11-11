@@ -41,8 +41,8 @@
                             <div class="page-title-left mt-1">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"></li>
-                                    <li class="breadcrumb-item"><a href="index.php?method=mailbox">所有信件</a></li>
-                                    <li class="breadcrumb-item active">審稿者回覆</li>
+                                    <li class="breadcrumb-item"><a href="index.php?method=mailbox">收件夾</a></li>
+                                    <li class="breadcrumb-item active">審稿回覆</li>
                                 </ol>
                             </div>
                         </div>
@@ -55,9 +55,9 @@
                         $title=$_REQUEST["title"] ;
                         $id=$_REQUEST["id"];
                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                        foreach ($pdo->query('select count(title) from reply') as $row) {
-                            $amount=$row[0];
-                        }
+                        foreach ($pdo->query("select count(title) as tCount  from reply where title='".$title."'") as $row) {
+                            $amount=$row["tCount"];
+                        };
                         foreach ($pdo->query("select auth1,auth2,auth3,auth4,auth5,summary,uploadtime, uploadname as scriptfile from newpaper_history where id='".$id."' and title='".$title."'") as $row) {
                             
                             $auth1=$row['auth1'];
@@ -74,7 +74,7 @@
                     ?>
 
 
-                    <div class="row mt-3">
+                    <div class="row">
                         <div class="col-12">
                             <div class="card-box">
                                 <!-- 稿件基本資料 -->
@@ -236,21 +236,23 @@
                     </div>
 
                     <?php 
-                        } 
-                    ?>
-                </div>
+                    };
 
-                <?php
+
+                    
                     if($amount>=2){
                 ?>
-                <button type="button" class="btn btn-blue waves-effect waves-light"
-                    style="text-align:center; float:right">
-                    <a href='reply.php?title=<?php echo "$title" ?>' style="color: white"><span class="btn-label"><i
-                                class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
-                </button>
-                <?php 
+                    <button type="button" class="btn btn-blue waves-effect waves-light"
+                        style="text-align:center; float:right">
+                        <a href='reply.php?title=<?php echo "$title" ?>' style="color: white"><span class="btn-label"><i
+                                    class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
+                    </button>
+                    <?php 
                     } 
                 ?>
+                </div>
+
+
 
 
 
