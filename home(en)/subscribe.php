@@ -34,7 +34,7 @@
         </nav>
   </div>
   <div class="container-fluid mb-4">
-    <h2  style="margin:36px;"><strong>Subscribe Method</strong></h2>
+    <h2  style="margin:36px;"><strong>Subscription</strong></h2>
       <div>
         <p class="mr-3" style="font-size: 16px; padding: 12px; margin:24px; font-family:roboto; text-align:justify; ">
           Fu Jen Management Review has stopped accepting paper subscriptions: 
@@ -42,7 +42,7 @@
           In response to the Internet era, Fu Jen Management Review has been fully digitalized in order to promote the contents of the journal
           and increase its visibility. In order to reduce energy consumption and carbon emissions, we have reduced the print and decided to stop
           accepting paper subscriptions from Volume 17 onwards. All the articles published in the journal have been compiledon our website 
-          (http://www.management.fju.edu.tw/), please visit the website for related information.</p>
+          (http://www.management.fju.edu.tw/), please visit the website for detailed information.</p>
           
           <blockquote class="blockquote mb-0" style="font-size: 16px; padding: 12px; margin:24px; font-family:roboto; text-align:justify; ">
           <p style="font-size: 16px;"> Publisher : Department of Management, Fu Jen Catholic University<br>

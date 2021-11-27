@@ -60,7 +60,7 @@ if (isset($_SESSION["account"]["login"])) {
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <a id="change" class="dropdown-item" href="purpose.php">Aim and Scope</a>
                             <a id="change" class="dropdown-item" href="editors.php">Editorial Board</a>
-                            <a id="change" class="dropdown-item" href="subscribe.php">Subscribe</a>
+                            <a id="change" class="dropdown-item" href="subscribe.php">Subscription</a>
                         </div>
                     </li>
 

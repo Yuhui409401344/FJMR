@@ -46,7 +46,7 @@
                 <strong>Publisher</strong>&nbsp;&nbsp;College of Management, Fu Jen Catholic University<br>
                 <hr>
                 <strong>Publisher</strong>&nbsp;&nbsp;Han-Sun Chiang, Fu Jen Catholic University<br>
-                <strong>Executive Editor</strong>&nbsp;&nbsp; Pei-Gi Shu, Dean of college of Management, Fu Jen Catholic University <a href="mailto: 036047@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
+                <strong>Executive Editor</strong>&nbsp;&nbsp; Bruce Chien-Yuh Lee, Dean of college of Management, Fu Jen Catholic University <a href="mailto: 058038@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
                 <strong>Editor-in-Chief</strong>&nbsp;&nbsp;Chien-Hsiang Liao, Fu Jen Catholic University <a href="mailto: 052122@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
                 <strong>Editor for this journal </strong>&nbsp;&nbsp;Jer-San Hu, Fu Jen Catholic University<br>
                 &nbsp;</p>

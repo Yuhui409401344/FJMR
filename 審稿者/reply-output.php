@@ -124,11 +124,11 @@ $login=$_SESSION["account"]["login"];
                         $mail->isSMTP();  
                         $mail->Host = 'smtp.gmail.com';                               // Specify main and backup SMTP servers
                         $mail->SMTPAuth = true;                                       // Enable SMTP authentication
-                        $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
-                        $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
+                        $mail->Username = 'fjmreview@gmail.com';                      // SMTP username
+                        $mail->Password = 'umpkxmlgguzfowqa';                         // SMTP password
                         $mail->SMTPSecure = 'tls';                                    // Enable TLS encryption, `ssl` also accepted
                         $mail->Port = 587;                                            // TCP port to connect to
-                        $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+                        $mail->setFrom('fjmreview@gmail.com', 'FJMR');
                         $mail->addAddress($managerEmail, $managerName);               // Add a recipient
                         $mail->isHTML(true);                                  // Set email format to HTML
                         $mail->Subject = "=?utf-8?B?" . base64_encode("輔仁管理評論有一封來自審稿者的回覆稿件") . "?=";

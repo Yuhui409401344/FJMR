@@ -71,7 +71,7 @@
 
                                     <!--form group -->
                                     <form action="change-account-output.php" method="post" class="mt-3">
-                                        <div style="margin: 25px 120px 120px">
+                                        <div style="margin: 25px 12px 12px">
 
                                             <div class="form-group">
                                                 <input type=hidden name="login" value="<?php echo $login ?>">

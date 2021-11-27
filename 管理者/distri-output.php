@@ -25,10 +25,8 @@ $manager=$_SESSION["account"]["login"];
     <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
     <style>
     p {
-        max-width: 200px;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
     }
     </style>
 </head>
@@ -96,12 +94,12 @@ $manager=$_SESSION["account"]["login"];
                                               $mail->isSMTP();  
                                               $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                                               $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                                              $mail->Username = 'paggiechen8866@gmail.com';                 // SMTP username
-                                              $mail->Password = 'vtqnavfijdkcjpln';                         // SMTP password
+                                              $mail->Username = 'fjmreview@gmail.com';                 // SMTP username
+                                              $mail->Password = 'umpkxmlgguzfowqa';                         // SMTP password
                                               $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
                                               $mail->Port = 587;                                    // TCP port to connect to
   
-                                              $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+                                              $mail->setFrom('fjmreview@gmail.com', 'FJMR');
                                               $mail->addAddress($to_email, $name);     // Add a recipient
                                           
                                               // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
@@ -139,7 +137,7 @@ $manager=$_SESSION["account"]["login"];
                                             </h4>
                                             <hr />
                                             <p
-                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                                style="text-align: justify; font-family:Microsoft JhengHei">
                                                 摘要：<?php echo $summary ?></p>
                                             <h4 class="m-0 font-14">
                                                 <?php
@@ -195,7 +193,7 @@ $manager=$_SESSION["account"]["login"];
 
                                         <p>審稿期限： <?php echo $ddl ?></p>
                                         <p
-                                            style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
+                                            style="text-align: justify; font-family:Microsoft JhengHei">
                                             您的配稿留言：<?php echo  $comment ?></p>
                                     </div>
                                     <!-- end .mt-4 -->

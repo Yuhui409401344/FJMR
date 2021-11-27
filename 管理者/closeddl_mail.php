@@ -20,12 +20,12 @@ foreach ($email as $email) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'paggiechen8866@gmail.com';
-        $mail->Password = 'vtqnavfijdkcjpln';
+        $mail->Username = 'fjmreview@gmail.com';
+        $mail->Password = 'umpkxmlgguzfowqa';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        $mail->setFrom('paggiechen8866@gmail.com', 'FJMR');
+        $mail->setFrom('fjmreview@gmail.com', 'FJMR');
         $mail->addAddress($to_email, $name);
         $mail->isHTML(true);
 
