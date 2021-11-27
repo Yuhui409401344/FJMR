@@ -21,7 +21,7 @@
                             <div class="card">
                                 <!--form group -->
                                 <form action="addaccount-output.php" method="post" class="mt-3">
-                                    <div style="margin: 25px 120px 120px">
+                                    <div style="margin: 25px 12px 12px">
                                         <!--input -->
                                         <div class="form-group">
                                             <label for="name">姓名</label>
@@ -64,7 +64,7 @@
                                                 <label for="manager" style="font-size: large;">管理者 </label>
                                             </div>
                                         </div>
-                                        <div style="background-color: whitesmoke; padding: 1px;">
+                                        <div style="background-color: whitesmoke; padding: 1px; margin-top: 3px;">
 
                                             <div style="margin-top: 3px;">
                                                 <div class="col-6 float-right">
