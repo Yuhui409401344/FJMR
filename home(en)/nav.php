@@ -60,7 +60,11 @@ if (isset($_SESSION["account"]["login"])) {
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <a id="change" class="dropdown-item" href="purpose.php">Aim and Scope</a>
                             <a id="change" class="dropdown-item" href="editors.php">Editorial Board</a>
+<<<<<<< HEAD
                             <a id="change" class="dropdown-item" href="subscribe.php">Subscribe</a>
+=======
+                            <a id="change" class="dropdown-item" href="subscribe.php">Subscription</a>
+>>>>>>> 3782ebd8be763b8c54c1fe401dbec69e46ee9201
                         </div>
                     </li>
 

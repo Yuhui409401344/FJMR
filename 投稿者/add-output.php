@@ -14,6 +14,7 @@
 
                 <div class="mt-3 container-fluid">
                     <?php
+
                         $title=$_POST["title"];
                         $field=$_POST["field"];
                         $summary=$_POST["summary"];

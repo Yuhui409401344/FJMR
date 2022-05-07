@@ -356,5 +356,8 @@ $login=$_SESSION["account"]["login"];
     <!-- /Right-bar -->
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3782ebd8be763b8c54c1fe401dbec69e46ee9201
 </body>
