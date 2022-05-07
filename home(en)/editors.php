@@ -73,7 +73,7 @@
                 Jeng-Fu Liu, Fu Jen Catholic University<br>
                 
                 <hr>
-                <strong>Editorial Assistant</strong>&nbsp;&nbsp;Jui-Chen Chiu <a href="mailto: fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
+                <strong>Editorial Assistant</strong>&nbsp;&nbsp;Jui-Chen Chiu <a href="mailto:fjreview@mail.fju.edu.tw"><i class="mdi mdi-email"></i></a><br>
                 
                 
             </div>

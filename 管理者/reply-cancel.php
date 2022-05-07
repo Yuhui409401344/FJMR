@@ -10,120 +10,122 @@ if(isset($_SESSION["account"]["login"])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-        <!-- Plugins css-->
-        <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
-        
-	    <!-- App css -->
-	    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-	    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+<head>
+    <meta charset="utf-8" />
+    <title>管理者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-	    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-	    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+    <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
 
-	    <!-- icons -->
-	    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Plugins css-->
+    <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-    </head>
+    <!-- App css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    <body class="loading">
-        <div id="wrapper">
-                <?php include "header.php" ?>
+    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
-            <div class="content-page">
-                <div class="content">
+    <!-- icons -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <br>
-                                <?php
+</head>
+
+<body class="loading">
+    <div id="wrapper">
+        <?php include "header.php" ?>
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <br>
+                            <?php
                                         
                                         $id=$_GET['id'];  
-                                        $link=mysqli_connect("localhost","root","","fjup");
-                                        $sql="select * from newpaper where id='".$id."'";
-                                        $rs=mysqli_query($link,$sql);
-                                        if($record=mysqli_fetch_row($rs))
-                                        {
-                                            $title=$record[1];
-                                            $auth1=$record[2];
-                                            $auth2=$record[3];
-                                            $auth3=$record[4];
-                                            $auth4=$record[5];
-                                            $auth5=$record[6];
+                                        $pdo=new PDO('mysql:host=localhost;dbname=fjup;charset=utf8','root', '');
+                                        foreach ($pdo->query("select DISTINCT newpaper.title, newpaper.uploader, account.name from newpaper left join account on newpaper.uploader = account.login where newpaper.id='".$id."'") as $row) {
+                                            $uploader = $row['uploader'];
+                                            $title = $row['title'];
+                                            $name = $row['name'];
                                         }
-                                        mysqli_close($link);
                                 ?>
-                                <div class="card-box">
-                                     <form method="post" action="reply-cancel-output.php?id=<?php echo $id ?>" enctype="multipart/form-data">
+                            <div class="card-box">
+                                <form method="post" action="reply-cancel-output.php?id=<?php echo $id ?>"
+                                    enctype="multipart/form-data">
                                     <div class="card-box">
                                         <div class="form-group mb-3">
                                             <label for="title">標題</label><br>
-                                            <h4 ><?php echo $title ?> </h4>
+                                            <h4><?php echo $title ?> </h4>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="product-name">收件人（投稿者）</label>
-                                            <h4><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4 ?></h4>
+                                            <h4><?php echo $name ?></h4>
 
-                                        </div>    
-                                        <div class="form-group mb-3">
-                                            <label for="product-reference">回覆評級</label><br>
-                                                <div class="radio form-check-inline">&nbsp;&nbsp;&nbsp;
-                                                    <input type="radio" checked id="inlineRadio1" value="退稿" name="level">
-                                                    <label for="inlineRadio1"> 退稿</label>
-                                                </div>
-                                                <div class="radio form-check-inline">
-                                                    <input type="radio" id="inlineRadio3" value="大幅修改" name="level">
-                                                    <label for="inlineRadio3"> 大幅修改 </label>
-                                                </div>
-                                                <div class="radio form-check-inline">
-                                                    <input type="radio" id="inlineRadio4" value="小幅修改" name="level">
-                                                    <label for="inlineRadio4"> 小幅修改 </label>
-                                                </div>
-                                                </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <div class="form-group mb-3">
-                                                <label for="example-textarea">回覆</label>
-                                                <textarea class="form-control" id="example-textarea" name="message" rows="5"></textarea>
+                                            <label for="product-reference">回覆評級</label><br>
+                                            <div class="radio form-check-inline">&nbsp;&nbsp;&nbsp;
+                                                <input type="radio" checked id="inlineRadio1" value="退稿" name="level">
+                                                <label for="inlineRadio1"> 退稿</label>
                                             </div>
+                                            <div class="radio form-check-inline">
+                                                <input type="radio" id="inlineRadio3" value="大幅修改" name="level">
+                                                <label for="inlineRadio3"> 大幅修改 </label>
+                                            </div>
+                                            <div class="radio form-check-inline">
+                                                <input type="radio" id="inlineRadio4" value="小幅修改" name="level">
+                                                <label for="inlineRadio4"> 小幅修改 </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="form-group mb-3">
+                                            <label for="example-textarea">回覆</label>
+                                            <textarea class="form-control" id="example-textarea" name="message"
+                                                rows="5"></textarea>
+                                        </div>
                                         <!-- <div class="form-group mb-3">
                                             <input name="file" type="file">
                                         </div> -->
                                     </div>
-                                        <div class="fallback">
-                                            
-                                        </div>
-                                         <div class="row">
-                                             <div class="col-12">
-                                                 <div class="text-center">
-                                                    <input class="btn btn-primary waves-effect waves-light" type="submit" value="傳送">
-                                                 </div>
-                                            </div>
-                                         </div>
-                                    </form>
+                                    <div class="fallback">
 
-                                    <!-- Preview -->
-                                    <div class="dropzone-previews mt-3" id="file-previews"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">
+                                                <input class="btn btn-primary waves-effect waves-light" type="submit"
+                                                    value="傳送">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!-- Preview -->
+                                <div class="dropzone-previews mt-3" id="file-previews"></div>
                             </div> <!-- end col-->
                         </div>
                         <!-- end row -->
 
-                       
 
-    
+
+
 
                         <!-- file preview template -->
                         <div class="d-none" id="uploadPreviewTemplate">
@@ -134,7 +136,8 @@ if(isset($_SESSION["account"]["login"])){
                                             <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
                                         </div>
                                         <div class="col pl-0">
-                                            <a href="javascript:void(0);" class="text-muted font-weight-bold" data-dz-name></a>
+                                            <a href="javascript:void(0);" class="text-muted font-weight-bold"
+                                                data-dz-name></a>
                                             <p class="mb-0" data-dz-size></p>
                                         </div>
                                         <div class="col-auto">
@@ -148,7 +151,7 @@ if(isset($_SESSION["account"]["login"])){
                             </div>
                         </div>
 
-                        
+
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -163,7 +166,7 @@ if(isset($_SESSION["account"]["login"])){
         </div>
         <!-- END wrapper -->
 
-    
+
 
 
         <!-- Todo app -->
@@ -190,8 +193,9 @@ if(isset($_SESSION["account"]["login"])){
 
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
-        
-    </body>
+
+</body>
+
 </html>
 <?php
     }else{

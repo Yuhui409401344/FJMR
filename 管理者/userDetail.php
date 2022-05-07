@@ -18,15 +18,16 @@ if(isset($_POST["login"]))
     foreach($datalist2 as $datadetail2){
         array_push($field, $datadetail2["f_name"]);
     }
-
-    foreach($pdo->query("SELECT tel_1,tel_2 from account_tel where login ='$login'") as $row){
-        $tel_1=$row["tel_1"];
-        $tel_2=$row["tel_2"];
+    if(empty($field)){
+        $field=['尚無資料'];
+    }
+   
+    foreach($pdo->query("SELECT tel from account_tel where login ='$login'") as $row){
+        $tel=$row["tel"];
     }
 
-    if(!isset($tel_1,$tel_2)){
-        $tel_1='';
-        $tel_2='';
+    if(!isset($tel)){
+        $tel='尚無資料';
     }
 
     
@@ -37,6 +38,10 @@ if(isset($_POST["login"]))
         $bio=$row['bio'];
         $photo=$row['photo'];
         $imgType=$row['imgType'];
+
+        if($bio == ''){
+            $bio='尚無資料';
+        }
 
         if(isset($photo)){
 
@@ -57,8 +62,7 @@ if(isset($_POST["login"]))
         <span class="ml-2 " type="text" name="email" id="email">'.$email.'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>連絡電話 :</strong>
-        <span class="ml-2 " type="text" name="tel_1" id="tel_1">'.$tel_1.'</span>
-        <span class="ml-2 " type="text" name="tel_2" id="tel_2">'.$tel_2.'</span>
+        <span class="ml-2 " type="text" name="tel" id="tel">'.$tel.'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>開始日期 :</strong>
         <span class="ml-2 " type="text" name="date" id="date">'.$date.'</span>
@@ -92,8 +96,7 @@ if(isset($_POST["login"]))
         <span class="ml-2 " type="text" name="email" id="email">'.$email.'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>連絡電話 :</strong>
-        <span class="ml-2 " type="text" name="tel_1" id="tel_1">'.$tel_1.'</span>
-        <span class="ml-2 " type="text" name="tel_2" id="tel_2">'.$tel_2.'</span>
+        <span class="ml-2 " type="text" name="tel" id="tel">'.$tel.'</span>
         </p>
         <p class="text-muted mb-2 font-13"><strong>開始日期 :</strong>
         <span class="ml-2 " type="text" name="date" id="date">'.$date.'</span>

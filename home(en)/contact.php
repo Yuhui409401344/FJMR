@@ -62,7 +62,7 @@
               </li>
 
               <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-              <p ><a href="mailto: fjreview@mail.fju.edu.tw">fjreview@mail.fju.edu.tw</a></p>
+              <p ><a href="mailto:fjreview@mail.fju.edu.tw">fjreview@mail.fju.edu.tw</a></p>
               </li>
           </ul>
         </div>
