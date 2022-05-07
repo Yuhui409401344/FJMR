@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>管理者</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-        <!-- Plugins css-->
-        <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
-        
-	    <!-- App css -->
-	    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-	    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+<head>
+    <meta charset="utf-8" />
+    <title>管理者</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
-	    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-	    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+    <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
 
-	    <!-- icons -->
-	    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Plugins css-->
+    <link href="../assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
-    </head>
+    <!-- App css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    <body class="loading">
-        <div id="wrapper">
-                <?php include "header.php" ?>
+    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
-            <div class="content-page">
-                <div class="content">
+    <!-- icons -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <br>
-                                <?php
+</head>
+
+<body class="loading">
+    <div id="wrapper">
+        <?php include "header.php" ?>
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <br>
+                            <?php
                                         
                                 $title=$_GET['title'];
                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
@@ -54,20 +60,22 @@
                                         $auth5=$row['auth5'];
                                     }
                                 ?>
-                                <div class="card-box">
-                                     <form method="post" action="reply-output.php?title=<?php echo $title ?>" enctype="multipart/form-data">
+                            <div class="card-box">
+                                <form method="post" action="reply-output.php?title=<?php echo $title ?>"
+                                    enctype="multipart/form-data">
                                     <div class="card-box">
                                         <div class="form-group mb-3">
-                                            <label  class=" font-weight-bold text-muted" for="title">標題</label><br>
-                                            <b ><?php echo $title ?> </b>
+                                            <label class=" font-weight-bold text-muted" for="title">標題</label><br>
+                                            <b><?php echo $title ?> </b>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label  class=" font-weight-bold text-muted"  for="product-name">收件人（投稿者）</label><br>
+                                            <label class=" font-weight-bold text-muted"
+                                                for="product-name">收件人（投稿者）</label><br>
                                             <b><?php echo $auth1,' ',$auth2,' ',$auth3,' ',$auth4,' ',$auth5 ?></b>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label   class=" font-weight-bold text-muted" for="product-name">審稿者回覆</label>
-                                        <?php
+                                            <label class=" font-weight-bold text-muted" for="product-name">審稿者回覆</label>
+                                            <?php
                                         foreach ($pdo->query("select * from reply where title='".$title."'") as $row) 
                                                     {
                                                             $senter=$row["senter"];
@@ -83,55 +91,58 @@
                                                 else echo "<span class='badge badge-soft-danger'>拒絕</span>";?>
                                             </h4>
                                             <p><?php echo $comment ?></p>
-                                        <?php }
+                                            <?php }
                                            ?>
-                                            </div>
+                                        </div>
                                         <div class="form-group mb-3">
-                                            <label   class=" font-weight-bold text-muted" for="product-reference">回覆建議</label><br>
+                                            <label class=" font-weight-bold text-muted"
+                                                for="product-reference">回覆建議</label><br>
                                             <textarea class="form-control" name="comment" rows="5"></textarea>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label  class=" font-weight-bold text-muted" for="product-reference">回覆評級</label><br>
+                                            <label class=" font-weight-bold text-muted"
+                                                for="product-reference">回覆評級</label><br>
                                             <div class="radio form-check-inline">&nbsp;&nbsp;&nbsp;
-                                                    <input type="radio" id="inlineRadio2" value="接受" name="level">
-                                                    <label for="inlineRadio2"> 接受 </label>
-                                                </div>
-                                                <div class="radio form-check-inline">
-                                                    <input type="radio" id="inlineRadio3" value="大幅修改" name="level">
-                                                    <label for="inlineRadio3"> 大幅修改 </label>
-                                                </div>
-                                                <div class="radio form-check-inline">
-                                                    <input type="radio" id="inlineRadio4" value="小幅修改" name="level">
-                                                    <label for="inlineRadio4"> 小幅修改 </label>
-                                                </div>
-                                                <div class="radio form-check-inline">
-                                                    <input type="radio" id="inlineRadio5" value="拒絕" name="level">
-                                                    <label for="inlineRadio5"> 拒絕 </label>
-                                                </div>
+                                                <input type="radio" id="inlineRadio2" value="接受" name="level">
+                                                <label for="inlineRadio2"> 接受 </label>
+                                            </div>
+                                            <div class="radio form-check-inline">
+                                                <input type="radio" id="inlineRadio3" value="大幅修改" name="level">
+                                                <label for="inlineRadio3"> 大幅修改 </label>
+                                            </div>
+                                            <div class="radio form-check-inline">
+                                                <input type="radio" id="inlineRadio4" value="小幅修改" name="level">
+                                                <label for="inlineRadio4"> 小幅修改 </label>
+                                            </div>
+                                            <div class="radio form-check-inline">
+                                                <input type="radio" id="inlineRadio5" value="拒絕" name="level">
+                                                <label for="inlineRadio5"> 拒絕 </label>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input name="file" type="file">
+                                            <input name="file" type="file" accept=".pdf,.doc,.docx" required>
                                         </div>
                                     </div>
-                                        <div class="fallback">
-                                            
-                                        </div>
-                                         <div class="row">
-                                             <div class="col-12">
-                                                 <div class="text-center">
-                                                    <input class="btn btn-primary waves-effect waves-light" type="submit" value="傳送">
-                                                 </div>
-                                            </div>
-                                         </div>
-                                    </form>
+                                    <div class="fallback">
 
-                                    <!-- Preview -->
-                                    <div class="dropzone-previews mt-3" id="file-previews"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">
+                                                <input class="btn btn-primary waves-effect waves-light" type="submit"
+                                                    value="傳送">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!-- Preview -->
+                                <div class="dropzone-previews mt-3" id="file-previews"></div>
                             </div> <!-- end col-->
                         </div>
                         <!-- end row -->
 
-    
+
 
                         <!-- file preview template -->
                         <div class="d-none" id="uploadPreviewTemplate">
@@ -142,7 +153,8 @@
                                             <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
                                         </div>
                                         <div class="col pl-0">
-                                            <a href="javascript:void(0);" class="text-muted font-weight-bold" data-dz-name></a>
+                                            <a href="javascript:void(0);" class="text-muted font-weight-bold"
+                                                data-dz-name></a>
                                             <p class="mb-0" data-dz-size></p>
                                         </div>
                                         <div class="col-auto">
@@ -156,7 +168,7 @@
                             </div>
                         </div>
 
-                        
+
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -171,7 +183,7 @@
         </div>
         <!-- END wrapper -->
 
-    
+
 
 
         <!-- Todo app -->
@@ -198,6 +210,7 @@
 
         <!-- App js -->
         <script src="../assets/js/app.min.js"></script>
-        
-    </body>
+
+</body>
+
 </html>

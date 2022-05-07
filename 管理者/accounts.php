@@ -1,19 +1,24 @@
 <?php include "header.php" ?>
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+<link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
+
 <body class="loading">
 
-                <!-- Begin page -->
-                <div id="wrapper">
-                    
-                    <!-- ============================================================== -->
-                    <!-- Start Page Content here -->
-                    <!-- ============================================================== -->
+    <!-- Begin page -->
+    <div id="wrapper">
 
-                    <div class="content-page">
-                        <div class="content">
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
 
-                            <!-- Start Content-->
-                            <div class="container-fluid">
-                                <?php
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <?php
                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                 foreach ($pdo->query('select count(distinct login) from account') as $row) {
                                     $amount = $row[0];
@@ -33,76 +38,81 @@
                                 ?>
 
 
-                                <div class="row mt-2">
-                                    <div class="col-md-6 col-xl-3">
-                                        <div class="widget-rounded-circle card-box">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
-                                                        <i class="fe-heart font-22 avatar-title text-primary"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="text-right">
-                                                        <h3 data-plugin="counterup" class="mt-1"><?php echo $follow ?></h3>
-                                                        <p class="text-muted mb-1 text-truncate">追蹤總數</p>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end row-->
-                                        </div> <!-- end widget-rounded-circle-->
+                    <div class="row mt-2">
+                        <div class="col-md-6 col-xl-6">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
+                                            <i class="fe-heart font-22 avatar-title text-primary"></i>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-xl-3">
-                                        <div class="widget-rounded-circle card-box">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
-                                                        <i class="fe-eye font-22 avatar-title text-warning"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="text-right">
-                                                        <h3 data-plugin="counterup" class="text-dark mt-1"><?php echo $amount ?></h3>
-                                                        <p class="text-muted mb-1 text-truncate">用戶總數</p>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end row-->
-                                        </div> <!-- end widget-rounded-circle-->
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <h3 data-plugin="counterup" class="mt-1"><?php echo $follow ?></h3>
+                                            <p class="text-muted mb-1 text-truncate">追蹤總數</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-xl-4 col-md-6">
-                                        <!-- Portlet card -->
-                                        <div class="card">
-                                            <div class="card-body" dir="ltr">
-                                                <div class="card-widgets">
-                                                    <a href="javascript: void(0);" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
-                                                    <a data-toggle="collapse" href="#cardCollpase4" role="button" aria-expanded="false" aria-controls="cardCollpase4"><i class="mdi mdi-minus"></i></a>
-                                                    <a href="javascript: void(0);" data-toggle="remove"><i class="mdi mdi-close"></i></a>
-                                                </div>
-                                                <h4 class="header-title mb-0">我的追蹤</h4>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div>
+                        <div class="col-md-6 col-xl-6">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                            <i class="fe-eye font-22 avatar-title text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <h3 data-plugin="counterup" class="text-dark mt-1"><?php echo $amount ?>
+                                            </h3>
+                                            <p class="text-muted mb-1 text-truncate">用戶總數</p>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-xl-6 col-md-6">
+                            <!-- Portlet card -->
+                            <div class="card">
+                                <div class="card-body" dir="ltr">
+                                    <div class="card-widgets">
+                                        <a href="javascript: void(0);" data-toggle="reload"><i
+                                                class="mdi mdi-refresh"></i></a>
+                                        <a data-toggle="collapse" href="#cardCollpase4" role="button"
+                                            aria-expanded="false" aria-controls="cardCollpase4"><i
+                                                class="mdi mdi-minus"></i></a>
+                                        <a href="javascript: void(0);" data-toggle="remove"><i
+                                                class="mdi mdi-close"></i></a>
+                                    </div>
+                                    <h4 class="header-title mb-0">我的追蹤</h4>
 
-                                                <div id="cardCollpase4" class="collapse pt-3 show">
-                                                    <div class="text-center">
-                                                        <table class="tablesaw table mb-0 tablesaw-stack">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>User</th>
-                                                                    <th>Status</th>
-                                                                    <th>#action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <?php
+                                    <div id="cardCollpase4" class="collapse pt-3 show">
+                                        <div class="text-center">
+                                            <table class="tablesaw table mb-0 tablesaw-stack">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>Status</th>
+                                                        <th>#action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
                                                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                                                 foreach ($pdo->query("SELECT login,name,email from follow where manager='$manager' ") as $row) {
                                                                     $login = $row['login'];
                                                                     $name = $row['name'];
                                                                     $email = $row['email'];
                                                                 ?>
-                                                                    <tr>
-                                                                        <td><?php echo $name ?></td>
-                                                                        <td>
-                                                                            <?php
+                                                    <tr>
+                                                        <td><?php echo $name ?></td>
+                                                        <td>
+                                                            <?php
                                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                                                             $query1 = $pdo->query("SELECT status from account where login='$login' ");
                                                                             $datalist1 = $query1->fetchall();
@@ -111,70 +121,76 @@
                                                                                 echo ' ';
                                                                             }
                                                                             ?>
-                                                                        </td>
-                                                                        <!-- <?php if ($status == "審稿者") echo "<td><span class='badge badge-soft-blue badge-pill '>審稿者</span></td>";
+                                                        </td>
+                                                        <!-- <?php if ($status == "審稿者") echo "<td><span class='badge badge-soft-blue badge-pill '>審稿者</span></td>";
                                                                                 elseif ($status == "投稿者") echo "<td><span class='badge badge-soft-secondary badge-pill '>投稿者</span></td>";
                                                                                 elseif ($status == "管理者") echo "<td><span class='badge badge-soft-danger badge-pill'>管理者</span></td>";
                                                                                 ?> -->
-                                                                        <td>
-                                                                            <a href='deletefollowaccount.php?login=<?php echo "$login" ?> ' class='action-icon' onClick='return confirm("確定刪除?");'><i class='mdi mdi-delete mr-1'></i></a>
-                                                                        </td>
-                                                                    </tr>
+                                                        <td>
+                                                            <a href='deletefollowaccount.php?login=<?php echo "$login" ?> '
+                                                                class='action-icon'
+                                                                onClick='return confirm("確定刪除?");'><i
+                                                                    class='mdi mdi-delete mr-1'></i></a>
+                                                        </td>
+                                                    </tr>
 
-                                                                <?php
+                                                    <?php
                                                                 }
                                                                 ?>
-                                                            </tbody>
-                                                        </table>
+                                                </tbody>
+                                            </table>
 
-                                                    </div>
-                                                </div> <!-- end collapse-->
-                                            </div> <!-- end card-body-->
-                                        </div> <!-- end card-->
-                                        <!-- Portlet card -->
+                                        </div>
+                                    </div> <!-- end collapse-->
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                            <!-- Portlet card -->
+                        </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body" dir="ltr">
+                                    <div class="card-widgets">
+                                        <a href="javascript: void(0);" data-toggle="reload"><i
+                                                class="mdi mdi-refresh"></i></a>
+                                        <a data-toggle="collapse" href="#cardCollpase3" role="button"
+                                            aria-expanded="false" aria-controls="cardCollpase3"><i
+                                                class="mdi mdi-minus"></i></a>
+                                        <a href="javascript: void(0);" data-toggle="remove"><i
+                                                class="mdi mdi-close"></i></a>
                                     </div>
-                                    <div class="col-xl-4 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body" dir="ltr">
-                                                <div class="card-widgets">
-                                                    <a href="javascript: void(0);" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
-                                                    <a data-toggle="collapse" href="#cardCollpase3" role="button" aria-expanded="false" aria-controls="cardCollpase3"><i class="mdi mdi-minus"></i></a>
-                                                    <a href="javascript: void(0);" data-toggle="remove"><i class="mdi mdi-close"></i></a>
-                                                </div>
-                                                <h4 class="header-title ">用戶級別數量</h4>
-                                                <div id="cardCollpase3" class="collapse pt-3 show">
-                                                    <div class="card-body text-center">
-                                                        <div id="donutchart" 
-                                                        style="height: 200px; width:280px" 
-                                                        ></div>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end card-body-->
-                                        </div> <!-- end card-->
+                                    <h4 class="header-title ">用戶級別數量</h4>
+                                    <div id="cardCollpase3" class="collapse pt-3 show">
+                                        <div class="card-body text-center">
+                                            <div id="donutchart" style="height: 200px; width:280px"></div>
+                                        </div>
                                     </div>
-                                </div>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div>
+                    </div>
 
 
 
 
-                                <!-- 搜尋功能 -->
-                                <?php
+                    <!-- 搜尋功能 -->
+                    <?php
                                 if (isset($_GET["searchtxt"])) {
                                     $searchtxt = $_GET["searchtxt"];
                                 }
                                 ?>
-                                <form action="index.php" method="get">
-                                    <div class="container">
-                                        <input type='hidden' name='method' value='accounts'>
-                                        <input class="form-control" name="searchtxt" id="searchtxt" value="<?php if (isset($searchtxt)) {
+                    <form action="index.php" method="get">
+                        <div class="container col-12">
+                            <input type='hidden' name='method' value='accounts'>
+                            <input class="form-control" name="searchtxt" id="searchtxt" value="<?php if (isset($searchtxt)) {
                                                                                                                 echo $searchtxt;
-                                                                                                            } ?>" type="text" placeholder="輸入名字搜尋">
-                                        <br>
-                                    </div>
-                                </form>
+                                                                                                            } ?>"
+                                type="text" placeholder="輸入名字搜尋">
+                            <br>
+                        </div>
+                    </form>
 
-                                <div class="row">
-                                    <?php
+                    <div class="row">
+                        <?php
                                     $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                     if (empty($searchtxt)) {
                                         $sql = "select account.login,account.name,account.password,account.email,account.status, account.school, account_img.photo,account_img.imgType FROM `account` left join account_img on account.login=account_img.login group by account.name"; //預設搜尋的SQL字串
@@ -192,10 +208,10 @@
                                         $imgType = $row['imgType'];
                                         $school = $row['school'];
                                     ?>
-                                        <div class="col-lg-4">
-                                            <div class="text-center card-box">
-                                                <div class="pt-2 pb-2">
-                                                    <?php
+                        <div class="col-lg-4">
+                            <div class="text-center card-box">
+                                <div class="pt-2 pb-2">
+                                    <?php
                                                     if (isset($img)) {
                                                         echo '<img src="data:' . $imgType . ';base64,' . $img . '"   class="rounded-circle avatar-lg "  /><br>';
                                                     } else {
@@ -203,9 +219,11 @@
                                                     }
 
                                                     ?>
-                                                    <input type="button" style="color:black; font-size: large" name="<?php echo $name ?>" value="<?php echo $name ?>" id="<?php echo $login ?>" class=" btn btn-link mt-1 mb-1 waves-effect waves-light view_data"></input>
-                                                    <p class="text-muted">@
-                                                        <?php
+                                    <input type="button" style="color:black; font-size: large"
+                                        name="<?php echo $name ?>" value="<?php echo $name ?>" id="<?php echo $login ?>"
+                                        class=" btn btn-link mt-1 mb-1 waves-effect waves-light view_data"></input>
+                                    <p class="text-muted">@
+                                        <?php
                                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                                         $query1 = $pdo->query("SELECT status from account where login='$login'");
                                                         $datalist1 = $query1->fetchall();
@@ -214,10 +232,12 @@
                                                             echo ' ';
                                                         }
                                                         ?>
-                                                    </p> <span> <?php echo $school ?> | </span> <span> <a href="mailto:<?php echo $email ?>" class="text-pink"><?php echo $email ?></a> </span></p>
+                                    </p> <span> <?php echo $school ?> | </span> <span> <a
+                                            href="mailto:<?php echo $email ?>"
+                                            class="text-pink"><?php echo $email ?></a> </span></p>
 
-                                                    <p>專長：
-                                                        <?php
+                                    <p>專長：
+                                        <?php
                                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
                                                         $query = $pdo->query("SELECT distinct f_name from account_field where login='$login'");
                                                         $datalist = $query->fetchall();
@@ -226,116 +246,120 @@
                                                             echo ' ';
                                                         }
                                                         ?>
-                                                    </p>
+                                    </p>
 
-                                                    <a href="mailto:<?php echo $email ?>"><button type="button" class="btn btn-primary btn-sm waves-effect waves-light">傳送訊息</button></a>
-                                                    <a href='follow.php?login=<?php echo "$login" ?>'><button type="button" class="btn btn-light btn-sm waves-effect" onClick='return confirm("確定追蹤？");'>追蹤</button></a>
+                                    <a href="mailto:<?php echo $email ?>"><button type="button"
+                                            class="btn btn-primary btn-sm waves-effect waves-light">傳送訊息</button></a>
+                                    <a href='follow.php?login=<?php echo "$login" ?>'><button type="button"
+                                            class="btn btn-light btn-sm waves-effect"
+                                            onClick='return confirm("確定追蹤？");'>追蹤</button></a>
 
 
 
-                                                </div> <!-- end .padding -->
-                                            </div> <!-- end card-box-->
-                                        </div> <!-- end col -->
-                                    <?php
+                                </div> <!-- end .padding -->
+                            </div> <!-- end card-box-->
+                        </div> <!-- end col -->
+                        <?php
                                     }
                                     ?>
-                                </div>
-                            </div> <!-- content -->
-                        </div>
-
-                        <!-- ============================================================== -->
-                        <!-- End Page content -->
-                        <!-- ============================================================== -->
-
-
                     </div>
-                    <!-- END wrapper -->
+                </div> <!-- content -->
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
 
 
-                    <!-- Vendor js -->
-                    <script src="../assets/js/vendor.min.js"></script>
-
-                    <!-- Plugins js-->
-                    <script src="../assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
-                    <script src="../assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-                    <script src="../assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
-                    <!-- Plugins js -->
-                    <script src="../assets/libs/morris.js06/morris.min.js"></script>
-                    <script src="../assets/libs/raphael/raphael.min.js"></script>
-
-                    <!-- Dashboard 4 init -->
-                    <script src="../assets/js/pages/dashboard-4.init.js"></script>
-
-                    <!-- Todo app -->
-                    <script src="../assets/js/pages/jquery.todo.js"></script>
-
-                    <!-- App js -->
-                    <script src="../assets/js/app.min.js"></script>
-
-                    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </div>
+        <!-- END wrapper -->
 
 
+        <!-- Vendor js -->
+        <script src="../assets/js/vendor.min.js"></script>
+
+        <!-- Plugins js-->
+        <script src="../assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <script src="../assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="../assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- Plugins js -->
+        <script src="../assets/libs/morris.js06/morris.min.js"></script>
+        <script src="../assets/libs/raphael/raphael.min.js"></script>
+
+        <!-- Dashboard 4 init -->
+        <script src="../assets/js/pages/dashboard-4.init.js"></script>
+
+        <!-- Todo app -->
+        <script src="../assets/js/pages/jquery.todo.js"></script>
+
+        <!-- App js -->
+        <script src="../assets/js/app.min.js"></script>
+
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
-                    <!-- Standard modal content -->
-                    <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                </div>
-                                <div class="modal-body" id="user_detail">
-                                    <!-- -------------- -->
-                                    <!-- userDetail.php -->
-                                    <!-- -------------- -->
-
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-                        <script>
-                            $(document).ready(function() {
-                                $('.view_data').click(function() {
-                                    var login = $(this).attr("id");
-                                    console.log(login);
-
-                                    $.ajax({
-                                        url: "userDetail.php",
-                                        method: "POST",
-                                        data: {
-                                            login: login
-                                        },
-                                        success: function(data) {
-                                            $('#user_detail').html(data);
-                                            $('#standard-modal').modal("show");
-                                        }
-                                    })
-                                    $('#standard-modal').modal("show");
-                                });
-                            });
-                        </script>
 
 
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                        <script type="text/javascript">
-                            google.charts.load("current", {
-                                packages: ["corechart"]
-                            });
-                            google.charts.setOnLoadCallback(drawChart);
+        <!-- Standard modal content -->
+        <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body" id="user_detail">
+                        <!-- -------------- -->
+                        <!-- userDetail.php -->
+                        <!-- -------------- -->
 
-                            function drawChart() {
-                                var data = google.visualization.arrayToDataTable([
-                                    ['Task', 'Hours per Day'],
-                                    ['投稿者', <?php echo $status1 ?>],
-                                    ['審稿者', <?php echo $status2 ?>],
-                                    ['管理者', <?php echo $status3 ?>],
-                                ]);
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <script>
+            $(document).ready(function() {
+                $('.view_data').click(function() {
+                    var login = $(this).attr("id");
+                    console.log(login);
 
-                                var options = {
-                                    pieHole: 0.4,
-                                };
+                    $.ajax({
+                        url: "userDetail.php",
+                        method: "POST",
+                        data: {
+                            login: login
+                        },
+                        success: function(data) {
+                            $('#user_detail').html(data);
+                            $('#standard-modal').modal("show");
+                        }
+                    })
+                    $('#standard-modal').modal("show");
+                });
+            });
+            </script>
 
-                                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-                                chart.draw(data, options);
-                            }
-                        </script>
-            </body>
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+            google.charts.load("current", {
+                packages: ["corechart"]
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Task', 'Hours per Day'],
+                    ['投稿者', <?php echo $status1 ?>],
+                    ['審稿者', <?php echo $status2 ?>],
+                    ['管理者', <?php echo $status3 ?>],
+                ]);
+
+                var options = {
+                    pieHole: 0.4,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+            }
+            </script>
+</body>

@@ -10,6 +10,7 @@ if(isset($_SESSION["account"]["login"])){
     }
     if(in_array("管理者",$status)){
 ?>
+
 <head>
     <meta charset="utf-8" />
     <title>管理者</title>
@@ -21,10 +22,15 @@ if(isset($_SESSION["account"]["login"])){
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- Bootstrap Tables css -->
-    <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" /> -->
     <!-- App css -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+    <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
     <link href="../assets/css/bootstrap.min.(1).css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
@@ -49,6 +55,7 @@ if(isset($_SESSION["account"]["login"])){
             case "accountmanage": include "accountmanage.php"; break;
             case "addaccount": include "addaccount.php"; break;
             case "accounts": include "accounts.php"; break;
+            case "allaccept": include "allaccept.php";break;
             default: include "accounts.php";
         }
     }else{
@@ -58,4 +65,5 @@ if(isset($_SESSION["account"]["login"])){
     include "pages-404.html";
 }
 ?>
+
 </html>

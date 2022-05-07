@@ -12,7 +12,7 @@
                 <!-- Content -->
                 <h5 class="text-uppercase" style="font-family:roboto; color:#ffffff; font-size:20px">Contact Us</h5></br>
                 <p style="color: white;">FJUM Jui-Chen Chiu</p>
-                <p style="color: white;"><a href="mailto: fjreview@mail.fju.edu.tw">fjreview@mail.fju.edu.tw</a></p>
+                <p style="color: white;"><a href="mailto:fjreview@mail.fju.edu.tw">fjreview@mail.fju.edu.tw</a></p>
                 <p><a href="tel:886229052000">TEL: (02) 2905-2000</a></p>
                 <p><a href="fax:0229052186">FAX: (02) 2905-2186</a></p>
 

@@ -12,6 +12,10 @@ if(isset($_SESSION["account"]["login"])){
         <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/favicon-16x16.png">
+    <link rel="icon" href="../assets/images/logo/logo.ico" type="image/x-icon">
   <title>FJMR</title>
   <!-- MDB icon -->
   <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
@@ -65,6 +69,15 @@ if(isset($_SESSION["account"]["login"])){
     .navbar:not(.top-nav-collapse) {
         background: #78909c !important;
     }
+    .dropdown-menu{
+        background-color: #78909c;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+    }
+    .navbar:not(.top-nav-collapse) .dropdown-menu{
+        background-color: #78909c;
+    }
     }
 
     h1 {
@@ -78,6 +91,18 @@ if(isset($_SESSION["account"]["login"])){
     .hr-light {
     border-top: 3px solid #fff;
     width: 80px;
+    }
+
+    .navbar .dropdown-menu{
+        background-color:#78909c;
+        border-top: 0px;
+    }
+    #change{
+        color:#fff
+    }
+
+    #change:hover{
+        color:black;
     }
 </style>
 </head>
@@ -103,17 +128,17 @@ if(isset($_SESSION["account"]["login"])){
                         <span >About</span>
                     </a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="purpose.php">Aim and Scope</a>
-                      <a class="dropdown-item" href="editors.php">Editorial Board</a>
-                      <a class="dropdown-item" href="subscribe.php">Subscribe</a>
+                      <a id="change" class="dropdown-item" href="purpose.php">Aim and Scope</a>
+                      <a id="change" class="dropdown-item" href="editors.php">Editorial Board</a>
+                      <a id="change" class="dropdown-item" href="subscribe.php">Subscribe</a>
                     </div>
                 </li>
             
                 <li class="nav-item dropdown">
                     <a data-toggle="dropdown" class="nav-link w-100 dropdown-toggle" aria-haspopup="true" aria-expanded="false" >Submission</a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="papersubmission.php">Guideline & Process</a>
-                    <a class="dropdown-item" href="format.php">Format</a>
+                    <a id="change" class="dropdown-item" href="papersubmission.php">Guideline & Process</a>
+                    <a id="change" class="dropdown-item" href="format.php">Format</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -140,26 +165,26 @@ if(isset($_SESSION["account"]["login"])){
                         
                             if($status=="投稿者"){
                             ?>
-                            <a class="dropdown-item" href="../投稿者/format.php" style="font-size: small;">
+                            <a id="change" class="dropdown-item" href="../投稿者/format.php" style="font-size: small;">
                             Author System
                             </a>
                             <?php
                             }elseif($status=="審稿者"){
                             ?>
-                            <a class="dropdown-item" href="../審稿者/dashboard.php" style="font-size: small;">
+                            <a id="change" class="dropdown-item" href="../審稿者/dashboard.php" style="font-size: small;">
                             Reviewer System
                             </a>
                             <?php
                             }else{
                             ?>
-                            <a class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
+                            <a id="change" class="dropdown-item" href="../管理者/index.php?method=maildistribution" style="font-size: small;">
                             Manager System
                             </a>
                             <?php
                             }
                         }
                         ?>
-                        <a href="../login/logout-output.php" class="dropdown-item notify-item" style="font-size: small;">
+                        <a id="change" href="../login/logout-output.php" class="dropdown-item notify-item" style="font-size: small;">
                             <span>Log Out</span>
                         </a>
                         </div>
