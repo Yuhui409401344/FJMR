@@ -103,11 +103,11 @@
                                     </div>
 
                                     <!-- 留言 comment-->
-                                    <div class="form-group mb-3">
+                                    <!-- <div class="form-group mb-3">
                                         <label for="product-reference"
                                             class=" font-weight-bold text-muted">回覆建議</label><br>
                                         <textarea class="form-control" name="comment" rows="5" required></textarea>
-                                    </div>
+                                    </div> -->
 
                                     <!-- 評級 level -->
                                     <div class="form-group mb-3">

@@ -111,12 +111,12 @@
                                 $mail->isSMTP();  
                                 $mail->Host = 'smtp.gmail.com';  
                                 $mail->SMTPAuth = true;                               
-                                $mail->Username = 'fjmreview@gmail.com';                 // SMTP username
-                                $mail->Password = 'iormzmrmiwoabbik';//兩段式密碼 -> 應用程式密碼                         // SMTP password
+                                $mail->Username = 'julieblue331@gmail.com';                 // SMTP username
+                                $mail->Password = 'iormzmrmiwoabbik';                         // SMTP password
                                 $mail->SMTPSecure = 'tls';                           
                                 $mail->Port = 587;                                  
 
-                                $mail->setFrom('fjmreview@gmail.com', 'FJMR');
+                                $mail->setFrom('julieblue331@gmail.com', 'FJMR');
                                 $mail->addAddress($to_email, $name);    
                                 $mail->isHTML(true);                                 
 

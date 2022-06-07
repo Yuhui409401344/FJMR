@@ -142,7 +142,7 @@
                     </div>
 
                     <?php 
-                        foreach ($pdo->query("select r.senter, r.recipient,r.level, r.time, r.comment, r.uploadname, r.replytime from
+                        foreach ($pdo->query("select r.senter, r.recipient,r.level, r.time, r.uploadname, r.replytime from
                       reply_history r where r.id='".$id."' and r.title='".$title."'") as $row) {
                             $senter=$row['senter'];
                             $recipient=$row['recipient'];
@@ -150,7 +150,6 @@
                             $time=$row['time'];
                             $replytime=$row['replytime'];
                             $uploadname=$row['uploadname'];
-                            $comment=$row['comment'];
                         
 
 
@@ -197,9 +196,9 @@
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 回覆次數：<?php echo $replytime ?></p>
 
-                                            <p
+                                            <!-- <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                留言：<?php echo  $comment ?></p>
+                                                留言：<?php echo  $comment ?></p> -->
                                         </div>
                                     </div>
                                 </div>
@@ -243,8 +242,8 @@
                     if($amount>=2){
                 ?>
                     <button type="button" class="btn btn-blue waves-effect waves-light"
-                        style="text-align:center; float:right">
-                        <a href='reply.php?title=<?php echo "$title" ?>' style="color: white"><span class="btn-label"><i
+                        style="text-align:center; float:right" onclick='window.location="reply.php?title=<?php echo $title ?>"'>
+                        <a style="color: white"><span class="btn-label"><i
                                     class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
                     </button>
                     <?php 

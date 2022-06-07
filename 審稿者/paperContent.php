@@ -195,7 +195,7 @@
                         </div>
                     </div>
                     <button type="button" class="btn btn-blue waves-effect waves-light"
-                        style="text-align:center; float:right">
+                        style="text-align:center; float:right" onclick="window.location='reply.php?id=<?php echo $id ?>'">
                         <a href='reply.php?id=<?php echo "$id" ?>' style="color: white"><span class="btn-label"><i
                                     class="fas mdi mdi-email-send-outline fa-lg"></i></span>回覆</a>
                     </button>

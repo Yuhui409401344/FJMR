@@ -154,7 +154,7 @@
                                                     name='pro[]' aria-placeholder='請選擇'>
 
                                                     <?php  
-                                                        $editors=$pdo->query("SELECT  login,name from account  where account.status = '審稿者' ");
+                                                        $editors=$pdo->query("SELECT distinct account.login,account.name from account, account_field where account.status='審稿者' and account_field.f_name in (SELECT  f_name from newpaper_field  where title='$title') and account_field.login=account.login ");
                                                         foreach($editors as $row){
                                                             $login = $row['login'];
                                                             $name = $row['name'];

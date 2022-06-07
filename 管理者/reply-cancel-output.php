@@ -368,7 +368,7 @@ if (isset($_SESSION["account"]["login"])) {
                                                                         <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="7" checked=""><label class="custom-control-label" for="7"><s>回覆李雯教授</s></label></div>
                                                                     </li>
                                                                     <li class="list-group-item border-0 pl-0">
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="6"><label class="custom-control-label" for="6">創建新賬號給李敏同學</label></div>
+                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="6"><label class="custom-control-label" for="6">創建新帳號給李敏同學</label></div>
                                                                     </li>
                                                                     <li class="list-group-item border-0 pl-0">
                                                                         <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="5"><label class="custom-control-label" for="5">回覆系秘</label></div>
@@ -380,7 +380,7 @@ if (isset($_SESSION["account"]["login"])) {
                                                                         <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="3" checked=""><label class="custom-control-label" for="3"><s>開題準備</s></label></div>
                                                                     </li>
                                                                     <li class="list-group-item border-0 pl-0">
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="2" checked=""><label class="custom-control-label" for="2"><s>創建新賬號給林姚教授</s></label></div>
+                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="2" checked=""><label class="custom-control-label" for="2"><s>創建新帳號給林姚教授</s></label></div>
                                                                     </li>
                                                                     <li class="list-group-item border-0 pl-0">
                                                                         <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input todo-done" id="1"><label class="custom-control-label" for="1">刪除陳立同學帳號</label></div>

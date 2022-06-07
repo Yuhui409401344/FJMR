@@ -89,10 +89,10 @@
                                         <tbody>
                                             <?php
                                                 $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                foreach($pdo->query("select count(title) from distri where pro='".$login."'") as $row){
-                                                    $count=$row[0];
-                                                }
-                                                foreach ($pdo->query("select id, title, ddl, uploadtime, summary, filename, comment, manager from distri where pro='".$login."'") as $row) {
+                                                // foreach($pdo->query("select count(title) from distri where pro='".$login."'") as $row){
+                                                //     $count=$row[0];
+                                                // }
+                                                foreach ($pdo->query("select id, title, ddl, uploadtime, summary, filename, comment, manager,accept from distri where pro='".$login."'") as $row) {
                                                     $id = $row['id'];
                                                     $title=$row['title'];
                                                    
@@ -102,12 +102,13 @@
                                                     $filename = $row['filename'];
                                                     $comment = $row['comment'];
                                                     $manager = $row['manager'];
-
+                                                    $accept = $row['accept'];
                                                     $Summary=nl2br($summary);
                                                     
                                             ?>
 
                                             <tr>
+                                                <?php if($accept != NULL &&$accept = '1'){ ?>
                                                 <td><a class="title" href="paperContent.php?id=<?php echo "$id" ?>"
                                                         style="color: #005282"><?php echo $title ?></a>
                                                 </td>
@@ -127,7 +128,7 @@
                                                         download="<?php echo $title ?>" class='action-icon'
                                                         title="下載檔案"> <i class='mdi mdi-arrow-collapse-down'></i></a>
                                                 </td>
-
+                                                <?php } ?>
                                             </tr>
                                         </tbody>
                                         <?php

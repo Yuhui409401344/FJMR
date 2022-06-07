@@ -150,7 +150,7 @@
                                     <div class="form-group mb-3 mr-4 ml-4">
                                         <div class="row">
                                             <div class="col-6">
-                                                <label class="mb-2" style="font-size: 20px;">匿名檔案<span
+                                                <label class="mb-2" style="font-size: 20px;">匿名檔案(請將回覆意見書一起附上)<span
                                                         class="text-danger">*</span></label>
                                                 <br />
                                                 <input type=file name="file_x" accept=".pdf,.doc,.docx" id="file"

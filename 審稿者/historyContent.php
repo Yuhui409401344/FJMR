@@ -68,7 +68,7 @@ $login = $_SESSION["account"]["login"];
                     <?php
                     $id = $_GET["id"];
                     $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                    foreach ($pdo->query("select n.id,n.title,n.summary,n.uploadtime as stime, n.uploadname as scriptfile, r.senter, r.recipient,r.level, r.time, r.comment, r.uploadname, r.replytime from newpaper_history n
+                    foreach ($pdo->query("select n.id,n.title,n.summary,n.uploadtime as stime, n.uploadname as scriptfile, r.senter, r.recipient,r.level, r.time, r.uploadname, r.replytime from newpaper_history n
                             left JOIN reply_history r on n.id = r.id where r.id='" . $id . "' and r.senter ='" . $login . "'") as $row) {
                         $id = $row['id'];
                         $title = $row['title'];
@@ -85,7 +85,7 @@ $login = $_SESSION["account"]["login"];
                         $time = $row['time'];  #審稿者上傳日期
                         $comment = $row['comment'];
 
-                        $Comment = nl2br($comment);
+                        // $Comment = nl2br($comment);
                         $uploadname = $row['uploadname']; #審稿檔案
                         $replytime = $row['replytime'];  #回覆次數
 
@@ -207,10 +207,10 @@ $login = $_SESSION["account"]["login"];
                                                 回覆次數：<?php echo $replytime ?>
                                             </p>
 
-                                            <p
+                                            <!-- <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 您的審稿留言：<?php echo $comment ?>
-                                            </p>
+                                            </p> -->
 
                                             <div class="row">
                                                 <div class="col-12">

@@ -74,7 +74,6 @@ if(isset($_SESSION["account"]["login"])){
                                             <col span="1" style="width: 15%;">
                                             <col span="1" style="width: 10%;">
                                             <col span="1" style="width: 10%;">
-                                            <col span="1" style="width: 20%;">
                                             <col span="1" style="width: 10%;">
                                         </colgroup>
                                         <thead>
@@ -86,8 +85,7 @@ if(isset($_SESSION["account"]["login"])){
                                                 <th data-field="field" data-sortable="true"
                                                     data-formatter="fieldFormatter" data-hide="phone">上傳日期</th>
                                                 <th data-field="field" data-sortable="true"
-                                                    data-formatter="fieldFormatter" data-hide="tablet, phone">回覆次數</th>
-                                                <th data-hide="tablet, phone">建議</th>
+                                                    data-formatter="fieldFormatter" >回覆次數</th>
                                                 <th>動作</th>
 
                                             </tr>
@@ -96,14 +94,13 @@ if(isset($_SESSION["account"]["login"])){
                                             <?php
                                         
                                         $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                        foreach ($pdo->query("select id, title, recipient, level, time, replytime, comment, uploadname from reply_history where senter = '".$login."'") as $row) {
+                                        foreach ($pdo->query("select id, title, recipient, level, time, replytime, uploadname from reply_history where senter = '".$login."'") as $row) {
                                             $id=$row['id'];
                                             $title=$row['title'];
                                             $recipient=$row['recipient']; #收件人（管理者）
                                             $level=$row['level'];
                                             $time=$row['time'];  #上傳日期
                                             $replytime=$row['replytime'];  #回覆次數
-                                            $comment=$row['comment'];
                                             $uploadname=$row['uploadname'];
 
                                             $Comment=nl2br($comment);//回車換成換行
@@ -129,9 +126,6 @@ if(isset($_SESSION["account"]["login"])){
                                                 </td>
                                                 <td><?php echo $time ?></td>
                                                 <td><?php echo $replytime ?></td>
-                                                <td>
-                                                    <p class="reply"><?php echo $Comment ?></p>
-                                                </td>
                                                 <td>
                                                     <a href='../審稿者/upload/<?php echo $uploadname ?>' target="blank"
                                                         download="<?php echo $uploadname ?>" class='action-icon'

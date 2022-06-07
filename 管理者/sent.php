@@ -82,7 +82,7 @@
                                                     <?php
                                                             
                                                             $pdo = new PDO('mysql:host=localhost;dbname=fjup;charset=utf8', 'root', '');
-                                                            foreach ($pdo->query("select id,title,summary,pro,ddl,auth1,auth2,auth3,auth4,auth5,filename,uploadtime,comment,accept from distri_history where manager = '".$manager."'") as $row) {
+                                                            foreach ($pdo->query("select id,title,summary,pro,ddl,auth1,auth2,auth3,auth4,auth5,filename,uploadtime,comment,accept from distri_history where manager = '".$manager."' order by id DESC") as $row) {
                                                                 $id=$row['id'];
                                                                 $title=$row['title'];
                                                                 $summary=$row['summary'];

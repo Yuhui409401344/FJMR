@@ -221,7 +221,7 @@ $login=$_SESSION["account"]["login"];
                         <li>
                             <a href="index.php?method=accountmanage">
                                 <i class="mdi mdi-account"></i>
-                                <span> 賬號管理 </span>
+                                <span> 帳號管理 </span>
                             </a>
                         </li>
 

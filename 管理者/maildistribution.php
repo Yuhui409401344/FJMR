@@ -76,11 +76,12 @@
                                     <table id="demo-foo-filtering" class="table table-bordered toggle-circle  mb-0"
                                         data-page-size="10">
                                         <colgroup>
-                                            <col span="1" style="width: 18%;">
-                                            <col span="1" style="width: 15%;">
-                                            <col span="1" style="width: 15%;">
-                                            <col span="1" style="width: 15%;">
                                             <col span="1" style="width: 20%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 15%;">
+                                            <col span="1" style="width: 3%;">
                                             <col span="1" style="width: 12%;">
                                         </colgroup>
                                         <thead>
@@ -90,6 +91,7 @@
                                                 <th data-field="field" data-sortable="true"
                                                     data-formatter="fieldFormatter" data-hide="phone">領域</th>
                                                 <th>上傳日期</th>
+                                                <th>回覆次數</th>
                                                 <th data-hide="phone,tablet">摘要</th>
                                                 <th data-align="center">動作</th>
 
@@ -113,6 +115,9 @@
 
                                                             $Summary=nl2br($summary);//回車換成換行
 
+                                                        $sql2 = $pdo->query("select count(title) from newpaper_history where title='$title'");
+                                                        $count = $sql2->fetch(PDO::FETCH_ASSOC);
+                                                        $title_c = $count['count(title)'];
                                                     ?>
                                             <tr>
                                                 <td><a class="title"
@@ -135,6 +140,7 @@
 
                                                 </td>
                                                 <td><?php echo $uploadtime ?></td>
+                                                <td align="center"><?php echo $title_c  ?></td>
                                                 <td>
                                                     <p class='summary'><?php echo $Summary ?></p>
                                                 </td>

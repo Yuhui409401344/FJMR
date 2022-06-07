@@ -173,7 +173,7 @@
                     </div>
 
                     <?php 
-                        foreach ($pdo->query("select r.senter, r.recipient,r.level, r.time, r.comment, r.uploadname, r.replytime from
+                        foreach ($pdo->query("select r.senter, r.recipient,r.level, r.time, r.uploadname, r.replytime from
                       reply_history r where r.id='".$id."' and r.title='".$title."'") as $row) {
                             $reviewer_senter=$row['senter'];
                             $reviewer_recipient=$row['recipient'];
@@ -181,7 +181,6 @@
                             $reviewer_time=$row['time'];
                             $reviewer_replytime=$row['replytime'];
                             $reviewer_uploadname=$row['uploadname'];
-                            $reviewer_comment=$row['comment'];
                         
 
 
@@ -227,10 +226,6 @@
                                             <p
                                                 style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
                                                 回覆次數：<?php echo $reviewer_replytime ?></p>
-
-                                            <p
-                                                style="text-align: justify; padding-right: 30px;font-family:Microsoft JhengHei">
-                                                留言：<?php echo  $reviewer_comment ?></p>
                                         </div>
                                     </div>
                                 </div>
